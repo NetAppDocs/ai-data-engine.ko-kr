@@ -14,7 +14,7 @@ summary: 각 쉘프의 전원을 켜서 고유한 쉘프 ID를 할당하고, AFX
 랙 하드웨어를 설치하고 데이터 컴퓨팅 노드에 케이블을 연결한 후에는 DCN 및 AFX 스토리지 시스템의 컨트롤러 노드가 아직 켜져 있지 않은 경우 전원을 켜야 합니다.
 
 .시작하기 전에
-* 선반에 전원이 공급되고 각 선반에 고유한 선반 ID가 할당되었는지 확인하십시오. AFX 스토리지 시스템의 선반 ID 할당에 대한 자세한 내용은 link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html#step-1-power-on-the-shelf-and-assign-shelf-id["고유한 쉘프 ID 할당"^]을(를) 참조하십시오.
+* 선반에 전원이 공급되고 각 선반에 고유한 선반 ID가 할당되었는지 확인하십시오. AFX 스토리지 시스템의 선반 ID 할당에 대한 자세한 내용은 link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html#step-1-power-on-the-shelf-and-assign-shelf-id["고유 쉘프 ID 할당에 관한 문서"^]을(를) 참조하십시오.
 
 
 .단계

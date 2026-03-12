@@ -765,11 +765,8 @@
   <block id="e5e09031843479ef9ef8cbbd4c2f404c" category="inline-link-macro">NetApp Hardware Universe</block>
   <block id="a28718801e1a1879bc4c740387a935cd" category="paragraph">이 절차는 일반적인 구성을 보여줍니다. 구체적인 케이블 연결은 스토리지 시스템에 주문한 구성 요소에 따라 다릅니다. 포괄적인 구성 세부 정보 및 슬롯 우선순위는 <block ref="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="inline-link-macro-rx"></block>을 참조하십시오.</block>
   <block id="b8813a31dec0580ca60c9211b8c31504" category="admonition">Data Compute Node를 케이블로 연결할 때 AFX 1K 스토리지 시스템의 전원을 끌 필요가 없습니다. 이미 전원이 켜져 있고 구성된 기존 AFX 1K 스토리지 시스템에 Data Compute Node를 추가할 수 있습니다.</block>
-  <block id="8820ea58f8a7b9ba1f899988cc0bcc7e" category="inline-link-macro">AFX 1K 스토리지 시스템을 설치합니다</block>
-  <block id="e8286441186e192dd0417e0b90342681" category="list-text">기존 AFX 1K 스토리지 시스템이 설치되어 있습니다. AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 <block ref="6c057105940736b02f364af6d84ea81d" category="inline-link-macro-rx"></block>을 참조하십시오.</block>
   <block id="794101c4551a5d464aba13561dbdfcb7" category="list-text">필요한 네트워크 스위치가 설치 및 구성되어 있습니다. 시스템을 네트워크 스위치에 연결하는 방법에 대한 자세한 내용은 네트워크 관리자에게 문의하십시오.</block>
   <block id="5438ae8fe0bf5d2f78280efdc18e8280" category="inline-link-macro">Data Compute Node에 필요한 케이블링</block>
-  <block id="bc6b8966de646d62999299467e207730" category="list-text"><block ref="df9ffd635bc8be93ab4198a9764d5fe7" category="inline-link-macro-rx"></block>를 검토했습니다.</block>
   <block id="3e600c5ae163106b94f797b8d37531bb" category="section-title">1단계: Data Compute Node를 호스트 네트워크에 연결합니다</block>
   <block id="ba9743fa4e674359437383966cb93d3a" category="paragraph">Data Compute Node 포트를 호스트 네트워크에 연결할 수 있습니다.</block>
   <block id="118345fbcadb00655f06e4cd198e4f44" category="list-text">다음 Data Compute Node의 e4b 포트를 이더넷 데이터 네트워크 스위치 A에 연결하십시오.</block>
@@ -790,7 +787,6 @@
   <block id="4c3c38604eae6a6237406e7c21b17ea6" category="list-text">Data Compute Node 1, 포트 e5a</block>
   <block id="75b404150b8831865d53a73c8d5e49df" category="list-text">Data Compute Node 2, 포트 e5a</block>
   <block id="d8bdb0239e31e7049e331ec53560d174" category="inline-link-macro">Data Compute Node의 전원을 켜세요</block>
-  <block id="b659b3546fb581caaec13f6634743878" category="paragraph">hardware를 케이블로 연결한 후 <block ref="4a47b4628664a0cf522188fbb092ba40" category="inline-link-macro-rx"></block>.</block>
   <block id="1bea7bb4c3b67fb7e56873373a173ad4" category="summary">I/O 슬롯 사용, 케이블 유형, 호스트 및 클러스터 네트워크의 연결 요구 사항을 포함하여 Data Compute Node의 케이블링 구성에 대해 알아보십시오.</block>
   <block id="32045bb6e9ec0592350b601a788ccdce" category="doc">AI Data Engine용 Data Compute Node 케이블 연결 요구 사항</block>
   <block id="b0b66b711f4a262ccff9a731cc05cce3" category="paragraph">Data Compute Node는 호스트 네트워크 및 클러스터 네트워크 연결을 통해 AFX 1K 스토리지 시스템과 통합됩니다. 배포에 필요한 I/O 슬롯 구성, 케이블 유형 및 연결 요구 사항을 검토하십시오.</block>
@@ -856,7 +852,6 @@
   <block id="1cd087a975856327df11de8c24727816" category="section-title">기존 AFX 클러스터를 사용하여 AIDE 설정</block>
   <block id="79e5e9e993a32c1d24149a1ab99a00f6" category="paragraph">기존 AFX 스토리지 시스템에 Data Compute Node 클러스터를 추가하는 경우 DCN을 구성하고 AIDE 클러스터 설정을 완료해야 합니다.</block>
   <block id="65f46507bff9980b186da251beea243f" category="section-title">클러스터에 Data Compute Node를 추가합니다</block>
-  <block id="f9f4e6dfa867d6fadbee2179021982ce" category="paragraph">ONTAP는 클러스터 네트워크에 연결된 새 Data Compute Node를 동적으로 감지하여 System Manager에 표시합니다. <block ref="f31476c597e559edff10c8396ad56efe" category="inline-link-macro-rx"></block>할 수 있습니다. 또한 다음 사항에 유의하십시오.</block>
   <block id="f2de9ca173c14a6166010437ea58db0b" category="list-text">Data Compute Node는 클러스터 스위치에 물리적으로 연결되어 있어야 합니다. AIDE 클러스터를 생성할 때는 정확히 3개의 DCN이 필요합니다.</block>
   <block id="e578c3ea135e2df360bd2b3c7d452efc" category="list-text">DCN 네트워크 및 기타 필요한 네트워크 구성 정보에 대한 충분한 IP 주소가 있어야 합니다.</block>
   <block id="74d96a5c17230f851c945568863caad2" category="section-title">AIDE 클러스터 설정을 완료하세요</block>
@@ -871,7 +866,6 @@
   <block id="0d1736e8e31a21d25526ed60ca4ed657" category="list-text">*네트워크 프로토콜 구성*을 선택합니다.</block>
   <block id="a6112a3104820ecf5363ca17a438fa2a" category="paragraph">스토리지 VM(SVM) 네트워크 프로토콜을 구성할 수 있습니다.</block>
   <block id="468cfff85725ad5f71c038767aa7d0e5" category="list-text">*Data Compute 소프트웨어 업데이트*를 선택합니다.</block>
-  <block id="3a40cab041f6585c05ceabf8e362f05b" category="paragraph">업데이트할 수 있는 Data Compute 소프트웨어 이미지가 있는 경우 이 옵션이 활성화됩니다. 이 옵션을 선택하면 Data Compute 소프트웨어 업데이트 페이지가 시작됩니다. 또한 <block ref="e966f8a237d0e9b99b99d834f5fe2ecd" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="a79f870ef92f37fc8b1c25bcf9b1ffa1" category="list-text">*데이터 엔진 네트워킹 구성*을 선택합니다.</block>
   <block id="67f2739e9e2d8cc78123cf3eeba619c7" category="paragraph">이 옵션을 선택하면 데이터 엔진 네트워크 주소를 구성하는 페이지가 표시됩니다.</block>
   <block id="0f18306a1d3f702e7592699af4f850f9" category="list-text">*클러스터 간 네트워크 인터페이스 생성*을 선택합니다</block>
@@ -963,7 +957,6 @@
   <block id="a6d899f314cdd20df8f4d59aca478ae8" category="list-text">제공된 장착 나사를 사용하여 데이터 처리 노드를 캐비닛에 고정하십시오.</block>
   <block id="353ccbfd0ab9b9e503d824a6bc057226" category="list-text">데이터 연산 노드의 전면에 베젤을 부착합니다.</block>
   <block id="e30a01f520c71c74d7ceed0e849ca30b" category="inline-link-macro">AIDE용 데이터 컴퓨팅 노드 케이블 연결</block>
-  <block id="548ea28a443d143489f072c073df763d" category="paragraph">데이터 컴퓨팅 노드를 설치한 후 <block ref="3980b3517830ec2d777c7d0167886e44" category="inline-link-macro-rx"></block>.</block>
   <block id="082b4c909289f25bf292fbd1efc1725f" category="summary">NetApp 라이센스를 설치해야 AI Data Engine(AIDE)의 전체 기능에 액세스할 수 있습니다. ONTAP 클러스터 관리자는 ONTAP System Manager를 사용하여 라이센스 관리를 수행할 수 있습니다.</block>
   <block id="eda5245c7aa76877b2f41c80a9fe821c" category="doc">AFX 시스템에 AIDE 라이센스를 설치합니다</block>
   <block id="bf59b5fa52e090d739b08baa38ea1640" category="section-title">AI Data Engine 라이센스 준비</block>
@@ -998,8 +991,6 @@
   <block id="ee68e5b99222bbc29a480fcb0d1d6ee2" category="section-title">필수 구성 요소</block>
   <block id="366c56f2f6e54f4e282605b02803862d" category="paragraph">AIDE용 데이터 컴퓨팅 노드를 설치하기 전에 다음 사항을 확인하십시오.</block>
   <block id="f23b06a746ce876e177c6a6196286145" category="list-text">AFX 1K 스토리지 시스템.</block>
-  <block id="f15992b3ead5729a349b745d488997b1" category="inline-link-macro">AFX 1K 스토리지 시스템 설치</block>
-  <block id="ea0432abd4c39d4963886d922f4a17e8" category="admonition">AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 <block ref="78aacef5a151b9b9cf2f4610d698d814" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="38342a608d29c610e381db6c1bfd532c" category="section-title">설치에 필요한 장비</block>
   <block id="932c06f46d2aa01c36a955878a7a1d9e" category="paragraph">AIDE용 데이터 컴퓨팅 노드를 설치하려면 다음과 같은 장비와 도구가 필요합니다.</block>
   <block id="bb9d246c8ef7a2dd035f69ed095493f0" category="list-text">데이터 컴퓨팅 노드를 구성하기 위한 웹 브라우저 액세스</block>
@@ -1011,18 +1002,15 @@
   <block id="e58106606682bb10c46356b63c87aaf1" category="paragraph">데이터 컴퓨팅 노드는 무겁습니다. 이러한 항목을 들어 올리고 이동할 때 주의하십시오.</block>
   <block id="6c11ed3a4af8dc2f7b618d16248e7e04" category="section-title">데이터 컴퓨팅 노드 가중치</block>
   <block id="b5e179420712f0dce203796a6bae84ee" category="paragraph">데이터 컴퓨팅 노드를 이동하거나 들어 올릴 때 필요한 예방 조치를 취하십시오.</block>
-  <block id="903b6fc3c7c5a407b4c2c17bae1563d1" category="paragraph">데이터 컴퓨팅 노드의 무게는 최대 46.3lbs(21Kg)에 달할 수 있습니다. 데이터 컴퓨팅 노드를 들어 올리려면 두 사람이 필요하거나 유압 리프트를 사용해야 합니다.</block>
   <block id="db874eaa8bd23db025bd708dfdf02fbe" category="image-alt">데이터 컴퓨팅 노드 리프팅 중량</block>
   <block id="35c124f455f44a154eb3b514029ee58a" category="inline-link">안전 정보 및 규정 고지</block>
   <block id="fa81f583d8b6c7dcaf8e26a5fcf5de52" category="list-text"><block ref="fa81f583d8b6c7dcaf8e26a5fcf5de52" category="inline-link-rx"></block></block>
   <block id="d4719451e76be2b63cbc4379574f8af8" category="inline-link-macro">데이터 컴퓨팅 노드 설치 준비</block>
-  <block id="143d168057f2028bf6d721060afdf078" category="paragraph">하드웨어 요구 사항을 검토한 후 <block ref="36962d0c8289a56184a6c55f834a067a" category="inline-link-macro-rx"></block>.</block>
   <block id="c5c899a1a675cf6171f1b0bd26cf38ad" category="summary">데이터 컴퓨팅 노드의 설치 및 설정을 시작하고 ONTAP 환경에 배포하십시오.</block>
   <block id="b44e203a59265141b15d79992f218135" category="doc">AI Data Engine용 데이터 컴퓨팅 노드의 설치 및 설정 워크플로우</block>
   <block id="a3a99d6030b7bfab3e66259156e15dbd" category="paragraph">데이터 컴퓨팅 노드(DCN)를 설치 및 구성하려면 하드웨어 요구 사항을 검토하고, 사이트를 준비하고, 하드웨어 구성 요소를 설치 및 케이블 연결하고, 시스템 전원을 켜고, ONTAP 클러스터를 설정해야 합니다.</block>
   <block id="7ccd978bf0dbca0a0746f98d09b99f7f" category="inline-link-macro">하드웨어 설치 요구 사항을 검토하십시오</block>
   <block id="6889512d643df7fa8ccfb7e52dd1181c" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="90572de4b12061d10d3adbe91dd02ace" category="inline-link-macro-rx"></block></block>
-  <block id="0d42e01cf22c0d48df016d6dd401d5fb" category="paragraph">기존 AFX 1K 스토리지 시스템이 설치되어 있는지 확인한 다음 AIDE용 데이터 컴퓨팅 노드 설치를 위한 하드웨어 요구 사항을 검토하십시오. AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 <block ref="78aacef5a151b9b9cf2f4610d698d814" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="2ef02acbcac74a2bf527975726a47ddc" category="inline-link-macro">데이터 컴퓨팅 노드 설치 준비</block>
   <block id="65b761c9b7abbbeca0b5bf69bc82d7a8" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="57d90d9a41d093761f4dd9f6db8351e9" category="inline-link-macro-rx"></block></block>
   <block id="293f8966fffd4aff38846275cf9996a2" category="paragraph">데이터 컴퓨팅 노드를 설치하려면 먼저 설치 장소를 준비하고, 환경 및 전기 요구 사항을 점검하고, 충분한 캐비닛 공간이 있는지 확인해야 합니다. 그런 다음 장비를 개봉하고 포장 명세서와 내용물을 대조한 후 하드웨어를 등록하여 지원 혜택을 받으세요.</block>
@@ -1038,8 +1026,6 @@
   <block id="ed7af015953fb0bba840b619136b01eb" category="paragraph">랙 하드웨어를 설치하고 데이터 컴퓨팅 노드에 케이블을 연결한 후에는 DCN 및 AFX 스토리지 시스템의 컨트롤러 노드가 아직 켜져 있지 않은 경우 전원을 켜야 합니다.</block>
   <block id="337e9239544f1891a09a6b9c13192533" category="summary">각 쉘프의 전원을 켜서 고유한 쉘프 ID를 할당하고, AFX 컨트롤러 노드의 전원을 켠 다음, 전원 케이블을 고정하십시오.</block>
   <block id="8496df6ee8387022613ddc89ce82f9e4" category="doc">AI Data Engine용 데이터 컴퓨팅 노드 전원 켜기</block>
-  <block id="1057231c34be7c7dcf91de71d37a517f" category="inline-link-macro">고유한 쉘프 ID 할당</block>
-  <block id="011c6c560c3e271e6d524a1540ce1096" category="list-text">선반에 전원이 공급되고 각 선반에 고유한 선반 ID가 할당되었는지 확인하십시오. AFX 스토리지 시스템의 선반 ID 할당에 대한 자세한 내용은 <block ref="85c8f165944a927c5df36b5b24e42dc9" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="7be065122c5fefd188dd2adaea8fe718" category="paragraph">스토리지 셸프를 켜고 고유 ID를 할당한 후 DCN의 전원을 켜고 스토리지 컨트롤러 노드가 아직 켜져 있지 않은 경우 전원을 켜십시오.</block>
   <block id="33c36f62f977a295a9a93ec48a27223b" category="list-text">노트북을 시리얼 콘솔 포트에 연결하세요. 이렇게 하면 컨트롤러 전원이 켜질 때 부팅 과정을 모니터링할 수 있습니다.</block>
   <block id="943e3a7c8a0476b63130b5a3dfab2ef1" category="list-text">노트북의 시리얼 콘솔 포트를 115,200보드, N-8-1로 설정합니다.</block>
@@ -1058,7 +1044,6 @@
   <block id="5555f21dba0c7288c23300a7fe87cd81" category="list-text">데이터 컴퓨팅 노드의 전원을 켭니다.</block>
   <block id="be2a65d4275d3397392df6ca10446941" category="paragraph">전원 스위치에 접근하려면 베젤을 제거해야 할 수도 있습니다. 만약 제거해야 했다면, 나중에 다시 설치해야 한다는 것을 잊지 마세요.</block>
   <block id="33ce156e9858d918c1b56d969811ebbc" category="inline-link-macro">ONTAP AIDE 클러스터를 설정하세요</block>
-  <block id="a8d567dd1cd4e4238f332d8762966093" category="paragraph">데이터 컴퓨팅 노드를 켠 후 <block ref="c209b4c41b8b8a46751e6876a5bec129" category="inline-link-macro-rx"></block>.</block>
   <block id="27c51e0dda139dd95822cad0516f7b35" category="summary">ONTAP 환경에 AI Data Engine용 데이터 컴퓨팅 노드를 설치하고 하드웨어를 등록하여 지원 혜택을 받을 준비를 하십시오.</block>
   <block id="8d89efe9b46db5b5f9ec296c31e95ee1" category="doc">AI Data Engine용 데이터 컴퓨팅 노드 설치 준비</block>
   <block id="091ec47f94f2994330da94cd9f2af30c" category="paragraph">AI Data Engine용 데이터 컴퓨팅 노드를 설치하려면 설치 장소를 준비하고, 박스를 개봉하여 내용물과 포장 명세서를 대조하고, 시스템을 등록하여 지원 혜택을 받으세요.</block>
@@ -1105,7 +1090,6 @@
   <block id="89cc8de091278e0fb0686833ac6a7982" category="list-text">*Systems* &gt; *Register Systems*를 선택합니다.</block>
   <block id="616ce92e68107b272305803b0da3016e" category="list-text">스토리지 시스템의 일련 번호와 요청된 세부 정보를 입력하십시오.</block>
   <block id="2fbc2bdcd9b44345629827ee822cf2cf" category="paragraph">NetApp에서 등록을 승인하면 필요한 소프트웨어를 다운로드할 수 있습니다. 승인에는 최대 24시간이 소요됩니다.</block>
-  <block id="3c0af5d496c5c0d39fa007c51ceb1a85" category="paragraph">데이터 컴퓨팅 노드를 설치할 준비가 완료되면 <block ref="8d80699d6ea91999991c5841195fdaf6" category="inline-link-macro-rx"></block>.</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">법적 고지</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">법적 고지사항은 저작권 표시, 상표, 특허 등에 대한 접근을 제공합니다.</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">저작권</block>
@@ -1515,4 +1499,22 @@
   <block id="7ca842c6b654b62693e52f6658a337fa" category="sidebar">데이터 컬렉션 생성</block>
   <block id="e9a2a57c6909b784778f0034615bafa3" category="sidebar">작업 공간 설정</block>
   <block id="e80a572e7316601bd6ae8dcc978dc856" category="sidebar">작업 공간에 사용자 할당</block>
+  <block id="7e785fd044c0f1b18cf25b7e49747bad" category="inline-link-macro">컴퓨팅 클러스터 확장</block>
+  <block id="5f4a186931a63bd4a5b14c29fd3dcac6" category="list-text"><block ref="5f4a186931a63bd4a5b14c29fd3dcac6" category="inline-link-macro-rx"></block></block>
+  <block id="4273a5563c77b16dd7aceb65bc5f6f2f" category="inline-link-macro">AFX 1K storage system 설치 설명서</block>
+  <block id="4ceb33132ef84a10d64402a2b335ead9" category="list-text">기존 AFX 1K 스토리지 시스템이 설치되어 있습니다. AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 <block ref="91d16f8c743942a64a4fe44197be45ff" category="inline-link-macro-rx"></block>을 참조하십시오.</block>
+  <block id="43f6c91d4f0fece739597247d400b63d" category="list-text"><block ref="877083cb49d1afa632b7262f7cb5fd0f" category="inline-link-macro-rx"></block>를 검토했습니다.</block>
+  <block id="9aa72e2af70f149b5322b3f74fef31d3" category="paragraph">하드웨어를 케이블로 연결한 후 <block ref="4a47b4628664a0cf522188fbb092ba40" category="inline-link-macro-rx"></block>.</block>
+  <block id="29fc22820f59383beae9b78e0f00c89d" category="inline-link-macro">AIDE 클러스터에 데이터 컴퓨팅 노드를 추가합니다</block>
+  <block id="6680ddbdb7b3311772658d225390c9f5" category="paragraph">ONTAP는 클러스터 네트워크에 연결된 새 Data Compute Node를 동적으로 감지하여 System Manager에 표시합니다. <block ref="92fd190eb6b33aabd845185d06fdf268" category="inline-link-macro-rx"></block>할 수 있습니다. 또한 다음 사항에 유의하십시오.</block>
+  <block id="5a3b3f244ac6d468c9f9e9f1e563d414" category="paragraph">업데이트할 수 있는 Data Compute 소프트웨어 이미지가 있는 경우 이 옵션이 활성화됩니다. 이 옵션을 선택하면 Data Compute 소프트웨어 업데이트 페이지가 시작됩니다. 자세한 내용은 <block ref="e966f8a237d0e9b99b99d834f5fe2ecd" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="1e52a91c8fc5152ade09d7e1b035671b" category="paragraph">데이터 컴퓨팅 노드를 설치한 후에는 <block ref="3980b3517830ec2d777c7d0167886e44" category="inline-link-macro-rx"></block>.</block>
+  <block id="5d0e4d9b7c9c24fb2e2354166df7e64f" category="admonition">AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 <block ref="91d16f8c743942a64a4fe44197be45ff" category="inline-link-macro-rx"></block>을 참조하십시오.</block>
+  <block id="51196acef57fa4702b2c79616a51c70f" category="paragraph">데이터 컴퓨팅 노드의 무게는 최대 46.3lbs(21kg)에 달할 수 있습니다. 데이터 컴퓨팅 노드를 들어 올리려면 두 사람이 필요하거나 유압 리프트를 사용해야 합니다.</block>
+  <block id="fe49f456e4fe036b30f08f1261e31c76" category="paragraph">하드웨어 요구 사항을 검토한 후 <block ref="36962d0c8289a56184a6c55f834a067a" category="inline-link-macro-rx"></block>.</block>
+  <block id="ce0bc35e55364b06a87ee46623492fd8" category="paragraph">기존 AFX 1K 스토리지 시스템이 설치되어 있는지 확인한 다음 AIDE용 데이터 컴퓨팅 노드 설치를 위한 하드웨어 요구 사항을 검토하십시오. AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 <block ref="91d16f8c743942a64a4fe44197be45ff" category="inline-link-macro-rx"></block>을 참조하십시오.</block>
+  <block id="d1c8ae967ce186598cd98f11b54cf4ea" category="inline-link-macro">고유 쉘프 ID 할당에 관한 문서</block>
+  <block id="1d845d7fec926dc97ef9c9d1ae75fb4d" category="list-text">선반에 전원이 공급되고 각 선반에 고유한 선반 ID가 할당되었는지 확인하십시오. AFX 스토리지 시스템의 선반 ID 할당에 대한 자세한 내용은 <block ref="2cb3ccd2ea21233c926cc907e5546ee0" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
+  <block id="72b11f47a4c462a17235bf830cef5f4d" category="paragraph">데이터 컴퓨팅 노드를 켠 후 <block ref="c209b4c41b8b8a46751e6876a5bec129" category="inline-link-macro-rx"></block>.</block>
+  <block id="69333c3b16c70d734803d338560b5f4b" category="paragraph">데이터 컴퓨팅 노드를 설치할 준비가 완료되면 <block ref="8d80699d6ea91999991c5841195fdaf6" category="inline-link-macro-rx"></block>.</block>
 </blocks>
