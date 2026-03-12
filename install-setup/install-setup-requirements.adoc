@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: install-setup/install-setup-requirements.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, requirements, cautions, 
+summary: AI Data Engine용 데이터 컴퓨팅 노드에 필요한 장비 및 리프팅 주의사항을 검토하십시오. 
+---
+= AI Data Engine용 데이터 컴퓨팅 노드의 설치 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine용 데이터 컴퓨팅 노드에 필요한 장비 및 리프팅 주의사항을 검토하십시오.
+
+
+
+== 필수 구성 요소
+
+AIDE용 데이터 컴퓨팅 노드를 설치하기 전에 다음 사항을 확인하십시오.
+
+* AFX 1K 스토리지 시스템.
++
+
+NOTE: AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["AFX 1K 스토리지 시스템 설치"^]을(를) 참조하십시오.
+
+
+
+
+
+== 설치에 필요한 장비
+
+AIDE용 데이터 컴퓨팅 노드를 설치하려면 다음과 같은 장비와 도구가 필요합니다.
+
+* 데이터 컴퓨팅 노드를 구성하기 위한 웹 브라우저 액세스
+* 정전기 방전(ESD) 스트랩
+* 손전등
+* USB/시리얼 연결이 있는 노트북 또는 콘솔
+* Phillips #2 드라이버
+
+
+
+
+== 들어 올리기 주의 사항
+
+데이터 컴퓨팅 노드는 무겁습니다. 이러한 항목을 들어 올리고 이동할 때 주의하십시오.
+
+
+
+=== 데이터 컴퓨팅 노드 가중치
+
+데이터 컴퓨팅 노드를 이동하거나 들어 올릴 때 필요한 예방 조치를 취하십시오.
+
+데이터 컴퓨팅 노드의 무게는 최대 46.3lbs(21Kg)에 달할 수 있습니다. 데이터 컴퓨팅 노드를 들어 올리려면 두 사람이 필요하거나 유압 리프트를 사용해야 합니다.
+
+image::../media/drw_compute_node_lifting_weight_ieops-2743.svg[데이터 컴퓨팅 노드 리프팅 중량]
+
+.관련 정보
+* https://library.netapp.com/ecm/ecm_download_file/ECMP12475945["안전 정보 및 규정 고지"^]
+
+
+.다음 단계
+하드웨어 요구 사항을 검토한 후 link:prepare-hardware.html["데이터 컴퓨팅 노드 설치 준비"].

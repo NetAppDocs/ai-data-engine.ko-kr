@@ -1,0 +1,52 @@
+---
+section: get-started
+title: 시작하기
+entries:
+- title: AI Data Engine 시스템에 대해 알아보세요
+  entries:
+  - title: AIDE에 대해 알아보십시오
+    url: "/get-started/learn-about.html"
+  - title: AIDE 아키텍처
+    url: "/get-started/aide-architecture.html"
+  - title: 역할별 AIDE 구성 요소 및 책임
+    entries:
+    - title: AIDE 구성 요소 및 역할
+      url: "/get-started/aide-components.html"
+    - title: AIDE 인터페이스
+      url: "/get-started/aide-interfaces.html"
+    - title: 스토리지 관리자 및 구성 요소
+      url: "/get-started/aide-components-storage-admin.html"
+    - title: 데이터 엔지니어 및 데이터 과학자와 구성 요소
+      url: "/get-started/aide-components-data-users.html"
+- title: 빠른 시작
+  url: "/get-started/quick-start.html"
+- title: AIDE 설치
+  entries:
+  - title: 설치 요구 사항
+    url: "/install-setup/aide-hardware-requirements.html"
+  - title: AFX 스토리지 시스템 설치
+    url: "/install-setup/aide-afx-install.html"
+  - title: 데이터 컴퓨팅 노드 설치
+    entries:
+    - title: 워크플로 설치
+      url: "/install-setup/install-workflow.html"
+    - title: 하드웨어 요구 사항 검토
+      url: "/install-setup/install-setup-requirements.html"
+    - title: 설치 준비
+      url: "/install-setup/prepare-hardware.html"
+    - title: 데이터 컴퓨팅 노드 설치
+      url: "/install-setup/deploy-hardware.html"
+    - title: 케이블 요구 사항 검토
+      url: "/install-setup/cable-overview.html"
+    - title: 케이블 hardware
+      url: "/install-setup/cable-hardware.html"
+    - title: 시스템 전원 켜기
+      url: "/install-setup/power-on-hardware.html"
+- title: AIDE 시스템을 설정하세요
+  entries:
+  - title: AFX 클러스터를 사용하여 AIDE를 설정합니다
+    url: "/install-setup/cluster-setup-afx.html"
+  - title: AIDE 라이선스를 설치하세요
+    url: "/install-setup/install-license-task.html"
+  - title: OIDC 인증 구성
+    url: "/install-setup/configure-oidc.html"

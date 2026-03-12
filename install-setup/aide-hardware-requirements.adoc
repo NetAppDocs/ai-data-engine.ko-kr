@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: install-setup/aide-hardware-requirements.html 
+keywords: ai data engine, aide, hardware, requirements, afx, dcn, data compute node 
+summary: AFX 스토리지 시스템 및 Data Compute Node를 포함한 AI Data Engine 설치 요구 사항을 검토하십시오. 
+---
+= AI Data Engine 설치 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine 설치 요구 사항을 검토합니다. AIDE를 사용하려면 AFX 스토리지 시스템, 최소 3개의 Data Compute Node, 네트워크 스위치 및 케이블이 필요합니다.
+
+
+
+== 하드웨어 요구 사항
+
+AI Data Engine을 사용하려면 AFX 스토리지 시스템과 최소 3개의 Data Compute Node가 필요합니다. AFX 시스템은 스토리지 인프라를 제공하고, Data Compute Node는 데이터 관리, 큐레이션 및 AI 기능을 지원하는 AIDE 소프트웨어 구성 요소를 호스팅합니다.
+
+* *AFX 스토리지 시스템*: AFX 컨트롤러, 디스크 쉘프 및 네트워크 스위치가 포함됩니다. AFX 스토리지 시스템은 AIDE 배포에 필요합니다.
+* *Data Compute Node*: 최소 3개의 Data Compute Node가 필요합니다. Data Compute Node는 NetApp에서 제공하는 하드웨어 노드로, Metadata Engine, Data Sync, Data Curator 및 Data Guardrails를 포함한 AIDE 소프트웨어를 호스팅합니다.
++
+** 각 Data Compute Node에는 연결을 위해 사용 가능한 I/O 슬롯 4와 5가 있습니다. 슬롯 3은 GPU용으로 예약되어 있습니다. 슬롯 1과 2는 사용되지 않으며 접근할 수 없습니다.
+** 포트 e4a 및 e5a는 클러스터 연결에 사용됩니다.
+** 포트 e4b와 e5b는 호스트 네트워크 연결에 사용됩니다.
+
+
+
+
+
+
+== 네트워크 스위치 요구 사항
+
+AI Data Engine은 데이터 컴퓨팅 노드에 대한 호스트 네트워크 연결 및 노드 간 통신을 활성화하기 위해 네트워크 스위치가 필요합니다.
+
+* 호스트 네트워크 연결용 클라이언트 스위치(Cisco Nexus 9332D-GX2B 또는 Cisco Nexus 9364D-GX2A)
+* 노드 간 통신을 위한 클러스터 스위치(Cisco Nexus 9332D-GX2B 또는 Cisco Nexus 9364D-GX2A)
+* 네트워크 관리를 위한 선택적 관리 스위치
+
+
+
+
+== 케이블링 요구 사항
+
+Data Compute Node를 네트워크 스위치 및 관리 네트워크에 연결하려면 다음 케이블이 필요합니다.
+
+* 노드를 클라이언트 및 클러스터 스위치에 연결하기 위한 400-GbE-to-100-GbE(4x100GbE) 브레이크아웃 케이블
+
+
+
+
+== 멀티 클러스터 지원
+
+AIDE가 AFX와 함께 배포되면 SnapMirror 및 클러스터 피어링을 사용하여 다른 ONTAP 9.18.1 이상 클러스터에 연결하고 데이터를 관리할 수 있습니다.

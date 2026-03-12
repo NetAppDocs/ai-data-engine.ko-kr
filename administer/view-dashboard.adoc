@@ -1,0 +1,171 @@
+---
+sidebar: sidebar 
+permalink: administer/view-dashboard.html 
+keywords: aide, aide system, dashboard, view dashboard, cluster status 
+summary: AIDE 관리 작업을 시작하기 전에 먼저 ONTAP System Manager에 액세스하십시오. 
+---
+= AIDE 시스템 및 클러스터 상태 보기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 관리자는 ONTAP System Manager를 사용하여 대시보드에 액세스하고 클러스터 상태를 표시할 수 있습니다. 이는 AIDE 관리 작업을 시작하기 전이나 운영상의 문제가 의심될 때 유용한 첫 번째 단계입니다.
+
+.시작하기 전에
+* AIDE ONTAP 관련 관리 작업을 수행하려면 스토리지 관리자 권한이 필요합니다.
+
+
+
+
+== 대시보드에서 AIDE 상태 및 용량 모니터링
+
+. 클러스터 관리 주소를 사용하여 ONTAP System Manager에 연결합니다.
++
+`\https://$FQDN_OR_IP/`
+
+. 관리자 계정으로 Sign in하세요.
+. 왼쪽 탐색 창에서 *대시보드*를 선택합니다.
+. *Health* 타일을 검토하세요:
++
+** 전체 클러스터 상태를 확인합니다.
+** **데이터 컴퓨팅 노드** 수와 상태를 확인하십시오.
+** 알림 확인:
++
+*** DCN 노드 문제 또는 연결 문제
+*** 오류가 발생한 워크스페이스 또는 데이터 컬렉션(예: 컬렉션 게시 실패)
+
+
+
+
+. *용량* 타일을 검토하십시오.
++
+** 총 클러스터 용량과 사용된 용량을 확인하십시오.
+** AIDE 클러스터의 경우 다음을 확인하십시오.
++
+*** AIDE 메타데이터 및 애플리케이션 볼륨(메타데이터 스토리지 VM)에서 사용되는 용량
+*** 작업 공간 및 데이터 수집에서 사용되는 용량(사용 가능한 경우)
+
+
+
+
+. 선택적으로 *Network* 및 *Performance* 타일을 검토하여 AIDE 워크로드에 영향을 줄 수 있는 클러스터 전체 동작(예: 네트워크 혼잡 또는 보호 지연)을 파악할 수 있습니다.
+
+
+
+
+== 데이터 DCN 상태 및 활용도 보기
+
+. 탐색 창에서 *클러스터*를 선택한 다음 *개요*를 선택합니다.
+. *Data compute* 탭을 선택합니다.
++
+이 탭에는 클러스터의 모든 DCN 노드가 다음과 같이 표시됩니다.
+
++
+** 노드 이름, 모델, 일련 번호 및 소프트웨어 버전
+** 전체 노드 상태
+** CPU 및 메모리 사용률
+** GPU 사용률(GPU가 있는 경우)
+** 노드 수준 오류 표시기
+
+
+. DCN 노드를 확장하여 상세 보기를 열고 확인합니다.
++
+** 시스템 CPU 및 메모리 사용량
+** GPU 메모리 사용량
+** 보고된 hardware 또는 서비스 문제
+
+
+. *Cluster > Overview* 페이지에서 *Cabling*을 선택하여 DCN 노드가 클러스터 스위치에 올바르게 케이블로 연결되어 있는지 확인하고 포트 또는 링크 문제를 식별하십시오.
+
+
+
+
+== 작업 공간 및 메타데이터 사용량을 모니터링합니다.
+
+. 탐색 창에서 *Data engine*을 선택한 다음 *Workspaces*를 선택합니다.
+. 페이지 상단의 작업 공간 요약을 검토하십시오.
++
+** 워크스페이스 수 및 해당 상태(예: `Processing`, `Healthy`, `Error`).
+** 전체 작업 공간 크기
+** 모든 워크스페이스에서 사용하는 클러스터 용량의 비율입니다.
+
+
+. 작업 공간 그리드를 검토하십시오.
++
+** 중요한 작업 공간이 *정상* 상태로 표시되는지 확인하십시오.
+** 작업 공간 크기와 용량 사용량을 확인하십시오.
+**  `Error` 또는 장기 실행  `Processing` 상태의 작업 영역을 찾습니다.
+
+
+. 특정 작업 공간에 대한 세부 정보를 확인하려면 해당 작업 공간의 이름을 선택하십시오.
++
+** *Overview* 탭에서 다음을 확인하세요.
++
+*** 작업 영역 상태 및 크기
+*** 포함된 데이터 container(볼륨) 및 해당 항목 수
+*** 각 데이터 소스의 최종 업데이트 시간
+
+
+** *데이터 수집* 탭에서 다음을 확인합니다.
++
+*** 해당 작업 영역에 존재하는 데이터 수집(System Manager에서 데이터 수집은 읽기 전용)
+*** 상태, 크기 및 마지막 업데이트 시간
+
+
+** *사용자* 탭에서 어떤 AI Data Engine Console 사용자가 액세스 권한을 가지고 있는지 확인하십시오.
+
+
+
+
+
+
+== 메타데이터 Storage VM 및 AIDE 관리 보호 모니터링
+
+. 탐색 창에서 *클러스터*를 선택한 다음 *스토리지 VM*을 선택합니다.
+. 하위 유형 `data-engine`(메타데이터 SVM)을 사용하여 스토리지 VM을 찾으십시오.
++
+** metadata SVM이 온라인 상태인지 확인하십시오.
+** 선택적으로 세부 정보를 열어 다음 항목의 개수를 확인할 수 있습니다.
++
+*** 볼륨
+***  `Data compute network` 유형의 LIF(DCN-ONTAP 통신에 사용)
+
+
+
+
+. *Protection*을 선택한 다음 *Relationships*를 선택하여 워크스페이스에서 사용되는 원격 데이터 소스에 대한 보호를 확인합니다.
++
+** 명명 패턴을 통해 AIDE에서 생성한 SnapMirror 관계를 식별하세요.
++
+*** 대상 볼륨: `<source_volume_name>_dest_<source_volume_UUID>`
+*** 정책: `<source_volume_name>_dest_aide_policy_<source_volume_UUID>`
+
+
+** 이 보기를 사용하여 관계가 정상인지, 지연 시간이 작업 영역 새로 고침 예상과 일치하는지 확인하십시오.
+
+
+
+
+
+IMPORTANT: ONTAP에서 메타데이터 Storage VM, AIDE에서 생성한 SnapMirror 관계 또는 AIDE에서 관리하는 스냅샷(또는 해당 스케줄)을 직접 수정하지 마십시오. 변경하면 AIDE 버전 기록이 손상될 수 있습니다. 새로 고침 동작을 조정해야 하는 경우 link:../administer/manage-workspace.html#edit-workspace-properties-and-refresh-schedule["작업 공간 새로 고침 설정 조정"]하십시오.
+
+
+
+== AIDE 관련 경고 및 알림 검토
+
+. 탐색 창에서 *이벤트 및 작업*을 선택한 다음 *시스템 알림*을 선택합니다.
+. 다음과 관련된 활성 알림을 검토하십시오.
++
+** DCN 노드 상태 또는 연결
+** 데이터 엔진 네트워킹 문제
+** 작업 공간 또는 데이터 수집 오류
+** ONTAP과 DCN 클러스터 간 소프트웨어 버전 불일치
+
+
+. 필요에 따라 *Cluster > Settings > Notification management*에서 알림 대상(예: 이메일, syslog)을 구성하여 AIDE 관련 알림이 운영 도구로 전달되도록 하십시오.
+
+
+.관련 정보
+https://docs.netapp.com/us-en/ontap-afx/get-started/prepare-cluster-admin.html["AFX 스토리지 시스템 관리 준비"^]

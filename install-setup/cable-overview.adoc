@@ -1,0 +1,157 @@
+---
+sidebar: sidebar 
+permalink: install-setup/cable-overview.html 
+keywords: aide, ai data engine, cable, overview, cabling, hardware, switches, cluster network, host network, data compute nodes 
+summary: I/O 슬롯 사용, 케이블 유형, 호스트 및 클러스터 네트워크의 연결 요구 사항을 포함하여 Data Compute Node의 케이블링 구성에 대해 알아보십시오. 
+---
+= AI Data Engine용 Data Compute Node 케이블 연결 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Data Compute Node는 호스트 네트워크 및 클러스터 네트워크 연결을 통해 AFX 1K 스토리지 시스템과 통합됩니다. 배포에 필요한 I/O 슬롯 구성, 케이블 유형 및 연결 요구 사항을 검토하십시오.
+
+
+
+== 케이블링 구성
+
+Data Compute Node는 AFX 1K 컨트롤러 노드와 동일한 클러스터 스위치에 연결되어 AI 및 머신 러닝 워크로드에 최적화된 컴퓨팅 리소스로 스토리지 시스템을 확장합니다.
+
+초기 AI Data Engine(AIDE) 구성은 최소 3개의 Data Compute Node를 지원합니다. 포괄적인 구성 세부 정보 및 슬롯 우선순위는 link:https://hwu.netapp.com["NetApp Hardware Universe"^]을 참조하십시오.
+
+image::../media/drw_aide-dcn_back_slots_labeled_ieops-2646.svg[Data Compute Node의 슬롯 번호 지정]
+
+[cols="1,4"]
+|===
+
+
+ a| 
+image::../media/icon_round_1.png[콜아웃 번호 1]
+ a| 
+Data Compute Node의 사용되지 않은 슬롯입니다.
+
+
+
+ a| 
+image::../media/icon_round_2.png[콜아웃 번호 2]
+ a| 
+Data Compute Node의 사용되지 않은 슬롯입니다.
+
+
+
+ a| 
+image::../media/icon_round_3.png[설명선 번호 3]
+ a| 
+Data Compute Node의 GPU 슬롯.
+
+
+
+ a| 
+image::../media/icon_round_4.png[콜아웃 번호 4]
+ a| 
+Data Compute Node의 I/O 슬롯.
+
+
+
+ a| 
+image::../media/icon_round_5.png[설명선 번호 5]
+ a| 
+Data Compute Node의 I/O 슬롯.
+
+|===
+
+
+== I/O 슬롯 구성
+
+Data Compute Node는 표준 서버 구성과 다른 특정 슬롯 번호 지정 체계를 사용합니다. 올바른 케이블 연결을 위해서는 슬롯 레이아웃을 이해하는 것이 필수적입니다.
+
+* *슬롯 3*: GPU용으로 예약됨(I/O 케이블 연결에 액세스할 수 없음)
+* *슬롯 4 및 5*: 네트워크 연결에 사용되는 I/O 슬롯
++
+** 포트 a: 클러스터 네트워크 연결
+** 포트 b: 호스트 네트워크 연결
+
+
+* *슬롯 1 및 2*: 비어 있고 사용할 수 없습니다
+
+
+
+
+== 네트워크 연결
+
+Data Compute Node는 AFX 1K 스토리지 시스템과 통합하기 위해 두 가지 유형의 네트워크 연결이 필요합니다.
+
+* *호스트 네트워크 연결*
++
+호스트 네트워크 연결은 클라이언트 데이터에 대한 네트워크 액세스를 제공하고 Data Compute Node가 워크로드를 처리할 수 있도록 합니다. 각 Data Compute Node는 별도의 호스트 네트워크 스위치에 대한 이중화 연결을 위해 포트 e4b 및 e5b를 사용합니다.
+
++
+포트 할당:
+
++
+** e4b: 호스트 네트워크 스위치 A에 연결
+** e5b: 호스트 네트워크 스위치 B에 연결됨
+
+
+* *클러스터 네트워크 연결*
++
+클러스터 네트워크 연결은 스토리지 클러스터 내의 Data Compute Node와 AFX 1K 컨트롤러 노드 간의 통신을 가능하게 합니다. 각 Data Compute Node는 별도의 클러스터 네트워크 스위치에 대한 이중화 연결을 위해 포트 e4a 및 e5a를 사용합니다.
+
++
+포트 할당:
+
++
+** e4a: 클러스터 네트워크 스위치 A에 연결됨
+** e5a: 클러스터 네트워크 스위치 B에 연결됨
+
+
+
+
+
+
+== 지원되는 hardware 구성 요소
+
+Data Compute Node는 AFX 1K 스토리지 시스템과의 적절한 연결 및 성능을 보장하기 위해 특정 케이블과 스위치가 필요합니다.
+
+[cols="2,3,6"]
+|===
+| *Data Compute Node* | *지원되는 스위치* | *지원되는 케이블* 
+
+
+ a| 
+Data Compute Node(최소 3개 필요)
+ a| 
+* Cisco Nexus 9332D-GX2B (400GbE)
+* Cisco Nexus 9364D-GX2A (400GbE)
+
+ a| 
+* 데이터 컴퓨팅 노드 연결용 400GbE QSFP-DD 브레이크아웃~4x100GbE QSFP56 케이블:
++
+** 100GbE~Data Compute Node 클러스터 네트워크 포트(e4a, e5a)
+** 100GbE~Data Compute Node 호스트 네트워크 포트(e4b, e5b)
+
+
+* 관리 연결용 RJ-45 케이블
+
+
+|===
+
+NOTE: 브레이크아웃 케이블은 각 400GbE 스위치 포트에서 4개의 100GbE 연결을 제공합니다. 400GbE 끝단은 스위치에 연결하고 100GbE 끝단은 Data Compute Node I/O 포트에 연결하십시오.
+
+
+
+== 케이블 방향
+
+Data Compute Node에 케이블을 연결할 때 케이블 방향을 올바르게 지정하면 안정적인 연결이 보장됩니다.
+
+설치 절차의 케이블 연결 그림에는 커넥터를 포트에 삽입할 때 케이블 커넥터의 당김 탭 방향(위 또는 아래)이 올바른지 나타내는 화살표 아이콘이 있습니다. 커넥터를 삽입할 때 딸깍 소리가 나면서 제자리에 고정되어야 합니다. 딸깍 소리가 나지 않으면 커넥터를 빼내어 뒤집어서 다시 삽입하십시오.
+
+image:../media/drw_cable_pull_tab_direction_ieops-1699.svg["케이블 당김 탭 방향"]
+
+
+CAUTION: 섬세한 커넥터 부품을 제자리에 끼울 때 조심스럽게 다루십시오.
+
+.다음 단계
+케이블 구성을 검토한 후 Data Compute Node에 대해 link:cable-hardware.html["하드웨어 케이블 연결"]하십시오.

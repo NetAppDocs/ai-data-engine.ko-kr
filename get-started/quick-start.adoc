@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: get-started/quick-start.html 
+keywords: ai, data engine, get started, getting started, quick start, install, set up 
+summary: AI Data Engine 시스템을 시작하려면 하드웨어를 설치하고, 클러스터를 설정하고, 데이터 액세스를 설정하고, AI 워크로드에 사용할 작업 공간용 스토리지를 프로비저닝해야 합니다. 
+---
+= AI Data Engine 빠른 시작
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine 시스템을 가동하려면 하드웨어 구성 요소를 설치하고, 클러스터를 설정하고, 호스트에서 스토리지 시스템으로 데이터 액세스를 설정하고, 스토리지를 프로비저닝해야 합니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"] AIDE를 새 AFX 클러스터에 설치하시겠습니까, 아니면 기존 AFX 클러스터에 설치하시겠습니까?
+[role="quick-margin-para"]
+AIDE와 AFX를 동시에 설치할지, 아니면 기존 AFX 클러스터에 AIDE를 통합할지 결정해야 합니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["둘"] 하드웨어 설치 및 설정
+[role="quick-margin-para"]
+link:../install-setup/aide-hardware-requirements.html["설치 및 설정"] AIDE 클러스터 컴퓨팅 노드를 확인하십시오. 설치 환경에 따라  https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["설치"^] AFX 하드웨어도 확인하십시오.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3"] 클러스터를 설정하세요
+[role="quick-margin-para"]
+ONTAP System Manager를 사용하여 link:../install-setup/cluster-setup-afx.html["AFX 클러스터를 사용하여 AIDE를 설정합니다"]에 대한 빠르고 간편한 프로세스를 안내받으세요.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["네"] 작업 공간 및 데이터 액세스 설정
+[role="quick-margin-para"]
+link:../workspaces/create-workspace.html["AI Data Engine 데이터에 액세스할 수 있는 워크스페이스 및 해당 워크스페이스의 사용자 설정"].
+
+.다음 단계
+이제 ONTAP System Manager를 사용하여 AI Data Engine을 관리하고 데이터 엔지니어 및 데이터 과학자가 작업 공간과 구성을 통해 작업을 시작할 수 있습니다.

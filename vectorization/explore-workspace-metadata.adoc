@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: vectorization/explore-workspace-metadata.html 
+keywords: aide, explore metadata, workspace, metadata catalog, ai data engine, data engineer, data scientist, search 
+summary: 데이터 엔지니어 또는 데이터 과학자는 AI Data Engine Console을 사용하여 작업 공간 메타데이터를 탐색하고, 관련 파일 및 객체를 찾고, 데이터 수집을 위한 후보 하위 집합을 준비할 수 있습니다. 
+---
+= AI Data Engine Console에서 작업 공간 메타데이터 탐색
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터 엔지니어 또는 데이터 과학자로서 AI Data Engine(AIDE)에서 가장 먼저 해야 할 일은 작업 공간에 어떤 데이터가 있는지 파악하는 것입니다. AI Data Engine Console을 사용하여 메타데이터 카탈로그를 쿼리하고 관련 파일을 검색하며 데이터 수집으로 전환할 데이터 하위 집합을 식별합니다.
+
+.시작하기 전에
+* AI Data Engine Console에서 _data engineer_ 또는 _data scientist_ 권한과 하나 이상의 워크스페이스에 대한 액세스 권한이 필요합니다.
+* 스토리지 관리자는 다음과 같은 권한을 가지고 있습니다:
++
+** ONTAP System Manager에서 하나 이상의 워크스페이스를 생성했습니다.
+** 사용자 또는 그룹에게 관련 작업 공간에 대한 액세스 권한을 할당했습니다.
+
+
+* 워크스페이스의 메타데이터 추출이 완료되었으며 워크스페이스는 `Ready` 상태입니다.
+* 분류기가 활성화되어 메타데이터에 분류 태그(예: PII 표시기)가 포함됩니다.
+
+
+
+
+== 데이터 엔지니어 또는 데이터 과학자로 AI Data Engine Console에 Sign in
+
+.단계
+. 브라우저에서 AIDE Console URL로 이동하세요.
++
+`\https://<cluster_management_ip>/console`
+
+. 조직의 OIDC 공급자를 통해 인증합니다.
+. 본인의 역할이 데이터 엔지니어 또는 데이터 과학자로 인식되는지 확인하십시오(예: 사용 가능한 작업 공간 및 데이터 수집 작업). 자세한 내용은 link:../get-started/aide-components-data-users.html["AIDE 역할 문서"]를 참조하여 데이터 엔지니어와 데이터 과학자가 AIDE 구성 요소를 사용하는 방법을 알아보십시오.
+
+
+.결과
+AIDE Console에 로그인되어 있으며 액세스 권한이 부여된 작업 영역만 표시됩니다.
+
+
+
+== 액세스 가능한 작업 영역 보기
+
+.단계
+. AIDE Console에서 *Data Curator > Workspaces*로 이동합니다.
+. 액세스할 수 있는 작업 영역 목록을 검토합니다.
+. 작업 공간을 선택하여 세부 정보를 엽니다.
+
+
+.결과
+이제 스토리지 관리자가 프로젝트에 사용할 수 있도록 제공한 데이터 자산을 작업 영역 범위로 볼 수 있습니다.
+
+
+
+== 다음 단계
+
+* link:create-data-collections.html["워크스페이스에서 RAG용 데이터 수집 생성"]
+

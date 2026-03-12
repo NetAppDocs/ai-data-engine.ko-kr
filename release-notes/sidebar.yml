@@ -1,0 +1,8 @@
+---
+section: release-notes
+title: 릴리스 노트
+entries:
+- title: AIDE 9.18.1의 새로운 기능
+  url: "/release-notes/whats-new.html"
+- title: AIDE의 알려진 제한 사항
+  url: "/release-notes/known-limitations.html"

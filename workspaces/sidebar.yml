@@ -1,0 +1,10 @@
+---
+section: workspaces
+title: 작업 공간 설정
+entries:
+- title: AI Data Engine용 데이터 준비
+  url: "/workspaces/prepare-data-for-aide.html"
+- title: 워크스페이스 만들기
+  url: "/workspaces/create-workspace.html"
+- title: 작업 공간에 사용자 할당
+  url: "/workspaces/assign-users-to-workspace.html"

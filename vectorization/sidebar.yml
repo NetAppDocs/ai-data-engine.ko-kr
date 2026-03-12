@@ -1,0 +1,12 @@
+---
+section: vectorization
+title: 벡터화 및 데이터 컬렉션 관리
+entries:
+- title: Data-to-RAG 빠른 시작
+  url: "/vectorization/zero-to-rag.html"
+- title: 워크스페이스 메타데이터 탐색
+  url: "/vectorization/explore-workspace-metadata.html"
+- title: 데이터 컬렉션 생성
+  url: "/vectorization/create-data-collections.html"
+- title: 데이터 수집 보기
+  url: "/vectorization/view-data-collections.html"

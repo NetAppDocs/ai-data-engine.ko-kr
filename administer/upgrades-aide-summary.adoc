@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: administer/upgrades-aide-summary.html 
+keywords: update, firmware, system files, automatic updates, ai data engine, aide 
+summary: 최신 상태로 유지해야 하는 AI Data Engine 시스템의 다양한 구성 요소에 대해 알아보십시오. 
+---
+= AI Data Engine 시스템 업데이트 및 호환성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+최적의 성능을 유지하고 새로운 기능을 활용하려면 AI Data Engine(AIDE) 시스템 구성 요소를 최신 상태로 유지하십시오. 배포 후, 새로운 소프트웨어 또는 펌웨어가 출시될 때, 노드를 추가하거나 교체할 때, 또는 정기적으로 기능 업데이트를 위해 구성 요소를 업데이트하십시오.
+
+
+
+== AIDE 시스템 구성 요소
+
+AIDE 시스템에서 업데이트가 필요한 두 가지 주요 구성 요소는 ONTAP 소프트웨어와 DCN 펌웨어를 포함하는 AIDE 소프트웨어입니다.
+
+
+
+=== ONTAP 소프트웨어
+
+ONTAP은 AIDE 배포에 사용되는 스토리지 시스템을 포함하여 NetApp 스토리지 시스템에서 실행되는 운영 체제입니다. 시스템 안정성, 보안 및 AIDE 구성 요소와의 호환성을 유지하려면 ONTAP을 최신 상태로 유지하십시오. AIDE 구성 요소는 별도로 업데이트됩니다.
+
+
+
+=== AIDE 소프트웨어 업데이트
+
+AIDE Console 소프트웨어 및 DCN 펌웨어 업데이트는 단일 패키지(.tgz)로 함께 배포되며 ONTAP 이미지에 포함되어 있지 않습니다. 업데이트는 AIDE 시스템 내 하드웨어 구성 요소의 정상적인 작동을 보장하고 새로운 기능, 성능 향상 및 버그 수정을 제공합니다.
+
+
+
+== 업데이트 프로세스 이해
+
+AIDE 소프트웨어 업데이트는 ONTAP System Manager를 통해 관리할 수 있습니다.
+
+AIDE는 ONTAP 자동 소프트웨어 업데이트 기능을 지원하지 않습니다. link:https://mysupport.netapp.com/site/downloads["NetApp Support 사이트 다운로드"^]에서 알림을 받도록 등록할 수 있지만 AIDE 소프트웨어의 모든 업데이트는 관리자가 수동으로 수행합니다.
+
+릴리스 유형 및 범위:
+
+* ONTAP 주요 릴리스(9.x.x) 및 AIDE 주요 릴리스(9.x.x U0)에는 ONTAP 통합에 영향을 미치는 새로운 기능, API 또는 변경 사항이 도입되었습니다.
+* ONTAP 패치 릴리스(9.x.x Px) 및 AIDE 업데이트 릴리스(9.x.x Ux)에는 ONTAP 통합에 영향을 미치지 않는 수정 사항 및 업데이트가 포함되어 있습니다.
+
+
+
+
+== 호환성 매트릭스
+
+업데이트 계획 시 ONTAP과 AIDE 소프트웨어 간의 호환성을 확인하십시오.
+
+AIDE 소프트웨어는 "U" 릴리스로 출시됩니다. AIDE 주요 릴리스는 "U0" 릴리스이며 이후 마이너 릴리스는 "U1" 이상이 됩니다.
+
+
+
+=== ONTAP 및 AIDE 호환성
+
+[cols="1,1"]
+|===
+| AIDE 릴리스 | 지원되는 ONTAP 버전 
+
+
+| 9.18.1 U0 | 9.18.1 GA 및 모든 9.18.1 Px 
+
+
+| 9.18.1 U1 이상 | 9.18.1 GA 및 모든 9.18.1 Px 
+|===
+[NOTE]
+====
+"Px"는 주요 버전의 모든 ONTAP 패치 릴리스를 나타냅니다(예: 9.18.1 P1, 9.18.2 등).
+
+====
+
+
+=== AIDE 업그레이드 경로
+
+다음 예에서는 가상의 미래 버전을 사용하여 AIDE 9.18.1 U0 및 9.18.1 U1에서 허용되는 업그레이드 및 업데이트 경로를 보여줍니다.
+
+[cols="25,25,50"]
+|===
+| 현재 AIDE 릴리스가… | 그리고 타겟 AIDE 릴리스는… | 업그레이드 또는 업데이트 경로는… 
+
+
+| 9.18.1 U0 | 9.18.1 U1 | 직접 
+
+
+| 9.18.1 U0 | 9.18.1 U3 | 직접(9.18.1의 모든 Ux에서 이후 Ux로 업데이트할 수 있음) 
+
+
+| 9.18.1 U1 | 9.18.1 U3 | 직접(9.18.1의 모든 Ux에서 이후 Ux로 업데이트할 수 있음) 
+|===
+
+
+== 되돌리기 제한 사항
+
+AIDE 시스템은 DCN 펌웨어, AIDE 소프트웨어 업데이트 또는 AFX 스토리지 시스템의 ONTAP에 대한 되돌리기 작업을 지원하지 않습니다. 업데이트 또는 업그레이드를 설치한 후에는 이전 버전으로 되돌릴 수 없습니다. 업데이트 또는 업그레이드하기 전에 <<호환성 매트릭스,호환성 요구 사항>>를 검토하십시오.
+
+.관련 정보
+* https://docs.netapp.com/us-en/ontap-afx/administer/upgrade-ontap.html["AFX 시스템용 ONTAP 소프트웨어 업그레이드"^]
+* link:update-aide-firmware-software.html["AIDE 소프트웨어 업데이트"]
+
