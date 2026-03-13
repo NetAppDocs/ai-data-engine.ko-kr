@@ -475,7 +475,6 @@
   <block id="7521c606bbb262d4406920ae0f227482" category="list-text">인덱싱 및 검색 기능을 통해 대규모 메타데이터 레코드를 지원합니다.</block>
   <block id="a261e17515b5e7c6f4ac45586180ccf5" category="list-text">워크스페이스 및 데이터 수집 추상화와 통합하여 액세스 제어 및 거버넌스를 시행합니다.</block>
   <block id="eb1d2c1ae9218b81f27583f8febe5b0b" category="paragraph">Data Sync는 소스 데이터가 변경되더라도 메타데이터 카탈로그와 데이터 수집이 기본 데이터 소스와 최신 상태를 유지하고 일관성을 갖도록 보장하는 자동화된 백그라운드 서비스입니다.</block>
-  <block id="c72559d5f5f29792246a89c44d4048c5" category="paragraph">데이터 동기화 기능은 기본 ONTAP One 라이센스에 포함되어 있지 않으며 별도의 AIDE 라이센스가 필요합니다.</block>
   <block id="48c7a7721f4589379290f5fbbe788089" category="list-text">정책 기반 SnapMirror 복제를 사용하여 원격 또는 로컬 ONTAP 클러스터의 데이터를 동기화합니다. 원격 클러스터의 데이터는 AIDE 처리를 위해 로컬 AFX 클러스터로 복사됩니다.</block>
   <block id="1789309552c1c2cc5573fd091e47b530" category="list-text">감지된 변경 사항에 따라 점진적으로 업데이트되며 수정된 데이터만 전파됩니다.</block>
   <block id="296d6abc76dc8666f2ce23a492687f4a" category="list-text">데이터 환경 전반에 걸쳐 안전하고 점진적인 데이터 이동 및 동기화를 제공합니다.</block>
@@ -779,7 +778,6 @@
   <block id="dfbf664a24b20a5e81f43e898d684617" category="list-text">Data Compute Node 1, 포트 e5b</block>
   <block id="03c9404232757fb6fbd63f1bf30833dd" category="list-text">Data Compute Node 2, 포트 e5b</block>
   <block id="51ac89f3a68bd0a01d770e0a9023a233" category="section-title">2단계: Data Compute Node 클러스터 연결 케이블 연결</block>
-  <block id="23f4b4c052d032f52982aff86abb9547" category="paragraph">Data Compute Node의 경우 클러스터 연결에 e4a/e5a 포트가 사용됩니다.</block>
   <block id="bc615f90adaaf6e394a43df14dc83aac" category="list-text">다음 Data Compute Node의 e4a 포트를 클러스터 네트워크 스위치 A의 비ISL 포트에 연결하십시오.</block>
   <block id="a0b2e66a85b1aedce80b6da4e0310ffd" category="list-text">Data Compute Node 1, 포트 e4a</block>
   <block id="796d3174b2e10790956b6531fd09718d" category="list-text">Data Compute Node 2, 포트 e4a</block>
@@ -1013,13 +1011,11 @@
   <block id="6889512d643df7fa8ccfb7e52dd1181c" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="90572de4b12061d10d3adbe91dd02ace" category="inline-link-macro-rx"></block></block>
   <block id="2ef02acbcac74a2bf527975726a47ddc" category="inline-link-macro">데이터 컴퓨팅 노드 설치 준비</block>
   <block id="65b761c9b7abbbeca0b5bf69bc82d7a8" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="57d90d9a41d093761f4dd9f6db8351e9" category="inline-link-macro-rx"></block></block>
-  <block id="293f8966fffd4aff38846275cf9996a2" category="paragraph">데이터 컴퓨팅 노드를 설치하려면 먼저 설치 장소를 준비하고, 환경 및 전기 요구 사항을 점검하고, 충분한 캐비닛 공간이 있는지 확인해야 합니다. 그런 다음 장비를 개봉하고 포장 명세서와 내용물을 대조한 후 하드웨어를 등록하여 지원 혜택을 받으세요.</block>
   <block id="3b6f8293a009822bdcb6d06936fb8f1d" category="inline-link-macro">데이터 컴퓨팅 노드용 하드웨어를 설치하세요</block>
   <block id="6b0fec8ea5ac59cda339bc131da013d3" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="61494597b1d831d6ff8b369c273f632c" category="inline-link-macro-rx"></block></block>
   <block id="651f9bd4704a3dfd217713e594910973" category="paragraph">데이터 컴퓨팅 노드용 레일 키트를 설치하십시오. 캐비닛 내에 데이터 컴퓨팅 노드를 고정하십시오. 마지막으로 시스템 후면에 케이블 관리 장치를 부착하여 케이블을 깔끔하게 정리하십시오.</block>
   <block id="78b7263c608b815cd3f413fb28c13ea8" category="inline-link-macro">데이터 컴퓨팅 노드에 케이블을 연결합니다</block>
   <block id="5e57f75c71b8c2be941043075bf090a2" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="725152e2ddcdb5a0cb5d010a5492d444" category="inline-link-macro-rx"></block></block>
-  <block id="cdb1dfe0058aa622edc896df103bd253" category="paragraph">하드웨어를 케이블로 연결하려면 먼저 데이터 컴퓨팅 노드를 데이터 및 클러스터 네트워크에 연결한 다음 데이터 컴퓨팅 노드를 클러스터 스위치에 연결하십시오.</block>
   <block id="e5d9de39f7ca1ba2637e5640af3ae8aa" category="inline-image-macro">다섯</block>
   <block id="7670baab52af36366616f708588174ea" category="inline-link-macro">데이터 컴퓨팅 노드의 전원을 켭니다</block>
   <block id="7593e41e7184593322f581da7379d8c8" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="62013dd88cfe19fc6e87ef7f52ccf53f" category="inline-link-macro-rx"></block></block>
@@ -1517,4 +1513,10 @@
   <block id="1d845d7fec926dc97ef9c9d1ae75fb4d" category="list-text">선반에 전원이 공급되고 각 선반에 고유한 선반 ID가 할당되었는지 확인하십시오. AFX 스토리지 시스템의 선반 ID 할당에 대한 자세한 내용은 <block ref="2cb3ccd2ea21233c926cc907e5546ee0" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="72b11f47a4c462a17235bf830cef5f4d" category="paragraph">데이터 컴퓨팅 노드를 켠 후 <block ref="c209b4c41b8b8a46751e6876a5bec129" category="inline-link-macro-rx"></block>.</block>
   <block id="69333c3b16c70d734803d338560b5f4b" category="paragraph">데이터 컴퓨팅 노드를 설치할 준비가 완료되면 <block ref="8d80699d6ea91999991c5841195fdaf6" category="inline-link-macro-rx"></block>.</block>
+  <block id="9f1b1c09e19edba239dde10c234e2b7d" category="paragraph">Data Sync 기능은 기본 ONTAP One 라이센스에 포함되어 있으며 AIDE 설치 시 사용할 수 있습니다.</block>
+  <block id="792b46ef5bfc70b9c772c4a7f3b55acc" category="admonition">AI Data Engine을 배포하려면 최소 3개의 데이터 컴퓨팅 노드가 필요합니다.</block>
+  <block id="b001ec8ec4133b6f8e6b8db16e7850ff" category="paragraph">데이터 컴퓨팅 노드의 경우 클러스터 연결을 위해 4x100GbE 브레이크아웃 케이블을 사용하여 e4a/e5a 포트를 연결하십시오.</block>
+  <block id="788899ea47f1311b79403513bff040e9" category="paragraph">*4x100GbE 브레이크아웃 케이블*</block>
+  <block id="8fbd8a2f645ce1628bb418252fd4e150" category="paragraph">데이터 컴퓨팅 노드를 설치하려면 먼저 설치 장소를 준비하고, 환경 및 전기 요구 사항을 확인하고, 충분한 캐비닛 공간이 있는지 확인해야 합니다. 그런 다음 장비를 개봉하고 포장 명세서와 내용물을 대조한 후 하드웨어를 등록하여 지원 혜택을 받으세요. AI Data Engine을 배포하려면 최소 3개의 데이터 컴퓨팅 노드가 필요합니다.</block>
+  <block id="ba1f39989ab5fafce1803b42f3c54d45" category="paragraph">하드웨어를 케이블로 연결하려면 먼저 데이터 컴퓨팅 노드를 데이터 네트워크에 연결한 다음 데이터 컴퓨팅 노드를 클러스터 스위치에 연결하십시오.</block>
 </blocks>
