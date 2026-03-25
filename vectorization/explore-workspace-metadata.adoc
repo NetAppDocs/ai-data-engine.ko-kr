@@ -14,7 +14,7 @@ summary: 데이터 엔지니어 또는 데이터 과학자는 AI Data Engine Con
 데이터 엔지니어 또는 데이터 과학자로서 AI Data Engine(AIDE)에서 가장 먼저 해야 할 일은 작업 공간에 어떤 데이터가 있는지 파악하는 것입니다. AI Data Engine Console을 사용하여 메타데이터 카탈로그를 쿼리하고 관련 파일을 검색하며 데이터 수집으로 전환할 데이터 하위 집합을 식별합니다.
 
 .시작하기 전에
-* AI Data Engine Console에서 _data engineer_ 또는 _data scientist_ 권한과 하나 이상의 워크스페이스에 대한 액세스 권한이 필요합니다.
+* AIDE Console에서 _data engineer_ 또는 _data scientist_ 권한이 필요하며 하나 이상의 워크스페이스에 대한 액세스 권한이 있어야 합니다.
 * 스토리지 관리자는 다음과 같은 권한을 가지고 있습니다:
 +
 ** ONTAP System Manager에서 하나 이상의 워크스페이스를 생성했습니다.

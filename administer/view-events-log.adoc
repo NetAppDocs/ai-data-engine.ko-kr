@@ -4,14 +4,14 @@ permalink: administer/view-events-log.html
 keywords: aide, aide system, events, audit log, jobs, activity 
 summary: AIDE에서 생성된 이벤트, 작업 및 감사 로그 메시지를 검토하여 내부 처리를 추적하고 잠재적인 문제를 진단할 수 있습니다. AIDE 시스템은 이 정보를 기타 관련 데이터와 함께 추가 처리 및 보관을 위해 전달하도록 구성할 수 있습니다. 
 ---
-= AIDE 시스템 이벤트, 작업 및 감사 로그 보기
+= AI Data Engine 시스템 이벤트, 작업 및 감사 로그 보기
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-스토리지 관리자는 AIDE에서 생성된 이벤트, 작업 및 감사 로그 메시지를 검토하여 내부 처리를 추적하고 잠재적인 문제를 진단할 수 있습니다. AIDE 시스템은 이 정보와 기타 관련 데이터를 추가 처리 및 아카이빙을 위해 전달하도록 구성할 수 있습니다.
+스토리지 관리자는 AI Data Engine(AIDE)에서 생성된 이벤트, 작업 및 감사 로그 메시지를 검토하여 내부 처리를 추적하고 잠재적인 문제를 진단할 수 있습니다. AIDE 시스템은 이 정보와 기타 관련 데이터를 추가 처리 및 아카이빙을 위해 전달하도록 구성할 수 있습니다.
 
 .시작하기 전에
 * AIDE ONTAP 관련 관리 작업을 수행하려면 스토리지 관리자 권한이 필요합니다.

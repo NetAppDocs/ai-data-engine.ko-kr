@@ -16,7 +16,7 @@ searchtitle: AI Data Engine용 Data-to-RAG 빠른 시작
 
 .시작하기 전에
 * ONTAP 클러스터에 Data compute nodes(DCN)를 설치하고 추가했습니다.
-* 벡터화 및 가드레일을 위해 AI Data Engine software를 설치하고 라이선스를 취득했습니다.
+* 벡터화 및 Data Guardrails를 위해 AIDE 소프트웨어를 설치하고 라이선스를 취득했습니다.
 * link:../install-setup/configure-oidc.html["OpenID Connect(OIDC)"]를 구성하고 관리자, 데이터 엔지니어 및 데이터 과학자 역할에 대한 역할을 매핑했습니다.
 
 
@@ -48,7 +48,7 @@ searchtitle: AI Data Engine용 Data-to-RAG 빠른 시작
 
 
 .다음 단계
-* link:../guardrails/define-data-policies.html["AI Data Engine에서 데이터 자산 및 가드레일 정책 정의"]
-* link:explore-workspace-metadata.html["AI Data Engine Console에서 작업 공간 메타데이터 탐색"]
-* link:create-data-collections.html["AI Data Engine Console에서 데이터 수집 생성"]
+* link:../guardrails/define-data-policies.html["AIDE에서 데이터 자산 및 가드레일 정책 정의"]
+* link:explore-workspace-metadata.html["AIDE Console에서 작업 공간 메타데이터 탐색"]
+* link:create-data-collections.html["AIDE Console에서 데이터 수집 생성"]
 

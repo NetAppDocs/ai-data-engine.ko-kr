@@ -66,23 +66,23 @@ Data Sync는 수동 개입 없이 소스 데이터가 변경될 때 메타데이
 
 
 .link:../vectorization/zero-to-rag.html["고급 데이터 큐레이션 및 거버넌스 기능"]
-적절한 AI Data Engine 라이센스를 보유한 고객은 다음 기능을 사용할 수 있습니다.
+적절한 AIDE 라이선스를 보유한 고객은 다음 기능을 사용할 수 있습니다.
 
 * *벡터화 및 RAG*: AIDE 워크스페이스의 메타데이터를 사용하여 AI Data Engine Console에서 데이터 컬렉션, 임베딩 및 검색 엔드포인트를 생성합니다.
-* *가드레일 기반 거버넌스*: AI Data Engine Console에서 가드레일 정책을 정의하고 해당 정책을 ONTAP System Manager의 워크스페이스와 연결합니다.
+* *가드레일 기반 거버넌스*: AI Data Engine Console에서 가드레일 정책을 정의하고 ONTAP System Manager의 워크스페이스와 해당 정책을 연결합니다.
 
 
 
 
 === 지원되는 hardware 및 플랫폼
 
-AI Data Engine 9.18.1은 다음을 결합한 ONTAP AI 데이터 플랫폼 클러스터에서 실행됩니다.
+AIDE 9.18.1은 다음을 결합한 ONTAP AI 데이터 플랫폼 클러스터에서 실행됩니다.
 
 * AFX 1K 스토리지 노드
 * NetApp 데이터 컴퓨팅 노드
 
 
 .관련 정보
-* link:known-limitations.html["AI Data Engine의 알려진 제한 사항"]
-* link:../get-started/learn-about.html["AI Data Engine 아키텍처 및 구성 요소에 대해 알아보세요."]
+* link:known-limitations.html["AIDE의 알려진 제한 사항"]
+* link:../get-started/learn-about.html["AIDE 아키텍처 및 구성 요소에 대해 알아보세요."]
 
