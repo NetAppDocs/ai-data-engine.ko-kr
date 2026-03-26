@@ -5,7 +5,6 @@
   <block id="0f6902c11864c7f6ea3e7e97543390ff" category="section-title">노드 교체 준비</block>
   <block id="192d4730c4474133e43ad79a17bc2b0a" category="paragraph">AIDE 클러스터에서 노드를 교체하기 전에 고려해야 할 사항이 몇 가지 있습니다.</block>
   <block id="3d0290aecf6f3d97cfe6bc8642514dfb" category="paragraph-title">System Manager 자격 증명</block>
-  <block id="214815a740557c20d025260617d488f6" category="paragraph">AIDE 클러스터 노드 교체 작업을 수행하려면 _스토리지 관리자_ 권한이 필요합니다.</block>
   <block id="e3e16bb73c0250a6a229fb457b4f957e" category="section-title">제한 사항</block>
   <block id="c236764b0a821599642d7a5689c7dec8" category="paragraph">AIDE 클러스터에서 노드를 교체할 때 다음 제한 사항에 유의해야 합니다.</block>
   <block id="3bc43fb96432ecb013dfd886119f4664" category="list-text">노드 교체는 CLI를 통해서만 지원되며 선택적으로 REST API를 사용할 수 있습니다.</block>
@@ -879,8 +878,6 @@
   <block id="b3eac18ae7c204c556f62dd66a01d35d" category="list-text">IdP 자격 증명으로 로그인하십시오. 인증에 성공하면 System Manager로 돌아갑니다.</block>
   <block id="83ae1104f2752dedd3f734e862e77079" category="inline-link">OpenID Foundation</block>
   <block id="d6dc3de1eee9ae466c18b32abc3802b3" category="list-text"><block ref="d6dc3de1eee9ae466c18b32abc3802b3" category="inline-link-rx"></block></block>
-  <block id="79ae1a530fac5c3d3243825c084b579d" category="inline-link">ONTAP OAuth 2.0 구현</block>
-  <block id="f3bab0602006a91da3ab07cad24e13f8" category="list-text"><block ref="f3bab0602006a91da3ab07cad24e13f8" category="inline-link-rx"></block></block>
   <block id="00f45165b3cfbcdf086cee49c25c82c9" category="summary">레일 키트를 설치하고 캐비닛에 데이터 컴퓨팅 노드를 고정하는 방법을 알아보십시오.</block>
   <block id="d08f231bff757ee25df913223bf39e35" category="doc">AI Data Engine용 데이터 컴퓨팅 노드 설치</block>
   <block id="69e42da6d542e4665008dcc83755451b" category="paragraph">캐비닛에 데이터 컴퓨팅 노드를 설치하고 고정합니다.</block>
@@ -1417,7 +1414,6 @@
   <block id="b001ec8ec4133b6f8e6b8db16e7850ff" category="paragraph">데이터 컴퓨팅 노드의 경우 클러스터 연결을 위해 4x100GbE 브레이크아웃 케이블을 사용하여 e4a/e5a 포트를 연결하십시오.</block>
   <block id="788899ea47f1311b79403513bff040e9" category="paragraph">*4x100GbE 브레이크아웃 케이블*</block>
   <block id="ba1f39989ab5fafce1803b42f3c54d45" category="paragraph">하드웨어를 케이블로 연결하려면 먼저 데이터 컴퓨팅 노드를 데이터 네트워크에 연결한 다음 데이터 컴퓨팅 노드를 클러스터 스위치에 연결하십시오.</block>
-  <block id="e6f8cfd22de27cfd8ccde79f61a46bd1" category="summary">AI Data Engine(AIDE) 클러스터에서 DCN(데이터 컴퓨팅 노드)을 교체합니다.</block>
   <block id="32f794268679c746fb213c9e0c2c7e31" category="doc">AI Data Engine 클러스터의 노드를 교체하세요</block>
   <block id="d1293847699b10ee9673528d7b2c04bd" category="doc">AI Data Engine 클러스터에 데이터 컴퓨팅 노드 추가</block>
   <block id="e224a7cdea2fcc18f05199345c841386" category="paragraph">해당 단일 IP 주소는 DCN 전체에 로드 밸런싱되어 AIDE Console 및 관련 API의 프런트엔드 주소로 사용됩니다.</block>
@@ -1527,4 +1523,16 @@
   <block id="3f5ac75246d8594dc42a3814252da7ce" category="list-text"><block ref="8ceb652f32f46e0c9a1975fc579b542f" category="inline-link-rx"></block> AIDE와 함께 사용하려는 데이터가 포함되어 있습니다.</block>
   <block id="119a03c8a8d1576eafb9b8f6ac04c12f" category="inline-link-macro">AIDE에서 사용할 볼륨을 선택합니다</block>
   <block id="0d5f62005a0ac8e87f1aaffb995ce7de" category="list-text"><block ref="3ddf7be728c954623bdc7abbf7625bd2" category="inline-link-macro-rx"></block>.</block>
+  <block id="4664a9ced36cba14050a4fcbf1450a27" category="list-text">_storage administrator_ 권한이 있는 사용자 자격 증명</block>
+  <block id="eadf44f76dffdd84c31f1c9d356c0868" category="list-text">높은 수준에서 OIDC 구성은 크게 두 가지 주요 단계로 구성됩니다. 먼저 System Manager를 사용하여 기본 OIDC 구성을 수행해야 합니다. 그런 다음 ONTAP CLI를 사용하여 외부 역할 매핑을 구성하여 설정을 완료할 수 있습니다.</block>
+  <block id="5ac833147e752f92ac0c80b33430fb9f" category="admonition">메타데이터 URI를 제공하면 System Manager에서 OIDC 구성 필드가 자동으로 채워집니다. 정확한 URI 형식은 사용 중인 IdP의 설명서를 참조하십시오.</block>
+  <block id="624871063b499c9a41dbf91f4f294d7c" category="paragraph">외부 역할 매핑을 구성하여 OIDC 설정을 완료하십시오.</block>
+  <block id="3c0b11b1d3509faa0a7bbac825211a4a" category="section-title">CLI를 사용하여 외부 역할 매핑 구성</block>
+  <block id="4ae4bdbad8969579acc1dc1db436776d" category="paragraph">외부 역할 매핑은 외부 IdP 역할을 해당 ONTAP 역할에 매핑할 수 있도록 하는 ONTAP 기능입니다. OIDC를 통해 인증하는 사용자가 ONTAP에서 적절한 RBAC 권한을 부여받을 수 있도록 이 매핑을 구성해야 합니다.</block>
+  <block id="4cf903122d76266e6c91111b522b6d5f" category="paragraph">이 작업은 데이터 엔지니어와 데이터 과학자를 해당 ONTAP 역할에 매핑합니다. 환경에 따라 적절한 역할 이름으로 명령 예제를 업데이트해야 합니다. System Manager에서 기본 OIDC 구성 중에 스토리지 관리자 역할을 ONTAP<block ref="21232f297a57a5a743894a0e4a801fc3" prefix=" " category="inline-code"></block> 역할에 이미 매핑했어야 합니다.</block>
+  <block id="7c05dc11a263c8c571a6a666a4c4d4b3" category="list-text">SSH를 사용하여 관리자 권한이 있는 계정으로 ONTAP CLI에 로그인하십시오.</block>
+  <block id="258b991bef7bf176457c18935f6166d8" category="list-text">데이터 엔지니어 역할에 대한 역할 매핑을 구성합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="cd5dcea2498cb30a3d7de0f356155044" category="list-text">데이터 과학자 역할에 대한 역할 매핑을 구성합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="4b527243ee5adebf301c5c9ab3aa1e5a" category="inline-link">ONTAP의 OAuth 2.0 외부 역할 매핑</block>
+  <block id="7d8d22eff571b389da4ee3b87fac44f2" category="list-text"><block ref="7d8d22eff571b389da4ee3b87fac44f2" category="inline-link-rx"></block></block>
 </blocks>
