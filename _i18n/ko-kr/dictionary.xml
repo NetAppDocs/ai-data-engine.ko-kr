@@ -182,26 +182,20 @@
   <block id="0a31736f60dd76c513b61196a00b88d6" category="section-title">업데이트 프로세스 이해</block>
   <block id="319d9b005d239892cc2b564df5cba1e1" category="paragraph">AIDE 소프트웨어 업데이트는 ONTAP System Manager를 통해 관리할 수 있습니다.</block>
   <block id="1d07799f906ab75d186ca484e6fac46a" category="paragraph">릴리스 유형 및 범위:</block>
-  <block id="02820103aa434f47df1e6032459d04d7" category="list-text">ONTAP 주요 릴리스(9.x.x) 및 AIDE 주요 릴리스(9.x.x U0)에는 ONTAP 통합에 영향을 미치는 새로운 기능, API 또는 변경 사항이 도입되었습니다.</block>
-  <block id="dbb222271ea093c78aeca68e3a9f2837" category="list-text">ONTAP 패치 릴리스(9.x.x Px) 및 AIDE 업데이트 릴리스(9.x.x Ux)에는 ONTAP 통합에 영향을 미치지 않는 수정 사항 및 업데이트가 포함되어 있습니다.</block>
   <block id="c40a9ed4ca32a41abfe823a5591ab593" category="section-title">호환성 매트릭스</block>
   <block id="3aff4c208b1fe57e6b7d50faa86107ee" category="paragraph">업데이트 계획 시 ONTAP과 AIDE 소프트웨어 간의 호환성을 확인하십시오.</block>
   <block id="83b5552fb5911c379734b63d82d04547" category="paragraph">AIDE 소프트웨어는 "U" 릴리스로 출시됩니다. AIDE 주요 릴리스는 "U0" 릴리스이며 이후 마이너 릴리스는 "U1" 이상이 됩니다.</block>
   <block id="0a8261ac12ab162f2cb8a7ff2c0c2917" category="section-title">ONTAP 및 AIDE 호환성</block>
   <block id="07bd1c5d6519187df7481131b5f994d3" category="cell">AIDE 릴리스</block>
   <block id="dcf4fd27b8dceecd77b2127bb7270258" category="cell">지원되는 ONTAP 버전</block>
-  <block id="0faf11919e2d57059a1aeb8f99e3a852" category="cell">9.18.1 U0</block>
   <block id="ce26eb948c24c32e87abcd86f1e08b67" category="cell">9.18.1 GA 및 모든 9.18.1 Px</block>
-  <block id="4b99164937f5285b507d1cc4aa57dc78" category="cell">9.18.1 U1 이상</block>
   <block id="c8edbd10a1cefa33b5426f3caf51927b" category="paragraph">"Px"는 주요 버전의 모든 ONTAP 패치 릴리스를 나타냅니다(예: 9.18.1 P1, 9.18.2 등).</block>
   <block id="c61715af31fb78022fc54f7938e42152" category="section-title">AIDE 업그레이드 경로</block>
   <block id="4b243629427b1bb46c9cb93a56cc6414" category="paragraph">다음 예에서는 가상의 미래 버전을 사용하여 AIDE 9.18.1 U0 및 9.18.1 U1에서 허용되는 업그레이드 및 업데이트 경로를 보여줍니다.</block>
   <block id="40c84643ebad16fbf17548baaafd1040" category="cell">현재 AIDE 릴리스가…</block>
   <block id="1f2d57a8c4fbbe5fc8e3b0c57dddf4dd" category="cell">그리고 타겟 AIDE 릴리스는…</block>
   <block id="d6d759596e0eba5472d9b19d0ced7754" category="cell">업그레이드 또는 업데이트 경로는…</block>
-  <block id="283ca8d4b834f564b72f0f555816803c" category="cell">9.18.1 U1</block>
   <block id="fd1dd0c603be8170f9eae0be9f2f6afb" category="cell">직접</block>
-  <block id="fab78b96763d1052d2515db675734272" category="cell">9.18.1 U3</block>
   <block id="e32e4b57cad1c9f5a8057724e32b4e74" category="cell">직접(9.18.1의 모든 Ux에서 이후 Ux로 업데이트할 수 있음)</block>
   <block id="bc9337f62cc08a9589fd7554ed86a7ae" category="section-title">되돌리기 제한 사항</block>
   <block id="74bfdc300a94797f04e4f81bc4194296" category="inline-xref">호환성 요구 사항</block>
@@ -1535,4 +1529,10 @@
   <block id="cd5dcea2498cb30a3d7de0f356155044" category="list-text">데이터 과학자 역할에 대한 역할 매핑을 구성합니다. 예를 들면 다음과 같습니다.</block>
   <block id="4b527243ee5adebf301c5c9ab3aa1e5a" category="inline-link">ONTAP의 OAuth 2.0 외부 역할 매핑</block>
   <block id="7d8d22eff571b389da4ee3b87fac44f2" category="list-text"><block ref="7d8d22eff571b389da4ee3b87fac44f2" category="inline-link-rx"></block></block>
+  <block id="15090c6ee8816b205eaa75ebafe250fa" category="list-text">ONTAP 주요 릴리스(9.x.x) 및 AIDE 주요 릴리스(9.x.xU0)에는 ONTAP 통합에 영향을 미치는 새로운 기능, API 또는 변경 사항이 도입되었습니다.</block>
+  <block id="4a5c3a9dd9df2bf0a351def708479b81" category="list-text">ONTAP 패치 릴리스(9.x.x Px) 및 AIDE 업데이트 릴리스(9.x.xUx)에는 ONTAP 통합에 영향을 미치지 않는 수정 사항 및 업데이트가 포함되어 있습니다.</block>
+  <block id="f142a2e7033e6ebdb43d28fba51d9e34" category="cell">9.18.1U0</block>
+  <block id="7399a3eeb224c7978e5e9a5935d16d63" category="cell">9.18.1U1 이상</block>
+  <block id="f3ac8b594b4d3cbd234a7be195b01f2b" category="cell">9.18.1U1</block>
+  <block id="d26df6a55e36d2b963c52c54e1a92f01" category="cell">9.18.1U3</block>
 </blocks>
