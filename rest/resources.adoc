@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: rest/resources.html 
+keywords: aide, rest api, resources, dcn, data engine, governance, audit, policies, jobs 
+summary: 'ONTAP REST API에는 AI Data Engine(AIDE) 기능을 지원하는 새로운 엔드포인트가 포함되어 있습니다.' 
+---
+= AIDE REST API 리소스
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP REST API에는 AI Data Engine(AIDE) 기능을 지원하는 새로운 엔드포인트가 포함되어 있습니다.
+
+
+
+== AFX용 ONTAP REST API의 새로운 리소스 카테고리
+
+AIDE 기능 및 특징을 지원하기 위해 ONTAP REST API에 두 가지 새로운 리소스 범주가 추가되었습니다.
+
+
+
+=== DCN
+
+DCN 리소스는 주로 데이터 컴퓨팅 노드 인프라 및 수명 주기 관리를 지원합니다. 이러한 엔드포인트는 노드 및 클러스터 관리, 원격 측정 및 상태, 유사한 플랫폼 작업 등 DCN 클러스터 자체를 관리하고 관찰하는 데 사용됩니다. ONTAP는 DCN 클라이언트로 작동하여 DCN에서 실행되는 서비스에 대한 REST 요청을 구성하며, 단순한 통과 프록시로 기능하지 않습니다. 일반적인 기능은 다음과 같습니다.
+
+* DCN 클러스터 및 노드 인벤토리와 상태.
+* 노드 생성, 확장, 교체 및 제거 기능을 포함한 DCN 클러스터 수명 주기 운영.
+* ONTAP이 DCN 클러스터와 조정하는 데 필요한 원격 측정 및 운영 점검입니다.
+
+
+이러한 모든 기능은 일반적으로 ONTAP REST API 하위 트리 `/api/dcn`에 표시되며, 연결되고 활성화된 DCN이 있는 환경에서 ONTAP이 실행될 때 사용할 수 있습니다.
+
+ONTAP는 또한 DCN으로 직접 프록시되는 두 개의 HTTP 경로 접두사를 노출합니다.
+
+* ONTAP 인증이 없는 콘솔 또는 UI 프록시: `/console/...`
+* ONTAP 인증이 필요하며 모니터링에 사용되는 DCN 프록시: `/dcn/...`
+
+
+
+
+=== Data Engine
+
+Data Engine 리소스는 AIDE 데이터 플레인 및 거버넌스/메타데이터 관리를 지원합니다. 엔드포인트는 AIDE가 운영하는 객체 관리에 중점을 둡니다. 기능은 크게 하위 범주로 분류할 수 있습니다.
+
+
+
+==== 핵심 객체 모델 및 CRUD
+
+다음을 포함하여 핵심 AIDE 객체에 대한 액세스를 제공하는 여러 엔드포인트가 있습니다.
+
+* 작업 영역 및 작업 영역 버전
+* 엔티티
+* 액세스 제어 목록(ACL)
+* 쿼리
+* 데이터 소스
+* 데이터 수집
+
+
+
+
+==== 거버넌스, 감사 및 지원 서비스
+
+거버넌스 및 기타 지원 서비스에 액세스할 수 있는 여러 엔드포인트가 있으며, 다음과 같습니다.
+
+* 정책 및 정책 관리
+* AIDE 운영 관련 이벤트 및 감사 로그
+* Autosupport 구성
+* AIDE 기능에 대한 애플리케이션 및 기능 토글
+* 역할에서 일반적으로 사용하는 거버넌스 영역
+
+
+또한 다음 사항에 유의하십시오.
+
+* 생성, 수정, 삭제와 같은 장기 실행 작업의 대부분은 비동기적으로 실행되며 클라이언트가 상태를 폴링할 수 있는 작업 참조를 반환합니다.
+* 많은 경우 ONTAP는 요청을 프록시하지 않고, 데이터 엔진 엔드포인트에 맞게 요청을 재구성한 다음 DCN 클라이언트 동작의 일부로 응답을 변환합니다.
+
+
+
+
+== 기존 ONTAP REST API 리소스에 대한 업데이트
+
+새로운 리소스 카테고리 외에도 기존 ONTAP REST API 리소스에 대한 업데이트가 있습니다.
+
+
+
+=== 보안
+
+AIDE를 지원하기 위해 ONTAP REST API의 보안 섹션에 다음과 같은 여러 가지 새로운 엔드포인트와 기능이 추가되었습니다.
+
+* 인증서 및 인증서 관리
+* OIDC 인증 구성
+* 역할 및 권한을 포함한 사용자 ID
+
+
+
+
+== 관련 정보
+
+* link:../rest/learn-rest-api.html["AIDE REST API에 대해 알아보세요"]
+* https://docs.netapp.com/us-en/ontap-automation/resources/overview_categories.html["ONTAP REST API의 리소스 범주"^]
+

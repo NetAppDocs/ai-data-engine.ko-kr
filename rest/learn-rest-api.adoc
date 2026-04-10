@@ -1,0 +1,77 @@
+---
+sidebar: sidebar 
+permalink: rest/learn-rest-api.html 
+keywords: aide, rest api, architecture, access, rbac, reference documentation 
+summary: 'AI Data Engine(AIDE)을 AFX와 같은 ONTAP 스토리지 시스템과 통합하면 기존 ONTAP REST API에 새로운 AI 중심 기능을 지원하는 추가 엔드포인트가 추가되어 기능이 향상됩니다. REST API를 사용하여 AIDE를 관리하려는 경우 먼저 해당 API의 특징과 기본 작동 방식을 숙지해야 합니다.' 
+---
+= AIDE REST API에 대해 알아보세요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine(AIDE)을 AFX와 같은 ONTAP 스토리지 시스템과 통합하면 기존 ONTAP REST API에 새로운 AI 중심 기능을 지원하는 추가 엔드포인트가 추가되어 기능이 향상됩니다. REST API를 사용하여 AIDE를 관리하려는 경우 먼저 해당 API의 특징과 기본 작동 방식을 숙지해야 합니다.
+
+
+
+== 확장된 REST API의 특징
+
+AIDE는 AFX 스토리지 시스템의 ONTAP REST API를 추가 기능으로 확장합니다. 이를 통해 클라이언트는 익숙하고 편리한 단일 관리 진입점을 이용할 수 있으며, ONTAP이 DCN(Data Compute Node)에서 수행되는 필수 작업을 조정할 수 있습니다. 향상된 REST API의 주요 특징은 다음과 같습니다.
+
+* ONTAP는 REST API에 대한 주요 액세스 경로로 유지됩니다. 클라이언트는 익숙한 ONTAP REST API 프레임워크, 인증 방법 및 RBAC 모델을 계속 사용합니다.
+* AIDE는 주로  `/api/data-engine` 및  `/api/dcn` 하위 트리에 새로운 REST 리소스를 추가하여 작업 공간, 데이터 소스 및 데이터 컬렉션은 물론 AI 파이프라인의 내부 AIDE 구성 요소를 관리합니다.
+* ONTAP는 다음과 같은 방식으로 클라이언트 요청을 처리하는 오케스트레이션 계층 역할을 합니다.
++
+** 요청은 ONTAP에서 처리되며, ONTAP은 필요에 따라 데이터 컴퓨팅 노드에서 실행되는 서비스와 통신하고 조정합니다.
+** 별도의 다운스트림 REST 요청이 ONTAP에 의해 생성되어 DCN 기반 서비스로 전송되며, 정규화된 ONTAP 스타일 응답이 원래 클라이언트로 반환됩니다.
+
+
+* AI Data Engine 흐름에 대한 권한 부여는 계층적으로 이루어집니다.
++
+** ONTAP는 RBAC를 기반으로 1차 권한 부여를 시행합니다.
+** DCN 기반 서비스는 선택적으로 워크스페이스 및 데이터 컬렉션에 대한 ACL 검사를 포함하여 2단계 권한 부여를 적용할 수 있습니다.
+
+
+
+
+이 하이브리드 설계를 통해 AIDE 기능 세트는 ONTAP REST API의 자연스러운 확장으로 작동하는 동시에 컴퓨팅 집약적이고 AI 관련 기능을 위해 DCN 환경을 활용할 수 있습니다.
+
+
+
+== 액세스 및 아키텍처
+
+클라이언트가 AIDE REST API에 액세스하는 방법과 기본 아키텍처가 요청을 지원하는 방식을 이해하는 것이 중요합니다.
+
+클라이언트에서 ONTAP 클러스터로:: REST 클라이언트는 AIDE 관리 작업을 위해 일반적으로 클러스터 관리 IP 주소를 통해 ONTAP에 요청을 보냅니다. 예를 들어, 요청된 작업에는 워크스페이스 및 데이터 컬렉션 생성 및 관리가 포함될 수 있습니다. ONTAP는 요청을 인증하고 권한을 부여한 후 필요에 따라 DCN 클러스터에 추가 REST 호출을 보냅니다.
+별도의 RAG 엔드포인트:: RAG(Retrieval-Augmented Generation) 방식의 API 호출은 DCN으로 직접 발행되어야 합니다. 이 경우 DCN은 요청에서 사용자 ID 토큰을 추출하고 ONTAP으로 콜백하여 권한 부여 결정을 요청합니다. ONTAP은 토큰의 유효성을 검사하고 RBAC 검사를 수행한 후 권한 부여 결과를 반환합니다. DCN은 반복적인 권한 부여 호출 시 성능 향상을 위해 이러한 결과를 캐시할 수 있으며, 요청을 실행하기 전에 추가적인 리소스 수준의 ACL 검사도 수행합니다.
+ONTAP에서 노출하는 프록시 엔드포인트:: ONTAP는 또한 다음과 같이 HTTP 요청을 DCN 환경으로 라우팅하는 프록시 방식 경로를 지원합니다.
++
+--
+*  `/console`로 시작하는 경로가 있는 요청은 DCN으로 프록시되어 AIDE 콘솔에서 사용됩니다. 이러한 요청은 프록시 계층 역할을 하는 ONTAP 인증 없이도 접근할 수 있도록 설계되었습니다.
+*  `/dcn`로 시작하는 경로가 있는 요청도 DCN으로 프록시되지만 ONTAP에 의한 인증이 필요합니다. 이러한 요청은 일반적으로 모니터링 통합에 사용됩니다.
+* ONTAP과 DCN 서비스 간 통신을 지원하는 요청은 프록시를 통해 처리될 수도 있습니다. 클라이언트가 ONTAP REST 엔드포인트를 호출하면 ONTAP이 이를 DCN 엔드포인트에 대한 하나 이상의 내부 REST 호출로 변환할 수 있습니다. 비동기 작업에 대한 작업 폴링 및 페이지 로직 적용과 같은 여러 세부 사항은 최종 응답을 반환하기 전에 처리됩니다.
+
+
+--
+
+
+요약하자면, AIDE REST API 기능은 클라이언트 관점에서 ONTAP 스타일의 REST API로 사용되며, 기본 처리는 ONTAP뿐만 아니라 DCN에서 호스팅되는 서비스와 전용 RAG 진입점까지 아우르도록 지원합니다.
+
+
+
+== 참조 문서
+
+모든 AFX 스토리지 시스템에는 로컬 Swagger(OpenAPI) 참조 문서가 포함되어 있습니다. 이 문서에는 엔드포인트, HTTP 메서드, 매개변수 및 요청/응답 스키마가 설명되어 있으며, 필요한 경우 예제도 제공됩니다. 이는 개발자와 관리자가 AIDE REST API 기능을 자세히 이해하는 데 유용한 자료입니다. Swagger 문서 액세스에 대한 자세한 내용은 https://docs.netapp.com/us-en/ontap-afx/rest/api-reference.html["AFX 스토리지 시스템에 대한 REST API 참조"^]를 참조하십시오.
+
+
+
+== 관련 정보
+
+* https://docs.netapp.com/us-en/ontap-automation/["ONTAP 자동화"^]
+* https://docs.netapp.com/us-en/ontap-afx/rest/learn-rest-api.html["ONTAP AFX REST API"^]
+* https://docs.netapp.com/us-en/ontap-automation/rest/rbac_overview.html["ONTAP REST API를 사용한 RBAC 보안"^]
+

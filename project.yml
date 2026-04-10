@@ -18,6 +18,7 @@ sidebar:
   - section: administer
   - section: vectorization
   - section: guardrails
+  - section: rest
   - title: FAQ
     url: "/faq-aide.html"
   - title: 법적 고지

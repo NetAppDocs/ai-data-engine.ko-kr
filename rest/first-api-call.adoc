@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: rest/first-api-call.html 
+keywords: afx rest api, aide rest api, first api call, curl command, access token, verify permissions 
+summary: AIDE 확장을 사용하여 ONTAP REST API를 시작하려면 간단한 curl 명령을 실행할 수 있습니다. 
+---
+= 첫 번째 AIDE REST API 호출
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+AIDE 확장을 사용하여 ONTAP REST API를 시작하려면 간단한 curl 명령을 실행할 수 있습니다.
+
+.이 작업 정보
+예제 REST API 호출은 호출 시 제공된 액세스 토큰과 연결된 사용자의 사용자 이름, 역할 및 권한을 반환합니다. 이는 필요한 권한이 있는 액세스 토큰을 간단하게 확인할 수 있는 방법입니다. 간단하게 하기 위해 Bash 스타일 변수가 사용됩니다.
+
+.시작하기 전에
+로컬 워크스테이션에서 curl 유틸리티를 사용할 수 있을 뿐만 아니라 다음 사항도 필요합니다.
+
+* ONTAP 클러스터 관리 LIF의 IP 주소 또는 FQDN
+* _스토리지 관리자_ 역할에 대해 ID 공급자가 발급한 액세스 토큰
+
+
+.단계
+. 로컬 워크스테이션의 CLI에서 다음 명령을 실행하십시오.
++
+[source, curl]
+----
+curl --request GET "https://$FQDN_IP/api/security/login/whoami" \
+--include --header "Accept: */*" \
+--header "Authorization: Bearer $TOKEN_ADMIN"
+----
+. 응답을 검토합니다. 예를 들면 다음과 같습니다.
++
+[listing]
+----
+{
+  "username": "storageAdmin@examplecompany.onmicrosoft.com",
+  "role": [
+    "admin"
+  ],
+  "privileges": [
+    {
+      "path": "/api",
+      "access": "all"
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/security/login/whoami"
+    }
+  }
+}
+----
+
+
+.관련 정보
+* link:../rest/authentication-authorization.html["AIDE REST API에 대한 인증 및 권한 부여"]
+* https://docs.netapp.com/us-en/ontap-afx/rest/first-call.html["첫 번째 AFX 스토리지 시스템 REST API 호출"^]
+
