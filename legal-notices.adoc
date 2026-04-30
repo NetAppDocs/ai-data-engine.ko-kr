@@ -51,4 +51,6 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 
 === AI Data Engine
 
-https://library.netapp.com/ecm/ecm_download_file/ECMLP3372871["AIDE 9.18.1 관련 공지"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMLP3379665["AIDE 1.0.0 관련 공지"^]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP3372871["AIDE 9.18.1U0/U1 관련 공지"^]

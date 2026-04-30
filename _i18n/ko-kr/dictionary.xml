@@ -888,8 +888,6 @@
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">오픈 소스</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">고지 파일에는 NetApp 소프트웨어에 사용된 타사 저작권 및 라이선스에 대한 정보가 포함되어 있습니다.</block>
-  <block id="d17272cc21008c2cb20ddf9f14fe1bb7" category="inline-link">AIDE 9.18.1 관련 공지</block>
-  <block id="03839fd3ed9fb12d82d1e900e1308be1" category="paragraph"><block ref="03839fd3ed9fb12d82d1e900e1308be1" category="inline-link-rx"></block></block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="summary">알려진 제한 사항은 이 제품 릴리스에서 지원되지 않거나 제대로 상호 운용되지 않는 플랫폼, 장치 또는 기능을 나타냅니다. 이러한 제한 사항을 주의 깊게 검토하십시오.</block>
   <block id="1f831132233d03e2eedec937521da75c" category="doc">AI Data Engine의 알려진 제한 사항</block>
   <block id="d7ab5d7f9fbdcd633e9e9c86e950af63" category="section-title">컴퓨팅 노드 요구사항 및 관리</block>
@@ -1533,7 +1531,6 @@
   <block id="700eacd105ff7773e4ee5b4fcd7f5b2d" category="inline-link-macro">추가 사양에 대해서는 타사 서버 하드웨어 요구 사항에 대한 자세한 내용을 참조하십시오.</block>
   <block id="c66d14f95d3d53680ba0f08c92a1620c" category="paragraph"><block ref="1460df11f031d507a5a270185c71896c" category="inline-link-macro-rx"></block>.</block>
   <block id="430b3c2457900c368de18a3b3526b730" category="paragraph-title">GPU 기능을 포함한 전체 AIDE에 자체 서버를 사용할 수 있습니까?</block>
-  <block id="2f03a335a2e9e4e23cd915ee8e40ec1e" category="paragraph">AIDE v1.0.0 릴리스는 고객이 조달한 하드웨어의 타사 서버에서 기본 Metadata Engine을 지원합니다. GPU 기능을 포함한 AIDE의 모든 기능을 사용하려면 NetApp DCN 하드웨어가 필요합니다.</block>
   <block id="64c015fdf4d89231c21f779f907dcb3c" category="paragraph-title">NetApp DCN에 필요한 최소 개수는 몇 개입니까?</block>
   <block id="928ddff4443ce22fdd59b233e7105dfd" category="paragraph">정확히 3개의 NetApp DCN이 필요합니다.</block>
   <block id="4196fdaf34084ef79405adaf484227d4" category="paragraph-title">AIDE 노드에서 실행되는 OS는 무엇입니까?</block>
@@ -2010,4 +2007,9 @@
   <block id="bbe576f3e13b9190eefaf93715f8bda5" category="sidebar">NetApp에서 제공하는 데이터 컴퓨팅 노드를 설치합니다</block>
   <block id="2ab9c364bb7a3ce49d0f54c50f1dda7b" category="sidebar">타사 서버에 AIDE 소프트웨어 설치</block>
   <block id="dec55e7e5cec1db77094dc40868988cf" category="sidebar">메타데이터 탐색</block>
+  <block id="4e6aa06325f6c39760764a1a94ba05e8" category="paragraph">AIDE 1.0.0 릴리스는 고객이 구매한 하드웨어의 타사 서버에서 기본 Metadata Engine을 지원합니다. GPU 기능을 포함한 AIDE의 모든 기능을 사용하려면 NetApp DCN 하드웨어가 필요합니다.</block>
+  <block id="5e86c10c9eaa071ed60fb9fc3bf10724" category="inline-link">AIDE 1.0.0 관련 공지</block>
+  <block id="8f22fb35d5382da461659034aa6039bf" category="paragraph"><block ref="8f22fb35d5382da461659034aa6039bf" category="inline-link-rx"></block></block>
+  <block id="8ab556ff062f8c224e9495f1da8b7b94" category="inline-link">AIDE 9.18.1U0/U1 관련 공지</block>
+  <block id="14a3a534854cc17b1e553ccbcab67fc6" category="paragraph"><block ref="14a3a534854cc17b1e553ccbcab67fc6" category="inline-link-rx"></block></block>
 </blocks>
