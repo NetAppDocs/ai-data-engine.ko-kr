@@ -1662,7 +1662,6 @@
   <block id="4fa750938e627d95c84431bc3528a153" category="list-text">고가용성이 필요한 경우 관리 네트워크용 1개(선택 사항)</block>
   <block id="084484f546dc7b7df1c1f8ed107cdc21" category="cell">*네트워크 속도*</block>
   <block id="dfa7b355bc6bab0a3ce139e0d7540eb0" category="paragraph">타사 서버에서 AI Data Engine software를 실행하는 데 지원되는 네트워크 속도는 다음과 같습니다.</block>
-  <block id="5ede41017f539d42e682bbfb3faf6d04" category="list-text">*클러스터 및 데이터 포트* - 100 GbE 이상 권장</block>
   <block id="838012d228c3c3d617a61988a5fc930e" category="list-text">*관리 포트* - 1GbE 이상</block>
   <block id="7c00f9894ca6b38a23fb9b69473ada72" category="cell">*디스크 공간*</block>
   <block id="66df935ed66d4870af7a77f59631aae2" category="paragraph">512GB 이상</block>
@@ -2012,4 +2011,8 @@
   <block id="8f22fb35d5382da461659034aa6039bf" category="paragraph"><block ref="8f22fb35d5382da461659034aa6039bf" category="inline-link-rx"></block></block>
   <block id="8ab556ff062f8c224e9495f1da8b7b94" category="inline-link">AIDE 9.18.1U0/U1 관련 공지</block>
   <block id="14a3a534854cc17b1e553ccbcab67fc6" category="paragraph"><block ref="14a3a534854cc17b1e553ccbcab67fc6" category="inline-link-rx"></block></block>
+  <block id="b427264ac55612a09df441c083a5be58" category="list-text">*클러스터 포트* - 100GbE</block>
+  <block id="4dc9c19a04d32de350820f8c791d4549" category="list-text">*데이터 포트* - 100 GbE 이상</block>
+  <block id="4f3eeca6d4d23f25126a03e95582b561" category="admonition">디스크 서브시스템 파티셔닝을 위해<block ref="ca905eb4a00d34150573153a09e2e79b" prefix=" " category="inline-code"></block> 디렉터리에 70GB의 여유 공간이 있어야 합니다.</block>
+  <block id="d08d1c32d6d6d840c9c83428502147ad" category="list-text"><block ref="ca905eb4a00d34150573153a09e2e79b" prefix=" " category="inline-code"></block> 파티션에서 디스크 서브시스템 파티셔닝을 위해 최소 70GB의 여유 공간을 사용할 수 있습니다</block>
 </blocks>
