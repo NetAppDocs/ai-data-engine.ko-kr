@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/power-on-hardware.html 
+keywords: aide, ai, data engine, ai data engine, third-party server, afx, afx 1k, power on, 
+summary: 각 쉘프의 전원을 켜서 고유한 쉘프 ID를 할당하고, AFX 컨트롤러 노드의 전원을 켠 다음, 전원 케이블을 고정하십시오. 
+---
+= AI Data Engine용 타사 서버 전원 켜기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+랙을 설치하고 하드웨어를 케이블로 연결한 후 타사 서버와 AFX 스토리지 시스템의 컨트롤러 노드가 아직 켜져 있지 않다면 전원을 켜야 합니다.
+
+타사 서버의 경우 전원 켜기 지침은 해당 서버 모델의 설치 설명서를 참조하십시오.
+
+.다음 단계
+타사 서버를 켠 후 link:../install-setup/install-aide-as-software.html["AIDE 소프트웨어를 설치하십시오"].

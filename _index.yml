@@ -12,26 +12,26 @@ indexpage:
     links:
     - title: AI Data Engine에 대해 알아보십시오
       url: "/get-started/learn-about.html"
-    - title: AIDE 아키텍처
-      url: "/get-started/aide-architecture.html"
     - title: 새로운 소식
       url: "/release-notes/whats-new.html"
     - title: 알려진 제한 사항
       url: "/release-notes/known-limitations.html"
-    - title: AIDE 빠른 시작
+    - title: 타사 서버에서 AIDE 소프트웨어 빠른 시작
+      url: "/get-started/quick-start-mde-only.html"
+    - title: NetApp DCN 배포를 위한 빠른 시작 가이드
       url: "/get-started/quick-start.html"
     - title: AIDE FAQ
       url: "/faq-aide.html"
-  - title: 설치 및 설정
+  - title: AIDE 호환 하드웨어 설치
     links:
-    - title: 데이터 컴퓨팅 노드 설치 워크플로우
-      url: "/install-setup/install-workflow.html"
-    - title: 설치 요구 사항
-      url: "/install-setup/install-setup-requirements.html"
-    - title: 케이블 hardware
-      url: "/install-setup/cable-hardware.html"
-    - title: 시스템 전원 켜기
-      url: "/install-setup/power-on-hardware.html"
+    - title: 타사 서버 워크플로 설치
+      url: "/install-aide-server/install-workflow.html"
+    - title: NetApp에서 제공하는 데이터 컴퓨팅 노드 워크플로를 설치합니다
+      url: "/install-dcn/install-workflow.html"
+  - title: AIDE 소프트웨어 설치 및 설정
+    links:
+    - title: AIDE를 소프트웨어로 설치합니다
+      url: "/install-setup/install-aide-as-software.html"
     - title: AIDE 클러스터 설정
       url: "/install-setup/cluster-setup-afx.html"
     - title: OIDC 인증 구성
@@ -46,6 +46,8 @@ indexpage:
       url: "/workspaces/assign-users-to-workspace.html"
     - title: 워크스페이스 관리
       url: "/administer/manage-workspace.html"
+    - title: 파일 메타데이터 탐색 및 내보내기
+      url: "/metadata-search/explore-metadata.html"
   - title: 관리 및 모니터링
     links:
     - title: 대시보드 및 클러스터 상태 보기

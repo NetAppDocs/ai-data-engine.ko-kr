@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/aide-afx-install.html 
+keywords: ai data engine, afx, afx 1k, install, hardware, storage system, data compute node, aide, metadata engine, mde, third-party servers 
+summary: AI Data Engine 배포의 첫 번째 단계로 AFX 스토리지 시스템을 설치합니다. AFX 시스템은 AI Data Engine 배포에 필요한 스토리지 인프라 기반을 제공합니다. 
+---
+= AI Data Engine용 AFX 스토리지 시스템 설치
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine(AIDE) 배포의 첫 번째 단계로 AFX 스토리지 시스템을 설치하십시오. AFX 스토리지 시스템은 스토리지 인프라 기반을 제공하며, 타사 서버 또는 NetApp 데이터 컴퓨팅 노드에 AIDE 소프트웨어를 설치하기 전에 필수적으로 설치해야 합니다.
+
+link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["AFX 1K 설치 설명서"^]를 따라 AFX 스토리지 시스템을 설치하십시오.
+
+.다음 단계
+AFX 스토리지 시스템 설치를 완료한 후link:install-workflow.html["타사 서버를 설치합니다"].

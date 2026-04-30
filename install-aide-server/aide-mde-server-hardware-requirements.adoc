@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/aide-mde-server-hardware-requirements.html 
+keywords: ai data engine, aide, hardware, requirements, afx, mde, metadata engine, third-party servers, compute nodes 
+summary: AFX 스토리지 시스템을 포함한 타사 서버에 AI Data Engine을 설치하기 위한 요구 사항을 검토하십시오. 
+---
+= 타사 서버에 AI Data Engine을 설치하기 위한 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+타사 서버에 AI Data Engine(AIDE)을 설치하기 위한 요구 사항을 검토하십시오. AIDE에는 AFX 스토리지 시스템, 데이터 컴퓨팅 노드로 지정된 타사 서버 정확히 3대, 네트워크 스위치 및 케이블이 필요합니다.
+
+
+
+== 하드웨어 요구 사항
+
+타사 서버의 AIDE 소프트웨어의 경우 AFX 스토리지 시스템과 정확히 3대의 호환 가능한 타사 서버에서 실행되는 AI Data Engine(AIDE)이 필요합니다. 이 구성에서 타사 서버는 AIDE 클러스터에 추가될 때 데이터 컴퓨팅 노드입니다. AFX 시스템은 스토리지 인프라를 제공하며, 타사 서버의 AIDE 소프트웨어는 데이터 관리, 큐레이션 및 AI 기능을 지원하는 AIDE 소프트웨어 구성 요소를 호스팅합니다.
+
+* *AFX 스토리지 시스템*: AFX 컨트롤러, 디스크 쉘프 및 네트워크 스위치가 포함됩니다. AFX 스토리지 시스템은 AIDE 배포에 필요합니다.
+* *타사 서버의 AIDE 소프트웨어*: 타사 서버의 AIDE 소프트웨어는 정확히 3개의 노드가 필요합니다. 3개 미만의 노드로 배포하거나 3개 이상의 노드로 확장할 수 없습니다.
++
+** 세 노드 모두 동일한 CPU 모델, 메모리 용량, 네트워크 구성 및 서버 모델을 포함하여 동일한 하드웨어 사양을 갖추어야 합니다. 혼합된 하드웨어 구성은 지원되지 않습니다.
++
+
+NOTE: 동일한 AIDE 클러스터에서 NetApp에서 제공하는 데이터 컴퓨팅 노드와 타사 서버를 혼합할 수 없습니다.
+
+** AIDE 소프트웨어 실행을 위해 지원되는 타사 서버는 다음과 같습니다.
++
+*** *Supermicro SYS-222C-TN*
++
+Supermicro SYS-222C-TN 설치에 대한 자세한 내용은 link:https://www.supermicro.com/en/support/manuals/product/system/sys-222c-tn/Content/introduction/introduction.htm["Supermicro SYS-222C-TN 설치 가이드"^]을 참조하십시오.
+
+*** *Supermicro SYS-222H-TN*
++
+Supermicro SYS-222H-TN 설치에 대한 자세한 내용은 link:https://www.supermicro.com/en/support/manuals/product/system/sys-222h-tn/Content/introduction/introduction.htm["Supermicro SYS-222H-TN 설치 가이드"^]을 참조하십시오.
+
+*** *Cisco C240 M8 (Intel CPU)*
++
+Cisco C240 M8 설치에 대한 자세한 내용은 link:https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/c/hw/c240m8/install/b-cisco-ucs-c240-m8-install/m-overview.html["Cisco C240 M8 설치 가이드"^]을(를) 참조하십시오.
+
+*** *Cisco C245 M8(AMD CPU)*
++
+Cisco C245 M8 설치에 대한 자세한 내용은 link:https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/c/hw/c245m8/install/b-cisco-ucs-c245-m8/m-overview.html["Cisco C245 M8 설치 가이드"^]을 참조하십시오.
+
+
+
+** 타사 서버는 다음과 같은 최소 하드웨어 사양을 충족해야 합니다.
++
+[cols="2*"]
+|===
+| 구성 요소 | 최소 요구 사항 
+
+
+| *지원되는 운영 체제*  a| 
+타사 서버에서 AIDE 소프트웨어를 실행하는 데 지원되는 운영 체제는 다음과 같습니다.
+
+*** Red Hat Enterprise Linux(RHEL) 9.7
+
+
+
+
+| *CPU*  a| 
+타사 서버에서 AIDE 소프트웨어를 실행하는 데 지원되는 CPU 모델은 다음과 같습니다.
+
+*** Intel Granite Rapids 이상
+*** AMD Turin 이상
+*** 64코어 이상
+
+
+
+
+| *메모리*  a| 
+128GB RAM
+
+
+
+| *네트워크 인터페이스*  a| 
+각 타사 서버에서 AIDE 소프트웨어는 총 6개의 포트를 사용합니다.
+
+*** 데이터 네트워크용 2개(필수)
+*** 클러스터 네트워크용 2개(필수)
+*** 관리 네트워크용 1개(선택 사항)
+*** 고가용성이 필요한 경우 관리 네트워크용 1개(선택 사항)
+
+
+
+
+| *네트워크 속도*  a| 
+타사 서버에서 AI Data Engine software를 실행하는 데 지원되는 네트워크 속도는 다음과 같습니다.
+
+*** *클러스터 및 데이터 포트* - 100 GbE 이상 권장
+*** *관리 포트* - 1GbE 이상
+
+
+
+
+| *디스크 공간*  a| 
+512GB 이상
+
+|===
+
+
+
+
+
+
+== 네트워크 스위치 요구 사항
+
+AIDE는 데이터 컴퓨팅 노드에 대한 호스트 네트워크 연결 및 노드 간 통신을 활성화하기 위해 네트워크 스위치가 필요합니다.
+
+* 호스트 네트워크 연결용 클라이언트 스위치(Cisco Nexus 9332D-GX2B 또는 Cisco Nexus 9364D-GX2A)
+* 노드 간 통신을 위한 클러스터 스위치(Cisco Nexus 9332D-GX2B 또는 Cisco Nexus 9364D-GX2A)
+* 네트워크 관리를 위한 선택적 관리 스위치
++
+
+NOTE: AFX 스위치에 대한 자세한 내용은 link:https://docs.netapp.com/us-en/ontap-systems-switches/afx/index.html["AFX 시스템 스위치"^]을 참조하십시오.
+
+
+
+
+
+== 멀티 클러스터 지원
+
+AIDE가 AFX와 함께 배포되면 SnapMirror 및 클러스터 피어링을 사용하여 다른 ONTAP 9.18.1 이상 클러스터에 연결하고 데이터를 관리할 수 있습니다.
+
+.다음 단계
+하드웨어 요구 사항을 검토한 후 link:aide-afx-install.html["AFX 스토리지 시스템을 설치합니다"].

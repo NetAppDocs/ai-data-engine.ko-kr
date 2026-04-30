@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/install-workflow.html 
+keywords: aide, ai, data engine, ai data engine, afx, afx 1k, install, setup, workflow, metadata engine, mde, third-party servers, hardware installation, cabling, power on, ontap cluster 
+summary: 타사 서버에 AI Data Engine을 설치 및 설정하고 ONTAP 환경에 배포하는 방법을 알아보세요. 
+---
+= 타사 서버에 AI Data Engine을 설치하고 설정하는 워크플로
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+타사 서버에 AIDE 소프트웨어를 설치하고 구성하려면 하드웨어 구성 요소를 설치하고 케이블을 연결한 다음 시스템 전원을 켜고 ONTAP 클러스터를 설정해야 합니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"]link:aide-mde-server-hardware-requirements.html["하드웨어 설치 요구 사항을 검토하십시오"]
+[role="quick-margin-para"]
+기존 AFX 1K 스토리지 시스템이 설치되어 있는지 확인한 후 타사 서버 또는 NetApp에서 제공하는 데이터 컴퓨팅 노드를 설치하기 위한 하드웨어 요구 사항을 검토하십시오. AFX 1K 스토리지 시스템 설치에 대한 자세한 내용은 link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["AFX 1K storage system 설치 설명서"^]을 참조하십시오.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["둘"]link:deploy-hardware.html["타사 서버 설치"]
+[role="quick-margin-para"]
+타사 서버는 해당 서버 모델에 대해 제조업체에서 제공하는 지침에 따라 설치해야 합니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3"]link:cable-hardware.html["타사 서버 케이블 연결"]
+[role="quick-margin-para"]
+하드웨어를 케이블로 연결하려면 먼저 타사 서버를 데이터 네트워크에 연결한 다음 타사 서버를 클러스터 스위치에 연결하십시오.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["네"]link:power-on-hardware.html["타사 서버 전원 켜기"]
+[role="quick-margin-para"]
+랙을 설치하고 하드웨어를 케이블로 연결한 후 타사 서버와 AFX 스토리지 시스템의 컨트롤러 노드가 아직 켜져 있지 않다면 전원을 켜야 합니다.

@@ -19,7 +19,7 @@ summary: AI Data Engine Console에서 글로벌 데이터 정책을 정의하여
 * AIDE Console(`\https://<cluster_management_ip>/console`에서 전역 정책을 생성하고 관리하려면 _스토리지 관리자_ 권한이 필요합니다.
 * 배포되고 정상 상태인 데이터 컴퓨팅 노드가 있는 AIDE 클러스터가 있습니다.
 * link:../install-setup/configure-oidc.html["OpenID Connect(OIDC)"]가 구성되어 있으며 IdP 역할이 데이터 정책 관리를 허용하는 AIDE 관리자 역할에 매핑되어 있습니다.
-* AIDE에 대한 소프트웨어 라이센스가 설치되어 가드레일 및 추론 기능이 활성화됩니다.
+* 데이터 거버넌스 기능을 위한 가드레일 및 추론 기능이 활성화되도록 AIDE 프리미엄 서비스 라이선스가 설치되었습니다.
 * 워크스페이스가 하나 이상 존재하거나, 관리자와 협의하여 워크스페이스에서 사용할 데이터 소스(볼륨)를 파악했습니다.
 
 

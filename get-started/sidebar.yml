@@ -19,29 +19,53 @@ entries:
     - title: 데이터 엔지니어 및 데이터 과학자와 구성 요소
       url: "/get-started/aide-components-data-users.html"
 - title: 빠른 시작
-  url: "/get-started/quick-start.html"
-- title: AIDE 설치
   entries:
-  - title: 설치 요구 사항
-    url: "/install-setup/aide-hardware-requirements.html"
-  - title: AFX 스토리지 시스템 설치
-    url: "/install-setup/aide-afx-install.html"
-  - title: 데이터 컴퓨팅 노드 설치
+  - title: 타사 서버의 AIDE 소프트웨어
+    url: "/get-started/quick-start-mde-only.html"
+  - title: NetApp에서 제공하는 DCN의 AIDE 소프트웨어
+    url: "/get-started/quick-start.html"
+- title: AIDE 호환 하드웨어 설치
+  entries:
+  - title: 타사 서버 설치
     entries:
-    - title: 워크플로 설치
-      url: "/install-setup/install-workflow.html"
     - title: 하드웨어 요구 사항 검토
-      url: "/install-setup/install-setup-requirements.html"
-    - title: 설치 준비
-      url: "/install-setup/prepare-hardware.html"
+      url: "/install-aide-server/aide-mde-server-hardware-requirements.html"
+    - title: AFX 스토리지 시스템 설치
+      url: "/install-aide-server/aide-afx-install.html"
+    - title: 타사 서버 설치
+      entries:
+      - title: 워크플로 설치
+        url: "/install-aide-server/install-workflow.html"
+      - title: 타사 서버 설치
+        url: "/install-aide-server/deploy-hardware.html"
+      - title: 케이블 hardware
+        url: "/install-aide-server/cable-hardware.html"
+      - title: 시스템 전원 켜기
+        url: "/install-aide-server/power-on-hardware.html"
+  - title: NetApp에서 제공하는 데이터 컴퓨팅 노드를 설치합니다
+    entries:
+    - title: 하드웨어 요구 사항 검토
+      url: "/install-dcn/aide-dcn-hardware-requirements.html"
+    - title: AFX 스토리지 시스템 설치
+      url: "/install-dcn/aide-afx-install.html"
     - title: 데이터 컴퓨팅 노드 설치
-      url: "/install-setup/deploy-hardware.html"
-    - title: 케이블 요구 사항 검토
-      url: "/install-setup/cable-overview.html"
-    - title: 케이블 hardware
-      url: "/install-setup/cable-hardware.html"
-    - title: 시스템 전원 켜기
-      url: "/install-setup/power-on-hardware.html"
+      entries:
+      - title: 워크플로 설치
+        url: "/install-dcn/install-workflow.html"
+      - title: 하드웨어 설치 요구 사항 검토
+        url: "/install-dcn/install-setup-requirements.html"
+      - title: 설치 준비
+        url: "/install-dcn/prepare-hardware.html"
+      - title: 데이터 컴퓨팅 노드 설치
+        url: "/install-dcn/deploy-hardware.html"
+      - title: 케이블 요구 사항 검토
+        url: "/install-dcn/cable-overview.html"
+      - title: 케이블 hardware
+        url: "/install-dcn/cable-hardware.html"
+      - title: 시스템 전원 켜기
+        url: "/install-dcn/power-on-hardware.html"
+- title: 타사 서버에 AIDE 소프트웨어 설치
+  url: "/install-setup/install-aide-as-software.html"
 - title: AIDE 시스템을 설정하세요
   entries:
   - title: AFX 클러스터를 사용하여 AIDE를 설정합니다

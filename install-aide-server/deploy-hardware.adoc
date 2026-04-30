@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/deploy-hardware.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, hardware, deploy, mde, third-party servers, cabinet, rail kit, bezel, cable management 
+summary: 레일 키트를 설치하고 캐비닛에 데이터 컴퓨팅 노드를 고정하는 방법을 알아보십시오. 
+---
+= AI Data Engine용 타사 서버 설치
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+캐비닛에 타사 서버를 설치하고 고정합니다.
+
+타사 서버의 경우 설치 지침은 특정 서버 모델의 설치 설명서를 참조하십시오.
+
+.다음 단계
+타사 서버를 설치한 후에는 link:cable-hardware.html["AIDE용 데이터 컴퓨팅 노드 케이블 연결"].

@@ -1,0 +1,188 @@
+---
+sidebar: sidebar 
+permalink: install-setup/install-aide-as-software.html 
+keywords: install, setup, mde, metadata engine, byos, third-party, rhel, ontap, aide 
+summary: AIDE 설치 번들을 사용하여 RHEL 9.7을 실행하는 타사 서버에 AI Data Engine Metadata Engine을 설치하십시오. 
+---
+= 타사 서버에 AI Data Engine software 설치
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Red Hat Enterprise Linux(RHEL) 9.7을 실행하는 타사 서버에 AI Data Engine(AIDE) 소프트웨어를 설치하십시오. 이 배포 옵션을 사용하면 ONTAP이 AIDE 소프트웨어 스택을 계속 오케스트레이션하는 동안 사용자 인프라에서 AIDE를 실행할 수 있습니다.
+
+타사 서버의 AI Data Engine software는 NetApp에서 제공하는 데이터 컴퓨팅 노드 어플라이언스 기반 AIDE 배포와 Metadata Engine 기능 동등성을 제공합니다. 이 배포 옵션에서는 GPU 및 AI 추론 워크로드가 아직 지원되지 않습니다.
+
+link:../install-aide-server/install-workflow.html["타사 서버 설치"]을(를) 완료한 후 link:../install-setup/cluster-setup-afx.html["ONTAP에서 컴퓨팅 클러스터 생성"]을(를) 수행하기 전에 이 절차를 완료하십시오.
+
+
+
+== 설치 준비
+
+타사 서버에 AI Data Engine(AIDE)을 설치하기 전에 다음 사항을 확인하십시오.
+
+.네트워크 분리 권장 사항을 이해하고 있습니다
+AIDE 배포는 서로 다른 목적을 수행하는 두 개의 격리된 네트워크를 사용합니다.
+
+* *데이터 네트워크*: 호스트 관리 액세스, AIDE API 액세스, 다운로드, DNS, NTP 및 기타 라우팅된 통신을 위한 외부 연결을 제공합니다.
+* *클러스터 네트워크*: ONTAP과 컴퓨팅 노드 간의 내부 통신 경로를 제공합니다. 이 네트워크는 라우팅이 불가능하며 데이터 네트워크와 격리되어야 합니다.
+
+
+라우팅 충돌 및 내부 클러스터 트래픽과 외부 데이터 트래픽 간의 의도하지 않은 액세스를 방지하려면 이러한 네트워크 경로 간에 엄격한 분리를 유지하십시오.
+
+운영체제 업데이트, 패치 및 AIDE 소프트웨어 업데이트를 받으려면 인터넷 또는 올바른 서버에 연결할 수 있는 방법이 필요합니다. 데이터 네트워크가 이러한 작업을 위해 서버나 인터넷에 연결할 수 없도록 구성된 경우, 관리 서버 및 AIDE 작업을 위한 세 번째 관리 네트워크가 필요할 수 있습니다.
+
+.환경 필수 조건이 충족되었습니다.
+* ONTAP AFX 클러스터에서 ONTAP 9.18.1 이상이 실행 중입니다
+* 최소 하드웨어 요구 사항(CPU, 메모리, NIC, 스토리지)을 충족하는 서버가 정확히 3대 실행 중입니다
+* 각 서버에 Red Hat Enterprise Linux(RHEL) 9.7이 설치되어 있습니다
+
+
+.네트워크 계획이 결정되었습니다
+* 외부(클러스터 외) 호스트 네트워킹은 NetworkManager를 사용하여 구성됩니다
+* 외부 유지 관리 인터페이스는 고정 IP 주소, 기본 게이트웨이 경로 및 https://www.redhat.com/en/blog/configure-hostname-linux["정적 호스트 이름 구성됨"^]
+* https://www.redhat.com/en/blog/chrony-time-services-linux["외부 유지 관리 인터페이스에 대해 DNS 및 NTP 시간 동기화가 구성됩니다"^]
+* AIDE에서 사용할 서버 인터페이스를 선택했습니다.
+* 선택한 인터페이스 중 클러스터 연결용 인터페이스와 데이터 연결용 인터페이스를 구분했습니다
+* 클러스터 연결 인터페이스는 AFX 클러스터 스위치에 연결됩니다.
+* 데이터 대면 인터페이스는 데이터 네트워크 스위치에 연결됩니다.
+* 노드 검색을 위해 클러스터 스위치에 VLAN-40에 대한 네트워크 액세스가 구성되어 있습니다
+* 클러스터 네트워크는 데이터 네트워크와 격리되어 있으며 데이터 네트워크로 라우팅되지 않습니다.
+* 추가 네트워크 연결은 지원되지 않습니다
+* 관리 액세스와 AIDE API 액세스 모두 외부 네트워크 연결을 사용합니다
+
+
+.액세스 및 소프트웨어를 사용할 수 있습니다
+* NetApp 지원 사이트(NSS)에 대한 액세스 권한이 있습니다
+*  `aide-setup` 명령에 사용할 수 있는 DNS 네임 서버 주소가 있습니다.
+
+
+
+NOTE: 기본 Metadata Engine 전용 배포에는 GPU 드라이버가 필요하지 않습니다.
+
+
+NOTE: 타사 서버를 배포하는 경우 운영 체제 보안, 패치, 방화벽 구성, SELinux 적용 및 SSH 강화에 대한 책임은 전적으로 사용자에게 있습니다. NetApp은 운영 체제용 보안 패치를 제공하지 않습니다.
+
+
+
+== 1단계: 각 노드에 설치 번들 다운로드
+
+NetApp 지원 사이트(NSS)에서 AIDE 소프트웨어 RPM 및 컨테이너 이미지 tar 파일을 각 타사 서버에서 직접 다운로드하거나 NetApp 지원 사이트에 액세스할 수 있는 점프 호스트를 사용하여 다운로드하십시오.
+
+.단계
+. NetApp 지원 사이트( https://mysupport.netapp.com["mysupport.netapp.com"^])에 접속하세요.
+. *Downloads*로 이동하세요.
+. "AI Data Engine"을 검색하세요.
+. NetApp 담당자가 제공한 타사 서버의 Metadata Engine 릴리스 이름을 입력하십시오.
+.  `wget` 또는 선호하는 다운로드 방법을 사용하여 각 서버에 이러한 파일을 다운로드하십시오.
++
+** `netapp-aide.rpm`
+** `netapp-aide-images.tar`
+
+
+
+
+
+
+== 2단계: 각 노드에서 번들 무결성 확인
+
+다운로드 후 각 타사 서버에서 번들 체크섬을 확인하십시오.
+
+.단계
+. 제공된 체크섬을 사용하여 두 파일의 번들 무결성을 확인하십시오.
++
+[source, bash]
+----
+sha256sum netapp-aide.rpm
+sha256sum netapp-aide-images.tar
+----
+. 다운로드 페이지에 제공된 체크섬 파일과 출력을 비교하십시오.
+
+
+
+IMPORTANT: 설치 전에 각 노드에서 두 파일의 SHA-256 체크섬을 확인하십시오.
+
+
+
+== 3단계: 각 노드에 RPM을 설치하고 aide-setup을 실행합니다
+
+컨테이너 이미지를 추출하고, AIDE RPM 패키지를 설치한 다음, 각 타사 서버에서 `aide-setup`를 실행합니다. 설치 프로그램은 자동화된 사전 검사, 호스트 구성 및 AIDE 소프트웨어 배포를 수행합니다.
+
+.단계
+. 권한 있는 사용자로 첫 번째 타사 서버에 로그인하십시오.
+. 컨테이너 이미지에 필요한 디렉토리를 생성하십시오.
++
+[source, bash]
+----
+mkdir -p /var/lib/rancher/rke2/agent/images/
+----
+. 컨테이너 이미지 tar 파일을 디렉터리에 압축 해제합니다.
++
+[source, bash]
+----
+tar -xf netapp-aide-images.tar -C /var/lib/rancher/rke2/agent/images/
+----
++
+
+CAUTION: 압축 해제된 파일 외에 다른 파일이  `/var/lib/rancher/rke2/agent/images/` 디렉토리에 저장되지 않도록 하십시오.
+
+.  `netapp-aide` RPM을 설치합니다.
++
+[source, bash]
+----
+sudo dnf install netapp-aide.rpm
+----
+.  `dnsmasq` 패키지를 설치하세요:
++
+[source, bash]
+----
+sudo dnf install dnsmasq
+----
+. 내부 및 외부 네트워크 인터페이스를 식별하십시오.
++
+[source, bash]
+----
+ip address show
+----
++
+** 외부 인터페이스의 경우 해당 IP 주소가 구성된 포트만 사용하십시오.
+** 내부 인터페이스 포트는 구성하지 _않아야_ 합니다
+
+
+.  `aide-setup` 명령에 사용할 DNS 네임 서버 IP 주소를 확인하십시오.
+.  `aide-setup`를 실행하여 클러스터 및 외부 인터페이스를 구성합니다.
++
+[source, bash]
+----
+sudo /usr/sbin/aide-setup --internal_interface_primary_port <iface1> --internal_interface_secondary_port <iface2> --external_interface <external-iface> --dns_nameserver <dns-ip-1> --dns_nameserver <dns-ip-2> --overwrite_config
+----
++
+**  `--internal_interface_primary_port` 및  `--internal_interface_secondary_port`에 클러스터 연결 인터페이스를 사용하십시오. 해당 인터페이스를 AFX 클러스터 스위치에 연결하십시오.
+** 호스트 유지 관리 인터페이스를 사용하십시오 `--external_interface`. 이 인터페이스에는 구성된 IP 주소가 있어야 합니다.
+**  `--dns_nameserver` 옵션을 사용하여 하나 이상의 DNS 네임 서버 IP 주소를 제공하십시오.
++
+
+CAUTION: ONTAP에서 사용되는 데이터를 보호하기 위해 클러스터 연결 인터페이스에서 동등한 보안 제어를 유지하십시오. 클러스터 네트워크 경로와 외부 유지 관리 네트워크 경로를 분리하여 액세스 위반을 발생시키는 방식으로 데이터가 해당 채널 간에 이동하지 않도록 하십시오.
+
+
+
+. 사전 점검 출력을 검토하십시오. 계속 진행하기 전에 하드웨어 구성 규정 준수 오류가 보고되지 않았는지 확인하십시오.
++
+성공적으로 완료되면 다음 메시지가 표시됩니다. `AIDE is successfully configured for this node.`
+
+. ONTAP에서 노드를 검색할 수 있는지 확인하십시오. ONTAP CLI에서 다음 명령을 실행하십시오.
++
+[source, cli]
+----
+dcn cluster node show -membership available
+----
+. 나머지 두 개의 타사 서버 각각에 대해서도 이 단계를 반복하십시오.
+
+
+
+NOTE: 각 노드는 `aide-setup` 완료 후 ONTAP에 자체 일련 번호, UUID 및 링크 로컬 주소를 알립니다.
+
+.다음 단계
+타사 서버에 AIDE 소프트웨어를 설치한 후 ONTAP System Manager에 로그인하고 link:../install-setup/cluster-setup-afx.html["AFX 클러스터를 사용하여 AIDE를 설정합니다"] 워크플로에 따라 컴퓨팅 클러스터를 생성하고, IP 주소를 할당하고, 연결을 활성화하십시오.
