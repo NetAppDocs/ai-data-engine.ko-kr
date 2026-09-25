@@ -871,7 +871,6 @@
   <block id="7dbe065509bb17277c7b17f3766f97be" category="list-text">대시보드에서 콜드, 오래된 데이터 또는 중복 데이터의 비율이 가장 높은 데이터 소유자를 파악한 다음, 조사 보기에서 소유자 또는 그룹별로 필터링하여 정책에 따라 결과를 검토하고 관리하십시오.</block>
   <block id="482723983a4f2af954e36ff41e567451" category="inline-link-macro">알려진 제한 사항</block>
   <block id="34e34c0debc388181c3934f84b977ddd" category="list-text"><block ref="34e34c0debc388181c3934f84b977ddd" category="inline-link-macro-rx"></block></block>
-  <block id="e72c60c273700856ad0eeb853a353e52" category="sidebar">AI Data Engine은 NetApp 시스템에 저장된 비정형 데이터에 대한 가시성을 제공합니다. 이를 활용하여 스토리지 최적화 기회를 파악하고, 데이터를 조사하고, 라이프사이클 정책을 시행할 수 있습니다.</block>
   <block id="ed67b8aec97dcec019f1b2972d70f5af" category="sidebar">AI Data Engine 문서</block>
   <block id="0416d02572f9d563fa4967178dc5c5fb" category="sidebar">AI Data Engine 설명서에는 AI Data Engine을 배포하고, 데이터 소스를 연결하고, 스토리지 최적화, 메타데이터 조사 및 데이터 거버넌스를 위해 AI Data Engine을 사용하는 방법이 나와 있습니다.</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하기</block>
@@ -892,4 +891,5 @@
   <block id="6b2443d2529b7b19a67154f7a04c9877" category="sidebar">AIDE 대시보드로 스토리지 상태 평가</block>
   <block id="4bd61438e659088dded1d69964caccb1" category="sidebar">정책 및 조치 관리</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">릴리스 노트</block>
+  <block id="ac219e2fd9f167e916107df50eb88fad" category="sidebar">AI Data Engine은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스로, 연결된 시스템을 스캔하고 메타데이터 카탈로그를 구축하며 스토리지 최적화 및 대규모 데이터 관리를 위한 가시성과 툴을 제공합니다.</block>
 </blocks>
