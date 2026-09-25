@@ -1,0 +1,60 @@
+---
+indexpage:
+  title: AI Data Engine 문서
+  summary: AI Data Engine 설명서에는 AI Data Engine을 배포하고, 데이터 소스를 연결하고, 스토리지 최적화, 메타데이터
+    조사 및 데이터 거버넌스를 위해 AI Data Engine을 사용하는 방법이 나와 있습니다.
+  keywords: ai data engine, aide, storage optimization, investigation, policies, data
+    governance, NetApp Console
+  lead: AI Data Engine은 NetApp 시스템에 저장된 비정형 데이터에 대한 가시성을 제공합니다. 이를 활용하여 스토리지 최적화 기회를
+    파악하고, 데이터를 조사하고, 라이프사이클 정책을 시행할 수 있습니다.
+  tiles:
+  - title: 시작하기
+    links:
+    - title: AI Data Engine에 대해 알아보십시오
+      url: "/get-started/learn-about.html"
+    - title: AI Data Engine 아키텍처
+      url: "/get-started/architecture.html"
+    - title: 빠른 시작
+      url: "/get-started/quick-start.html"
+    - title: 스토리지 최적화 워크플로를 살펴보십시오
+      url: "/get-started/storage-optimization-workflows.html"
+  - title: 배포
+    links:
+    - title: 배포 개요
+      url: "/deploy/deployment-overview.html"
+    - title: AIDE 요구 사항
+      url: "/deploy/aide-requirements.html"
+    - title: AIDE Lite 배포
+      url: "/deploy/deploy-aide-lite.html"
+    - title: AIDE Enterprise 배포
+      url: "/deploy/deploy-enterprise.html"
+  - title: 데이터 탐색
+    links:
+    - title: 데이터 소스 연결
+      url: "/data-sources/connect-data-source.html"
+    - title: 데이터 소스 관리
+      url: "/data-sources/manage-data-sources.html"
+    - title: 대시보드에서 스토리지 활용도 평가
+      url: "/investigate/understand-dashboard.html"
+    - title: 데이터를 조사합니다
+      url: "/investigate/investigate-data.html"
+    - title: 필터 사용
+      url: "/investigate/use-filters.html"
+    - title: 데이터에 대한 조치 수행
+      url: "/investigate/take-actions.html"
+  - title: 정책 및 조치
+    links:
+    - title: 정책 만들기
+      url: "/policies/create-policy.html"
+    - title: 정책 관리
+      url: "/policies/manage-policies.html"
+  - title: 관리
+    links:
+    - title: 사용자 및 역할 관리
+      url: "/administer/manage-users-roles.html"
+    - title: 데이터 임계값 구성
+      url: "/administer/configure-settings.html"
+    - title: 새로운 소식
+      url: "/release-notes/whats-new.html"
+    - title: 알려진 제한 사항
+      url: "/release-notes/known-limitations.html"

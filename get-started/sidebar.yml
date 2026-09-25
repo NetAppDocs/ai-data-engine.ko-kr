@@ -1,0 +1,12 @@
+---
+section: get-started
+title: 시작하기
+entries:
+- title: AIDE에 대해 알아보십시오
+  url: "/get-started/learn-about.html"
+- title: AIDE 아키텍처
+  url: "/get-started/architecture.html"
+- title: 빠른 시작
+  url: "/get-started/quick-start.html"
+- title: 스토리지 최적화 워크플로를 살펴보십시오
+  url: "/get-started/storage-optimization-workflows.html"

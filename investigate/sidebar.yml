@@ -1,0 +1,18 @@
+---
+section: investigate
+title: 데이터 조사
+entries:
+- title: AIDE 대시보드로 스토리지 상태 평가
+  url: "/investigate/understand-dashboard.html"
+- title: 데이터를 조사합니다
+  url: "/investigate/investigate-data.html"
+- title: 비정형 데이터 조사
+  url: "/investigate/investigate-unstructured.html"
+- title: 정형 데이터 조사
+  url: "/investigate/investigate-structured.html"
+- title: 디렉토리 조사
+  url: "/investigate/investigate-directories.html"
+- title: 필터 작업
+  url: "/investigate/use-filters.html"
+- title: 데이터에 대한 조치 수행
+  url: "/investigate/take-actions.html"

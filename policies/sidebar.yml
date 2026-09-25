@@ -1,0 +1,8 @@
+---
+section: policies
+title: 정책 및 조치 관리
+entries:
+- title: 정책 만들기
+  url: "/policies/create-policy.html"
+- title: 정책 관리
+  url: "/policies/manage-policies.html"

@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-unstructured.html 
+keywords: investigate, unstructured, cold data, stale data, last accessed, file size, file owner, reclaimable storage, NFS, SMB, CIFS 
+summary: 메타데이터 필터를 사용하여 NFS 및 SMB/CIFS 볼륨에서 파일을 비활성, 오래된 또는 대용량 파일로 찾아 분류한 다음 결과를 검토하고 적절한 조치를 취하거나 필터 기준을 재사용 가능한 정책으로 저장할 수 있습니다. 
+---
+= AI Data Engine에서 비정형 데이터 조사
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+파일 기반 스토리지 용량이 예기치 않게 증가할 경우, 마지막 액세스 시간, 파일 크기 및 소유자별로 필터링하여 용량을 차지하는 파일을 찾을 수 있습니다. 예를 들어, 스토리지 관리자는 1년 이상 액세스되지 않은 수 테라바이트의 VM 스냅샷을 식별하고 이를 보관, 삭제 또는 유지할지 여부를 평가할 수 있습니다.
+
+.시작하기 전에
+* 하나 이상의 데이터 소스가 연결되어 스캔 중이어야 합니다. link:../data-sources/connect-data-source.html["데이터 소스 연결"]을 참조하십시오.
+
+
+
+
+[[find-cold-or-stale-files-by-last-access-time]]
+== 마지막 액세스 시간을 기준으로 콜드 또는 오래된 파일 찾기
+
+날짜 기반 필터를 사용하여 조직의 오래된 데이터 임계값 내에 액세스되지 않은 파일을 식별하세요. 임계값은 *구성* > *설정*에서 구성할 수 있습니다. link:../administer/configure-settings.html["콜드 및 오래된 데이터 임계값 구성"]을 참조하세요.
+
+.단계
+. AI Data Engine UI에서 *조사*를 선택합니다.
++
+기본적으로 '비정형' 탭이 선택되어 있습니다.
+
+. *필터 추가*를 선택한 다음 *마지막 접속*을 선택합니다.
+. 예를 들어 *1년 이상*과 같이 콜드 데이터 임계값에 맞는 시간 범위를 선택하십시오.
+. 가장 많은 소비자를 집중적으로 살펴보려면 *필터 추가*를 다시 선택한 다음 *파일 크기*를 선택하고 최솟값(예: *>1 GiB*)을 설정합니다.
++
+적용된 필터는 필터 바 아래에 태그로 표시됩니다. 필터를 추가할 때마다 결과 표와 항목 수가 업데이트됩니다.
+
+
+
+사용 가능한 필터의 전체 목록을 보려면 link:use-filters.html["필터 작업"]을 참조하십시오.
+
+
+
+[[group-results-by-owner]]
+== 소유자별 그룹 결과
+
+소유자별로 그룹화하면 조치를 취하기 전에 누가 가장 많은 잠재적 복구 가능 데이터를 보유하고 있는지 파악하는 데 도움이 됩니다.
+
+.단계
+. 필터를 적용한 후 *보기 기준* 드롭다운을 선택합니다.
+. *소유자*를 선택합니다.
++
+검색 결과는 소유자별 총 파일 수와 크기를 표시하도록 재구성됩니다. 소유자 행을 선택하면 확장되어 해당 소유자의 개별 파일을 볼 수 있습니다.
+
+
+
+
+
+[[review-file-details]]
+== 파일 세부 정보 검토
+
+파일 행을 선택하여 세부 정보 패널을 열고 작업을 진행하기 전에 파일이 의도한 범위와 일치하는지 확인하십시오.
+
+상세 정보 패널에는 파일의 시스템, 저장소, 파일 소유자, 적용된 태그 또는 정책이 표시됩니다. 보관 또는 삭제하기 전에 시스템과 소유자를 확인하십시오.
+
+
+
+[[act-on-results-or-save-as-a-policy]]
+== 결과를 바탕으로 조치를 취하거나 정책으로 저장합니다.
+
+수정할 파일을 확인한 후 결과 표에서 확인란을 사용하여 하나 이상의 항목을 선택하십시오.
+
+* 즉각적인 조치를 취하려면 link:take-actions.html["데이터에 대한 조치를 취하십시오"]을 참조하십시오.
+* 지속적인 모니터링을 위한 필터 기준을 저장하려면 필터 도구 모음에서 *정책 생성*을 선택하십시오. 을 참조하십시오.link:../policies/create-policy.html["정책 만들기"]
+
+
+비정형 탭에서 필터링된 결과를 다운로드하려면 image:icon_download_file.png["다운로드"]을 선택합니다.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:use-filters.html["필터 작업"]
+* link:take-actions.html["데이터에 대한 조치를 취하십시오"]
+* link:../policies/create-policy.html["정책 만들기"]
+* link:../get-started/storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
+* link:understand-dashboard.html["대시보드에서 스토리지 활용도 평가"]
+

@@ -1,0 +1,12 @@
+---
+section: deploy
+title: 배포
+entries:
+- title: AIDE 배포에 대해 알아보기
+  url: "/deploy/deployment-overview.html"
+- title: AIDE 요구 사항
+  url: "/deploy/aide-requirements.html"
+- title: AIDE Lite 배포
+  url: "/deploy/deploy-aide-lite.html"
+- title: AIDE Enterprise 배포
+  url: "/deploy/deploy-enterprise.html"

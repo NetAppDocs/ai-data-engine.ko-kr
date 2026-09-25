@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-data.html 
+keywords: investigate, metadata, unstructured, structured, directories, cold data, stale data, permissions, reclaimable storage 
+summary: 조사 보기를 사용하여 연결된 시스템 전체의 파일 기반 저장소, 데이터베이스 테이블 및 디렉터리 구조를 탐색할 수 있습니다. 찾고자 하는 내용에 해당하는 탭을 선택하십시오. 
+---
+= AI Data Engine에서 데이터 조사
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 사용량을 파악하거나, 무분별하게 증가하는 데이터베이스 테이블을 식별하거나, 액세스 권한이 지나치게 허용된 디렉터리를 찾아야 할 때 메타데이터 필터를 사용하여 연결된 모든 시스템의 데이터를 조사하십시오.
+
+
+
+[[choose-a-starting-point]]
+== 시작점을 선택하십시오
+
+왼쪽 탐색 메뉴에서 *조사*를 선택하여 보기를 엽니다. 대시보드 _재활용 가능한 스토리지별 상위 데이터 리소스_ 테이블의 *조사*를 선택하여 조사 보기를 열 수도 있습니다. 이 경우 해당 리소스에 대한 필터가 자동으로 적용됩니다.
+
+*조사*는 세 개의 탭으로 구성되어 있습니다. 조사하려는 데이터 유형에 맞는 탭을 선택하십시오.
+
+[cols="1,2,1"]
+|===
+| 탭 | 사용 시기 | 추가 정보 
+
+
+| *비정형* | NFS 및 SMB/CIFS 볼륨에서 콜드, 오래된 또는 중복된 파일 기반 데이터를 찾습니다. | link:investigate-unstructured.html["비정형 데이터 조사"] 
+
+
+| *정형 데이터* | 저장 공간을 과도하게 차지하는 크기가 크거나 사용되지 않는 데이터베이스 테이블을 식별합니다. | link:investigate-structured.html["정형 데이터 조사"] 
+
+
+| *디렉토리* | 디렉터리 수준 권한을 감사하고 광범위하게 접근 가능한 경로를 찾습니다. | link:investigate-directories.html["디렉토리 조사"] 
+|===
+페이지 상단의 요약 개수와 총 크기는 활성화된 탭을 반영하여 업데이트됩니다(예: "비정형(400M) | 5.7 PiB").
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:investigate-unstructured.html["비정형 데이터 조사"]
+* link:investigate-structured.html["정형 데이터 조사"]
+* link:investigate-directories.html["디렉토리 조사"]
+* link:use-filters.html["필터 작업"]
+* link:take-actions.html["데이터에 대한 조치를 취하십시오"]
+

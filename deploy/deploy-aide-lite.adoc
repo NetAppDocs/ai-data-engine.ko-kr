@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: deploy/deploy-aide-lite.html 
+keywords: deploy, install, lite, wizard, NetApp Console, deployment wizard, onboarding 
+summary: 배포 마법사를 사용하여 NetApp Console에서 AIDE Lite를 배포하십시오. 
+---
+= AI Data Engine Lite 배포
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+배포 마법사를 사용하여 NetApp Console에서 AIDE Lite를 배포하십시오. 마법사는 설치 위치 선택, 구성 크기 선택, 대상 호스트에서 설치 명령 실행 단계를 안내합니다.
+
+.시작하기 전에
+* NetApp Console에서 _조직 관리자_ 이상의 권한이 있습니다.
+* 설치 명령을 실행하려면 대상 호스트에 sudo(또는 root) 권한이 필요합니다.
+* 귀하의 환경은 link:aide-requirements.html["AIDE 요구 사항"]에 설명된 모든 필수 조건을 충족합니다.
+* NetApp Console 에이전트는  https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy["배포됩니다"^] AI Data Engine 호스트에서 접근 가능합니다. 설치 명령을 실행하려면 Console 에이전트 IP가 필요합니다.
+
+
+.단계
+. NetApp Console에서 *거버넌스* > *AI Data Engine*으로 이동합니다.
++
+AI Data Engine 랜딩 페이지가 나타납니다.
+
+. *AI Data Engine 배포*를 선택합니다.
+. *Lite* 배포 옵션을 선택하고 *다음*을 선택합니다.
+. 마법사에 표시된 미리 구성된 설치 명령을 편집기에 복사합니다.
+. 구성 크기를 선택하십시오:
++
+** *소형*: 최대 약 2억 개의 파일이 있는 환경에 권장됩니다.
+** *중간(기본값)*: 최대 약 10억 개의 파일이 있는 환경에 권장됩니다.
+** *대용량*: 최대 약 30억 개의 파일이 있는 환경에 권장됩니다.
++
+이 크기는 권장 기준치일 뿐, 절대적인 한계치는 아닙니다. 사용 환경이 이 범위를 벗어나는 경우 link:aide-requirements.html#flexible-sizing-lite["유연한 사이즈 가이드라인"]을 참조하십시오.
+
+
+
+. 소규모 또는 대규모 구성의 경우, 선택한 크기에 맞게 설치 명령을 조정하십시오. `--flavor <small|medium|large>`
+. 대상 호스트에서 필요한 구성 크기 조정을 적용하여 설치 명령을 실행하십시오.
++
+
+NOTE: 설치는 완료하는 데 약 45분이 소요됩니다. 시간 초과 및 재시도가 발생할 수 있으며, 이는 정상적인 현상입니다.
+
+. 안내 메시지가 나타나면 호스트 IP 주소와 사용자 ID를 확인하여 설치를 계속하십시오.
+. 성공 화면이 나타나고 "AI Data Engine 배포되었습니다"라는 메시지가 표시될 때까지 진행 상황 화면을 모니터링하십시오.
+
+
+.결과
+AI Data Engine이 배포되어 NetApp Console에 연결되었습니다. 이제 link:../data-sources/connect-data-source.html["데이터 소스 연결"] 스캔을 시작할 수 있습니다.

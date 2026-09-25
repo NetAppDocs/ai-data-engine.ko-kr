@@ -1,0 +1,10 @@
+---
+section: data-sources
+title: 데이터 소스 연결
+entries:
+- title: 데이터 소스 연결
+  url: "/data-sources/connect-data-source.html"
+- title: 데이터 소스 관리
+  url: "/data-sources/manage-data-sources.html"
+- title: 스캔 상태 모니터링
+  url: "/data-sources/monitor-scanning-health.html"

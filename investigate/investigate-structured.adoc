@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-structured.html 
+keywords: investigate, structured, database, tables, schema, oversized, unused, DB server, table size, discovered time 
+summary: 연결된 데이터베이스 서버 전체에서 크기가 너무 크거나 사용되지 않는 데이터베이스 테이블을 찾은 다음, 해당 결과를 재사용 가능한 거버넌스 정책으로 저장합니다. 
+---
+= AI Data Engine에서 정형 데이터 조사
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터베이스 스토리지가 예기치 않게 증가할 경우, 테이블 메타데이터를 기준으로 필터링하여 크기가 과도하게 커진 테이블이나 처음 발견된 이후 활동이 없는 테이블을 찾을 수 있습니다. 예를 들어, 스토리지 관리자는 초기 스캔 이후 변경되지 않은 대형 테이블을 식별한 후 데이터베이스 소유자와 협의하여 해당 테이블이 여전히 필요한지 평가할 수 있습니다.
+
+.시작하기 전에
+* 하나 이상의 데이터베이스 데이터 소스가 연결되어 스캔 중이어야 합니다. link:../data-sources/connect-data-source.html["데이터 소스 연결"]을 참조하십시오.
+
+
+
+
+[[review-the-database-table-listing]]
+== 데이터베이스 테이블 목록을 검토합니다.
+
+.단계
+. AI Data Engine UI에서 *조사*를 선택합니다.
+. *정형* 탭을 선택합니다.
++
+이 테이블에는 데이터베이스 테이블 이름, 스키마, DB 서버, 감지된 시간, 테이블 차원(열 × 행) 및 테이블 크기가 표시됩니다.
+
+
+
+
+
+[[identify-oversized-or-unused-tables]]
+== 크기가 너무 크거나 사용되지 않는 테이블을 식별합니다.
+
+필터를 사용하여 복구 기회를 제공할 가능성이 가장 높은 테이블 목록으로 범위를 좁히십시오.
+
+.단계
+. *필터 추가*를 선택한 다음 *검색 시간*을 선택합니다.
+. 여러 스캔 주기 동안 존재해 온 테이블(예: 1년 이상 전에 처음 발견된 테이블)을 표시하도록 범위를 설정합니다.
+. 더 자세히 필터링하려면 *필터 추가*를 다시 선택하고 DB 서버 또는 스키마별로 필터링하여 특정 시스템에 집중하십시오.
++
+적용된 필터는 필터 바 아래에 태그로 표시됩니다. 필터를 추가할 때마다 결과가 업데이트됩니다.
+
+
+
+사용 가능한 필터의 전체 목록을 보려면 link:use-filters.html["필터 작업"]을 참조하십시오.
+
+
+
+[[review-table-details]]
+== 테이블 세부 정보 검토
+
+테이블 행을 선택하여 세부 정보 패널을 열고 해당 테이블이 복구 대상인지 평가하십시오.
+
+상세 패널에는 DB 서버, 스키마, 테이블 차원, 테이블 크기 및 감지된 시간이 표시됩니다. 이 정보를 사용하여 감지 이후 테이블이 커졌는지 또는 변경되지 않은 상태로 유지되는지 확인하십시오.
+
+
+NOTE: 데이터베이스 테이블에 대한 작업을 수행하기 전에 데이터베이스 소유자와 협의하여 해당 테이블이 더 이상 필요하지 않은지 확인하십시오.
+
+
+
+[[save-findings-as-a-policy]]
+== 결과를 정책으로 저장
+
+관심 있는 테이블을 식별하는 필터를 적용한 후, 지속적인 모니터링을 위해 기준을 저장하십시오.
+
+.단계
+. 필터 도구 모음에서 *정책 생성*을 선택합니다.
+. 보험 증권 양식을 작성하십시오. link:../policies/create-policy.html["정책 만들기"]을 참조하십시오.
+
+
+정형 데이터 탭에서 필터링된 결과를 다운로드하려면 image:icon_download_file.png["다운로드"]을 선택합니다.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:use-filters.html["필터 작업"]
+* link:../policies/create-policy.html["정책 만들기"]
+* link:../data-sources/connect-data-source.html["데이터 소스 연결"]
+* link:understand-dashboard.html["대시보드에서 스토리지 활용도 평가"]
+
