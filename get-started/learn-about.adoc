@@ -49,7 +49,7 @@ AI Data Engine은 다음과 같은 사용자를 위해 설계되었습니다.
 [[where-ai-data-engine-lives]]
 == AI Data Engine 있는 곳
 
-AI Data Engine은 NetApp Console의 *Governance > AI Data Engine*에서 액세스할 수 있습니다. 클라우드 계정의 가상 머신 또는 온프레미스 환경의 머신으로 사용자가 관리하는 Linux 인프라에 단일 VM 설치 방식인 AIDE Lite로 배포합니다. 대규모 환경에서 Kubernetes 기반의 고가용성이 필요한 경우 AIDE Enterprise를 대신 배포할 수 있습니다.
+AI Data Engine은 NetApp Console의 *AI 데이터 허브 > AI Data Engine*에서 액세스할 수 있습니다. AI Data Engine은 현재 비공개 미리 보기로 제공되고 있습니다. 액세스 권한을 요청하려면 NetApp 담당자에게 문의하십시오. AI Data Engine은 AIDE Lite(단일 VM 설치)로 배포할 수 있으며, 클라우드 계정의 가상 머신 또는 온프레미스 환경의 머신과 같이 사용자가 관리하는 Linux 인프라에 설치할 수 있습니다. 대규모 환경에서 Kubernetes 기반의 고가용성이 필요한 경우 AIDE Enterprise를 대신 배포할 수 있습니다.
 
 AI Data Engine은 NetApp ONTAP 및 StorageGRID 시스템뿐만 아니라 NFS, SMB/CIFS 또는 S3 프로토콜을 지원하는 NetApp 이외의 시스템에서도 데이터를 스캔합니다.
 

@@ -369,7 +369,6 @@
   <block id="65eacaaf3bea1fd7a8594828320cd9f6" category="list-text">귀하의 환경은 <block ref="0be0e04edd1e19a89ae931415ae02878" category="inline-link-macro-rx"></block>에 설명된 모든 필수 조건을 충족합니다.</block>
   <block id="c38a91b64338659be48390e7b59b98be" category="inline-link">배포됩니다</block>
   <block id="b2c5da1f5dc6f7356acb47cf3ba444d1" category="list-text">NetApp Console 에이전트는 <block ref="b73290be3504f0507d7e45d060da298b" category="inline-link-rx"></block> AI Data Engine 호스트에서 접근 가능합니다. 설치 명령을 실행하려면 Console 에이전트 IP가 필요합니다.</block>
-  <block id="174790ce4804262cdbb778690ee4a907" category="list-text">NetApp Console에서 *거버넌스* &gt; *AI Data Engine*으로 이동합니다.</block>
   <block id="48602d83d5d9910704adcce3b2ee67e6" category="paragraph">AI Data Engine 랜딩 페이지가 나타납니다.</block>
   <block id="5bb86b97d5261c3f0e5705b4f80cac36" category="list-text">*AI Data Engine 배포*를 선택합니다.</block>
   <block id="f365e3c1684ae4b1c44970f25e545b04" category="list-text">*Lite* 배포 옵션을 선택하고 *다음*을 선택합니다.</block>
@@ -474,7 +473,6 @@
   <block id="cd407958cd82f6304bcf61eaf827f40c" category="list-text">*스토리지 관리자*는 조직의 콜드 및 오래된 임계값에 맞는 파일을 보유한 데이터 소유자를 식별 및 모니터링하고, 중복 파일을 식별하고, 스토리지 최적화 기회를 평가해야 합니다.</block>
   <block id="ba9f66e96d3a72c260292e7e433d9c1e" category="list-text">스토리지 환경 전반에 걸쳐 어떤 정형 및 비정형 데이터가 존재하는지에 대한 중앙 집중식 보기가 필요한 *IT 운영 팀*.</block>
   <block id="f5d8c539c573d98ed75c16e6120b556e" category="section-title">AI Data Engine 있는 곳</block>
-  <block id="2e41d1b0867653660816d43d38a3d448" category="paragraph">AI Data Engine은 NetApp Console의 *Governance &gt; AI Data Engine*에서 액세스할 수 있습니다. 클라우드 계정의 가상 머신 또는 온프레미스 환경의 머신으로 사용자가 관리하는 Linux 인프라에 단일 VM 설치 방식인 AIDE Lite로 배포합니다. 대규모 환경에서 Kubernetes 기반의 고가용성이 필요한 경우 AIDE Enterprise를 대신 배포할 수 있습니다.</block>
   <block id="e3d3e027f48463eb78e548236f017140" category="paragraph">AI Data Engine은 NetApp ONTAP 및 StorageGRID 시스템뿐만 아니라 NFS, SMB/CIFS 또는 S3 프로토콜을 지원하는 NetApp 이외의 시스템에서도 데이터를 스캔합니다.</block>
   <block id="5195f9c28c95a19d82dbbab0c1b03be8" category="list-text"><block ref="5195f9c28c95a19d82dbbab0c1b03be8" category="inline-link-macro-rx"></block></block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="inline-link-macro">빠른 시작</block>
@@ -485,7 +483,6 @@
   <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">하나</block>
   <block id="a8f814495d9a5097386d4d0fa44d053b" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> 검토 요구사항</block>
   <block id="d95edcb83173c645e4cdae7d65d60d50" category="inline-link-macro">배포 모드에 대해 알아보기</block>
-  <block id="bc643586ebbdea3a67e8e78803edef1d" category="paragraph"><block ref="374da513b9cc4d9fde319e2e3de4220b" category="inline-link-macro-rx"></block> 및 <block ref="1fb19d6de740c7259fc64be5fec6d5ce" category="inline-link-macro-rx"></block>를 검토하여 AIDE Lite 또는 AIDE Enterprise 설치 여부를 결정하십시오.</block>
   <block id="aada29daee1d64ed0fe907043855cb7e" category="inline-image-macro">둘</block>
   <block id="5508a1321b4a833f86a54cc7821a3b51" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> AI Data Engine 배포</block>
   <block id="8b64721c44a2f53b46f63f848ac39d35" category="paragraph">NetApp Console에서 <block ref="f746162465c96a1adff24c92f0728c5e" category="inline-link-macro-rx"></block> 또는 <block ref="eb04f2a0df94baa820b9a7e6f474747f" category="inline-link-macro-rx"></block>를 배포합니다. 설정 페이지에서 설치 위치 및 구성 크기를 선택하고 설치 명령을 실행하는 과정을 안내합니다.</block>
@@ -686,7 +683,6 @@
   <block id="e8feacb52d9a8d1ca3dc8fece412de38" category="summary">환경 전반의 스토리지 상태를 평가하고, 잠재적으로 회수 가능한 스토리지가 집중된 위치를 파악하며, 어떤 시스템이나 데이터 소유자를 먼저 조사할지 결정합니다.</block>
   <block id="e51a89894bc2fbb0eac3aacc1ae7e58e" category="doc">AI Data Engine 대시보드로 스토리지 상태 평가</block>
   <block id="b943da8162c47c91e3486439e26e1301" category="paragraph">조사 대상을 결정하기 전에 스토리지 상태를 파악해야 합니다. 조직의 콜드 데이터 및 오래된 데이터 분류 기준에 부합하는 스토리지 용량이 얼마나 되는지, 그리고 이러한 범주에 속하는 데이터를 가장 많이 보유하고 있는 시스템이나 담당자는 누구인지 알아야 합니다. 예를 들어, 용량 부족 경고에 대응하는 스토리지 관리자는 스캔한 스토리지의 상당 부분이 콜드 데이터임을 확인한 후 가장 큰 영향을 미치는 시스템으로 이동하여 즉시 조사를 시작할 수 있습니다.</block>
-  <block id="c3f8d99caf13f1c9cc868c7e63ac0b27" category="paragraph">NetApp Console에서 *거버넌스* &gt; *AI Data Engine UI*를 선택합니다. 대시보드가 기본적으로 열립니다.</block>
   <block id="91e4a9de07cf0d0c9175eae1427f1f38" category="section-title">영향을 받는 스토리지 용량 파악</block>
   <block id="c8e00eaecbe5dcb031f4ca326e46a4c6" category="paragraph">요약 패널은 스캔한 환경 전체에서 문제의 규모를 보여줍니다.</block>
   <block id="7ef3152904e46ae7f94840efc09c3b92" category="list-text">*콜드 데이터*: 콜드 데이터 임계값(기본값: 1년) 내에 액세스되지 않은 스토리지입니다. 조직은 보존 및 관리 정책에 따라 이 데이터를 평가할 수 있습니다.</block>
@@ -787,7 +783,6 @@
   <block id="cb68685abc4007772bf80e880f6ac0b8" category="list-text">*영구 삭제*: 각 스캔 주기 후 추가 확인 없이 일치하는 모든 파일을 자동으로 영구 삭제합니다. 이 작업은 되돌릴 수 없습니다. 이 작업을 적용하기 전에 필터 기준이 정확한지, 그리고 식별된 파일을 삭제할 권한이 있는지 확인하십시오.</block>
   <block id="e1b7f70c1cf13a700c2cf801fe8ab552" category="section-title">조사에서 정책 만들기</block>
   <block id="238cdb076cf9e0d915750e9789485a70" category="list-text">삭제 또는 이메일 알림 작업을 연결하려면 _AI Data Engine administrator_ 역할이 있어야 합니다. _AI Data Engine viewer_ 역할은 모니터링 전용 정책만 생성할 수 있습니다.</block>
-  <block id="b2aa56915b8338c2ab4bb92754d8c8b0" category="list-text">NetApp Console에서 *거버넌스* &gt; *AI Data Engine* &gt; *조사*로 이동합니다.</block>
   <block id="4556be3d18976a94e35e9505a84ce0a8" category="list-text">정책 적용 대상이 될 파일을 식별하는 하나 이상의 필터를 적용합니다.</block>
   <block id="3c5d0d0d1c86fad21c867f867ba470c0" category="paragraph">예를 들어, *파일 형식* = .vmdk이고 *마지막 접속 시간* &gt; 365일입니다.</block>
   <block id="af8e50ebd71c84b70d4d016cc5af3ace" category="paragraph">결과표를 검토하여 필터 설정이 의도한 데이터 그룹화를 제대로 반영하는지 확인하십시오.</block>
@@ -892,4 +887,11 @@
   <block id="4bd61438e659088dded1d69964caccb1" category="sidebar">정책 및 조치 관리</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">릴리스 노트</block>
   <block id="ac219e2fd9f167e916107df50eb88fad" category="sidebar">AI Data Engine은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스로, 연결된 시스템을 스캔하고 메타데이터 카탈로그를 구축하며 스토리지 최적화 및 대규모 데이터 관리를 위한 가시성과 툴을 제공합니다.</block>
+  <block id="4e35cd7b03502a6d8f6b53e64e2a6e44" category="list-text">귀사는 NetApp Console에서 AI Data Engine 비공개 미리보기에 액세스할 수 있습니다. AI Data Engine을 배포할 수 있도록 NetApp 담당자에게 액세스 요청을 문의하십시오.</block>
+  <block id="f7fd830545827491ee3c01212013db34" category="list-text">NetApp Console에서 *AI 데이터 허브* &gt; *AI Data Engine*으로 이동합니다.</block>
+  <block id="40c66f79c77adffb04740604041ba2a5" category="admonition">AI Data Engine은 NetApp Console에서 비공개 미리 보기로 제공됩니다. AI Data Engine을 배포할 수 있도록 액세스를 요청하려면 NetApp 담당자에게 문의하십시오.</block>
+  <block id="c100ddb67434deb680f88b265641335a" category="paragraph">AI Data Engine은 NetApp Console의 *AI 데이터 허브 &gt; AI Data Engine*에서 액세스할 수 있습니다. AI Data Engine은 현재 비공개 미리 보기로 제공되고 있습니다. 액세스 권한을 요청하려면 NetApp 담당자에게 문의하십시오. AI Data Engine은 AIDE Lite(단일 VM 설치)로 배포할 수 있으며, 클라우드 계정의 가상 머신 또는 온프레미스 환경의 머신과 같이 사용자가 관리하는 Linux 인프라에 설치할 수 있습니다. 대규모 환경에서 Kubernetes 기반의 고가용성이 필요한 경우 AIDE Enterprise를 대신 배포할 수 있습니다.</block>
+  <block id="40f6a7f11f99c5214b0fc2a136471fde" category="paragraph"><block ref="374da513b9cc4d9fde319e2e3de4220b" category="inline-link-macro-rx"></block> 및 <block ref="1fb19d6de740c7259fc64be5fec6d5ce" category="inline-link-macro-rx"></block>를 검토하여 AIDE Lite 또는 AIDE Enterprise를 설치할지 여부를 결정하십시오. AI Data Engine은 NetApp Console에서 비공개 미리 보기로 제공됩니다. AI Data Engine을 배포할 수 있도록 액세스를 요청하려면 NetApp 담당자에게 문의하십시오.</block>
+  <block id="94d45305f4fc53040da39b42fa3d4f79" category="paragraph">NetApp Console에서 *AI 데이터 허브* &gt; *AI Data Engine UI*를 선택합니다. 대시보드가 기본적으로 열립니다.</block>
+  <block id="d25ee9a2e40107ed164395b3680690c6" category="list-text">NetApp Console에서 *AI 데이터 허브* &gt; *AI Data Engine* &gt; *조사*로 이동합니다.</block>
 </blocks>

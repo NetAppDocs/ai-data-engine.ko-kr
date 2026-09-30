@@ -36,6 +36,9 @@ AIDE Enterprise는 최대 약 10억, 30억, 60억 개의 파일을 처리할 수
 [[deployment-process]]
 == 배포 프로세스
 
+
+NOTE: AI Data Engine은 NetApp Console에서 비공개 미리 보기로 제공됩니다. AI Data Engine을 배포할 수 있도록 액세스를 요청하려면 NetApp 담당자에게 문의하십시오.
+
 NetApp Console은 AI Data Engine의 인프라를 프로비저닝하지 않습니다. 요구 사항을 충족하는 Linux 머신 또는 클러스터를 준비한 다음, NetApp Console에서 미리 생성된 설치 명령을 복사하여 대상 호스트에서 실행합니다. 이 명령은 런타임을 부트스트랩하고 AI Data Engine 스택을 자동으로 배포합니다. 설치 과정에서 설치 프로그램은 설치를 진행하기 전에 대상 호스트의 IP 주소와 사용자 ID를 확인하라는 메시지를 표시합니다.
 
 AIDE Lite 설치는 일반적으로 45분 이내에 완료됩니다. AIDE Enterprise 설치는 일반적으로 30분 이내에 완료됩니다. 설치 프로그램에는 구성 요소 시작 중 발생하는 일시적인 문제를 처리하기 위한 시간 초과 및 재시도 기능이 내장되어 있습니다.
