@@ -1,0 +1,363 @@
+---
+sidebar: sidebar 
+permalink: mcp/connect-ai-clients-mcp.html 
+keywords: mcp, governed ai access, claude code, claude desktop, cursor, opencode, ai client, mcp server, prompts, tags 
+summary: Claude Code, Claude Desktop, Cursor 또는 OpenCode를 AI Data Engine MCP 서버에 연결하고 샘플 프롬프트를 사용하여 파일 메타데이터를 검색하고 컬렉션의 파일에 태그를 지정하십시오. 
+---
+= AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Claude Code, Claude Desktop, Cursor 또는 OpenCode를 AI Data Engine(AIDE)용 모델 컨텍스트 프로토콜(MCP) 서버에 연결하면 액세스 권한이 있는 컬렉션에서 파일 메타데이터를 검색하고 파일에 태그를 지정할 수 있습니다.
+
+
+
+[[before-you-begin]]
+== 시작하기 전에
+
+.관리자 설정
+* 관리자가 link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"] 및 link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]에서 다음을 포함하여 설정을 완료했습니다:
++
+** 귀하에게  `AIDE Power Users` 앱 역할을 할당합니다.
+** 사용자를 포함하는 범위로 MCP용 컬렉션을 구성합니다. link:manage-data-collections.html#configure-a-collection-for-mcp["MCP용 컬렉션 구성"]을(를) 참조하십시오.
+** *MCP 설정*에서 *MCP 연결 활성화*를 켜십시오. 연결이 꺼져 있으면 AI 클라이언트는 어떤 컬렉션에도 연결할 수 없습니다.
+** AI 클라이언트의 리디렉션 URI를 AI Data Engine 애플리케이션에 추가하고 공개 클라이언트 흐름을 허용합니다. AI 클라이언트는 공개 클라이언트로 로그인하므로 클라이언트 암호가 필요하지 않습니다.
+
+
+
+
+.MCP 클라이언트 구성
+* 관리자로부터 MCP 클라이언트 구성을 받았습니다. 관리자는 NetApp Console에서 MCP용 컬렉션을 구성하여 이를 생성하고, *MCP 코드 스니펫 생성* 단계에서 MCP 서버 URL 또는 클라이언트별 스니펫을 복사하여 공유합니다. 여기에는 다음이 포함됩니다.
++
+** MCP 서버 URL은 다음과 같은 형식입니다. `\https://<mcp-server-host>/mcp/tools`.
+** Microsoft Entra ID 테넌트 ID입니다.
+** 클라이언트 ID는 Entra ID에 있는 AI Data Engine 애플리케이션의 애플리케이션(클라이언트) ID입니다.
+** AI 클라이언트가 요청하는 범위:
++
+*** `\https://<mcp-server-host>/mcp/tools/power_users`, 이는 애플리케이션 ID URI에  `/power_users`를 더한 것입니다.
+*** `offline_access` 클라이언트가 다시 로그인하라는 요청 없이 토큰을 갱신할 수 있도록 하기 위함입니다.
+
+
+** 작업하려는 컬렉션의 ID입니다.
+
+
+
+
+.네트워크 액세스
+* 귀하의 기기는 HTTPS를 통해 443번 포트로 MCP 서버에 접속할 수 있습니다. MCP 서버는 귀하의 네트워크에서 실행되므로 회사 네트워크 또는 VPN을 통해 연결하십시오. 또한 귀하의 기기는 다음을 수행할 수 있어야 합니다.
++
+** DNS를 통해 AIDE 클러스터 호스트 이름을 확인합니다.
+** 호스트가 제시하는 인증서를 신뢰하십시오. 인증서가 자체 서명된 경우, 해당 인증서를 장치에 신뢰할 수 있는 인증서로 설치하십시오.
+** Microsoft Entra ID 로그인으로 이동합니다 (`login.microsoftonline.com`).
+
+
+
+
+.AI 클라이언트
+* 지원되는 버전의 AI 클라이언트가 있습니다.
+
+
+
+
+[[validated-ai-clients]]
+== 검증된 AI 클라이언트
+
+이 페이지의 지침은 NetApp에서 검증한 AI 클라이언트인 Claude Code, Claude Desktop, Cursor 및 OpenCode를 다룹니다. 자세한 내용은 link:learn-about-mcp.html#validated-ai-clients["검증된 AI 클라이언트"]을(를) 참조하십시오.
+
+클라우드 제공업체의 서비스에서 네트워크로 연결하는 AI 클라이언트는 지원되지 않습니다. 예를 들어, AI 클라이언트에 내장되어 제공업체의 클라우드에서 호출되는 사용자 지정 커넥터는 네트워크의 MCP 서버에 연결할 수 없습니다. 대신 이 페이지의 구성 단계를 사용하십시오.
+
+
+
+[[check-your-configuration-before-you-paste-it]]
+== 붙여넣기 전에 구성을 확인하십시오
+
+AI 클라이언트에 코드 조각을 붙여넣기 전에 다음 사항을 확인하십시오:
+
+* 호스트는 클러스터 또는 서비스 IP 주소가 아닌 AIDE 클러스터 호스트 이름입니다.
+* URL은  `/mcp/tools`(으)로 끝나며 작업하려는 컬렉션의  `collection_id`을(를) 포함합니다.
+* 범위는  `\https://<mcp-server-host>/mcp/tools/power_users`이며, 이는 Application ID URI에  `/power_users`를 더한 것입니다.
+* 클라이언트 ID는 Entra ID에 있는 AI Data Engine 애플리케이션의 애플리케이션(클라이언트) ID입니다.
+
+
+
+
+[[connect-claude-desktop]]
+== Claude Desktop 연결
+
+
+NOTE: NetApp Console에서 연결 정보를 생성해도 AI 클라이언트가 연결되거나 유효성 검사가 수행되지 않습니다. 이러한 작업은 AI 클라이언트에서 완료하십시오.
+
+Claude Desktop은 사용자의 컴퓨터에서 실행되는 작은 도우미인  `mcp-remote`를 통해 AI Data Engine MCP 서버에 연결합니다.
+
+.시작하기 전에
+컴퓨터에 Node.js를 설치하십시오.  `mcp-remote` 도우미는 Node.js로 실행됩니다.
+
+.단계
+. Claude Desktop에서 구성 파일 `claude_desktop_config.json`을 엽니다. 기본적으로 해당 파일은 다음 위치 중 하나에 있습니다.
++
+** macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+** Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+
+. AI Data Engine MCP 서버를  `mcpServers` 아래에 추가하십시오. 자리 표시자를 관리자가 제공한 값으로 교체하십시오:
++
+[source, json]
+----
+{
+  "mcpServers": {
+    "netapp-ai-data-engine": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@<tested version>",
+        "https://<mcp-server-host>/mcp/tools?collection_id=<collection-id>",
+        "--static-oauth-client-info",
+        "{\"client_id\": \"<application-client-id>\"}",
+        "--static-oauth-client-metadata",
+        "{\"scope\": \"https://<mcp-server-host>/mcp/tools/power_users offline_access\"}",
+        "--disable-resource-parameter"
+      ]
+    }
+  }
+}
+----
++
+
+NOTE:  `--disable-resource-parameter` 인수를 유지하십시오. 이 인수가 없으면 Microsoft Entra ID에서  `AADSTS9010010` 오류와 함께 로그인 요청을 거부합니다.
+
+. 파일을 저장하고 Claude Desktop을 다시 시작하세요.
+. 브라우저가 열리면 Microsoft Entra ID 계정으로 로그인하고 동의 메시지가 나타나면 수락하십시오.
+. Claude Desktop에서 *커넥터*를 열고 AI Data Engine 서버가 해당 툴과 함께 나열되어 있는지 확인합니다.
+
+
+
+
+[[connect-claude-code]]
+== Claude Code 연결
+
+Claude Code는 AI Data Engine MCP 서버에 직접 연결합니다.
+
+.단계
+. AI Data Engine MCP 서버를 추가합니다. 자리 표시자를 관리자의 값으로 바꿉니다:
++
+[source, bash]
+----
+claude mcp add --transport http \
+  --client-id <application-client-id> \
+  --callback-port 8080 \
+  --scope user \
+  netapp-ai-data-engine "https://<mcp-server-host>/mcp/tools?collection_id=<collection-id>"
+----
++
+
+NOTE: 전달하지 마십시오 `--client-secret`. 클라이언트 애플리케이션은 공개 클라이언트입니다.
+
+. AI Data Engine 범위를 요청하려면 Claude Code 구성 파일을 열고  `netapp-ai-data-engine` 항목을 편집하십시오. 사용자 범위 항목은  `~/.claude.json`에 있습니다. 프로젝트 범위 항목은  `.mcp.json`에 있습니다.
++
+[source, json]
+----
+{
+  "mcpServers": {
+    "netapp-ai-data-engine": {
+      "type": "http",
+      "url": "https://<mcp-server-host>/mcp/tools?collection_id=<collection-id>",
+      "oauth": {
+        "clientId": "<application-client-id>",
+        "callbackPort": 8080,
+        "scopes": "https://<mcp-server-host>/mcp/tools/power_users offline_access",
+        "authServerMetadataUrl": "https://login.microsoftonline.com/<tenant-id>/v2.0/.well-known/openid-configuration"
+      }
+    }
+  }
+}
+----
+. Claude Code에서  `/mcp`을(를) 실행하고 Microsoft Entra ID 계정으로 로그인하십시오. 또는 셸에서  `claude mcp login netapp-ai-data-engine`을(를) 실행하십시오.
+.  `claude mcp list`을(를) 실행하고 AI Data Engine 서버가 연결된 것으로 표시되는지 확인하십시오.
+
+
+
+
+[[connect-cursor]]
+== 커서 연결
+
+Cursor는 AI Data Engine MCP 서버에 직접 연결합니다.
+
+.단계
+. Cursor에서 MCP 구성 파일 `mcp.json`을 엽니다. 모든 프로젝트에서 서버를 사용하려면  `~/.cursor/mcp.json`을(를) 엽니다. 현재 프로젝트에서만 사용하려면  `.cursor/mcp.json`을(를) 엽니다.
+. AI Data Engine MCP 서버를 추가합니다. 자리 표시자를 관리자의 값으로 바꿉니다:
++
+[source, json]
+----
+{
+  "mcpServers": {
+    "netapp-ai-data-engine": {
+      "url": "https://<mcp-server-host>/mcp/tools?collection_id=<collection-id>",
+      "auth": {
+        "CLIENT_ID": "<application-client-id>",
+        "scopes": [
+          "https://<mcp-server-host>/mcp/tools/power_users",
+          "offline_access"
+        ]
+      }
+    }
+  }
+}
+----
++
+
+NOTE: 이 파일에 베어러 토큰을 붙여넣지 마십시오. Cursor는 클라이언트 ID를 사용하여 로그인합니다.
+
+. 파일을 저장한 다음 Cursor를 다시 로드하세요.
+. *커서 설정* > *MCP*에서 AI Data Engine 서버에 대해 *연결*을 선택합니다.
+. 브라우저가 열리면 Microsoft Entra ID 계정으로 로그인하고 동의 메시지가 나타나면 수락하십시오.
+. *커서 설정* > *MCP*에서 AI Data Engine 서버가 활성화되어 있고 해당 툴이 나열되어 있는지 확인하십시오. 그렇지 않은 경우 *출력* > *MCP 로그*를 확인하십시오.
+
+
+
+
+[[connect-opencode]]
+== OpenCode 연결
+
+OpenCode는 AI Data Engine MCP 서버에 직접 연결합니다.
+
+.단계
+. AI Data Engine MCP 서버를 추가합니다. 자리 표시자를 관리자의 값으로 바꿉니다:
++
+[source, bash]
+----
+opencode mcp add netapp-ai-data-engine --global --url "https://<mcp-server-host>/mcp/tools?collection_id=<collection-id>"
+----
+. 클라이언트 애플리케이션을 추가하려면 프로젝트에서  `~/.config/opencode/opencode.json` 또는  `opencode.json` 파일을 열고  `netapp-ai-data-engine` 항목을 편집하십시오:
++
+[source, json]
+----
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "netapp-ai-data-engine": {
+        "type": "remote",
+        "url": "https://<mcp-server-host>/mcp/tools?collection_id=<collection-id>",
+        "oauth": {
+          "client_id": "<application-client-id>",
+          "scope": "https://<mcp-server-host>/mcp/tools/power_users offline_access"
+        }
+      }
+    }
+  }
+}
+----
++
+
+NOTE:  `oauth`을(를)  `false`(으)로 설정하지 말고, 이 파일에 클라이언트 암호를 추가하지 마십시오.
+
+. OpenCode에서  `/mcps`을(를) 실행하고 AI Data Engine 서버를 선택한 다음 브라우저가 열리면 Microsoft Entra ID 계정으로 로그인하십시오.
+.  `opencode mcp list`을(를) 실행하고 AI Data Engine 서버가 연결된 것으로 표시되는지 확인하십시오.
++
+ `needs authentication` 상태는 OpenCode에서 구성을 저장했지만 로그인을 완료하지 않았음을 의미합니다.
+
+
+
+
+
+[[what-you-can-do]]
+== 수행할 수 있는 작업
+
+연결 후 AI 클라이언트는  `get_collection`,  `search`,  `list_tags`,  `create_tag` 및  `tag_document`의 다섯 가지 툴을 사용할 수 있습니다. 연결은 MCP 서버 URL의 컬렉션으로 제한됩니다. 다른 컬렉션으로 작업하려면 해당 컬렉션의 연결 세부 정보를 사용하십시오. 각 툴이 수행하는 작업은 link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"]을(를) 참조하십시오.
+
+해당 툴은 고급 사용자 세션에서 사용할 수 있으며, 이를 위해서는  `AIDEPowerUsers`앱 역할과  `power_users`범위가 필요합니다.
+
+
+NOTE: 스캔한 모든 시스템과 볼륨을 검색하려면 *모든 파일* 컬렉션에 대한 연결 정보를 사용하십시오.
+
+AI 클라이언트는 파일 내용을 검색하거나, 파일을 추가, 삭제 또는 수정하거나, 데이터 소스를 변경하거나, 컬렉션을 생성할 수 없습니다.
+
+태그는 하나의 컬렉션에만 적용되는 것이 아니라 AI Data Engine 전체에 적용됩니다. 태그 이름을 잘못 입력하면 새 태그가 생성되며, 태그 이름은 대소문자를 구분합니다. 예를 들어,  `Finance` 및  `finance`는 서로 다른 태그입니다. 태그를 생성한 후에는 이름을 변경할 수 없습니다. 태그 이름 제한에 대해서는 link:../release-notes/known-limitations.html["알려진 제한 사항"]을(를) 참조하십시오.
+
+
+
+[[sample-prompts]]
+== 샘플 프롬프트
+
+자리 표시자를 사용자 환경의 값으로 바꾸십시오.
+
+
+
+[[search-metadata]]
+=== 메타데이터 검색
+
+* "검색 가능한 데이터 수집을 나열해 주세요."
+* "<collection name> 컬렉션에서 모든 PDF 파일을 찾으십시오."
+* "<collection name> 컬렉션에서 이름이  `<prefix>`(으)로 시작하는 파일을 찾으십시오."
+* "<collection name> 컬렉션에서 <owner>이(가) 소유한 파일을 나열합니다."
+* "<collection name> 컬렉션에 <file type> 파일이 몇 개 있습니까?"
+* "<collection name> 컬렉션에서  `<prefix>`이라는 이름의 파일의 경로, 크기 및 마지막 수정 날짜를 표시합니다."
+
+
+
+TIP: 파일 이름 접두사, 파일 형식 및 소유자를 기준으로 검색 필터를 사용할 수 있습니다. 크기, 날짜 또는 폴더별로 파일을 요청하는 경우 AI 클라이언트가 많은 결과를 살펴봐야 하므로 결과가 불완전할 수 있습니다.
+
+
+
+[[tag-files]]
+=== 태그 파일
+
+* "사용 중인 태그 목록과 각 태그가 적용된 파일 수를 알려주세요."
+* "<tag name> 태그를 생성하여 <file name>에 적용하십시오."
+* "마지막 검색 결과에 있는 파일에 <tag name> 태그를 적용하세요."
+* "<collection name> 컬렉션의 <file name>에서 태그 <tag name>을(를) 제거합니다."
+
+
+
+
+[[troubleshoot-connection-problems]]
+== 연결 문제 해결
+
+[cols="1,2"]
+|===
+| 문제 | 해결 
+
+
+| 브라우저 로그인이 오류 `AADSTS50011` 또는 다른 리디렉션 URI 오류로 인해 실패합니다. | 관리자에게 Entra ID의 AI Data Engine 애플리케이션의 *모바일 및 데스크톱 애플리케이션* 아래에 있는 *인증* 설정에 오류가 표시하는 정확한 리디렉션 URI를 추가하도록 요청하십시오. 클라이언트 구성의 포트는 등록된 URI와 일치해야 합니다. 
+
+
+| 오류 `AADSTS65001`가 발생하며 로그인에 실패합니다. | 동의가 부여되지 않았거나 클라이언트에 권한이 없습니다. 관리자에게 동의를 부여하거나 애플리케이션(클라이언트) ID를  `power_users` 범위에 대한 승인된 클라이언트 애플리케이션으로 추가하도록 요청하십시오. 
+
+
+| 오류 `AADSTS70011`로 인해 로그인에 실패합니다. | 범위 문자열이 일치하지 않습니다. 애플리케이션 ID URI에  `/power_users`을(를) 정확히 추가하여 사용하십시오(예:  `\https://<mcp-server-host>/mcp/tools/power_users`). 
+
+
+| Claude Code 또는 OpenCode가 보여줍니다 `needs authentication`. | 로그인합니다. Claude Code에서  `/mcp`을(를) 실행합니다. OpenCode에서  `/mcps`을(를) 실행합니다. 
+
+
+| Claude Desktop 로그인 시 오류가 발생하여 실패합니다 `AADSTS9010010`. |  `mcp-remote` 인수에  `--disable-resource-parameter`이(가) 포함되어 있는지 확인하십시오. 
+
+
+| AI 클라이언트는 로그인 직후에 수신합니다 `401 Unauthorized`. | Entra ID에서 v1 토큰을 발급했거나 테넌트 ID 또는 클라이언트 ID가 일치하지 않을 수 있습니다. 관리자에게 애플리케이션 매니페스트에서 `requestedAccessTokenVersion`이(가) `2`(으)로 설정되어 있는지, 그리고 AI Data Engine의 테넌트 ID 및 애플리케이션(클라이언트) ID가 올바른지 확인하도록 요청하십시오. 
+
+
+| AI 클라이언트는 수신합니다 `401 Unauthorized`. | 새 토큰을 받으려면 다시 로그인하십시오. 오류가 계속 발생하면 관리자에게 AI 클라이언트가  `power_users` 범위를 요청하는지, 토큰 대상이 AI Data Engine 애플리케이션의 애플리케이션(클라이언트) ID인지 확인해 달라고 요청하십시오. 
+
+
+| AI 클라이언트에 툴이 나열되지 않거나 태깅이 거부됩니다. | 관리자에게  `AIDEPowerUsers` 앱 역할을 보유하고 있는지, 그리고 AI 클라이언트가  `power_users` 범위를 요청하는지 확인해 달라고 요청하십시오. 고급 사용자 세션에는 이 두 가지 모두 필요합니다. 
+
+
+| AI 클라이언트가 TLS 또는 연결 오류를 보고합니다. | 장치가 AIDE 클러스터 호스트 이름을 해석하고 호스트가 제공하는 인증서를 신뢰하는지 확인하십시오. 인증서가 자체 서명된 경우 장치에 신뢰할 수 있는 인증서로 설치하십시오. link:prepare-mcp-host.html#make-the-host-reachable["클라이언트 컴퓨터에서 호스트에 접근할 수 있도록 설정하십시오."]을(를) 참조하십시오. 
+|===
+
+
+[[related-information]]
+== 관련 정보
+
+* link:learn-about-mcp.html["통제된 AI 액세스에 대해 알아보십시오"]
+* link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"]
+* link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]
+* link:manage-data-collections.html["데이터 수집 관리"]
+* link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]
+* link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"]
+* link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]
+* link:../release-notes/known-limitations.html["알려진 제한 사항"]
+

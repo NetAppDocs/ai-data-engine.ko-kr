@@ -1,0 +1,172 @@
+---
+sidebar: sidebar 
+permalink: deploy/single-node-prerequisites.html 
+keywords: single-node, prerequisites, disk space, firewall, k3s, ports, host preparation, block storage 
+summary: 액세스, 디스크 공간, 방화벽 규칙 및 운영 체제 패키지를 확인하여 AIDE 단일 노드 배포를 위한 Linux VM을 준비하십시오. 
+---
+= AI Data Engine 단일 노드 배포 필수 조건
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine(AIDE) 단일 노드 배포의 경우 Linux VM을 제공해야 합니다. 설치 프로그램은 k3s를 설치하고, AIDE 구성 볼륨에 로컬 hostPath 스토리지를 사용하며, 커널 매개변수, 호스트 디렉터리 및 Kubernetes 리소스를 구성합니다. 설치 명령을 실행하기 전에 액세스 및 툴, 여유 디스크 공간, 방화벽 규칙 및 운영 체제 패키지를 확인하여 VM을 준비하십시오.
+
+설치 명령을 실행하기 전에 VM이 다음 섹션의 요구 사항을 충족해야 합니다. VM 크기 조정, 지원되는 운영 체제 및 네트워크 포트에 대해서는 link:aide-requirements.html["AIDE 요구 사항"]을(를) 참조하십시오.
+
+
+
+[[access-and-tools]]
+== 액세스 및 툴
+
+* 설치 프로그램을 실행하려면 대상 가상 머신에 루트 또는 sudo 권한이 있어야 합니다.
+* 대상 호스트에는 bash 4.0 이상, curl 및 tar가 설치되어 있어야 합니다. macOS는 bash 3.2가 기본으로 설치되어 있으므로 지원되지 않습니다.
+* curl 또는 tar가 설치되어 있지 않은 경우, RHEL 기반 배포판에서는  `dnf install curl tar`를, Ubuntu에서는  `apt-get install curl tar`를 사용하여 설치하십시오.
+* 설치 프로그램은  `k3s`,  `helm`,  `kubectl` 및  `jq`를 자동으로 다운로드하고 부트스트랩합니다. VM에 이러한 툴을 설치할 필요는 없습니다. 설치 프로그램은 항상  `kubectl`의 자체 복사본을  `/opt/netapp/aide/.aide-installer-tools`에 다운로드하며 사용자의  `PATH`에 추가하지 않습니다.
+
+
+
+
+[[storage-type]]
+== 스토리지 유형
+
+AIDE 데이터 볼륨에는 NFS가 아닌 블록 스토리지를 사용하십시오. NFS 기반 스토리지는 성능 저하를 초래할 수 있습니다. 모든 배포 규모에서 NVMe SSD 또는 기타 솔리드 스테이트 스토리지를 사용하는 것이 좋습니다. 또한 스토리지는 link:aide-requirements.html#single-node-vm-sizes["AIDE 요구 사항"]의 해당 규모에 대한 IOPS 및 처리량을 충족해야 합니다.
+
+
+
+[[disk-space]]
+[[single-node-disk-space]]
+== 디스크 공간
+
+다음 표에 나열된 경로를 호스팅하는 각 파일 시스템에는 여유 공간이 필요합니다. 디스크를 공유하는 경로는 하나의 여유 공간 풀을 공유하므로 해당 경로들의 최소 여유 공간을 합산해야 합니다.
+
+단일 디스크에 모든 것이 호스팅되는 경우 최소 여유 공간은 65GB에 구성에 대한 AIDE 데이터 볼륨 크기를 더한 값입니다. 65GB 고정 최소값은  `/var/run`을(를) 제외하며, 이는 일반적으로  `tmpfs`이며 이 총계에 추가되지 않습니다:
+
+[cols="1,1"]
+|===
+| 크기 | 단일 디스크의 최소 여유 공간 
+
+
+| 소형 | 565 GB 
+
+
+| 중간 | 2,065 GB 
+
+
+| 대형 | 6,065 GB 
+|===
+경로가 서로 다른 마운트에 있는 경우, 각 마운트는 자신이 호스팅하는 경로에 대한 최소 요구 사항을 충족해야 합니다.  `--k3s-data-dir` 설치 프로그램 옵션을 사용하여 k3s 데이터 디렉터리를 이동하는 경우, k3s 최소 요구 사항은 새 위치에 적용됩니다.
+
+[cols="2,1,1,3"]
+|===
+| 경로 | 최소 | 권장 | 목적 
+
+
+| `/var/lib/rancher/k3s` | 20 GB | 20 GB | 컨테이너 이미지, containerd 스냅샷 및 내장 데이터베이스 
+
+
+| `/var/lib/kubelet` | 10 GB | 15 GB | Kubelet 상태, Pod 임시 저장소 및 `emptyDir` 볼륨 
+
+
+| `/var/log` | 10 GB | 10 GB | 컨테이너 출력 및 k3s 시스템 로그 
+
+
+| `/` | 25 GB | 50 GB | 운영 체제 패키지, k3s 바이너리 및 설치 툴 
+
+
+| `/var/run` | 1 GB | 2 GB | 소켓 및 프로세스 ID(일반적으로  `tmpfs`, 단일 디스크 총계에 포함되지 않음) 
+
+
+| `/var/lib/netapp/aide` | 소형: 500 GB; 중형: 2,000 GB; 대형: 6,000 GB | 최소값과 동일 | AIDE 데이터 볼륨 
+|===
+최소 크기 미만의 마운트는 사용하지 마십시오. 권장 크기 미만이거나 사용률이 85%를 초과하는 마운트는 kubelet이 여유 공간이 부족할 경우 파드를 강제로 제거할 수 있으므로 권장하지 않습니다.
+
+예를 들어, k3s 데이터, 로그 및 AIDE 데이터에 각각 전용 디스크가 있는 경우, 해당 마운트에 각각 최소 20GB, 10GB 및 구성에 대한 AIDE 데이터 최소 용량을 제공하십시오. 또한 운영 체제 및 바이너리를 위해  `/`에 최소 25GB의 여유 공간을 제공하고, kubelet 파일 시스템이  `/`가 아닌 경우 최소 10GB를 제공하십시오.
+
+
+
+[[firewall]]
+[[single-node-firewall]]
+== 방화벽
+
+* 설치 프로그램은  `\https://get.k3s.io`에서 k3s를,  `\https://get.helm.sh`에서 Helm을 다운로드합니다. 필요한 모든 아웃바운드 엔드포인트에 대해서는 link:aide-requirements.html#outbound-internet-access["AIDE 요구 사항"]의 아웃바운드 인터넷 액세스 섹션을 참조하십시오.
+* 호스트는 최소 1GbE 네트워크 연결을 지원해야 합니다(대규모 구축의 경우 10GbE 권장).
+* 환경에서 AI Data Engine 엔드포인트에 도달하기 위해 아웃바운드 프록시가 필요한 경우 link:configure-proxy.html["AI Data Engine용 프록시에 대해 알아보기"]를 참조하십시오. 프록시를 사용하여 배포하려면 link:deploy-aide-single-node-proxy.html["프록시를 사용하여 AI Data Engine을 단일 노드 배포로 배포"]를 따르십시오.
+* 설치 호스트는 AIDE 컨테이너 이미지 및 Helm 차트를 가져오기 위해  `582244788873.dkr.ecr.us-west-2.amazonaws.com`에 있는 NetApp 컨테이너 레지스트리에 대한 아웃바운드 액세스 권한이 있어야 합니다. 이미지를 가져올 수 있는 위치를 제한하는 경우 이 레지스트리도 허용하십시오. 필요한 레지스트리 엔드포인트는 link:aide-requirements.html#outbound-internet-access["AIDE 요구 사항"]을(를) 참조하십시오.
+
+
+다음 표에 있는 k3s 포트는 설치 프로그램이 시작되기 전에 호스트에서 사용 가능해야 합니다. 호스트 방화벽이 활성화된 경우 설치 프로그램을 실행하기 전에 이러한 포트와 Pod 및 서비스 CIDR을 허용해야 합니다. 그렇지 않으면 Pod 네트워킹이 작동하지 않습니다. 이러한 포트는 k3s 내부 포트이며 link:aide-requirements.html#networking-requirements["AIDE 요구 사항"]의 포트와는 별개입니다.
+
+[cols="1,1,3"]
+|===
+| 포트 | 프로토콜 | 사용 대상 
+
+
+| 6443 | TCP | k3s / Kubernetes API 서버 및 kubectl, 오퍼레이터, 클러스터 구성 요소를 위한 컨트롤 플레인 엔드포인트 
+
+
+| 10250 | TCP | Pod 로그, exec/attach 및 metrics-server에 사용되는 Kubelet API 
+
+
+| 8472 | UDP | 포드 간 네트워킹을 위한 Flannel VXLAN 
+|===
+기본 Pod CIDR은  `10.44.0.0/16`이고 기본 서비스 CIDR은  `10.45.0.0/16`입니다. 방화벽 규칙은 이러한 CIDR을 허용하여 CoreDNS 및 기타 서비스를 포함한 클러스터 내 트래픽이 차단되지 않도록 합니다.  `--k3s-cluster-cidr` 및  `--k3s-service-cidr` 설치 프로그램 옵션을 사용하여 기본값을 재정의하는 경우 다음 명령에서 해당 값을 사용하십시오.
+
+.RHEL, Rocky Linux, AlmaLinux 및 CentOS(firewalld)
+[source, bash]
+----
+sudo firewall-cmd --permanent --add-port=6443/tcp
+sudo firewall-cmd --permanent --add-port=10250/tcp
+sudo firewall-cmd --permanent --add-port=8472/udp
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.44.0.0/16
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.45.0.0/16
+sudo firewall-cmd --reload
+----
+.Ubuntu (ufw)
+[source, bash]
+----
+sudo ufw allow 6443/tcp
+sudo ufw allow 10250/tcp
+sudo ufw allow 8472/udp
+sudo ufw allow from 10.44.0.0/16
+sudo ufw allow from 10.45.0.0/16
+sudo ufw reload
+----
+firewalld와 달리 ufw에는 신뢰 영역이 없습니다.  `ufw allow from <cidr>`을(를) 사용하여 pod 및 서비스 CIDR을 허용하십시오.  `--zone` 인수는 없습니다.
+
+열려 있어야 하는 애플리케이션 포트에 대해서는 link:aide-requirements.html#networking-requirements["AIDE 요구 사항"]을(를) 참조하십시오.
+
+
+
+[[operating-system-packages]]
+== 운영 체제 패키지
+
+설치 프로그램은 다음 표에 있는 패키지를 설치합니다. 환경에서 필요한 경우 패키지 관리자에 적절한 프록시 구성이 있는지 확인하십시오.
+
+[cols="3,3,3,3"]
+|===
+| 패키지 | 필요할 때 | 출처 | 귀하의 책임 
+
+
+| `cifs-utils` |  `cifs.upcall`이(가) 이미 설치된 경우를 제외한 모든 연결된 설치. Kerberos 기반 CIFS/SMB 스캔에 필요합니다. | VM 자체의 저장소. | 해당 저장소에서 패키지를 사용할 수 있도록 하세요. 
+
+
+| `container-selinux`, `policycoreutils`, `libselinux-utils`, `selinux-policy-targeted` | SELinux가 비활성화되어 있더라도 호스트에 SELinux 파일이 있는 경우의 RHEL, Rocky Linux 또는 AlmaLinux 8 또는 9. 이러한 배포판에는 SELinux가 기본적으로 포함되어 있습니다. Ubuntu에서는 해당 패키지가 사용되지 않습니다. | VM 자체의 저장소. | 해당 저장소에서 패키지를 사용할 수 있도록 하세요. 
+
+
+| `k3s-selinux` | 이전 줄과 동일한 RHEL 계열 호스트입니다. | `rpm.rancher.io`, 프록시를 사용하는 경우 AI Data Engine 프록시를 통해 제공됩니다. 저장소에서 이미 제공하는 경우 설치 프로그램은 해당 복사본을 사용합니다. | 프록시에서  `rpm.rancher.io`을(를) 허용합니다. 이 패키지를 직접 제공할 필요는 없습니다. 
+|===
+
+NOTE: NetApp은 SELinux가 설치된 호스트에서 AI Data Engine의 유효성을 검증하지 않았습니다. 설치 프로그램은 SELinux가 비활성화된 경우에도 호스트에 SELinux 파일이 있으면 이 표에 있는 SELinux 패키지를 다운로드합니다.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:aide-requirements.html["AIDE 요구 사항"]
+* link:deploy-aide-single-node.html["AI Data Engine을 단일 노드 배포로 배포하십시오."]
+* link:configure-proxy.html["AI Data Engine용 프록시에 대해 알아보기"]
+* link:deploy-aide-single-node-proxy.html["프록시를 사용하여 AI Data Engine을 단일 노드 배포로 배포"]
+

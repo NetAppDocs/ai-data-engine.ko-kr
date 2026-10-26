@@ -1,0 +1,306 @@
+---
+sidebar: sidebar 
+permalink: deploy/deploy-aide-single-node-proxy.html 
+keywords: deploy, install, single-node, single node, proxy, outbound proxy, forward proxy, wizard, NetApp Console, installer download, proxy password file, proxy CA certificate 
+summary: 대상 호스트가 아웃바운드 프록시를 통해서만 인터넷에 연결되는 경우 NetApp Console에서 AIDE를 단일 노드 구축으로 배포하십시오. 
+---
+= 프록시를 사용하여 AI Data Engine을 단일 노드 배포로 배포
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대상 호스트가 아웃바운드 프록시를 통해서만 인터넷에 연결되는 경우, NetApp Console에서 AI Data Engine(AIDE)을 단일 노드 배포로 배포하십시오. 이 절차에는 프록시 단계와 함께 단일 노드 배포의 모든 단계가 포함되어 있습니다. 대상 호스트가 인터넷에 직접 액세스할 수 있는 경우 대신 link:deploy-aide-single-node.html["AI Data Engine을 단일 노드 배포로 배포하십시오."]을(를) 사용하십시오.
+
+지원되는 프록시 유형 및 전체 매개변수 참조에 대해서는 link:configure-proxy.html["AI Data Engine용 프록시에 대해 알아보기"]을(를) 참조하십시오. 프록시에서 허용할 엔드포인트에 대해서는 link:aide-requirements.html#outbound-internet-access["아웃바운드 인터넷 액세스"]을(를) 참조하십시오.
+
+
+
+[[before-you-begin]]
+== 시작하기 전에
+
+.권한 및 액세스
+* NetApp Console에서 _조직 관리자_ 이상의 권한이 있습니다.
+* 설치 명령을 실행하려면 대상 호스트에 sudo 또는 root 권한이 있어야 합니다.
+
+
+.환경
+* 귀하의 환경은 link:single-node-prerequisites.html["AIDE 단일 노드 배포 필수 조건"] 및 link:aide-requirements.html["AIDE 요구 사항"]에 설명된 모든 필수 조건을 충족합니다.
+* 대상 호스트의 운영 체제 저장소는 link:single-node-prerequisites.html#operating-system-packages["운영 체제 패키지"]에 나열된 패키지를 제공합니다. 환경에서 필요한 경우 패키지 관리자에 적절한 프록시 구성이 되어 있는지 확인하십시오.
+
+
+.NetApp Console
+* NetApp Console 에이전트 https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy["배포됩니다"^]이며 AI Data Engine 호스트에서 접근 가능합니다. 설치 명령을 실행하려면 Console 에이전트 IP가 필요합니다.
+
+
+.프록시
+* link:aide-requirements.html#outbound-internet-access["아웃바운드 인터넷 액세스"]에 있는 엔드포인트를 허용하도록 프록시를 구성했습니다.
+* 프록시 호스트, 포트 및 스키마 (`http` 또는 `https`)를 알고 있습니다. 프록시 인증이 필요한 경우 사용자 이름과 비밀번호도 알고 있습니다.
+* 개인적으로 서명된 인증서가 있는 HTTPS 프록시를 사용하는 경우, 대상 호스트에 CA 인증서가 PEM 파일 또는  `.crt` 및  `.pem` 파일의 플랫 디렉터리로 존재합니다.
+
+
+
+NOTE: AIDE의 첫 번째 설치에만 설치 관리자를 사용하십시오. AIDE를 업그레이드하는 데 사용하지 마십시오. 설치 후에는 AIDE 운영자가 업그레이드를 관리합니다. 업그레이드에 대한 자세한 내용은 NetApp 지원팀에 문의하십시오.
+
+
+
+[[what-the-installer-configures]]
+== 설치 프로그램이 구성하는 내용
+
+단일 노드 배포에서 AI Data Engine은 설치되는 VM을 소유합니다. 설치 프로그램은 프록시에 대한 k3s 런타임 및 AI Data Engine을 구성합니다. 운영 체제 패키지 관리자 등 호스트의 프록시 구성은 변경하지 않습니다. 설치 프로그램은 다음과 같은 작업을 수행합니다.
+
+* 프록시를 통해 k3s 설치 스크립트 및 바이너리를 다운로드합니다. k3s 또는 kubelet에 시스템 전체 프록시를 제공하지 않습니다.
+* 프록시를 통해 이미지를 가져오도록 k3s 컨테이너 런타임을 구성합니다.
+*  `--proxy-ca-cert`와(과) 함께 제공하는 CA 인증서를 AI Data Engine 신뢰 저장소에 추가합니다.
+
+
+k3s 컨테이너 런타임이나 트러스트 스토어를 구성하지 않습니다.
+
+
+
+[[copy-the-install-command]]
+== 설치 명령을 복사하십시오
+
+. NetApp Console에서 *AI 데이터 허브* > *AI Data Engine*으로 이동합니다.
++
+AI Data Engine 랜딩 페이지가 나타납니다.
+
+. *AI Data Engine 배포*를 선택합니다.
+. *단일 노드* 배포 옵션을 선택하고 *다음*을 선택하십시오.
+. 구성 크기를 선택하십시오:
++
+** *소형*: 최대 약 2억 개의 파일이 있는 환경에 권장됩니다.
+** *중간(기본값)*: 최대 약 10억 개의 파일이 있는 환경에 권장됩니다.
+** *대용량*: 최대 약 30억 개의 파일이 있는 환경에 권장됩니다.
++
+이러한 크기는 권장 기준치일 뿐, 엄격한 제한 사항은 아닙니다. 사용 환경이 이 범위를 벗어나는 경우 link:aide-requirements.html#flexible-sizing-single-node["유연한 사이즈 가이드라인"]을 참조하십시오.
+
++
+마법사는 사용자가 선택한 구성 크기로 설치 명령을 생성합니다. 크기를 설정하기 위해 명령을 편집할 필요가 없습니다.
+
+
+
+. 마법사에 표시된 설치 명령을 편집기에 복사합니다.
++
+설치 명령은  `d13jb5dapseb36.cloudfront.net`에서 설치 프로그램을 다운로드하고 한 번에 실행합니다. 해당 다운로드는 프록시를 사용하지 않습니다.
+
++
+** 대상 호스트가  `d13jb5dapseb36.cloudfront.net`에 직접 연결할 수 있는 경우 다음 섹션을 건너뛰고 <<create-password-file-single-node,프록시 암호 파일을 생성합니다>>(으)로 계속 진행하십시오. 복사한 설치 명령을 실행하십시오. 설치 프로그램에서 프록시 설정을 입력하라는 메시지가 표시됩니다. 대신 명령줄에서 제공하려면 <<command-line-flags-single-node,명령줄 플래그를 사용한 비대화형 설치>>을(를) 참조하십시오.
+** 대상 호스트가 프록시를 통해서만 인터넷에 연결되는 경우 명령은 다운로드 단계에서 중단됩니다. 다음 섹션을 먼저 완료하십시오.
+
+
+
+
+
+
+[[download-the-installer-through-the-proxy]]
+[[download-installer-single-node]]
+== 프록시를 통해 설치 프로그램을 다운로드합니다.
+
+설치 프로그램을 직접 다운로드한 다음  `sudo ./install-lite.sh` 이후부터 설치 명령을 실행하십시오.
+
+. 설치 프로그램을 대상 호스트에 가져오십시오. 환경에서 허용하는 방법을 사용하여 파일을 대상 호스트에 배치하십시오.
++
+프록시를 통해 대상 호스트에서 설치 프로그램을 다운로드하려면:
+
++
+[source, bash]
+----
+mkdir -p ~/aide && cd ~/aide
+curl -fsSL -x http://PROXY_HOST:PROXY_PORT \
+  https://d13jb5dapseb36.cloudfront.net/aide/latest/aide-installer.tar.gz -o aide-installer.tar.gz
+----
++
+프록시에 사용자 이름이 필요한 경우  `--proxy-user USER`을  `curl` 명령에 추가하십시오. 암호를 생략하면  `curl`에서 암호를 묻는 메시지가 표시되므로 셸 기록에 저장되지 않습니다.
+
++
+** 프록시가 HTTPS에서 수신 대기하는 경우 `-x` 주소에 `https://`을(를) 사용하십시오.
+** 프록시가 개인적으로 서명된 인증서를 사용하는 경우  `--proxy-cacert CA_FILE`을(를) 추가하거나 먼저 대상 호스트 신뢰 저장소에 CA 인증서를 추가하십시오.
+** HTTPS 프록시 및  `curl` 8.3 이전 버전을 사용하는 경우 다운로드가 약 1분간 일시 중지될 수 있습니다. Ubuntu 22.04에는 이러한 버전이 포함되어 있습니다. 완료될 때까지 기다려 주십시오.
++
+또는 다른 기기에서  `\https://d13jb5dapseb36.cloudfront.net/aide/latest/aide-installer.tar.gz`을(를) 다운로드한 다음,  `scp` 또는 평소 사용하는 파일 전송 방법을 사용하여 대상 호스트로 복사할 수도 있습니다.
+
+
+
+. 설치 프로그램의 압축을 풀고 설치 프로그램 폴더로 이동하십시오:
++
+[source, bash]
+----
+tar -xzf aide-installer.tar.gz
+cd installer
+----
++
+이 설치 프로그램 폴더 안에서 다음의 모든 명령을 실행하십시오. 폴더 안의  `version.txt` 파일에는 설치 프로그램 빌드 버전이 표시됩니다.
+
+. NetApp Console에서 복사한 설치 명령을 준비합니다. 이 명령은 `sudo bash -c '`로 시작하여 설치 프로그램을 다운로드한 다음, 매개변수와 함께 `./install-lite.sh`를 실행합니다. 설치 프로그램을 이미 다운로드했으므로:
++
+**  `./install-lite.sh` 이전의 모든 내용을 삭제하여 명령어가  `./install-lite.sh`(으)로 시작하도록 합니다.
+** 맨 끝에 있는 작은따옴표 (`'`)를 삭제하십시오.
+** 앞에  `sudo`을(를) 추가하여 명령어가  `sudo ./install-lite.sh`(으)로 시작하도록 합니다. 설치 프로그램은 root로 실행되어야 하며,  `bash -c` 래퍼를 제거하면 이를 제공하던  `sudo`도 제거됩니다.
+** 명령어에  `--no-proxy`가 포함되어 있으면 삭제하십시오.
++
+나머지 명령어는 다음과 같습니다:
+
++
+[source, bash]
+----
+sudo ./install-lite.sh --account-id <account-id> --organization-id <organization-id> --agent-id <agent-id> --env <environment> --user-token <user-token> --cm-host <console-agent-ip> --catalog-endpoint <catalog-endpoint> --flavor <small|medium|large>
+----
++
+ `./install-lite.sh` 다음에 나오는 모든 매개변수를 복사한 명령에 나타난 그대로 유지하십시오. 설치 프로그램에서 프록시 설정을 입력하라는 메시지가 표시됩니다. <<interactive-setup-single-node,대화형 안내 설정>>을(를) 참조하십시오.
+
+
+
+
+
+
+
+[[create-a-proxy-password-file]]
+[[create-password-file-single-node]]
+== 프록시 암호 파일을 생성합니다
+
+프록시에 인증이 필요하고 자동 배포 등에서 암호를 입력하라는 메시지 없이 암호를 제공하려면 설치 프로그램을 실행하기 전에 암호 파일을 생성하십시오. 그렇지 않으면 이 섹션을 건너뛰십시오. 설치 프로그램은 숨겨진 입력으로 암호를 입력하라는 메시지를 표시합니다.
+
+파일에는 비밀번호만 들어 있습니다. 특수 문자를 퍼센트 인코딩하지 말고 비밀번호를 그대로 입력하십시오.
+
+root로 다음 명령을 실행하십시오. 단일 노드 설치 명령은  `sudo`(으)로 실행되므로  `/root` 아래에 있는 파일을 읽을 수 있습니다.
+
+[source, bash]
+----
+umask 077
+read -rs -p 'Proxy password: ' P && printf '%s' "$P" > /root/.aide-proxy-password; unset P; echo
+chmod 600 /root/.aide-proxy-password
+----
+설치가 완료되면 해당 파일을 삭제하십시오.
+
+
+
+[[supply-the-proxy-settings]]
+== 프록시 설정을 제공하십시오
+
+설치 프로그램이 프록시 설정을 입력하라는 메시지를 표시합니다. NetApp Console에서 복사한 설치 명령을 실행하고 메시지에 응답하십시오. 메시지 없이 실행해야 하는 자동화된 배포에 대해서는 <<command-line-flags-single-node,명령줄 플래그를 사용한 비대화형 설치>>을(를) 참조하십시오.
+
+
+
+[[use-the-interactive-guided-setup]]
+[[interactive-setup-single-node]]
+=== 대화형 안내 설정 기능을 사용하세요
+
+터미널에서  `--proxy-host` 또는  `--no-proxy` 없이 설치 명령을 실행하면 설치 프로그램이 다음과 같은 질문을 합니다. 매개변수로 값을 전달하면 설치 프로그램은 해당 값을 다시 묻지 않습니다.
+
+[cols="2,3"]
+|===
+| 프롬프트 | 입력할 내용 
+
+
+| `Configure outbound proxy? (y/N)` | 입력 `y`. 
+
+
+| 프록시 호스트 또는 IP | 프록시 호스트 이름 또는 IPv4 주소를 입력하십시오(선택적으로 포트 포함 (`host:port`). 
+
+
+| 프록시 방식 (`https` 또는 `http`) | 프록시가 수신 대기하는 프로토콜을 입력하십시오. 기본값은  `https`입니다. 
+
+
+| 프록시 포트 | 프록시 포트를 입력하십시오. 기본값은 HTTPS의 경우  `443`이고 HTTP의 경우  `80`입니다. 
+
+
+| 프록시 유형 | Enter 키를 눌러 기본값을 수락하십시오. 
+
+
+| 프록시 자체 인증서용 CA 인증서(HTTPS만 해당, 선택 사항) | CA 파일 또는 디렉터리의 경로를 입력하십시오. 공용 CA가 프록시 인증서에 서명한 경우 Enter 키를 누르십시오. 
+
+
+| 프록시에 사용자 이름과 암호가 필요합니까? (y/N) | 예라면 사용자 이름을 입력한 다음 비밀번호를 두 번 입력하십시오. 설치 프로그램은 비밀번호를 화면에 표시하지 않습니다. 
+|===
+터미널이 없으면 설치 프로그램은 아무런 메시지를 표시하지 않습니다. 프록시를 사용하려면  `--proxy-host`을(를) 전달하고, 프록시에 암호가 필요한 경우  `--proxy-password-file`을(를) 전달하십시오.
+
+
+
+[[use-command-line-flags-for-setup]]
+[[command-line-flags-single-node]]
+=== 설정 시 명령줄 플래그를 사용하십시오
+
+프롬프트 없이 실행해야 하는 자동 또는 기타 비대화형 배포에는 명령줄 플래그를 사용하십시오. 플래그는 선택 사항입니다. 설치 프로그램은 사용자가 제공하지 않은 프록시 정보에 대해 프롬프트를 표시합니다.
+
+설치 명령의 맨 끝, 마지막 기존 매개변수 뒤에 프록시 매개변수를 추가하십시오.
+
+* NetApp Console에서 복사한 설치 명령을 실행하는 경우, 닫는 따옴표 앞의 따옴표 안에 매개변수를 추가하십시오.
+* 설치 프로그램을 다운로드하고 명령을 단축한 경우 단축된 명령 끝에 매개변수를 추가하십시오.
+
+
+명령에  `--no-proxy`이(가) 포함되어 있으면 제거하십시오. 설치 명령의 다른 모든 매개변수는 그대로 유지하십시오. 각 매개변수에 대한 설명과 기본값은 link:configure-proxy.html#proxy-parameters["프록시 구성 매개변수"]을(를) 참조하십시오. 다음 예에서는 프록시 매개변수만 보여줍니다.
+
+.사용자 이름과 비밀번호를 사용하는 HTTP 프록시
+[source, bash]
+----
+--proxy-host proxy.example.com \
+--proxy-port 3128 \
+--proxy-scheme http \
+--proxy-user svc-aide \
+--proxy-password-file /root/.aide-proxy-password
+----
+.개인 서명된 인증서를 사용하고 인증이 없는 HTTPS 프록시
+[source, bash]
+----
+--proxy-host proxy.example.com \
+--proxy-port 8443 \
+--proxy-scheme https \
+--proxy-ca-cert /root/proxy-ca.pem
+----
+* 프록시에 인증이 필요하지 않은 경우  `--proxy-user` 및  `--proxy-password-file`를 생략하십시오.
+*  `--proxy-user`을(를) 지정하고 `--proxy-password-file`을(를) 지정하지 않으면 터미널에서 실행할 때 설치 프로그램이 암호를 묻는 메시지를 표시합니다.
+
+
+
+CAUTION: HTTP 프록시를 사용하면 프록시 사용자 이름과 비밀번호가 일반 텍스트로 전송됩니다. 프록시에 인증이 필요한 경우 HTTPS 프록시를 사용하십시오.
+
+
+
+[[run-the-installation]]
+== 설치를 실행합니다
+
+. 대상 호스트에서 설치 명령을 실행하십시오. 설치 프로그램을 다운로드한 경우 설치 프로그램 폴더에서 명령을 실행하십시오.
++
+설치 프로그램은 파일을 다운로드하기 전에 대상 호스트에서 프록시가 응답하는지, 프록시가 사용자의 자격 증명을 수락하는지, 그리고 프록시 인증서가 사용자가 선택한 체계에 대해 유효한지 확인합니다. 이 검사에 실패하면 설치 프로그램은 중단되고 실패 원인을 표시합니다.
+
++
+
+NOTE: 설치는 완료하는 데 약 45분이 소요됩니다. 시간 초과 및 재시도가 발생할 수 있으며, 이는 정상적인 현상입니다.
+
+. 프록시 매개변수를 모두 전달하지 않은 경우 프록시 프롬프트에 응답하십시오. <<interactive-setup-single-node,대화형 안내 설정>>을(를) 참조하십시오.
+. 설치를 계속하려면 설치 프로그램의 확인 메시지에 응답하십시오.
++
+설치 프로그램은 AI Data Engine NGINX 인그레스를 실행하는 노드의 IP 주소를 감지하고 확인을 요청합니다. 표시된 주소를 유지하려면 Enter 키를 누르거나 다른 주소를 입력하십시오. VM 외부에서 접근 가능한 주소를 사용하십시오. Console 에이전트 주소는 입력하지 마십시오.
+
+. AIDE 설치가 완료되었음을 확인하는 성공 화면이 나타날 때까지 진행 화면을 모니터링하십시오.
+
+
+.결과
+AI Data Engine이 배포되어 NetApp Console에 연결되었습니다. 이제 link:../data-sources/connect-data-source.html["데이터 소스 연결"] 스캔을 시작할 수 있습니다.
+
+
+
+[[check-the-proxy-after-installation]]
+[[check-proxy-single-node]]
+== 설치 후 프록시를 확인하십시오
+
+AI Data Engine 오퍼레이터는 사용하는 프록시를 로그에 기록합니다. 로그에는 암호가 포함되지 않습니다. 설치 프로그램은 자체  `kubectl` 사본을  `/opt/netapp/aide/.aide-installer-tools`에 다운로드하며, 사용자의  `PATH`에 추가하지 않습니다. k3s kubeconfig는 root만 읽을 수 있습니다. 프록시를 확인하려면 대상 호스트에서 다음 명령을 실행하십시오.
+
+[source, bash]
+----
+sudo /opt/netapp/aide/.aide-installer-tools/kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml -n aide logs deploy/aide-operator -c chart-fetcher | grep -m1 'proxy enabled'
+----
+해당 줄에는 프록시 엔드포인트, 인증 활성화 여부, CA 인증서 마운트 여부가 표시됩니다.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:configure-proxy.html["AI Data Engine용 프록시에 대해 알아보기"]
+* link:single-node-prerequisites.html["AIDE 단일 노드 배포 필수 조건"]
+* link:aide-requirements.html["AIDE 요구 사항"]
+* link:deploy-aide-single-node.html["AI Data Engine을 단일 노드 배포로 배포하십시오."]
+

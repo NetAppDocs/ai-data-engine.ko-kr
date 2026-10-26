@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: mcp/mcp-tools-reference.html 
+keywords: mcp, governed ai access, tools, get_collection, search, list_tags, create_tag, tag_document, power users, tags 
+summary: AI 클라이언트가 AI Data Engine MCP 서버를 통해 사용할 수 있는 툴, 필요한 액세스 권한, 검색 및 태깅 동작 방식을 검토하십시오. 
+---
+= AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+연결된 AI 클라이언트는 AI Data Engine(AIDE)용 모델 컨텍스트 프로토콜(MCP) 서버를 통해 일련의 툴을 사용하여 컬렉션 내 파일을 검색하고 태그를 지정할 수 있습니다. 이 정보를 사용하여 각 툴이 수행하는 작업과 툴에 필요한 접근 권한을 이해하십시오.
+
+
+
+[[access-requirements]]
+== 액세스 요구 사항
+
+AI 클라이언트는 고급 사용자 세션에서 툴을 사용합니다. 사용자는 다음 두 가지 조건이 모두 충족될 때만 고급 사용자 세션을 얻을 수 있습니다.
+
+* 사용자는 Microsoft Entra ID에서  `AIDEPowerUsers` 앱 역할을 보유하고 있습니다.
+* AI 클라이언트가  `power_users` 범위를 요청합니다.
+
+
+link:configure-entra-id-mcp.html#create-and-assign-the-power-user-app-role["파워유저 앱 역할을 생성하고 할당합니다"]을(를) 참조하십시오.
+
+연결은 MCP 서버 URL에 지정된 컬렉션으로 제한됩니다. 다른 컬렉션을 사용하려면 해당 컬렉션의 연결 정보를 사용하십시오.
+
+
+
+[[tools]]
+== 툴
+
+[cols="1,3"]
+|===
+| 툴 | 설명 
+
+
+| `get_collection` | 연결이 제한된 컬렉션을 반환합니다. 
+
+
+| `search` | 이름 접두사, 파일 형식 또는 소유자를 기준으로 컬렉션 내 파일 메타데이터를 페이지네이션 기능을 사용하여 검색합니다. 고급 사용자 세션에서는 파일 수준 권한으로 검색이 필터링되지 않고 컬렉션 내에서 일치하는 모든 파일이 반환됩니다. 결과에는 각 파일의 이름, 경로, 형식, 크기, 최종 수정 시간 및 소유자가 포함됩니다. 
+
+
+| `list_tags` | 테넌트에 대해 정의된 태그와 각 태그가 있는 파일 수를 나열합니다. 
+
+
+| `create_tag` | 테넌트에 대한 태그를 생성하고 해당 ID와 이름을 반환합니다. 
+
+
+| `tag_document` | 파일에 태그를 추가하거나 파일에서 태그를 제거합니다. 태그가 존재하지 않으면 툴이 먼저 태그를 생성합니다. AI 클라이언트는 한 번에 하나의 파일만 처리합니다. 
+|===
+
+
+[[how-tags-work]]
+== 태그 작동 방식
+
+* 태그는 하나의 컬렉션에만 적용되는 것이 아니라 AI Data Engine 전체에 적용됩니다. AI 클라이언트를 통해 생성하거나 적용한 태그는 조사 보기에서도 사용할 수 있습니다.
+* 태그 이름을 잘못 입력하면 새 태그가 생성됩니다. 태그 이름은 대소문자를 구분하므로 `Finance` 및 `finance`는 서로 다른 태그입니다.
+* 태그를 생성한 후에는 삭제하거나 이름을 변경할 수 없습니다. 태그 이름 제한 사항은 link:../release-notes/known-limitations.html["알려진 제한 사항"]을(를) 참조하십시오.
+* AI 클라이언트는 태그가 있는 파일 목록을 표시할 수 없습니다.
+
+
+
+
+[[what-ai-clients-cant-do]]
+== AI 클라이언트가 할 수 없는 것
+
+AI 클라이언트는 파일 내용을 검색하거나, 파일을 추가, 삭제, 수정하거나, 데이터 소스를 변경하거나, 컬렉션을 생성할 수 없습니다.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:connect-ai-clients-mcp.html["AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다."]
+* link:learn-about-mcp.html["통제된 AI 액세스에 대해 알아보십시오"]
+* link:../release-notes/known-limitations.html["알려진 제한 사항"]
+

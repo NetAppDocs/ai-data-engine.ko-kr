@@ -12,7 +12,5 @@ entries:
   url: "/investigate/investigate-structured.html"
 - title: 디렉토리 조사
   url: "/investigate/investigate-directories.html"
-- title: 필터 작업
-  url: "/investigate/use-filters.html"
 - title: 데이터에 대한 조치 수행
   url: "/investigate/take-actions.html"

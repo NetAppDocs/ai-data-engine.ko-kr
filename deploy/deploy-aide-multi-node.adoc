@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: deploy/deploy-aide-multi-node.html 
+keywords: deploy, install, multi-node, multi node, wizard, NetApp Console, deployment wizard, kubernetes, RKE2, OpenShift, AKS 
+summary: 배포 마법사를 사용하여 NetApp Console에서 AIDE를 다중 노드 배포로 배포합니다. 
+---
+= AI Data Engine을 멀티 노드 배포 방식으로 배포하십시오.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+배포 마법사를 사용하여 NetApp Console에서 AI Data Engine(AIDE)을 다중 노드 배포로 배포합니다. 마법사는 설치 위치 선택, 구성 크기 선택, Kubernetes 클러스터에 대한 설치 명령 실행 단계를 안내합니다.
+
+
+IMPORTANT: 클러스터 노드 또는 설치 호스트가 아웃바운드 프록시를 통해서만 인터넷에 연결되는 경우 대신 link:deploy-aide-multi-node-proxy.html["프록시를 사용하여 다중 노드 배포로 AI Data Engine 배포"]을(를) 사용하십시오.
+
+.시작하기 전에
+*권한 및 접근*
+
+* NetApp Console에서 _조직 관리자_ 이상의 권한이 있습니다.
+* 대상 클러스터에 대한 cluster-admin 액세스 권한이 있는 kubeconfig가 있습니다.  `kubectl`이(가)  `PATH`에 없는 경우 설치 프로그램이 이를 툴 디렉토리에 다운로드합니다.
+
+
+*Kubernetes 클러스터*
+
+* 귀하의 Kubernetes 클러스터는 link:multi-node-prerequisites.html["AIDE 다중 노드 배포 필수 조건"] 및 link:aide-requirements.html["AIDE 요구 사항"]에 설명된 다중 노드 필수 조건을 충족합니다.
+* 설치 명령을 실행하기 전에 클러스터에  `aide` 네임스페이스가 존재합니다.
+* AI Data Engine 워크로드를 스케줄링하는 노드에는 link:multi-node-prerequisites.html#node-labels["노드 레이블"]에 설명된 노드 레이블이 있습니다.
+* 구성된 StorageClass(기본 이름:  `aide-sc`)는 클러스터에서 사용할 수 있으며 AIDE의 상태 저장 백엔드 서비스에 사용됩니다.
+
+
+*스토리지 및 NetApp Console*
+
+* 내보낸 경로가 있는 NFS 서버를 AIDE 구성 볼륨에 대해 클러스터에서 사용할 수 있고 접근할 수 있습니다.
+* NetApp Console 에이전트 https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy["배포됩니다"^] 및 클러스터 노드에서 접근 가능해야 합니다. 설치 명령을 실행하려면 Console 에이전트 IP가 필요합니다.
+
+
+
+NOTE: AIDE의 첫 번째 설치에만 설치 관리자를 사용하십시오. AIDE를 업그레이드하는 데 사용하지 마십시오. 설치 후에는 AIDE 운영자가 업그레이드를 관리합니다. 업그레이드에 대한 자세한 내용은 NetApp 지원팀에 문의하십시오.
+
+.단계
+. NetApp Console에서 *AI 데이터 허브* > *AI Data Engine*으로 이동합니다.
++
+AI Data Engine 랜딩 페이지가 나타납니다.
+
+. *AI Data Engine 배포*를 선택합니다.
+. *다중 노드* 배포 옵션을 선택하고 *다음*을 선택합니다.
+. 구성 크기를 선택하십시오:
++
+** *소형*: 최대 약 10억 개의 파일이 있는 환경에 권장됩니다.
+** *중간(기본값)*: 최대 약 30억 개의 파일이 있는 환경에 권장됩니다.
+** *대용량*: 최대 약 60억 개의 파일이 있는 환경에 권장됩니다.
++
+이러한 크기는 권장 기준치이며, 엄격한 제한 사항은 아닙니다. 60억 개 이상의 파일이 있는 환경에서 AIDE 멀티노드 배포를 수행하려면 NetApp과의 맞춤형 크기 조정이 필요합니다. 자세한 내용은 link:aide-requirements.html#flexible-sizing-multi-node["유연한 사이즈 가이드라인"]을(를) 참조하십시오.
+
+
+
+. 마법사에 표시된 설치 명령을 편집기에 복사합니다.
++
+마법사는 사용자가 선택한 구성 크기로 설치 명령을 생성합니다.
+
+. Kubernetes 클러스터에 접속할 수 있는 호스트에서 설치 명령을 실행하십시오.
++
+설치 프로그램에서 아웃바운드 프록시를 구성할지 묻는 경우  `n`을(를) 입력하십시오.
+
++
+
+NOTE: 설치는 약 30분 정도 소요됩니다. 시간 초과 및 재시도가 발생할 수 있으며, 이는 정상적인 현상입니다.
+
+. 설치를 계속하려면 설치 프로그램의 확인 메시지에 응답하십시오.
++
+** 설치 프로그램은 컨텍스트, 클러스터 이름, API 서버 등 kubeconfig가 선택한 Kubernetes 클러스터를 표시합니다. 해당 클러스터를 사용할 경우에만 예라고 답하십시오. 잘못된 클러스터인 경우 설치 프로그램을 중지하고 올바른 kubeconfig 컨텍스트를 선택한 후 설치 프로그램을 다시 실행하십시오.
+** 설치 프로그램에서 다중 노드 배포에 필요한 필수 조건이 모두 충족되었는지 확인하라는 메시지가 나타납니다. 계속하려면 예라고 답하십시오.
+** 설치 프로그램은 AI Data Engine NGINX 인그레스를 실행하는 노드의 IP 주소를 감지하고 확인을 요청합니다. 표시된 주소를 유지하려면 Enter 키를 누르거나 다른 주소를 입력하십시오. 클러스터 외부에서 접근 가능한 주소를 사용하십시오. 감지된 주소가 클러스터 내부 주소인 경우, 대신 접근 가능한 주소를 입력하십시오. Console 에이전트 주소는 입력하지 마십시오.
+
+
+. AIDE 설치가 완료되었음을 확인하는 성공 화면이 나타날 때까지 진행 화면을 모니터링하십시오.
+
+
+.결과
+AI Data Engine 멀티 노드 배포가 완료되어 NetApp Console에 연결되었습니다. 이제 link:../data-sources/connect-data-source.html["데이터 소스 연결"] 스캔을 시작할 수 있습니다.

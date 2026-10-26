@@ -1,0 +1,201 @@
+---
+sidebar: sidebar 
+permalink: mcp/configure-entra-id-mcp.html 
+keywords: mcp, governed ai access, microsoft entra id, entra, app registration, application per aide instance, scopes, app roles, redirect uri, authentication, token, entra administrator 
+summary: Microsoft Entra ID 관리자로서 Microsoft Entra ID에 각 AI Data Engine 인스턴스에 대한 전용 애플리케이션을 등록하고, 애플리케이션 ID URI와 지원되는 범위를 정의하고, 앱 역할을 생성 및 할당하고, AI 클라이언트에 대한 리디렉션 URI를 추가하십시오. 
+---
+= AI Data Engine에서 관리하는 AI 액세스를 위해 Microsoft Entra ID를 구성합니다.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine(AIDE)의 관리형 AI 액세스는 Microsoft Entra ID를 사용하여 사용자를 인증합니다. Microsoft Entra ID 관리자로서 Microsoft Entra 관리 센터에 AI Data Engine을 등록하고, 범위와 앱 역할을 정의하고, AI 클라이언트에 대한 리디렉션 URI를 추가하여 사용자가 로그인하고 승인된 컬렉션을 사용할 수 있도록 합니다.
+
+완료되면 기록한 값을 NetApp Console에서 AI Data Engine을 Entra ID에 연결하는 AI Data Engine 관리자에게 전달하십시오. link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]를 참조하십시오.
+
+
+
+[[before-you-begin]]
+== 시작하기 전에
+
+* Microsoft Entra ID 테넌트와, Application Administrator 또는 Cloud Application Administrator 등 해당 테넌트에서 애플리케이션을 등록하고 동의를 부여할 수 있는 역할이 있습니다.
+* AI Data Engine 관리자가 link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]에서 설정한 AIDE 클러스터 호스트 이름이 있습니다. 호스트 이름은 Entra ID 테넌트에서 확인된 등록된 DNS 도메인에 있어야 합니다.
+
+
+
+
+[[how-mcp-access-works]]
+== MCP 액세스 작동 방식
+
+AI Data Engine은 토큰을 발급하지 않으며 비밀 키를 보유하지 않습니다. AI 클라이언트가 제시하는 Entra ID 액세스 토큰의 유효성을 검사합니다. 사용자가 AI 클라이언트를 연결하면 사용자는 Microsoft Entra ID로 로그인하고, Entra ID는 AI Data Engine 애플리케이션에 대한 액세스 토큰을 발급합니다. AI Data Engine은 사용자의 Entra ID 테넌트에 대해 토큰을 확인하고 부여된 범위가 일치하는 컬렉션에 대해서만 클라이언트가 작업할 수 있도록 허용합니다.
+
+각 AI Data Engine 인스턴스에 대해 Entra ID에 하나의 전용 애플리케이션을 등록합니다. AI Data Engine 설치가 두 개 이상인 경우, 애플리케이션 ID URI가 해당 인스턴스의 호스트 이름을 기반으로 생성되므로 각 인스턴스에 대해 별도의 애플리케이션을 등록하십시오. 애플리케이션은 애플리케이션 ID URI, 범위 및 앱 역할을 정의하며, 애플리케이션(클라이언트) ID는 AI Data Engine 관리자가 NetApp Console에 입력하고 사용자가 AI 클라이언트에 입력하는 클라이언트 ID입니다.
+
+Microsoft Entra ID는 AIDE가 관리하는 AI 액세스가 지원하는 유일한 ID 공급자입니다.
+
+NetApp Console은 Entra ID 앱 등록을 생성하거나 변경하지 않습니다. 이 항목의 모든 Entra ID 작업은 Microsoft Entra 관리 센터에서 수동으로 완료해야 합니다.
+
+
+
+[[register-the-ai-data-engine-application-and-define-its-scope]]
+[[register-the-ai-data-engine-application]]
+== AI Data Engine 애플리케이션을 등록하고 범위를 정의하십시오
+
+AI Data Engine 인스턴스에 대한 전용 애플리케이션을 등록하고, 애플리케이션 ID URI를 설정하고,  `power_users` 범위를 정의합니다. 이 작업은 각 AI Data Engine 인스턴스마다 한 번씩 완료해야 합니다. 인스턴스가 두 개 이상인 경우, 각 인스턴스에 대해 별도의 애플리케이션을 등록하고 인스턴스를 식별할 수 있는 이름을 사용하십시오.
+
+AI Data Engine은 `power_users` 위임된 범위를 인식합니다. 범위는 Entra ID의 애플리케이션 등록 시 정의합니다. 이 범위는 NetApp Console 역할에 매핑되지 않으며, 범위 이름은 복수형을 포함하여 정확히 일치해야 합니다.
+
+해당  `power_users` 범위는 고급 사용자 세션을 요청합니다. 고급 사용자 세션은 해당 범위에 액세스 권한이 부여된 컬렉션에서 파일 메타데이터를 검색하고, 태그를 나열하고, 태그를 생성하고, 파일에 태그를 추가하거나 파일에서 태그를 제거할 수 있습니다. AI Data Engine은 사용자가  `AIDEPowerUsers` 앱 역할도 보유하고 있는 경우에만 고급 사용자 세션을 부여합니다. <<create-and-assign-the-power-user-app-role,파워유저 앱 역할을 생성하고 할당합니다>>을(를) 참조하십시오.
+
+AI 클라이언트가 요청하는 전체 범위 값은 Application ID URI에  `/power_users`: `\https://<host>/mcp/tools/power_users`를 더한 값입니다. AI 클라이언트는 정확히 이 값을 요청해야 합니다.
+
+
+NOTE: Microsoft는 Microsoft Entra ID UI를 변경할 수 있으므로 이러한 단계는 사용자가 보는 화면과 다를 수 있습니다. 필수 구성은 동일하게 유지됩니다.
+
+.단계
+. Microsoft Entra 관리 센터에서 *앱 등록*으로 이동하여 *새 등록*을 선택합니다.
+.  `NetApp AI Data Engine MCP - <instance>` 등 이름을 입력하고, *단일 테넌트만*을 선택한 다음 *등록*을 선택합니다. 이 AI Data Engine 인스턴스 전용 애플리케이션을 사용하십시오.
+. *개요* 페이지에서 *애플리케이션(클라이언트) ID*와 *디렉터리(테넌트) ID*를 기록하십시오. AI Data Engine 관리자는 NetApp Console에 두 값을 모두 입력하고, 사용자는 AI 클라이언트에서 애플리케이션(클라이언트) ID를 클라이언트 ID로 입력합니다.
+. *Manifest*를 열고  `requestedAccessTokenVersion`을(를)  `2`(으)로 설정한 후 저장하십시오. AI Data Engine은 v2.0 액세스 토큰만 허용합니다.
+. *API 노출*을 열고 *애플리케이션 ID URI* 옆에 있는 *추가*를 선택합니다.  `\https://<host>/mcp/tools`을(를) 입력하고 저장합니다. 여기서  `<host>`은(는) link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]에서 설정한 AIDE 클러스터 호스트 이름입니다. 이 URI를 기록해 두십시오. AI 클라이언트는 이 URI를 사용하여 요청하는 범위를 구성합니다.
++
+호스트 이름의 도메인은 Entra ID 테넌트에서 인증되어야 합니다. Entra ID는 인증된 도메인에 있는 애플리케이션 ID URI만 허용합니다.
+
++
+
+NOTE: Entra ID에서 오류 `Failed to add identifier URI`로 URI를 거부하는 경우,  `requestedAccessTokenVersion`이(가)  `2`(으)로 설정되어 있고 테넌트에서 도메인이 확인되었는지 확인한 후 다시 시도하십시오.
+
+. *API 노출*에서 *범위 추가*를 선택하고  `power_users` 범위를 추가합니다:
++
+** *동의할 수 있는 대상*: *관리자 및 사용자*, 또는 동의를 제한하려면 *관리자만*
+** *관리자 동의 표시 이름*: `Access AIDE as a Power User`
+** *관리자 동의 설명*: `Allows the app to access NetApp AI Data Engine as a power user on behalf of the signed-in user.`
+** *사용자 동의 표시 이름* 및 *사용자 동의 설명*: *관리자 및 사용자*를 선택한 경우, 사용자가 동의할 때 표시되는 텍스트를 입력하십시오.
+** *상태*: *활성화됨*
+** *범위 추가*를 선택합니다.
+
+
+. 선택 사항: 사용자 동의 메시지를 건너뛰려면 *승인된 클라이언트 애플리케이션*에서 *클라이언트 애플리케이션 추가*를 선택하고 이 애플리케이션의 애플리케이션(클라이언트) ID를 입력한 다음  `power_users` 범위를 선택하고 *애플리케이션 추가*를 선택하십시오.
+
+
+
+
+[[create-and-assign-the-power-user-app-role]]
+== 파워유저 앱 역할을 생성하고 할당합니다
+
+AI Data Engine 애플리케이션에 고급 사용자 앱 역할을 생성하고, 관리형 AI 액세스를 사용하는 사용자 또는 그룹에 해당 역할을 할당합니다. 앱 역할 이름은 복수형을 포함하여 정확히 일치해야 합니다.
+
+.단계
+. *앱 역할*을 열고 *앱 역할 만들기*를 선택합니다:
++
+** *표시 이름*: `AIDE Power Users`
+** *허용되는 멤버 유형*: *사용자/그룹*
+** *값*: `AIDEPowerUsers`
+** *설명*: `Grants power-user sessions in AI Data Engine.`
+** *이 앱 역할을 사용 설정하시겠습니까?*를 선택한 다음 *적용*을 선택합니다.
+
+
+. *Entra ID* > *엔터프라이즈 앱* > *모든 애플리케이션*으로 이동하여 AI Data Engine 애플리케이션을 열고 *사용자 및 그룹* > *사용자/그룹 추가*를 선택합니다. 관리형 AI 액세스를 사용하는 사용자 또는 그룹을 선택하고,  `AIDE Power Users` 역할을 선택한 다음 *할당*을 선택합니다.
+
+
+앱 역할을 개별 사용자가 아닌 그룹에 할당하려면 테넌트에 Microsoft Entra ID P1 또는 P2가 필요합니다. 그룹 할당은 중첩된 그룹의 구성원에게는 적용되지 않습니다.
+
+
+IMPORTANT: 앱 역할을 정의하는 것뿐만 아니라 할당하는 것도 필수적입니다. 앱 역할을 보유하지 않은 사용자는 파워유저 세션을 이용할 수 없습니다.
+
+.고급 사용자 세션 작동 방식
+사용자는 다음 두 가지 조건이 모두 충족될 때만 고급 사용자 세션을 얻게 됩니다:
+
+* 해당 사용자는  `AIDEPowerUsers` 앱 역할을 보유하고 있습니다.
+* AI 클라이언트가  `power_users` 범위를 요청합니다.
+
+
+클라이언트가 해당 역할을 보유하지 않은 사용자에 대해 요청 `power_users`하는 경우, AI Data Engine은 해당 사용자를 위해 파워 유저 세션을 시작하지 않습니다.
+
+
+
+[[add-redirect-uris-for-your-ai-clients]]
+[[add-redirect-uris-for-ai-clients]]
+== AI 클라이언트를 위한 리디렉션 URI를 추가하십시오
+
+AI 클라이언트가 사용하는 리디렉션 URI를 AI Data Engine 애플리케이션에 추가하고 공개 클라이언트 흐름을 허용하십시오. AI 클라이언트는 AI Data Engine 애플리케이션의 애플리케이션(클라이언트) ID로 로그인합니다. PKCE를 사용하므로 클라이언트 암호를 생성하지 않습니다.
+
+.단계
+. Microsoft Entra 관리 센터에서 AI Data Engine 애플리케이션을 열고 *인증*으로 이동합니다.
+. *플랫폼 추가* > *모바일 및 데스크톱 애플리케이션*을 선택하고 사용하는 AI 클라이언트의 리디렉션 URI를 추가하십시오. 클라이언트가 사용하는 각 콜백에 대해 하나의 URI를 추가하십시오:
++
+[cols="1,2"]
+|===
+| 클라이언트 | 리디렉션 URI 
+
+
+| Claude Desktop | `\http://localhost:6491/oauth/callback` 
+
+
+| Claude Code | `\http://localhost:8080/callback` 
+
+
+| 커서 | `\http://localhost:8787/callback` 
+
+
+| OpenCode | `\http://127.0.0.1:19876/callback` 
+|===
+. 선택 사항: 사용자가 웹의 Cursor 또는 Cursor Agents에서 로그인하는 경우 *플랫폼 추가* > *웹*을 선택하고  `\https://www.cursor.com/agents/mcp/oauth/callback`를 추가합니다.
+. *설정* 탭에서 *공용 클라이언트 흐름 허용*을 *예*로 설정하고 저장합니다.
+. *API 권한*에서 Microsoft Graph 위임 권한 `offline_access`을 추가하여 클라이언트가 사용자에게 다시 로그인하라는 요청 없이 토큰을 새로 고칠 수 있도록 합니다.
+. 테넌트에 관리자 동의가 필요한 경우 *관리자 동의 부여*를 선택합니다.
+
+
+오류 `AADSTS50011`로 인해 로그인이 실패하면 AI 클라이언트의 콜백 URI가 등록되지 않은 것입니다. 오류에 추가할 정확한 URI가 표시됩니다. *모바일 및 데스크톱 애플리케이션* 아래에 이를 추가하고, 클라이언트 구성에서 여기에 등록한 것과 동일한 포트를 사용하십시오.
+
+
+
+[[token-expectations]]
+== 토큰 기대치
+
+AI 클라이언트는 각 요청의  `Authorization: Bearer` 헤더에 Entra ID 액세스 토큰을 전송해야 합니다. AI Data Engine은 모든 요청에서 토큰의 유효성을 검사합니다. 다음 조건을 모두 충족하는 경우에만 토큰을 허용합니다:
+
+* 서명이 유효하며, 해당 토큰은 Entra ID 테넌트(발급자)가 발급한 v2.0 토큰입니다.
+* 해당 대상 (`aud`)은 AI Data Engine 애플리케이션의 애플리케이션(클라이언트) ID와 일치합니다.
+* 만료되지 않았습니다. Entra ID 액세스 토큰은 일반적으로 약 1시간 동안 유효합니다.  `offline_access`을(를) 요청하는 클라이언트는 사용자가 다시 로그인할 필요 없이 토큰을 갱신할 수 있습니다.
+
+
+파워 유저 세션의 토큰은 `power_users` 범위를 `scp` 클레임에 포함하고 `AIDEPowerUsers` 앱 역할을 `roles` 클레임에 포함합니다.
+
+토큰이 없거나 만료되었거나 유효하지 않은 경우 AI Data Engine은  `401 Unauthorized`을(를) 반환합니다. 로그인 후  `401` 응답은 일반적으로 Entra ID가 v1 토큰을 발급했거나 AI Data Engine의 테넌트 ID 또는 애플리케이션(클라이언트) ID가 Entra ID 애플리케이션과 일치하지 않음을 의미합니다.  `requestedAccessTokenVersion`이(가)  `2`(으)로 설정되어 있고 NetApp Console의 ID 공급자 값이 일치하는지 확인하십시오.
+
+AI Data Engine이 사용자의 신원이나 범위를 확인할 수 없는 경우, 해당 컬렉션에서 데이터를 반환하지 않습니다.
+
+AI Data Engine이 토큰을 수락하도록 Entra ID에서 선택적 클레임을 구성할 필요는 없습니다.
+
+
+
+[[give-the-values-to-the-ai-data-engine-administrator]]
+[[give-values-to-the-aide-administrator]]
+== 해당 값을 AI Data Engine 관리자에게 전달하십시오.
+
+AI Data Engine 관리자에게 다음 값을 제공하십시오. 관리자가 AI Data Engine을 Entra ID에 연결하고 MCP용 컬렉션을 구성하는 데 이 값이 필요합니다:
+
+* 디렉터리(테넌트) ID
+* 애플리케이션(클라이언트) ID
+* 애플리케이션 ID URI, `\https://<host>/mcp/tools`
+* 전체 범위 값, `\https://<host>/mcp/tools/power_users`
+
+
+.다음 단계
+AI Data Engine 관리자 link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."].
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]
+* link:learn-about-mcp.html["통제된 AI 액세스에 대해 알아보십시오"]
+* link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]
+* link:connect-ai-clients-mcp.html["AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다."]
+* link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"]
+* link:../release-notes/known-limitations.html["알려진 제한 사항"]
+

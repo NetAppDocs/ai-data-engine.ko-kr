@@ -1,0 +1,149 @@
+---
+sidebar: sidebar 
+permalink: administer/configure-ad-nfs.html 
+keywords: active directory, nfs, uidNumber, gidNumber, global catalog, identity mapping, file owner, ldap, general settings 
+summary: NFS 사용자 ID 및 그룹 ID에 대한 Active Directory 매핑을 구성하십시오. AI Data Engine은 확인된 사용자 ID를 사용하여 NFS 데이터의 파일 소유자 이름을 표시합니다. 
+---
+= AI Data Engine에서 NFS용 Active Directory ID 매핑 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+숫자 ID 대신 이름으로 NFS 파일 소유자를 식별하십시오. AI Data Engine(AIDE)은 NFS 파일의 숫자 사용자 ID(UID)와 그룹 ID(GID)를 Active Directory ID로 매핑할 수 있으며, 확인된 사용자 ID를 사용하여 파일 소유자 이름을 표시합니다.
+
+이 매핑은 AI Data Engine을 NFS 스토리지에 인증하지 않습니다. AI Data Engine이 스캔 중에 찾은 ID를 Active Directory 이름으로 변환합니다.
+
+
+
+[[before-you-begin]]
+== 시작하기 전에
+
+.권한 및 액세스
+* 귀하는 _AI Data Engine 관리자_ 권한을 가지고 있습니다.
+
+
+.AI Data Engine 구성
+* AI Data Engine에서 Active Directory 도메인 컨트롤러로의 link:../deploy/aide-requirements.html#networking-requirements["필요한 포트를 열었습니다"]이(가) 있습니다.
+* link:configure-settings.html#find-access-risks-with-permission-scanning["권한 스캔을 켰습니다"]이(가) 있습니다.
+
+
+.Active Directory
+* AI Data Engine이 사용자 및 그룹 속성을 조회하는 데 사용할 수 있는 Active Directory 계정이 있습니다. AI Data Engine에 해당 사용자 이름과 암호를 입력합니다.
+* Active Directory 도메인 이름과 DNS 서버의 IP 주소 또는 LDAP 서버의 IP 주소 및 포트가 있습니다.
+* 디렉터리에 보안 LDAP 연결이 필요한지 여부를 알고 있습니다.
+* AI Data Engine이 글로벌 카탈로그를 쿼리했는데 속성이 아직 복제되지 않은 경우, 스키마를 변경하려면 사용자 또는 Active Directory 관리자에게 _Schema Admins_ 역할이 있어야 합니다.
+
+
+
+
+[[prepare-active-directory]]
+== Active Directory 준비
+
+AI Data Engine이 파일 소유자를 확인할 수 있도록 Active Directory의 UID 및 GID 속성을 NFS 스토리지에서 사용되는 숫자 ID와 일치시키십시오.
+
+AI Data Engine은 다음과 같은 Active Directory 속성을 읽습니다:
+
+[cols="1,2,1"]
+|===
+| 속성 | 목적 | 필수 
+
+
+| `uidNumber` | 사용자의 숫자 UID입니다. 이 UID는 NFS 스토리지에 있는 사용자의 UID와 일치해야 합니다. | 예 
+
+
+| `gidNumber` | 그룹의 숫자 GID입니다. 이 값은 NFS 스토리지에서 해당 그룹이 가진 GID와 일치해야 합니다. | 예 
+
+
+| `mail` | 파일 소유자의 이메일 주소입니다. 이 속성이 설정되지 않은 경우 소유자의 이메일 주소는 *사용할 수 없음*으로 표시됩니다. | 아니요 
+|===
+AI Data Engine이 확인할 사용자에  `uidNumber`을(를) 입력하고 그룹에  `gidNumber`을(를) 입력하십시오.
+
+
+NOTE: 그룹 오브젝트에  `gidNumber`를 설정합니다. 사용자 오브젝트의  `gidNumber`는 해당 사용자의 기본 그룹을 식별합니다. 이는 AI Data Engine이 이 조회에 사용하는 그룹 속성이 아닙니다.
+
+.단계
+. 해석하려는 모든 사용자에게 `uidNumber` 값이 있고 모든 그룹에 `gidNumber` 값이 있는지 확인하십시오. 각 UID는 사용자 간에 고유해야 하며, 각 GID는 그룹 간에 고유해야 합니다. 사용자와 그룹은 동일한 숫자 값을 가질 수 있습니다.
+. AI Data Engine이 글로벌 카탈로그를 쿼리할 때 속성이 아직 복제되지 않은 경우,  `uidNumber` 및  `gidNumber` 속성을 복제하십시오. 이 복제는 전체 포리스트에 대한 일회성 변경입니다. _Schema Admins_ 그룹의 구성원이어야 합니다.
++
+.. 도메인 컨트롤러에서 Active Directory 스키마 스냅인을 엽니다.
+..  `uidNumber` 속성의 속성을 엽니다.
+.. *이 속성을 글로벌 카탈로그에 복제*를 선택합니다.
+.. 해당  `gidNumber` 속성에 대해 반복합니다.
+
+
+
+
+
+CAUTION: AI Data Engine이 글로벌 카탈로그를 조회하는 경우, 카탈로그에 복제되지 않은 속성은 ID 조회 결과로 반환되지 않습니다. 해당 ID는 확인되지 않은 상태로 남아 있습니다.
+
+
+
+[[enable-active-directory-for-nfs]]
+== NFS용 Active Directory 활성화
+
+AI Data Engine을 일치하는 UID 및 GID 속성이 포함된 Active Directory 도메인에 연결한 다음, ID 매핑을 활성화하여 스캔한 NFS 파일에 확인된 소유자 이름이 표시되도록 합니다.
+
+.단계
+. AI Data Engine UI에서 *구성*을 선택합니다.
+. *일반 설정*을 선택합니다.
+. 해당 페이지에서 *Active Directory*를 찾아 *사용*을 선택합니다.
+. Active Directory 도메인의 연결 정보를 입력하십시오. *DNS 서버 IP 주소* 옵션 또는 *LDAP 서버 IP 주소* 옵션 중 하나를 선택하십시오.
++
+
+NOTE: 여기에 입력하는 자격 증명은 디렉터리 통합용입니다. SMB 아카이브 대상에 제공하는 자격 증명과는 별개입니다. link:../investigate/take-actions.html["데이터에 대한 조치를 취하십시오"]를 참조하십시오.
+
++
+[cols="1,3"]
+|===
+| 필드 | 설명 
+
+
+| *사용자 이름* | AI Data Engine이 사용자 및 그룹 속성을 조회하는 데 사용하는 Active Directory 계정입니다.  `domain\user` 또는  `user@domain` 형식으로 이름을 입력하십시오. 
+
+
+| *비밀번호* | 계정 비밀번호입니다. 
+
+
+| *DNS 서버 IP 주소* | Active Directory 도메인을 확인하는 DNS 서버의 IP 주소입니다. 예를 들어,  `10.0.1.50`입니다. *LDAP 서버 IP 주소* 대신 이 옵션을 선택하십시오. 
+
+
+| *도메인 이름* | Active Directory 도메인의 정규화된 이름입니다. 예를 들어  `corp.example.com`입니다. 이 필드는 DNS 및 LDAP 옵션 모두에 필수입니다. 
+
+
+| *LDAP 서버 IP 주소* | 도메인 컨트롤러인 LDAP 서버의 IP 주소. 예를 들어,  `10.0.1.50`입니다. *DNS 서버 IP 주소* 대신 이 옵션을 선택하십시오. 
+
+
+| *LDAP 서버 포트* | LDAP 서버의 포트입니다. 기본값은  `389`입니다. 
+
+
+| *LDAP 보안 연결* | 보안 연결을 통해 LDAP 서버에 연결하려면 이 옵션을 선택합니다. 이 옵션은 DNS 및 LDAP 옵션 모두에서 사용할 수 있습니다. 
+|===
+. 선택적으로 *NFS ID 매핑 활성화*를 켜십시오.
++
+NFS ID 매핑을 활성화하면 AIDE가 숫자로 된 NFS 파일 소유자 ID를 Active Directory 소유자 이름으로 변환할 수 있습니다. 이 옵션은 Active Directory에 NFS 환경에서 사용하는 Unix UID/GID 속성이 포함된 경우에만 활성화하십시오.
+
++
+..  `uidNumber` 및  `gidNumber` 등 *UID 번호 속성*과 *GID 번호 속성*을 입력하십시오. NFS ID 매핑이 활성화된 경우 두 필드 모두 필수입니다. 소유자 정보는 백그라운드에서 처리됩니다.
+
+
+. 변경 사항을 저장합니다.
+
+
+.결과
+AI Data Engine은 Active Directory를 사용하여 스캔한 NFS 파일의 소유자를 확인합니다.
+
+AI Data Engine은 ID를 비동기적으로 확인합니다. Active Directory에서 매핑을 활성화하거나 속성을 업데이트한 후 소유자 이름이 즉시 표시되지 않을 수 있습니다.
+
+결과를 확인하려면 link:../investigate/investigate-unstructured.html["조사"] 보기에서 파일 세부 정보를 열고 파일 소유자에 Active Directory 사용자 이름이 표시되는지 확인하십시오.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:../deploy/aide-requirements.html["AI Data Engine 요구 사항"]
+* link:configure-kerberos-smb.html["AI Data Engine의 SMB/CIFS 공유에 대한 Kerberos 인증"]
+* link:configure-settings.html["데이터 분류 임계값 구성"]
+

@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: mcp/learn-about-mcp.html 
+keywords: governed ai access, mcp, model context protocol, ai clients, collections, entra id, claude code, claude desktop, cursor, opencode 
+summary: '관리형 AI 액세스를 사용하면 AI 클라이언트가 NetApp Console에서 제어하는 액세스를 사용하여 모델 컨텍스트 프로토콜(MCP)을 통해 선택한 AI Data Engine 컬렉션의 메타데이터를 검색할 수 있습니다.' 
+---
+= AI Data Engine을 통한 통제된 AI 액세스에 대해 알아보십시오.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리형 AI 액세스를 통해 AI 클라이언트는 모델 컨텍스트 프로토콜(MCP)을 사용하여 사용자가 선택한 AI Data Engine(AIDE) 컬렉션의 메타데이터를 검색할 수 있습니다. AI 클라이언트가 검색할 수 있는 link:manage-data-collections.html#about-data-collections["컬렉션"] 및 이를 사용할 수 있는 사용자를 결정합니다. AI 어시스턴트는 사용자가 설정한 범위 내에서 카탈로그화된 메타데이터를 기반으로 작동합니다.
+
+
+
+[[what-governed-ai-access-does]]
+== 통제된 AI 액세스가 수행하는 작업
+
+모델 컨텍스트 프로토콜(MCP)은 AI 클라이언트가 외부 데이터 소스 및 툴에 연결할 수 있도록 해주는 개방형 표준입니다. AI Data Engine은 AI 클라이언트가 스토리지 시스템에 직접 접근하는 대신 AI Data Engine 메타데이터 카탈로그를 쿼리할 수 있도록 Governed Access Gateway라는 MCP 서버를 제공합니다.
+
+MCP를 통해 연결된 AI 클라이언트는 다음과 같은 작업을 수행할 수 있습니다:
+
+* AI 액세스를 활성화한 컬렉션 내 파일의 메타데이터를 검색합니다.
+* 태그를 나열하고, 태그를 생성하며, 해당 파일에 태그를 추가하거나 파일에서 태그를 제거합니다. 태그가 존재하지 않는 경우 파일에 추가하여 생성합니다. 태그 작업은 고급 사용자 세션에서 사용할 수 있으며, 이를 위해서는 Microsoft Entra ID 앱 역할 및 범위가 필요합니다. link:configure-entra-id-mcp.html#create-and-assign-the-power-user-app-role["파워유저 앱 역할을 생성하고 할당합니다"]을(를) 참조하십시오. AI 클라이언트가 사용할 수 있는 툴에 대해서는 link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"]을(를) 참조하십시오.
+
+
+
+
+[[governed-ai-access-and-the-investigation-view]]
+== AI 접근 제어 및 조사 보기
+
+관리형 AI 액세스는 AI Data Engine에서 수행하는 조사 작업에 대한 AI 기반 대안을 제공합니다. UI의 link:../investigate/investigate-data.html["조사 뷰"]에서 필터를 만들고 태그를 지정할 파일을 선택하는 대신, Claude Desktop 등 AI 클라이언트에서 질문을 하거나 지침을 제공합니다.
+
+[cols="1,2,2"]
+|===
+| 작업 | AI Data Engine에서 | AI 클라이언트를 통해 
+
+
+| 메타데이터로 파일 찾기 | link:../investigate/investigate-unstructured.html["조사 뷰"]에서 메타데이터 필터를 적용합니다. | AI 클라이언트에게 파일 이름 접두사, 파일 형식 또는 소유자를 기준으로 컬렉션을 검색하도록 요청하십시오. 
+
+
+| 파일 세부 정보 검토 | 파일의 세부 정보 패널을 열면 해당 파일의 시스템, 저장소, 소유자 및 적용된 태그를 확인할 수 있습니다. | AI 클라이언트에게 결과에 포함된 파일의 경로, 유형, 크기, 최종 수정 시간 및 소유자를 요청하세요. 
+
+
+| 태그 파일 | 조사 결과에서 파일을 선택하고 link:../investigate/take-actions.html#tag-files["태그 액션"]을(를) 사용하십시오. | AI 클라이언트에게 태그를 생성하거나, 파일에 추가하거나, 파일에서 태그를 제거하도록 요청하십시오. 
+|===
+동일한 카탈로그 메타데이터와 태그를 두 곳 모두에서 사용할 수 있습니다. 조사 보기 또는 AI 클라이언트를 통해 태그를 생성, 추가 또는 삭제할 수 있습니다. 각 인터페이스는 다른 인터페이스에서 변경한 내용을 반영하므로 태그를 기반으로 한 검색이 일관성 있게 작동합니다.
+
+AI 클라이언트는 AI 액세스가 활성화된 컬렉션 내에서만 작동합니다. 검색 옵션 및 예시는 link:connect-ai-clients-mcp.html#search-metadata["메타데이터 검색"]를 참조하십시오.
+
+샘플 프롬프트는 link:connect-ai-clients-mcp.html#sample-prompts["AI 클라이언트 연결"]을(를) 참조하십시오.
+
+
+
+[[how-governed-ai-access-works]]
+== 통제된 AI 액세스 작동 방식
+
+Microsoft Entra ID 및 NetApp Console에서 관리형 AI 액세스를 구성합니다. 이 작업은 AI Data Engine 관리자와 Microsoft Entra ID 관리자(동일인일 수도 있음) 간에 분담됩니다:
+
+. AI Data Engine 관리자: 인그레스 스크립트를 실행하여 link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]. Microsoft Entra ID에서 인증된 도메인의 AIDE 클러스터 호스트 이름을 사용하십시오.
+. Entra ID 관리자: link:configure-entra-id-mcp.html["Microsoft Entra ID 구성"] 각 AI Data Engine 인스턴스에 대한 전용 애플리케이션을 등록하고, 애플리케이션 ID URI 및 `power_users` 범위를 정의하고, 파워 유저 앱 역할을 생성 및 할당하며, AI 클라이언트에 대한 리디렉션 URI를 추가하여 수행합니다.
+. AI Data Engine 관리자: AI Data Engine의 link:connect-entra-id-aide-mcp.html["Microsoft Entra ID를 ID 공급자로 설정하십시오"].
+. 선택 사항: 선택한 볼륨에서 데이터 수집을 생성합니다. *모든 파일* 수집은 기본적으로 존재하며 스캔한 모든 파일을 포함합니다.
+. *MCP 설정*에서 MCP 연결을 활성화하고 MCP 서버가 실행 중인지 확인하십시오. 연결은 기본적으로 비활성화되어 있습니다.
+. ID 공급자와 사용자 범위를 선택하여 MCP용 각 컬렉션을 구성하십시오. 포함하는 범위는 AI 클라이언트가 검색할 수 있는 항목을 정의합니다.
+. NetApp Console에서 생성한 MCP 서버 URL 또는 클라이언트별 스니펫을 사용하여 AI 클라이언트를 연결합니다.
+
+
+구성이 완료되면 사용자는 Entra ID를 사용하여 AI 클라이언트에 로그인합니다. 그러면 클라이언트는 사용자의 Entra ID 범위에서 액세스가 허용된 컬렉션만 검색할 수 있습니다.
+
+접근 권한은 컬렉션 단위로만 부여됩니다. 개별 파일이나 디렉터리에 대한 접근 권한은 부여할 수 없습니다.
+
+
+
+[[how-ai-clients-sign-in]]
+== AI 클라이언트 로그인 방법
+
+Microsoft Entra ID는 사용자를 인증합니다. AI Data Engine MCP 서버는 토큰을 발급하지 않으며 비밀 키를 보유하지 않습니다. 사용자의 Entra ID 테넌트가 발급한 토큰만 검증합니다.
+
+사용자가 AI 클라이언트를 연결하면 다음과 같은 일이 발생합니다:
+
+. AI 클라이언트는 토큰 없이  `/mcp/tools`의 MCP 서버로 첫 번째 요청을 보냅니다. 서버는  `401 Unauthorized`(으)로 응답하고 해당 OAuth 메타데이터를 가리킵니다.
+. AI 클라이언트는 메타데이터를 읽어 Entra ID 발급자와 지원되는 범위를 파악합니다.
+. 브라우저가 Entra ID 로그인 페이지를 엽니다. 사용자가 로그인하고 동의하면 Entra ID는 등록한 콜백 URI로 리디렉션합니다.
+. Entra ID는 애플리케이션에 대한 v2.0 토큰을 발급합니다. 토큰 대상은 애플리케이션(클라이언트) ID이고,  `scp` 클레임은  `power_users`이며,  `roles` 클레임에는  `AIDEPowerUsers`가 포함됩니다.
+. MCP 서버는 모든 요청 시 사용자의 Entra ID 테넌트와 대조하여 토큰 서명, 발급자, 대상 및 만료일의 유효성을 검사합니다.
+
+
+토큰 요구 사항은 link:configure-entra-id-mcp.html#token-expectations["토큰 기대치"]을(를) 참조하십시오.
+
+
+
+[[validated-ai-clients]]
+== 검증된 AI 클라이언트
+
+NetApp은 다음 AI 클라이언트를 사용하여 관리형 AI 액세스 설정을 테스트하고 검증했습니다:
+
+* Claude Code
+* Claude Desktop
+* 커서
+* OpenCode
+
+
+NetApp은 다른 MCP 클라이언트를 테스트하지 않았습니다. 연결하도록 구성할 수 있다면 작동할 수도 있지만, 검증된 것은 아닙니다.
+
+
+
+[[what-isnt-available-through-mcp]]
+== MCP를 통해 이용할 수 없는 것
+
+관리되는 AI 액세스는 컬렉션 내 메타데이터 검색 및 태그 작업으로 제한됩니다. MCP를 통해 AI 클라이언트는 다음을 수행할 수 없습니다:
+
+* 파일의 내용을 검색합니다.
+* 파일을 추가, 삭제 또는 수정합니다.
+* 데이터 소스 구성 변경.
+
+
+전체 제한 사항 목록은 link:../release-notes/known-limitations.html["알려진 제한 사항"]을(를) 참조하십시오.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:manage-data-collections.html["데이터 수집 관리"]
+* link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]
+* link:quick-start-mcp.html["AI Data Engine을 통한 관리되는 AI 액세스 빠른 시작"]
+* link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]
+* link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"]
+* link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]
+* link:connect-ai-clients-mcp.html["AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다."]
+* link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"]
+* link:../release-notes/known-limitations.html["알려진 제한 사항"]
+

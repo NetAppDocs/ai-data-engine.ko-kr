@@ -1,0 +1,22 @@
+---
+section: mcp
+title: 관리형 AI 액세스(MCP)
+entries:
+- title: 통제된 AI 액세스에 대해 알아보십시오
+  url: "/mcp/learn-about-mcp.html"
+- title: 빠른 시작
+  url: "/mcp/quick-start-mcp.html"
+- title: MCP 호스트를 준비합니다
+  url: "/mcp/prepare-mcp-host.html"
+- title: Microsoft Entra ID 구성
+  url: "/mcp/configure-entra-id-mcp.html"
+- title: AIDE를 Microsoft Entra ID에 연결합니다.
+  url: "/mcp/connect-entra-id-aide-mcp.html"
+- title: 데이터 수집 관리
+  url: "/mcp/manage-data-collections.html"
+- title: AI 클라이언트 연결
+  url: "/mcp/connect-ai-clients-mcp.html"
+- title: AIDE MCP 툴
+  url: "/mcp/mcp-tools-reference.html"
+- title: MCP 설정을 유지 관리하십시오
+  url: "/mcp/maintain-mcp-setup.html"

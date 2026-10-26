@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: mcp/manage-data-collections.html 
+keywords: mcp, governed ai access, data collections, collection, ai access, scope, create collection, enable collection 
+summary: 데이터 수집을 생성하고 AI가 접근할 수 있도록 설정하여 연결된 AI 클라이언트가 이를 검색할 수 있도록 합니다. 
+---
+= AI Data Engine에서 제어하는 AI 액세스에 대한 데이터 수집을 관리합니다.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+컬렉션은 AI Data Engine(AIDE)용 모델 컨텍스트 프로토콜(MCP) 서버를 통해 AI 클라이언트가 검색할 수 있도록 하는 데이터 소스를 위한 논리적 컨테이너입니다. 연결된 AI 클라이언트가 검색할 수 있도록 컬렉션을 생성하고 AI 액세스를 활성화합니다.
+
+
+
+[[before-you-begin]]
+== 시작하기 전에
+
+* _AI Data Engine 관리자_ 역할이 있어야 합니다.
+* AI Data Engine에서 Microsoft Entra ID를 ID 공급자로 설정했으며 연결 상태는 *연결됨*입니다. link:connect-entra-id-aide-mcp.html#set-up-an-identity-provider["ID 공급자를 설정하십시오"]을(를) 참조하십시오.
+* 사용자 지정 데이터 수집을 생성했거나 AI 클라이언트가 검색해야 하는 데이터만 포함된 기본 컬렉션을 사용하고 있습니다. <<create-a-data-collection,데이터 수집 생성>>을(를) 참조하십시오.
+
+
+
+
+[[about-data-collections]]
+== 데이터 수집 정보
+
+컬렉션은 하나 이상의 데이터 소스를 위한 논리적 컨테이너입니다. AI Data Engine은 AI Data Engine이 스캔한 모든 시스템과 볼륨을 포함하는 *모든 파일*이라는 기본 컬렉션을 제공합니다.
+
+
+CAUTION: 컬렉션에 대한 범위 액세스 권한을 부여하기 전에 해당 범위를 가진 모든 사용자가 컬렉션에 있는 모든 파일의 메타데이터를 검색할 수 있는지 확인하십시오. *모든 파일*에 대한 범위 액세스 권한을 부여하면 해당 범위를 가진 모든 사용자가 스캔된 모든 데이터의 메타데이터를 검색할 수 있습니다.
+
+컬렉션을 생성하려면 <<create-a-data-collection,데이터 수집 생성>>을(를) 참조하십시오. 나중에 컬렉션, ID 공급자 또는 MCP 서버 설정을 변경하려면 link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]을(를) 참조하십시오.
+
+
+
+[[create-a-data-collection]]
+== 데이터 수집 생성
+
+AI 클라이언트가 MCP 서버를 통해 검색할 수 있는 데이터 리소스를 정의하는 데이터 수집을 생성합니다.
+
+.단계
+. NetApp Console에서 *AI 데이터 허브* > *AI Data Engine*으로 이동합니다.
+. *구성*을 선택한 다음 *MCP 컬렉션*을 선택합니다.
+. *컬렉션 만들기*를 선택합니다.
+. *이름*에 컬렉션의 고유한 이름을 입력하십시오.
+. 선택 사항: *설명*에 팀에서 컬렉션의 목적을 이해하는 데 도움이 되는 설명을 입력하십시오. 설명은 최대 512자까지 입력할 수 있습니다.
+. *시스템* 및 *프로토콜* 필터를 사용하여 데이터 리소스 목록을 좁히십시오.
+. 컬렉션에 포함할 각 데이터 리소스 옆의 확인란을 선택하십시오.
++
+*스캔 상태* 열에는 각 데이터 리소스가 *완료됨*, *재스캔 중* 또는 *오류* 상태인지 여부가 표시됩니다. S3 및 정형 데이터 리소스는 컬렉션에 추가할 수 없습니다.
+
++
+*선택된 행* 요약에는 선택된 리소스 수, 스캔된 용량 및 스캔된 파일 수가 표시됩니다. 선택을 해제하고 다시 시작하려면 *재설정*을 선택하십시오.
+
+. *MCP 컬렉션 생성*을 선택합니다.
+
+
+확인 메시지가 나타나고 새 컬렉션이 *구성 준비됨* 상태로 *컬렉션* 목록에 추가됩니다. 컬렉션을 생성해도 MCP 연결 구성이 완료되지 않습니다.
+
+*컬렉션* 목록에는 각 컬렉션의 이름, 설명, 볼륨 수, 스캔 용량, 스캔된 파일 수, 소유자 및 상태가 표시됩니다. AI Data Engine에서 제공하는 컬렉션의 소유자는 *System*이고, 사용자가 생성한 컬렉션의 소유자는 *User*입니다.
+
+컬렉션을 생성한 후, <<configure-a-collection-for-mcp,MCP용으로 구성합니다>>.
+
+
+
+[[configure-a-collection-for-mcp]]
+== MCP용 컬렉션 구성
+
+MCP 컬렉션에 사용할 ID 공급자와 사용자 범위를 선택한 다음 AI 클라이언트에 대한 연결
+
+
+IMPORTANT: 고급 사용자 세션에서는 검색이 파일 수준 권한으로 필터링되지 않습니다. 컬렉션에 대한 액세스 권한이 있는 사용자는 컬렉션 내의 모든 파일을 검색할 수 있습니다. 컬렉션의 범위에 할당된 모든 사용자가 볼 수 있도록 허용된 파일만 포함하십시오. 해당 범위의 모든 사용자가 스캔된 모든 데이터를 검색하도록 허용된 경우에만 범위에 *All files*에 대한 액세스 권한을 부여하십시오.
+
+.시작하기 전에
+* MCP 컬렉션을 생성했거나 *모든 파일*을 사용하고 있습니다. <<create-a-data-collection,데이터 수집 생성>>을(를) 참조하십시오.
+* 사용하려는 ID 공급자는 AI Data Engine에 연결되어 있습니다. link:connect-entra-id-aide-mcp.html#set-up-an-identity-provider["ID 공급자를 설정하십시오"]을(를) 참조하십시오.
+* MCP 연결이 활성화되었습니다. *MCP 컬렉션* > *MCP 설정*에서 *MCP 서버 연결*을 확장하고 *MCP 연결 활성화*가 켜져 있는지 확인하십시오. 연결은 기본적으로 비활성화되어 있습니다. link:maintain-mcp-setup.html#enable-or-disable-the-connection-to-mcp["MCP와의 연결 활성화 또는 비활성화"]을(를) 참조하십시오.
+* MCP 서버의 상태가 *실행 중*입니다. link:maintain-mcp-setup.html#review-mcp-server-and-collection-status["MCP 서버 및 컬렉션 상태 검토"]을(를) 참조하십시오.
+
+
+.단계
+. NetApp Console에서 *AI 데이터 허브* > *AI Data Engine* > *구성* > *MCP 컬렉션*으로 이동합니다.
+. 구성하려는 컬렉션을 찾아서 *작업* 메뉴를 열고 *MCP용으로 구성*을 선택합니다.
+. *ID 공급자 선택* 단계에서 컬렉션에 대한 액세스 권한을 인증하고 부여할 ID 공급자를 하나 이상 선택합니다.
++
+
+NOTE: 필요한 ID 공급자가 목록에 없으면 계속 진행하기 전에 *ID 공급자*에 추가하십시오. 관리자 액세스 권한이 필요한 경우 관리자에게 ID 공급자 연결을 요청하십시오.
+
+. 선택한 각 ID 공급자에 대해 *포함할 사용자 범위*를 사용하여 범위를 지정합니다:
++
+.. 모든 사용자 범위를 포함하려면 *모든 사용자 범위*를 선택한 상태로 두십시오.
+.. 특정 범위를 포함하려면 드롭다운 메뉴를 열고 범위를 선택한 다음 *범위 추가*를 선택하십시오.
++
+`power_users`은(는) 드롭다운의 유일한 범위이며, 이를 선택하면 *모든 사용자 범위*와 동일한 결과가 나타납니다. 범위 이름은 Microsoft Entra ID에서 정의한 범위와 일치해야 합니다.
+
+
+
+. *MCP 코드 스니펫 생성*을 선택하세요.
+. *MCP 코드 스니펫 생성* 단계에서 AI 클라이언트에 필요한 연결 정보를 복사하십시오:
++
+** 엔드포인트를 직접 사용하려면 *MCP 서버 URL* 옆에 있는 복사 아이콘을 선택하십시오.
+** 클라이언트별 구성 스니펫을 사용하려면 *코드 스니펫*에서 Claude Desktop의 경우 *Claude* 탭을, Cursor의 경우 *Cursor* 탭을 선택한 다음 복사 아이콘을 선택합니다. Claude Code 및 OpenCode의 경우 MCP 서버 URL을 사용하십시오.
++
+코드 조각을 공유하기 전에 호스트가 클러스터나 서비스 IP 주소가 아닌 AIDE 클러스터 호스트 이름인지, 그리고 URL이  `/mcp/tools`로 끝나고 이 컬렉션의  `collection_id`을(를) 포함하는지 확인하십시오. 범위는  `\https://<host>/mcp/tools/power_users`이어야 하며, 클라이언트 ID는 Entra ID에 있는 AI Data Engine 애플리케이션의 애플리케이션(클라이언트) ID여야 합니다.
+
++
+
+NOTE: *MCP 호스트 이름이 설정되지 않았습니다* 경고가 표시되면 *MCP 설정*을 선택하여 AIDE 클러스터 호스트 이름을 구성하십시오. link:maintain-mcp-setup.html#review-mcp-server-settings["MCP 서버 설정을 검토하십시오"] 및 link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]을(를) 참조하십시오. HTTPS를 사용하여 MCP 서버를 보호하려면 SSL/TLS 인증서가 필요하며, 이는 인그레스 스크립트에서 설정합니다.
+
+
+
+. 선택 사항: ID 공급자 또는 사용자 범위를 변경하려면 *뒤로 가기*를 선택한 다음 스니펫을 다시 생성하십시오.
+. *닫기*를 선택합니다.
+
+
+.결과
+선택한 ID 공급자 및 사용자 범위에 대한 MCP 서버 URL 또는 클라이언트별 구성 스니펫이 있습니다. 이러한 세부 정보를 사용하여 AI 클라이언트를 연결하고 컬렉션에 대한 액세스를 확인하십시오. AI 클라이언트의 리디렉션 URI가 Entra ID의 AI Data Engine 애플리케이션에 등록되어 있는지 확인하십시오. 애플리케이션의 Application (client) ID를 클라이언트 ID로 사용하십시오. link:configure-entra-id-mcp.html#add-redirect-uris-for-ai-clients["AI 클라이언트를 위한 리디렉션 URI를 추가하십시오"]을(를) 참조하십시오.
+
+
+NOTE: 연결 정보를 생성하는 것만으로는 AI 클라이언트가 연결되거나 유효성이 검증되지 않습니다. link:connect-ai-clients-mcp.html["AI 클라이언트에서 해당 작업을 완료하세요."].
+
+컬렉션을 AI 클라이언트에서 사용하려면 먼저 ID 공급자와 사용자 범위를 선택해야 합니다. 이 작업을 완료하면 컬렉션 상태가 *활성화됨*으로 표시됩니다.
+
+부여된 범위가 있는 토큰을 가진 사용자는 컬렉션을 발견하고 검색할 수 있습니다. 일치하는 범위가 없는 사용자는 컬렉션을 발견, 검색 또는 이용할 수 없습니다.
+
+
+
+[[disable-ai-access-for-a-collection]]
+== 컬렉션에 대한 AI 액세스 비활성화
+
+AI 클라이언트가 더 이상 컬렉션을 검색할 필요가 없는 경우 해당 컬렉션에 대한 AI 액세스를 비활성화하십시오. MCP용 컬렉션을 구성하면 AI 액세스가 자동으로 활성화됩니다.
+
+.단계
+. NetApp Console에서 *AI 데이터 허브* > *AI Data Engine* > *구성* > *MCP 컬렉션*으로 이동합니다.
+. 컬렉션의 *작업* 메뉴를 열고 *사용 안 함*을 선택합니다.
+
+
+비활성화된 컬렉션을 사용하는 AI 클라이언트는 변경 사항이 적용된 후 해당 컬렉션에 대한 액세스 권한을 잃게 됩니다. ID 공급자 및 사용자 범위 선택은 유지됩니다. 또한 AI 클라이언트는 MCP 연결이 비활성화된 동안에는 어떤 컬렉션에도 접근할 수 없습니다. 모든 컬렉션에 대한 요청을 한 번에 차단하려면 link:maintain-mcp-setup.html#enable-or-disable-the-connection-to-mcp["MCP와의 연결 활성화 또는 비활성화"]을(를) 참조하십시오.
+
+
+
+[[related-information]]
+== 관련 정보
+
+* link:learn-about-mcp.html["통제된 AI 액세스에 대해 알아보십시오"]
+* link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]
+* link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"]
+* link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]
+* link:connect-ai-clients-mcp.html["AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다."]
+* link:../release-notes/known-limitations.html["알려진 제한 사항"]
+

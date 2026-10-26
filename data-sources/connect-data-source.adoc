@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: data-sources/connect-data-source.html 
-keywords: connect, data source, storage system, scanned systems, configuration, scan, NFS, CIFS, StorageGRID, database, file shares, console agent, scope, content intelligence, activate 
-summary: 데이터 소스 온보딩 마법사를 완료하여 스토리지 시스템을 AI Data Engine에 연결한 다음, 스캔을 활성화하여 메타데이터 수집을 시작하십시오. 
+keywords: connect, data source, storage system, add system, scan, NFS, CIFS, SMB, StorageGRID, database, file shares, console agent, scope, activate, Kerberos 
+summary: 데이터 소스를 AI Data Engine에 연결하고 스캔할 데이터 리소스를 구성합니다. 
 ---
 = 데이터 소스를 AI Data Engine에 연결합니다
 :allow-uri-read: 
@@ -11,70 +11,137 @@ summary: 데이터 소스 온보딩 마법사를 완료하여 스토리지 시�
 
 
 [role="lead"]
-AI Data Engine은 스토리지 시스템을 스캔하여 메타데이터를 수집하고 분석합니다. 데이터 소스를 추가하려면 온보딩 마법사를 완료하십시오. 마법사는 연결 정보, 스캔 범위 및 소스 유형 설정을 수집합니다. 시스템을 추가한 후 스캔을 활성화하여 메타데이터 수집을 시작하십시오.
+AI Data Engine(AIDE)이 분석할 데이터 소스를 연결하고 스캔할 데이터 리소스를 선택하십시오. AI Data Engine은 연결된 데이터 소스를 스캔하여 메타데이터를 수집하며, 연결 절차는 소스 유형에 따라 다릅니다.
 
-.시작하기 전에
-* AI Data Engine에서 데이터 소스를 연결하고 구성하려면 _AI Data Engine 관리자_ 권한이 있어야 합니다.
-* AI Data Engine에 추가하기 전에 Console Agent를 사용하여 NetApp Console에서 스토리지 시스템을 검색하십시오. 이는 온프레미스 ONTAP 클러스터, Cloud Volumes ONTAP, Amazon FSx for NetApp ONTAP, Google Cloud NetApp Volumes 및 Azure NetApp Files를 포함한 모든 지원되는 스토리지 유형에 적용됩니다. 온프레미스 ONTAP 클러스터에 대해서는 NetApp Console 설명서의 link:https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html["온프레미스 ONTAP 클러스터 검색"]를 참조하십시오. 직접 검색으로는 AI Data Engine 등의 데이터 서비스를 사용할 수 없습니다.
+
+
+[[before-you-begin]]
+== 시작하기 전에
+
+* 데이터 소스를 연결하고 구성하려면 _AI Data Engine 관리자_ 권한이 있어야 합니다.
+* NetApp Console 검색을 통해 연결된 시스템의 경우, AI Data Engine에 추가하기 전에 Console 에이전트를 사용하여 NetApp Console에서 스토리지 시스템을 검색하십시오. 이는 온프레미스 ONTAP 클러스터, Cloud Volumes ONTAP, Amazon FSx for NetApp ONTAP, Google Cloud NetApp Volumes 및 Azure NetApp Files를 포함한 모든 지원되는 스토리지 유형에 적용됩니다. 온프레미스 ONTAP 클러스터의 경우, NetApp Console 설명서의 link:https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html["온프레미스 ONTAP 클러스터 검색"]을(를) 참조하십시오. 직접 검색은 AI Data Engine 등 데이터 서비스를 활성화하지 않습니다.
 * AI Data Engine이 데이터 소스에 연결하는 데 필요한 네트워크 연결이 열려 있는지 확인하십시오. link:../deploy/aide-requirements.html["AI Data Engine 요구 사항"]을 참조하십시오.
+* Kerberos 인증을 사용하여 SMB/CIFS 공유를 스캔하려면 먼저 link:../administer/configure-kerberos-smb.html["AI Data Engine의 SMB/CIFS 공유에 대한 Kerberos 인증"]에서 배포 유형에 맞는 절차를 완료하십시오.
 
 
 
 
 [[add-a-data-source]]
+[[add-data-source]]
 == 데이터 소스 추가
 
-.단계
-. AI Data Engine UI에서 *구성*을 선택합니다.
-. *스캔된 시스템* 탭에서 *시스템 추가*를 선택합니다.
-. 소스 유형을 선택하십시오:
-+
-[cols="1,2"]
-|===
-| 소스 유형 | 설명 
-
-
-| *파일 공유 그룹* | 클라우드 또는 온프레미스의 NFS 또는 SMB/CIFS 파일 공유를 명명된 그룹으로 추가합니다. 
-
-
-| *데이터베이스* | 선택한 스키마를 스캔할 데이터베이스 서버를 추가합니다. 
-
-
-| *StorageGRID* | NetApp StorageGRID에서 S3 프로토콜을 사용하여 데이터를 스캔합니다. 
-|===
-. 사용하려는 소스 유형에 대한 연결 정보를 입력하십시오.
-+
-[cols="1,3"]
-|===
-| 소스 유형 | 필수 정보 
-
-
-| *파일 공유 그룹* | 공유 그룹의 이름, 공유 호스트 및 경로 세부 정보. 
-
-
-| *데이터베이스* | 데이터베이스 유형, 호스트, 포트 및 인증 자격 증명. 
-
-
-| *StorageGRID* | 시스템 이름, S3 엔드포인트 URL, S3 액세스 키 및 비밀 키. 
-|===
-. 선택 사항을 검토하고 *확인*을 선택하여 데이터 소스를 추가합니다.
+데이터를 분석할 수 있도록 AI Data Engine으로 가져오십시오. *데이터 소스* 페이지에서 *시스템 추가*를 사용하여 파일 공유 그룹, 데이터베이스 서버 또는 StorageGRID 시스템을 연결하십시오. 데이터 소스를 추가한 후 스캔을 구성하여 메타데이터를 수집하기 위해 AI Data Engine이 스캔할 리소스를 지정하십시오. <<configure-scanning>>을(를) 참조하십시오.
 
 
 
+[[add-a-file-shares-group]]
+[[add-file-shares-group]]
+=== 파일 공유 그룹 추가
 
-[[activate-scanning]]
-== 스캔 활성화
+NFS 또는 SMB 공유를 AI Data Engine에 하나의 명명된 시스템으로 가져와 함께 관리할 수 있습니다. 그룹을 생성하고 공유를 추가한 다음 스캔할 공유를 구성하십시오.
 
-데이터 소스를 구성한 후에도 스캔이 자동으로 시작되지는 않습니다. 각 시스템에 대해 스캔 기능을 활성화해야 합니다.
+[[add-file-shares-group-prerequisites]]
+.시작하기 전에
+* 그룹 이름과 각 공유의 호스트 및 경로를 지정하십시오.
+* AI Data Engine 배포가 공유 서버에 연결할 수 있는지 확인하십시오.
+* NFS의 경우 AI Data Engine에 필요한 내보내기 액세스를 구성하십시오.
+* SMB의 경우, 인증 방법과 공유를 읽는 데 필요한 액세스 권한을 준비하십시오.
+
 
 .단계
-. AI Data Engine UI에서 *구성*을 선택합니다.
-. *스캔된 시스템* 탭에서 스캔할 시스템을 찾으십시오.
-. *스캔 활성화*를 선택합니다.
+. AI Data Engine UI에서 *데이터 소스*를 선택합니다.
+. *시스템 추가*를 선택한 다음 *파일 공유 그룹 추가*를 선택합니다.
+. 그룹 이름을 입력하고 계속 진행하세요.
+. 추가할 공유의 프로토콜을 선택하십시오.
+. 추가할 공유를 입력하고 제출하십시오.
++
 
+NOTE: Kerberos 인증을 사용하는 SMB/CIFS 공유의 경우 공유 경로를 FQDN 뒤에 공유 이름이 오는 형식으로 입력하고(예:  `filer.corp.example.com/sharename`) 자격 증명은 비워 두십시오. link:../administer/configure-kerberos-smb.html["AI Data Engine의 SMB/CIFS 공유에 대한 Kerberos 인증"]을(를) 참조하십시오.
+
+. 각 공유에 대한 결과를 검토하십시오. 실패한 공유가 있으면 해결한 다음 다시 추가하십시오.
+. 그룹에 대한 스캔을 구성합니다. <<configure-scanning>>을(를) 참조하십시오.
+
+
+
+
+[[add-a-database-server]]
+[[add-database]]
+=== 데이터베이스 서버 추가
+
+데이터베이스 서버의 데이터를 AI Data Engine으로 가져와 스캔할 수 있도록 하십시오. 데이터베이스 서버를 연결한 다음 스캔할 스키마를 선택합니다.
+
+.시작하기 전에
+* 데이터베이스 유형, 서버 호스트 이름 또는 IP 주소, 포트 및 스캔 계정 자격 증명을 파악하십시오.
+* 해당 계정이 스캔하려는 스키마와 테이블을 읽을 수 있는지 확인하십시오.
+* AI Data Engine이 데이터베이스 서버에 도달할 수 있는지 확인하십시오.
+
+
+.단계
+. AI Data Engine UI에서 *데이터 소스*를 선택합니다.
+. *시스템 추가*를 선택한 다음 *데이터베이스 서버 추가*를 선택합니다.
+. 데이터베이스 유형을 선택하고 연결 정보를 입력하십시오.
+. 연결 정보를 제출하십시오.
+. 데이터베이스 서버에 대한 스캔을 구성하십시오. <<configure-scanning>>을(를) 참조하십시오.
+
+
+
+
+[[add-storagegrid]]
+=== StorageGRID 추가
+
+StorageGRID 오브젝트 데이터를 S3 엔드포인트를 통해 AI Data Engine으로 가져와 스캔할 수 있습니다. StorageGRID를 연결한 다음 스캔할 버킷을 선택하십시오.
+
+.시작하기 전에
+* 시스템 이름, StorageGRID S3 엔드포인트 URL, S3 액세스 키 및 비밀 키를 준비하십시오.
+* AI Data Engine이 엔드포인트에 접근할 수 있는지 확인하십시오.
+
+
+.단계
+. AI Data Engine UI에서 *데이터 소스*를 선택합니다.
+. *시스템 추가*를 선택한 다음 *StorageGRID 추가*를 선택합니다.
+. 시스템 이름, S3 엔드포인트 URL, 액세스 키 및 비밀 키를 입력하십시오.
+. 연결 정보를 제출하십시오.
+. StorageGRID 시스템에 대한 스캔을 구성합니다. <<configure-scanning>>을(를) 참조하십시오.
+
+
+
+
+[[configure-scanning]]
+== 스캔 구성
+
+시스템을 연결한 후, 메타데이터 수집이 분석해야 할 데이터를 포함하도록 AI Data Engine이 스캔할 데이터 리소스를 선택하십시오. 다음 접근 방식 중 하나를 선택하십시오.
+
+* *데이터 소스* 페이지에서 전체 시스템에 대한 자동 스캔을 활성화하십시오. AI Data Engine은 시스템의 모든 기존 및 향후 리소스를 스캔합니다.
+* 시스템의 *세부 정보 보기* 페이지에서 개별 볼륨, 공유, 버킷 또는 스키마에 대한 스캔을 활성화하십시오.
+
+
+.단계
+* 시스템에 대한 자동 검사를 활성화하십시오:
++
+.. AI Data Engine UI에서 *데이터 소스*를 선택합니다.
+.. 시스템을 찾아 자동 스캔 스위치를 전환하여 자동 스캔을 활성화하십시오.
++
+
+NOTE: 개별 리소스에 대한 스캔을 관리하려면 자동 스캔 기능을 꺼야 합니다.
+
+
+
+* 개별 리소스에 대한 스캔을 활성화합니다:
++
+.. AI Data Engine UI에서 *데이터 소스*를 선택합니다.
+.. 시스템을 찾아 *세부 정보 보기*를 선택합니다.
+.. 데이터 리소스 목록에서 포함하려는 볼륨, 공유, 버킷 또는 스키마에 대한 스캔을 활성화하십시오.
+.. *데이터 소스*로 돌아가서 시스템을 찾은 다음 *스캔 활성화*를 선택하십시오.
+
+
+
+
+추가 리소스 수준 절차에 대해서는 link:manage-data-sources.html["데이터 소스 관리"]을(를) 참조하십시오.
 
 .결과
-스캔된 시스템 탭에서 시스템 상태가 업데이트되어 스캔이 실행 중임을 보여줍니다. 스캔 진행 상황을 모니터링하고 AI Data Engine이 데이터 리소스를 색인화하는지 확인하려면 link:manage-data-sources.html["데이터 소스 관리"] 및 link:monitor-scanning-health.html["스캔 상태 모니터링"]을 참조하십시오.
+*데이터 소스* 페이지의 시스템 상태가 업데이트되어 스캔이 실행 중임을 보여줍니다. 이 페이지에는 각 리소스의 스캔 상태가 표시됩니다.
+
+스캔이 예기치 않게 중단되거나 일시 중지되는 경우 link:../administer/monitor-deployment-health.html["배포 상태를 모니터링하고 문제를 조사합니다"]을(를) 참조하십시오.
 
 
 
@@ -83,6 +150,7 @@ AI Data Engine은 스토리지 시스템을 스캔하여 메타데이터를 수�
 
 * link:manage-data-sources.html["데이터 소스 관리"]
 * link:../deploy/aide-requirements.html["AI Data Engine 요구 사항"]
+* link:../administer/configure-kerberos-smb.html["AI Data Engine의 SMB/CIFS 공유에 대한 Kerberos 인증"]
 * link:../investigate/understand-dashboard.html["대시보드에서 스토리지 활용도 평가"]
-* link:monitor-scanning-health.html["스캔 상태 모니터링"]
+* link:../administer/monitor-deployment-health.html["배포 상태를 모니터링하고 문제를 조사합니다"]
 

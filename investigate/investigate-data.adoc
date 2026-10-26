@@ -27,7 +27,7 @@ summary: 조사 보기를 사용하여 연결된 시스템 전체의 파일 기�
 | 탭 | 사용 시기 | 추가 정보 
 
 
-| *비정형* | NFS 및 SMB/CIFS 볼륨에서 콜드, 오래된 또는 중복된 파일 기반 데이터를 찾습니다. | link:investigate-unstructured.html["비정형 데이터 조사"] 
+| *비정형* | NFS 및 SMB 볼륨에서 콜드, 비활성 또는 중복된 파일 기반 데이터를 찾습니다. | link:investigate-unstructured.html["비정형 데이터 조사"] 
 
 
 | *정형 데이터* | 저장 공간을 과도하게 차지하는 크기가 크거나 사용되지 않는 데이터베이스 테이블을 식별합니다. | link:investigate-structured.html["정형 데이터 조사"] 
@@ -45,6 +45,5 @@ summary: 조사 보기를 사용하여 연결된 시스템 전체의 파일 기�
 * link:investigate-unstructured.html["비정형 데이터 조사"]
 * link:investigate-structured.html["정형 데이터 조사"]
 * link:investigate-directories.html["디렉토리 조사"]
-* link:use-filters.html["필터 작업"]
 * link:take-actions.html["데이터에 대한 조치를 취하십시오"]
 

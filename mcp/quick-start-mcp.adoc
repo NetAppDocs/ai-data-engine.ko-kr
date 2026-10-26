@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: mcp/quick-start-mcp.html 
+keywords: quick start, mcp, governed ai access, identity provider, data collection, ai client, entra id 
+summary: Microsoft Entra ID를 준비하고, AI Data Engine에 연결하고, MCP용 데이터 수집을 구성하고, AI 클라이언트를 연결 및 검증하여 AI Data Engine으로 관리형 AI 액세스를 설정하십시오. 
+---
+= AI Data Engine을 통한 관리되는 AI 액세스 빠른 시작
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI 클라이언트가 모델 컨텍스트 프로토콜(MCP)을 통해 데이터 수집을 검색하고 파일에 태그를 지정할 수 있도록 AI Data Engine(AIDE)을 사용하여 관리되는 AI 액세스를 설정합니다. MCP 호스트와 Microsoft Entra ID를 준비하고, MCP용 데이터 수집을 구성한 다음, AI 클라이언트를 연결합니다.
+
+이 빠른 시작은 사용자가 이미 link:../data-sources/connect-data-source.html["데이터 소스를 연결했습니다"] 그리고 AI Data Engine이 이를 스캔하고 색인을 생성했다고 가정합니다. MCP 서버는 AI Data Engine과 함께 배포됩니다. Microsoft Entra ID 테넌트에서 확인된 등록된 DNS 도메인이 필요합니다. 사용하는 AIDE 클러스터 호스트 이름은 해당 도메인에 있어야 합니다. 또한 Microsoft Entra ID에서 애플리케이션을 등록하고 동의를 부여할 수 있는 권한이 필요하거나, Entra ID 관리자가 사용자를 대신하여 Entra ID 단계를 완료해야 합니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"] link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]
+[role="quick-margin-para"]
+AI Data Engine 설치 프로그램을 다운로드한 시스템에서 link:prepare-mcp-host.html#run-the-ingress-script["인그레스 스크립트"]을(를) 실행하여 인증서와 AIDE 클러스터 호스트 이름을 설정합니다. 호스트 이름은 Entra ID 테넌트에서 확인된 도메인에 있어야 합니다. 그런 다음 link:prepare-mcp-host.html#verify-the-host["호스트를 확인하십시오"].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["둘"] link:configure-entra-id-mcp.html["Microsoft Entra ID 구성(Entra ID 관리자)"]
+[role="quick-margin-para"]
+Microsoft Entra 관리 센터에서 link:configure-entra-id-mcp.html#register-the-ai-data-engine-application["애플리케이션 등록"] 이 AI Data Engine 인스턴스에 대한 애플리케이션 ID URI와 범위를 정의합니다. 그런 다음 link:configure-entra-id-mcp.html#create-and-assign-the-power-user-app-role["파워유저 앱 역할을 생성합니다"] 이를 사용자에게 할당하고, AI 클라이언트를 위해 link:configure-entra-id-mcp.html#add-redirect-uris-for-ai-clients["리디렉션 URI 추가"]. 테넌트 ID와 애플리케이션(클라이언트) ID를 기록해 둡니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3"] link:connect-entra-id-aide-mcp.html#set-up-an-identity-provider["Entra ID를 AI Data Engine에 연결(AI Data Engine 관리자)"]
+[role="quick-margin-para"]
+NetApp Console에서 테넌트 ID와 애플리케이션(클라이언트) ID를 사용하여 AI Data Engine에 Microsoft Entra ID를 ID 공급자로 추가합니다. 공급자가 연결되었는지 확인합니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["네"] link:manage-data-collections.html#create-a-data-collection["선택 사항: 데이터 수집 생성"]
+[role="quick-margin-para"]
+*모든 파일* 컬렉션은 기본적으로 존재하며 스캔된 모든 파일을 포함합니다. NetApp Console에서 컬렉션을 추가로 생성하여 MCP 서버를 통해 AI 클라이언트가 특정 볼륨을 사용할 수 있도록 하십시오.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["다섯"] link:manage-data-collections.html#configure-a-collection-for-mcp["MCP용 컬렉션을 구성합니다"]
+[role="quick-margin-para"]
+NetApp Console에서 link:maintain-mcp-setup.html#enable-or-disable-the-connection-to-mcp["MCP와의 연결을 활성화합니다"] MCP 서버가 실행 중인지 확인하십시오. 연결은 기본적으로 비활성화되어 있습니다. 그런 다음 ID 공급자와 고급 사용자 범위를 선택하여 MCP용 컬렉션을 구성하고 AI 클라이언트용 MCP 코드 스니펫을 생성하십시오.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"] link:connect-ai-clients-mcp.html["AI 클라이언트를 연결하고 연결을 확인합니다"]
+[role="quick-margin-para"]
+AI 클라이언트에서 스니펫을 추가하고 Microsoft Entra ID로 로그인합니다. AI 클라이언트가 연결할 수 없는 경우 link:maintain-mcp-setup.html#enable-or-disable-the-connection-to-mcp["*MCP 연결 활성화*"]이(가) 켜져 있는지 확인하십시오. AI Data Engine 툴을 사용할 수 있는지 확인한 다음 link:connect-ai-clients-mcp.html#sample-prompts["샘플 프롬프트를 사용해 보세요"].
+
+Entra ID, NetApp Console 및 AI 클라이언트에 입력하는 값은 정확히 일치해야 합니다. 확인해야 할 사항의 전체 목록은 link:connect-entra-id-aide-mcp.html#verify-your-configuration["구성을 확인하십시오"]을 참조하십시오.
+
+.다음 단계
+link:maintain-mcp-setup.html["컬렉션, ID 공급자, 컬렉션에 액세스할 수 있는 범위 또는 MCP 서버 설정을 업데이트합니다"]. link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"] 및 link:../release-notes/known-limitations.html["알려진 제한 사항"]을(를) 검토하십시오.

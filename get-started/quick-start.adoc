@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: get-started/quick-start.html 
-keywords: quick start, deploy, connect, investigate, policies 
-summary: AI Data Engine을 시작하려면 서비스를 배포하고 스토리지 시스템을 연결한 다음 첫 번째 조사를 시작하십시오. 
+keywords: quick start, deploy, connect, investigate, policies, governed ai access, mcp 
+summary: 서비스를 배포하고 데이터 소스를 연결한 다음 첫 번째 조사를 시작하여 AI Data Engine을 가동하십시오. 필요에 따라 AI 클라이언트에 대한 관리형 AI 액세스를 설정하십시오. 
 ---
 = AI Data Engine 빠른 시작
 :allow-uri-read: 
@@ -11,24 +11,28 @@ summary: AI Data Engine을 시작하려면 서비스를 배포하고 스토리�
 
 
 [role="lead"]
-AI Data Engine을 시작하려면 서비스를 배포하고 스토리지 시스템을 연결한 다음 첫 번째 조사를 시작하십시오.
+서비스를 배포하고 데이터 소스를 연결한 다음 첫 번째 조사를 시작하여 AI Data Engine(AIDE)을 가동 및 실행하십시오. 또한 관리되는 AI 액세스를 통해 AI 클라이언트가 메타데이터를 검색할 수 있도록 허용할 수도 있습니다.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"] 검토 요구사항
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"] link:../deploy/aide-requirements.html["요구사항을 검토하고 배포 유형을 선택하십시오"]
 [role="quick-margin-para"]
-link:../deploy/aide-requirements.html["AIDE 요구 사항"] 및 link:../deploy/deployment-overview.html["배포 모드에 대해 알아보기"]를 검토하여 AIDE Lite 또는 AIDE Enterprise를 설치할지 여부를 결정하십시오. AI Data Engine은 NetApp Console에서 비공개 미리 보기로 제공됩니다. AI Data Engine을 배포할 수 있도록 액세스를 요청하려면 NetApp 담당자에게 문의하십시오.
+요구 사항을 검토하고 link:../deploy/deployment-overview.html["배포 유형에 대해 알아보세요"] AIDE 단일 노드 또는 다중 노드 배포를 설치할지 결정하십시오.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["둘"] AI Data Engine 배포
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["둘"] link:../deploy/deployment-overview.html["AI Data Engine 배포"]
 [role="quick-margin-para"]
-NetApp Console에서 link:../deploy/deploy-aide-lite.html["AIDE Lite"] 또는 link:../deploy/deploy-enterprise.html["AIDE Enterprise"]를 배포합니다. 설정 페이지에서 설치 위치 및 구성 크기를 선택하고 설치 명령을 실행하는 과정을 안내합니다.
+NetApp Console에서 link:../deploy/deploy-aide-single-node.html["AIDE 단일 노드 배포"] 또는 link:../deploy/deploy-aide-multi-node.html["AIDE 다중 노드 배포"]를 배포하십시오. 설정 페이지에서 설치 위치와 구성 크기를 선택하고 설치 명령을 실행하는 과정을 안내합니다. 호스트 또는 클러스터가 프록시를 통해서만 인터넷에 연결되는 경우 대신 link:../deploy/configure-proxy.html["프록시를 사용하여 배포"].
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3"] 데이터 소스 연결
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3"] link:../data-sources/connect-data-source.html["데이터 소스 연결"]
 [role="quick-margin-para"]
-link:../data-sources/connect-data-source.html["데이터 소스 연결"] 스캔을 시작합니다. AI Data Engine은 지정한 스토리지 시스템의 파일 시스템 메타데이터를 카탈로그화합니다.
+데이터 소스를 연결하여 스캔을 시작하십시오. AI Data Engine은 연결한 데이터 소스의 메타데이터를 카탈로그화합니다.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["네"] 데이터 탐색
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["네"] link:../investigate/understand-dashboard.html["데이터 탐색"]
 [role="quick-margin-para"]
-link:../investigate/understand-dashboard.html["대시보드"]를 열어 스토리지 최적화 관련 정보를 확인하거나, link:../investigate/investigate-data.html["조사"]로 이동하여 메타데이터를 직접 검색하고 필터링하세요.
+대시보드를 열어 스토리지 최적화 인사이트를 확인하거나, link:../investigate/investigate-data.html["조사"](으)로 이동하여 메타데이터를 직접 검색하고 필터링하십시오.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["다섯"] 정책 생성
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["다섯"] link:../policies/create-policy.html["정책 만들기"]
 [role="quick-margin-para"]
-link:../policies/create-policy.html["조사 필터를 정책으로 저장"] 동일한 기준에 부합하는 파일을 시간에 따라 모니터링할 수 있습니다. 알림을 보내거나, 일치하는 파일을 영구적으로 삭제하거나, 결과를 추적하도록 정책을 구성할 수 있습니다.
+조사 필터를 정책으로 저장하여 동일한 기준과 일치하는 파일을 지속적으로 모니터링할 수 있습니다. 정책을 구성하여 알림을 보내거나, 일치하는 파일을 영구적으로 삭제하거나, 결과를 추적할 수 있습니다.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"] link:../mcp/quick-start-mcp.html["선택 사항: AI 접근 권한 관리 설정"]
+[role="quick-margin-para"]
+AI 클라이언트가 사용자가 선택한 컬렉션의 메타데이터를 검색할 수 있도록 합니다. 고급 사용자는 메타데이터를 검색하고 데이터에 대한 작업을 수행할 수 있습니다.
