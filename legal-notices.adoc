@@ -52,4 +52,4 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 
 고지 파일에는 NetApp 소프트웨어에 사용된 타사 저작권 및 라이선스에 대한 정보가 포함되어 있습니다.
 
-link:https://library.netapp.com/ecm/ecm_download_file/ECMLP3389886["AI Data Engine 공지"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMLP3391666["AI Data Engine 공지"^]

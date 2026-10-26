@@ -433,7 +433,6 @@
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">오픈 소스</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">고지 파일에는 NetApp 소프트웨어에 사용된 타사 저작권 및 라이선스에 대한 정보가 포함되어 있습니다.</block>
   <block id="93d6496a69f6384320dab15ccadbc4e8" category="inline-link-macro">AI Data Engine 공지</block>
-  <block id="7ab36480d3c1a530e02ac892b3191e4a" category="paragraph"><block ref="7ab36480d3c1a530e02ac892b3191e4a" category="inline-link-macro-rx"></block></block>
   <block id="e7dc26f23cfcebf955f51e9ec20046b1" category="summary">조사 필터 기준을 명명된 정책으로 저장하면 시간이 지남에 따라 동일한 데이터 그룹화를 추적하고 조건이 변경될 때 알림을 받을 수 있습니다.</block>
   <block id="0e276db5651852f12c3a3c7be8b2939e" category="doc">AI Data Engine에서 정책 생성</block>
   <block id="ede0a89e2e37ef9e8c3495af56db91eb" category="paragraph">반복적으로 발생하는 데이터 상태를 수동으로 조사하지 않고 모니터링하려면 정책을 생성하십시오. 예를 들어, 데이터 거버넌스 관리자는 "large stale files" 정책을 저장하여 스캔 주기 전반에 걸쳐 해당 파일 그룹을 추적하고 영향을 받는 파일 수가 변경될 때 이메일 업데이트를 받을 수 있습니다.</block>
@@ -2452,4 +2451,5 @@
   <block id="1f2989a2e9ce42f8b0db48acd9ed2e4e" category="sidebar">프록시를 사용하여 다중 노드 배포로 AIDE 구축</block>
   <block id="d76d64858ff00ec6f65866ed6c6641f4" category="sidebar">AIDE를 Microsoft Entra ID에 연결합니다.</block>
   <block id="156586dd7dceda9f103091b3c0beb1e6" category="sidebar">AIDE MCP 툴</block>
+  <block id="7da93123cf77bf1f1d116b04b8d380c2" category="paragraph"><block ref="7da93123cf77bf1f1d116b04b8d380c2" category="inline-link-macro-rx"></block></block>
 </blocks>
