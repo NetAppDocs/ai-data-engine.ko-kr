@@ -2452,4 +2452,11 @@
   <block id="d76d64858ff00ec6f65866ed6c6641f4" category="sidebar">AIDE를 Microsoft Entra ID에 연결합니다.</block>
   <block id="156586dd7dceda9f103091b3c0beb1e6" category="sidebar">AIDE MCP 툴</block>
   <block id="7da93123cf77bf1f1d116b04b8d380c2" category="paragraph"><block ref="7da93123cf77bf1f1d116b04b8d380c2" category="inline-link-macro-rx"></block></block>
+  <block id="702209553c340514b23674486ae4fd31" category="doc">AI Data Engine 1.3</block>
+  <block id="10c8a7570aaedaffab9ef063fe9b43c3" category="paragraph">AI Data Engine 1.3은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스인 AI Data Engine(AIDE)의 첫 번째 일반 출시(GA) 릴리스입니다. AIDE는 연결된 시스템을 스캔하고, 메타데이터 카탈로그를 구축하며, 스토리지를 최적화하고 대규모로 데이터를 관리할 수 있는 가시성과 툴을 제공합니다. 자세한 내용은 <block ref="c8f75516a94493ffe7fe6bb96c5067bf" category="inline-link-rx"></block>을(를) 참조하십시오.</block>
+  <block id="b678323232cf97a3768c22969e93b6bc" category="inline-link">AI Data Engine의 새로운 기능</block>
+  <block id="e0a0ca8d3c0ba674ddda1dadea6576a3" category="paragraph">연결된 시스템 전체에서 콜드 데이터, 오래된 데이터 및 중복 데이터를 식별하고, 권한이 열려 있는 디렉터리를 찾고, 크기가 너무 크거나 사용되지 않는 데이터베이스 테이블을 조사할 수 있습니다. 결과에 따라 직접 조치를 취하거나 필터 기준을 정책으로 저장하여 시간 경과에 따른 데이터 상태를 모니터링할 수 있습니다. 자세한 내용은 <block ref="c9aabe1555970ff471e651fab11a16f7" category="inline-link-rx"></block>를 참조하십시오.</block>
+  <block id="5bb02905e466f0b51d8900b860f2d83c" category="section-title">메타데이터에 대한 AI 액세스 관리</block>
+  <block id="9499e52a968a6337905b279c7aa8beb4" category="inline-link">AI Data Engine에서 MCP에 대해 알아보기</block>
+  <block id="4edb79b33148e0f3f7c2ed02c6ba39c5" category="paragraph">모델 컨텍스트 프로토콜(MCP)을 통해 AI 클라이언트를 AI Data Engine에 연결하고 Microsoft Entra ID 범위를 사용하여 각 컬렉션을 검색할 수 있는 사용자를 제어할 수 있습니다. 자세한 내용은 <block ref="705649344f29bd334d650738c1e5f0f1" category="inline-link-rx"></block>을(를) 참조하십시오.</block>
 </blocks>

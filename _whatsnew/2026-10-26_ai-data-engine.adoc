@@ -1,0 +1,24 @@
+= AI Data Engine 1.3
+:allow-uri-read: 
+
+
+
+
+[[ai-data-engine-1-3]]
+=== AI Data Engine 1.3
+
+AI Data Engine 1.3은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스인 AI Data Engine(AIDE)의 첫 번째 일반 출시(GA) 릴리스입니다. AIDE는 연결된 시스템을 스캔하고, 메타데이터 카탈로그를 구축하며, 스토리지를 최적화하고 대규모로 데이터를 관리할 수 있는 가시성과 툴을 제공합니다. 자세한 내용은  https://docs.netapp.com/us-en/ai-data-engine/get-started/learn-about.html["AI Data Engine에 대해 알아보십시오"^]을(를) 참조하십시오.
+
+
+
+[[optimize-storage-and-investigate-your-data]]
+=== 스토리지를 최적화하고 데이터를 조사하십시오
+
+연결된 시스템 전체에서 콜드 데이터, 오래된 데이터 및 중복 데이터를 식별하고, 권한이 열려 있는 디렉터리를 찾고, 크기가 너무 크거나 사용되지 않는 데이터베이스 테이블을 조사할 수 있습니다. 결과에 따라 직접 조치를 취하거나 필터 기준을 정책으로 저장하여 시간 경과에 따른 데이터 상태를 모니터링할 수 있습니다. 자세한 내용은  https://docs.netapp.com/us-en/ai-data-engine/release-notes/whats-new.html["AI Data Engine의 새로운 기능"^]를 참조하십시오.
+
+
+
+[[govern-ai-access-to-your-metadata]]
+=== 메타데이터에 대한 AI 액세스 관리
+
+모델 컨텍스트 프로토콜(MCP)을 통해 AI 클라이언트를 AI Data Engine에 연결하고 Microsoft Entra ID 범위를 사용하여 각 컬렉션을 검색할 수 있는 사용자를 제어할 수 있습니다. 자세한 내용은  https://docs.netapp.com/us-en/ai-data-engine/mcp/learn-about-mcp.html["AI Data Engine에서 MCP에 대해 알아보기"^]을(를) 참조하십시오.
