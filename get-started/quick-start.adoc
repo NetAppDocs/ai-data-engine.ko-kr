@@ -15,7 +15,7 @@ summary: 서비스를 배포하고 데이터 소스를 연결한 다음 첫 번�
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"] link:../deploy/aide-requirements.html["요구사항을 검토하고 배포 유형을 선택하십시오"]
 [role="quick-margin-para"]
-요구 사항을 검토하고 link:../deploy/deployment-overview.html["배포 유형에 대해 알아보세요"] AIDE 단일 노드 또는 다중 노드 배포를 설치할지 결정하십시오.
+요구 사항 및 link:../deploy/deployment-overview.html["배포 유형에 대해 알아보세요"]을(를) 검토하여 AIDE 단일 노드 또는 다중 노드 배포를 설치할지 결정하십시오.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["둘"] link:../deploy/deployment-overview.html["AI Data Engine 배포"]
 [role="quick-margin-para"]

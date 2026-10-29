@@ -357,7 +357,5 @@ TIP: 파일 이름 접두사, 파일 형식 및 소유자를 기준으로 검색
 * link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]
 * link:manage-data-collections.html["데이터 수집 관리"]
 * link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]
-* link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"]
-* link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]
 * link:../release-notes/known-limitations.html["알려진 제한 사항"]
 

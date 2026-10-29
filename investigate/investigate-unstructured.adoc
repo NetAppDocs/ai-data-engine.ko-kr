@@ -107,6 +107,6 @@ summary: 메타데이터 필터를 사용하여 NFS 및 SMB 볼륨에서 파일�
 * link:take-actions.html["데이터에 대한 조치를 취하십시오"]
 * link:../policies/create-policy.html["정책 만들기"]
 * link:../administer/configure-settings.html["데이터 분류 임계값 및 액세스 스캐닝을 구성합니다"]
-* link:../get-started/storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
+* link:storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
 * link:understand-dashboard.html["대시보드에서 스토리지 활용도 평가"]
 

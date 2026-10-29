@@ -14,3 +14,5 @@ entries:
   url: "/investigate/investigate-directories.html"
 - title: 데이터에 대한 조치 수행
   url: "/investigate/take-actions.html"
+- title: 스토리지 최적화 워크플로를 살펴보십시오
+  url: "/investigate/storage-optimization-workflows.html"

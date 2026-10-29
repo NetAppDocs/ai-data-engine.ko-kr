@@ -127,6 +127,5 @@ link:manage-data-collections.html["데이터 수집 관리"] 및 link:connect-ai
 * link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"]
 * link:manage-data-collections.html["데이터 수집 관리"]
 * link:connect-ai-clients-mcp.html["AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다."]
-* link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]
 * link:../release-notes/known-limitations.html["알려진 제한 사항"]
 

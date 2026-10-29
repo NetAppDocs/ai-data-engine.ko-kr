@@ -80,5 +80,5 @@ AI Data Engine은 연결한 지원되는 데이터 소스를 스캔합니다. �
 * link:architecture.html["AI Data Engine 아키텍처"]
 * link:quick-start.html["빠른 시작"]
 * link:../mcp/learn-about-mcp.html["통제된 AI 액세스에 대해 알아보십시오"]
-* link:storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
+* link:../investigate/storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
 

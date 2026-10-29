@@ -13,6 +13,8 @@ summary: AI Data Engine이 콜드 데이터 또는 오래된 데이터로 분류
 [role="lead"]
 콜드 및 오래된 데이터 임계값을 활용하여 AI Data Engine(AIDE)을 사용해 최적화할 수 있는 스토리지를 찾을 수 있습니다. 권한 스캔 및 Active Directory 통합을 통해 액세스 위험을 파악하고 이해할 수 있습니다. 조직의 데이터 분류, 보존 및 액세스 정책에 맞게 설정하십시오.
 
+image::aide_mo_ga_configuration_page.png[AI Data Engine 일반 설정]
+
 
 
 [[before-you-begin]]
@@ -102,8 +104,7 @@ NOTE: 기본 임계값은 시작점으로 제공되는 제품 기본값입니다
 * link:../investigate/understand-dashboard.html["AI Data Engine 대시보드에 대해 알아보기"]
 * link:../investigate/investigate-directories.html["디렉토리 조사"]
 * link:../investigate/investigate-unstructured.html["비정형 데이터 조사"]
-* link:../get-started/storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
-* link:../deploy/aide-requirements.html["AIDE 요구 사항"]
+* link:../investigate/storage-optimization-workflows.html["스토리지 최적화 워크플로를 살펴보십시오"]
 * link:manage-users-roles.html["사용자 및 역할 관리"]
 * link:configure-ad-nfs.html["NFS에 대한 Active Directory ID 매핑 구성"]
 

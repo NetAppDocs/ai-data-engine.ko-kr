@@ -18,7 +18,7 @@ summary: '관리형 AI 액세스를 사용하면 AI 클라이언트가 NetApp Co
 [[what-governed-ai-access-does]]
 == 통제된 AI 액세스가 수행하는 작업
 
-모델 컨텍스트 프로토콜(MCP)은 AI 클라이언트가 외부 데이터 소스 및 툴에 연결할 수 있도록 해주는 개방형 표준입니다. AI Data Engine은 AI 클라이언트가 스토리지 시스템에 직접 접근하는 대신 AI Data Engine 메타데이터 카탈로그를 쿼리할 수 있도록 Governed Access Gateway라는 MCP 서버를 제공합니다.
+모델 컨텍스트 프로토콜(MCP)은 AI 클라이언트가 외부 데이터 소스 및 툴에 연결할 수 있게 해주는 개방형 표준입니다. AI Data Engine은 AI 클라이언트가 스토리지 시스템에 직접 접근하는 대신 AI Data Engine 메타데이터 카탈로그를 쿼리할 수 있도록 Governed Access Gateway라는 MCP 서버를 제공합니다.
 
 MCP를 통해 연결된 AI 클라이언트는 다음과 같은 작업을 수행할 수 있습니다:
 
@@ -125,12 +125,9 @@ NetApp은 다른 MCP 클라이언트를 테스트하지 않았습니다. 연결�
 == 관련 정보
 
 * link:manage-data-collections.html["데이터 수집 관리"]
-* link:maintain-mcp-setup.html["MCP 설정을 유지 관리하십시오"]
 * link:quick-start-mcp.html["AI Data Engine을 통한 관리되는 AI 액세스 빠른 시작"]
 * link:prepare-mcp-host.html["MCP 호스트를 준비합니다"]
 * link:configure-entra-id-mcp.html["관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다"]
-* link:connect-entra-id-aide-mcp.html["AI Data Engine을 Microsoft Entra ID에 연결합니다."]
 * link:connect-ai-clients-mcp.html["AI 클라이언트를 AI Data Engine MCP 서버에 연결합니다."]
 * link:mcp-tools-reference.html["AI Data Engine에서 관리하는 AI 액세스를 위한 MCP 툴"]
-* link:../release-notes/known-limitations.html["알려진 제한 사항"]
 

@@ -13,7 +13,6 @@
   <block id="da04d3e23ca53cd49a0abe6e25b1632b" category="inline-link-macro">AI Data Engine 대시보드에 대해 알아보기</block>
   <block id="72a44204a778b5f38d69fa2db6cd3e9d" category="list-text"><block ref="72a44204a778b5f38d69fa2db6cd3e9d" category="inline-link-macro-rx"></block></block>
   <block id="f47313cb11c7179c014c38c757ea3524" category="inline-link-macro">스토리지 최적화 워크플로를 살펴보십시오</block>
-  <block id="12e1c9d43b7fa4b8afa0d962af8d6f6a" category="list-text"><block ref="12e1c9d43b7fa4b8afa0d962af8d6f6a" category="inline-link-macro-rx"></block></block>
   <block id="015653ee347fd187160fa2a4e0cc0018" category="inline-link-macro">사용자 및 역할 관리</block>
   <block id="e4a085ef6af4b1e82ee2f0d60ce0893a" category="list-text"><block ref="e4a085ef6af4b1e82ee2f0d60ce0893a" category="inline-link-macro-rx"></block></block>
   <block id="d3ee3c86b87e2394d5115800bd00579c" category="summary">각 사용자에게 관리자 또는 뷰어 역할을 할당하여 액세스를 제어합니다. 두 역할과 각 역할의 권한에 대해 알아봅니다.</block>
@@ -40,7 +39,6 @@
   <block id="31d10a37fb8885408a38171daea61807" category="cell">비즈니스 태그 관리</block>
   <block id="8b53b00f5352fcc616e0371c614127ff" category="section-title">사용자에게 역할 할당</block>
   <block id="2e4a4d8d918b5db6fd6dccf54e4310b9" category="paragraph">역할은 AI Data Engine 자체가 아닌 NetApp Console에서 할당합니다.</block>
-  <block id="0d87fb6d34ff9ec127d1fb7fe40d2873" category="list-text">NetApp Console에서 *Members*로 이동합니다.</block>
   <block id="365d382b2d9ecca9b0d40171c69b38ff" category="list-text">다음 중 하나를 수행하십시오.</block>
   <block id="4013279dd0be7a6765daac734d254b85" category="list-text">새 사용자를 추가하려면 *사용자 추가*를 선택하고 사용자의 이메일 주소를 입력하십시오.</block>
   <block id="d3bd0996721400f8f6c60a50c1e195fb" category="list-text">기존 사용자를 업데이트하려면 목록에서 해당 사용자를 선택하세요.</block>
@@ -67,7 +65,6 @@
   <block id="71bed252a0d725056daf3e51c5fbeb5b" category="summary">스캔 상태를 모니터링하고 연결된 데이터 소스를 관리합니다. 여기에는 스캔 일시 중지, 자격 증명 편집, DP 볼륨 액세스 활성화 및 시스템 비활성화가 포함됩니다.</block>
   <block id="3d934a56ae9bd1e2d3693013e9b1ade0" category="doc">AI Data Engine에서 데이터 소스 관리</block>
   <block id="8caae32095ed52cd3c05e55becafb858" category="section-title">스캔 상태 및 세부 정보 보기</block>
-  <block id="3676bd988230e578436a0e1c5ea94daf" category="list-text">상세 보기 화면을 열려면 시스템 행을 선택하십시오.</block>
   <block id="6545e1699002538b5f0ee518b09298e4" category="paragraph">상세 보기에는 다음이 표시됩니다.</block>
   <block id="fa84b834db75064714082c0dd20223d0" category="list-text">현재 스캔 진행 상황을 보여주는 상태 개요</block>
   <block id="5751b8d5629d88c078d6299f86965140" category="list-text">데이터 리소스 검사 상태 분석: 실행 중, 완료됨, 일시 중지됨 및 오류 발생</block>
@@ -78,7 +75,6 @@
   <block id="f9d637e15d973238afdaad997d440a45" category="list-text">*재개*를 선택합니다.</block>
   <block id="03a27bda0a3fbf35292e887abf9530c0" category="section-title">모든 데이터 리소스 스캔</block>
   <block id="d526d76ea93c408bf96f0d8f6492d4a2" category="list-text">시스템 옆에 있는 작업 메뉴를 선택합니다.</block>
-  <block id="eb6687d5f8c164fc44228bdf2efa6e92" category="list-text">*모든 볼륨 스캔*을 선택합니다(공유 및 버킷에 대한 작업 메뉴에도 동일한 옵션이 있습니다).</block>
   <block id="de18a9c7b461766a9e15f645a9277626" category="section-title">스캔 실패 시 재시도</block>
   <block id="3773ecec1d9bf175c40c3e00905fa3a8" category="list-text">*모든 스캔 다시 시도*를 선택합니다.</block>
   <block id="9e95c1bf1f55b0dd3fa35ac05987ff47" category="section-title">CIFS 자격 증명 편집</block>
@@ -90,8 +86,6 @@
   <block id="0d556b4ab9d1db6d4a1b749f3386759a" category="list-text">시스템 행에서 *세부 정보 보기*를 선택합니다.</block>
   <block id="c3af1519c6123af458cb90ec91542a4f" category="list-text">데이터 리소스 목록에서 변경하려는 볼륨, 버킷 또는 공유를 찾습니다.</block>
   <block id="14b27b75a1d120ea9e666d3db0941436" category="list-text">*스캔* 토글을 사용하여 해당 리소스에 대한 스캔 기능을 활성화 또는 비활성화할 수 있습니다.</block>
-  <block id="41935257476ba80c261ff080a271a7d3" category="section-title">시스템에 대한 AI Data Engine 비활성화</block>
-  <block id="41f7ed8100607003b6ffe45c6005c1ff" category="list-text">*AI Data Engine 비활성화*를 선택합니다.</block>
   <block id="712644c5607df8e9083327eca1c82101" category="inline-link-macro">데이터 소스 연결</block>
   <block id="2724dae3d4fe6872691d5034cb03bbd3" category="list-text"><block ref="2724dae3d4fe6872691d5034cb03bbd3" category="inline-link-macro-rx"></block></block>
   <block id="3540fa5efa78b3ae6e9c7d52a1e7d21a" category="list-text"><block ref="3540fa5efa78b3ae6e9c7d52a1e7d21a" category="inline-link-macro-rx"></block></block>
@@ -269,25 +263,18 @@
   <block id="2e48f83a3b8559bc839f287b372ae63a" category="section-title">콜드 데이터 식별 및 조치</block>
   <block id="54861efdd06fc309e1c9a420feff98eb" category="paragraph-title">시나리오</block>
   <block id="44e6a1f5dab90577824d8f22e1988fde" category="inline-link-macro">대시보드</block>
-  <block id="a9ff44ea6a5fe6dc227b4ea55b034864" category="list-text"><block ref="8f8592489ae57c27af5c107a0d44dae6" category="inline-link-macro-rx"></block>에서 콜드 데이터가 가장 많이 포함된 리소스를 찾아 *조사*를 선택합니다.</block>
   <block id="af03039d1382ef8676c4fdd8760440cf" category="inline-link-macro">태그를 지정할지, 보관할지, 삭제할지 여부</block>
-  <block id="e9ed6d698e78f62a0321650cd016f395" category="list-text">결과를 검토하여 <block ref="3efcafeea256ec5f5f80d2df60560120" category="inline-link-macro-rx"></block> 일치하는 파일을 결정하십시오.</block>
   <block id="7ef0163ee717bd6fd04d7eeb49b51058" category="inline-link-macro">필터 세트를 정책으로 저장</block>
   <block id="0d10005b6bd2a6b85eb9f287e40da0fe" category="section-title">오래된 데이터 식별 및 조치</block>
-  <block id="7bdb301d8f2bd1bc4dc8ff7228adae25" category="list-text"><block ref="8f8592489ae57c27af5c107a0d44dae6" category="inline-link-macro-rx"></block>에서 오래된 데이터가 상당 부분 포함된 리소스를 식별하십시오.</block>
-  <block id="1456972c0c54611fb33073481d7d23b9" category="list-text"><block ref="52e9ed5e3e773251fd429eeb0045af22" category="inline-link-macro-rx"></block>에서 *최종 수정일* 필터를 오래된 임계값(기본값 *3년 이상*)으로 설정하여 적용합니다.</block>
   <block id="ee0e6032122c761b81fc2cd66a35b691" category="inline-link-macro">필터 세트를 정책으로 저장</block>
   <block id="b35a68b716804484978c21c7594fcad8" category="list-text"><block ref="537d965580da49e1e6c3a096271213f7" category="inline-link-macro-rx"></block> 후속 스캔에서 이러한 리소스를 추적합니다.</block>
   <block id="1c26e78563d9a7bad5cd8730fb3014eb" category="section-title">데이터 보존 준수 관리</block>
   <block id="a255165b7b7823a623dbb6b105440b3f" category="paragraph">귀사에서는 특정 기간 이상 된 파일에 대해 보존 여부를 검토하도록 요구합니다. AI Data Engine의 기본 데이터 보존 임계값은 파일 생성일로부터 7년 이상입니다. 이 임계값은 귀사의 규정 준수 및 데이터 보존 정책에 맞게 조정할 수 있습니다.</block>
-  <block id="1882b006574819130803840fe1b9469b" category="list-text"><block ref="52e9ed5e3e773251fd429eeb0045af22" category="inline-link-macro-rx"></block>에서 *최근 생성* 필터를 보존 기간(기본값 *7년 이상*)으로 설정하여 적용합니다.</block>
   <block id="5913dad45eb7f4d4c33e3d5282acecea" category="list-text">조치를 취하기 전에 관련 이해관계자들과 결과를 검토하십시오. 보존 대상으로 표시된 파일은 자동으로 삭제되는 대신 모니터링되는 경우가 많습니다.</block>
   <block id="03490a48891dc30405298515cb0a2ec1" category="section-title">중복 파일 찾기 및 제거</block>
   <block id="ef14c05b00c07359bf1b4ea88e94054e" category="paragraph">동일한 파일의 복사본이 여러 볼륨이나 공유 폴더에 중복으로 존재하는 것은 백업 작업, 데이터 마이그레이션 또는 공유 프로젝트 폴더가 있는 환경에서 흔히 발생하는 문제입니다.</block>
   <block id="5f142691dc2e5880dde4fa4e8308addd" category="section-title">데이터 소유자에 의한 대상 정리</block>
   <block id="eb825210e78145b21120ef3c8c285534" category="paragraph">조직에서 정한 '오래되고 사용되지 않는' 데이터 기준에 부합하는 데이터는 여러 담당자에게 분산되어 있습니다. 이러한 범주에 속하는 파일을 가장 많이 보유한 담당자를 파악하면 데이터 정리 우선순위를 정하는 데 도움이 됩니다.</block>
-  <block id="4b9bd7dec241c003603e9ba36f85a4e9" category="list-text">소유자 행을 선택하면 <block ref="52e9ed5e3e773251fd429eeb0045af22" category="inline-link-macro-rx"></block> 해당 소유자의 파일로 필터링된 창이 열립니다.</block>
-  <block id="8826c83ac41b279afb2deb64b8e4f22d" category="list-text">결과를 검토하고 <block ref="3efcafeea256ec5f5f80d2df60560120" category="inline-link-macro-rx"></block> 파일을 결정하십시오.</block>
   <block id="e2b9c3b26ba26fd50d8e5ea52baf5615" category="list-text"><block ref="537d965580da49e1e6c3a096271213f7" category="inline-link-macro-rx"></block> 소유자가 잠재적으로 회수할 수 있는 데이터가 시간이 지남에 따라 어떻게 변화하는지 모니터링합니다.</block>
   <block id="099b7eb42ed02e26b076249d7bc9e248" category="inline-link-macro">비정형 데이터 조사</block>
   <block id="86f84a6aeae2c3ff3b735d8e60ef5504" category="list-text"><block ref="86f84a6aeae2c3ff3b735d8e60ef5504" category="inline-link-macro-rx"></block></block>
@@ -296,7 +283,6 @@
   <block id="44da94769eacd19020729f27fef9441d" category="paragraph">스토리지 사용량을 파악하거나, 무분별하게 증가하는 데이터베이스 테이블을 식별하거나, 액세스 권한이 지나치게 허용된 디렉터리를 찾아야 할 때 메타데이터 필터를 사용하여 연결된 모든 시스템의 데이터를 조사하십시오.</block>
   <block id="3082e4bef0a9c97ce9f133bff6ea5eb5" category="section-title">시작점을 선택하십시오</block>
   <block id="18102ed05bb0a8ff6f88556fda449b9c" category="paragraph">왼쪽 탐색 메뉴에서 *조사*를 선택하여 보기를 엽니다. 대시보드 _재활용 가능한 스토리지별 상위 데이터 리소스_ 테이블의 *조사*를 선택하여 조사 보기를 열 수도 있습니다. 이 경우 해당 리소스에 대한 필터가 자동으로 적용됩니다.</block>
-  <block id="b4554dcd354d221900b1346138e1cd61" category="paragraph">*조사*는 세 개의 탭으로 구성되어 있습니다. 조사하려는 데이터 유형에 맞는 탭을 선택하십시오.</block>
   <block id="5c6ba25104401c9ee0650230fc6ba413" category="cell">탭</block>
   <block id="e214b95958c9f93ea16e42f7db6cc60d" category="cell">사용 시기</block>
   <block id="ab066b3292d8ab61ef3b5c77169cdd19" category="cell">추가 정보</block>
@@ -310,7 +296,6 @@
   <block id="85076b52dccc264b25239b17f908a37d" category="cell">디렉터리 수준 권한을 감사하고 광범위하게 접근 가능한 경로를 찾습니다.</block>
   <block id="c3752096b16f86b02150e9d64aeefb03" category="inline-link-macro">디렉토리 조사</block>
   <block id="243090fac4ef0153c4d49200a899b55c" category="cell"><block ref="243090fac4ef0153c4d49200a899b55c" category="inline-link-macro-rx"></block></block>
-  <block id="2febbf7b97a1bd1e8bf90649b86ce36f" category="paragraph">페이지 상단의 요약 개수와 총 크기는 활성화된 탭을 반영하여 업데이트됩니다(예: "비정형(400M) | 5.7 PiB").</block>
   <block id="0a32a9c8f26d2c4f95b1f16b549ee04a" category="list-text"><block ref="0a32a9c8f26d2c4f95b1f16b549ee04a" category="inline-link-macro-rx"></block></block>
   <block id="acc5764f7cffbcb72bf1a80039f58b45" category="summary">스토리지 시스템 전반에 걸쳐 디렉터리 수준 권한을 감사하여 광범위하게 액세스 가능한 경로를 찾고, 액세스 권한이 있는 사용자를 검토하고, 결과를 재사용 가능한 정책으로 저장합니다.</block>
   <block id="0112ff7d7742da75e2844fccf8e0c00d" category="doc">AI Data Engine에서 디렉토리 조사</block>
@@ -412,7 +397,6 @@
   <block id="9b7c190f314417a73c41881f5ea8e249" category="section-title">대시보드에서 조사 화면으로 이동</block>
   <block id="e7ef56695ea04d5a8ed28ad8f4c0057d" category="inline-link-macro">비정형</block>
   <block id="f60bce136c62f7ab3c73aa4f0d5fcae9" category="inline-link-macro">디렉토리</block>
-  <block id="f902c7ef331eec27ba7c19c76dd13ea7" category="paragraph">_복구 가능한 스토리지 기준 상위 데이터 리소스_ 표는 스캔한 스토리지 리소스를 중복 데이터 비율 또는 조직의 콜드 및 오래된 데이터 임계값을 충족하는 데이터 비율에 따라 순위별로 나열합니다. 행을 선택하면 해당 리소스로 필터링된 조사 보기가 열립니다. 여기에서 <block ref="2ffd1417cc35a965547bb2150ad9550e" category="inline-link-macro-rx"></block> 탭을 사용하여 콜드 또는 오래된 파일을 식별하거나 <block ref="6d961a2a6fb0e60e8e41943755ff0165" category="inline-link-macro-rx"></block> 탭을 사용하여 권한 노출을 감사할 수 있습니다.</block>
   <block id="189f63f277cd73395561651753563065" category="cell">태그</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">법적 고지</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">법적 고지사항은 저작권 표시, 상표, 특허 등에 대한 접근을 제공합니다.</block>
@@ -453,16 +437,13 @@
   <block id="9915d257811585adeea12f4d8e40cc73" category="list-text">선택적으로 *설명*을 입력할 수 있습니다(최대 500자).</block>
   <block id="d334da0bb32759f8d5a78f143560afcd" category="list-text">필터 기준 표현식(예: <block ref="9ece38ef1bce889b5cd8f71bfea85fdc" prefix=" " category="inline-code"></block>)을 검토하여 선택 사항을 제대로 반영하는지 확인하십시오.</block>
   <block id="f77f4eb500540d8520b974e5058db78e" category="list-text">작업을 연결하려면 *작업*에서 다음 중 하나를 선택하십시오.</block>
-  <block id="5942095503f6d7e1e26b60a2a6e62d7f" category="list-text">*이메일 알림 보내기*: 지정한 수신자에게 이메일 알림을 보냅니다.</block>
   <block id="e396b1ac5c2d912ca6a8b13ed0e05a07" category="admonition">'영구 삭제' 작업은 매 스캔 주기 후 이 정책과 일치하는 모든 파일을 자동으로 영구 삭제합니다. 저장하기 전에 필터 기준을 확인하고 해당 파일을 삭제할 권한이 있는지 확인하십시오.</block>
-  <block id="bf18811faac9b8e4fcaebab51afd1113" category="list-text">*생성*을 선택합니다.</block>
   <block id="9e476387322a5c250893cf9c5c4ce78c" category="inline-link-macro">정책</block>
   <block id="2fdca2ba1ed7693e487bec5025936503" category="section-title">예시: 콜드 아카이브 파일 식별</block>
   <block id="e86db3241da52f3960cf869272355591" category="list-text">조사 시 다음 필터를 적용하세요.</block>
   <block id="d91d018dd5cfcadde4007e74098c07ea" category="list-text">*최근 접속 시간* &gt; 365일</block>
   <block id="db92c743d97601150bbdfa11bf3cf66b" category="list-text">*정책 생성*을 선택합니다.</block>
   <block id="874c7fe25e0efe0e2f1f89158d6b2375" category="list-text">정책 이름을 입력하세요: *Cold Files — Unaccessed 1 Year*.</block>
-  <block id="ce8113155f35b52456a2501ac34f598f" category="list-text">*이메일 알림 보내기* 작업을 선택하고 수신자 이메일 주소를 입력합니다.</block>
   <block id="e7326f303b8abf78625da7d8f22fa0b4" category="inline-link-macro">정책 관리</block>
   <block id="e9ba76d54e1aa8410ae34a053e8340ea" category="list-text"><block ref="e9ba76d54e1aa8410ae34a053e8340ea" category="inline-link-macro-rx"></block></block>
   <block id="56a7a067af00ee6bab27db9405ac066d" category="summary">저장된 정책을 검토하여 현재 각 기준에 맞는 파일을 확인하고 더 이상 필요하지 않은 정책을 제거하십시오.</block>
@@ -892,13 +873,11 @@
   <block id="38cb72d0c47db833f875248a7f4e361b" category="paragraph">데이터를 검토할 때 숫자 ID 대신 사용자 이름과 권한을 확인해야 하는 경우 AI Data Engine을 Active Directory에 연결하십시오. 환경에서 NFS를 사용하는 경우 숫자 사용자 ID(UID)와 그룹 ID(GID)를 디렉터리 사용자 및 그룹에 매핑할 수도 있습니다.</block>
   <block id="7a4b06a7feab867cab05bd2b075703ee" category="paragraph">필수 조건 및 절차는 <block ref="8b54fe2eec6ed1d08bd28b8fbd34f399" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="47bf2507158db898ab1f816a1a85195a" category="list-text"><block ref="47bf2507158db898ab1f816a1a85195a" category="inline-link-macro-rx"></block></block>
-  <block id="374da513b9cc4d9fde319e2e3de4220b" category="list-text"><block ref="374da513b9cc4d9fde319e2e3de4220b" category="inline-link-macro-rx"></block></block>
   <block id="61dfd8c81a1cb2a64ad1bbcdc5f14d2b" category="paragraph">관리자 또는 뷰어 역할을 할당하여 AI Data Engine(AIDE)에서 각 사용자가 보고 수행할 수 있는 작업을 제어하십시오. 팀에서 AI Data Engine을 사용하기 전에 각 사용자에게 필요한 액세스 수준에 맞는 역할을 할당하십시오.</block>
   <block id="6ba6d1977febc9d2e56c5e844d6772af" category="cell">조치: 중복 항목 정리</block>
   <block id="1c4f604f154892d2b720545b9552c1fc" category="section-title">역할 및 관리형 AI 접근 권한</block>
   <block id="0f36fe3bde94b3c8a26b82bb88fc802b" category="inline-link-macro">관리형 AI 액세스를 위해 Microsoft Entra ID를 구성합니다</block>
   <block id="63bd7f1a5a87f72510db724c765a480f" category="paragraph">NetApp Console 역할은 AI Data Engine에서 관리되는 AI 액세스를 구성할 수 있는 사용자를 제어합니다. AI 클라이언트 사용자가 검색할 수 있는 컬렉션은 제어하지 않습니다. 각 컬렉션에 부여하는 Microsoft Entra ID 범위가 해당 액세스를 제어합니다. 자세한 내용은 <block ref="5c88d322153be2f61aa1a48548ff734e" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
-  <block id="3114e13573c6e4f025ff4f6e7a681a6a" category="list-text">*AI Data Engine 관리자* 또는 *AI Data Engine 뷰어* 역할을 할당하십시오.</block>
   <block id="531c1d83088503ff374948cfba7d6929" category="inline-link-macro">데이터 수집 관리</block>
   <block id="b7978331a725914becb3d54578fb33e8" category="list-text"><block ref="b7978331a725914becb3d54578fb33e8" category="inline-link-macro-rx"></block></block>
   <block id="86ddaaf7e75e49265c5c41047910710e" category="summary">AI Data Engine 배포를 모니터링하여 스캔을 방해할 수 있는 비정상적인 워크로드 및 리소스 제약을 식별하고 문제 해결에 필요한 정보를 수집하십시오.</block>
@@ -926,8 +905,6 @@
   <block id="1899652e87527e604b4b46aec7fd4f78" category="list-text">문제 해결에 도움이 필요하면 *Pod 상태*에서 <block ref="5cdab54312f4c99b6053532c2103d660" category="inline-image-macro-rx" type="image"></block>를 선택하여 Pod 정보를 다운로드하십시오. 호스트 이름, 운영 체제, 커널, Console 버전, Kubernetes 버전, Console 계정 ID 등 관련 세부 정보를 *시스템 정보*에서 수집하여 관리자 또는 지원 팀과 공유하십시오.</block>
   <block id="310ada4627c1d1f3688f55c4a202fe84" category="paragraph">수정 조치를 취한 후 *상태 모니터링*으로 돌아가 *시스템 안정성*, *Pod 상태*, *노드 상태* 및 리소스 활용률을 검토하여 보고된 문제가 해결되었는지 확인하십시오. 스캔이 중단된 경우 *데이터 소스*로 이동하여 스캔이 재개되었는지 확인하십시오. <block ref="8e28a3822e77e4c9454fc1b173eaf935" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="ca13882adb5ccb3c1b93d2ec13ec6a41" category="summary">데이터 소스를 AI Data Engine에 연결하고 스캔할 데이터 리소스를 구성합니다.</block>
-  <block id="23f23d5b663a683967b09bc1dc7fa90a" category="paragraph">AI Data Engine(AIDE)이 분석할 데이터 소스를 연결하고 스캔할 데이터 리소스를 선택하십시오. AI Data Engine은 연결된 데이터 소스를 스캔하여 메타데이터를 수집하며, 연결 절차는 소스 유형에 따라 다릅니다.</block>
-  <block id="405bba8ca5eb842018d41b62a77f5ab9" category="list-text">데이터 소스를 연결하고 구성하려면 _AI Data Engine 관리자_ 권한이 있어야 합니다.</block>
   <block id="6267b69edb5a3a2be6124f711cc93b14" category="list-text">NetApp Console 검색을 통해 연결된 시스템의 경우, AI Data Engine에 추가하기 전에 Console 에이전트를 사용하여 NetApp Console에서 스토리지 시스템을 검색하십시오. 이는 온프레미스 ONTAP 클러스터, Cloud Volumes ONTAP, Amazon FSx for NetApp ONTAP, Google Cloud NetApp Volumes 및 Azure NetApp Files를 포함한 모든 지원되는 스토리지 유형에 적용됩니다. 온프레미스 ONTAP 클러스터의 경우, NetApp Console 설명서의 <block ref="e85b78baa8f4e35e46a2387467739692" category="inline-link-macro-rx"></block>을(를) 참조하십시오. 직접 검색은 AI Data Engine 등 데이터 서비스를 활성화하지 않습니다.</block>
   <block id="27a49a6aae61fc6526ed2b8a83bb8ddf" category="list-text">Kerberos 인증을 사용하여 SMB/CIFS 공유를 스캔하려면 먼저 <block ref="ee0c57777d174dadb7bea9e126449c3c" category="inline-link-macro-rx"></block>에서 배포 유형에 맞는 절차를 완료하십시오.</block>
   <block id="37efe5a5b349f59e8cf6fabe1f0a7675" category="paragraph">데이터를 분석할 수 있도록 AI Data Engine으로 가져오십시오. *데이터 소스* 페이지에서 *시스템 추가*를 사용하여 파일 공유 그룹, 데이터베이스 서버 또는 StorageGRID 시스템을 연결하십시오. 데이터 소스를 추가한 후 스캔을 구성하여 메타데이터를 수집하기 위해 AI Data Engine이 스캔할 리소스를 지정하십시오. <block ref="90446617d48a5c47cd629c320c9940ee" category="inline-xref-macro-rx"></block>을(를) 참조하십시오.</block>
@@ -981,7 +958,6 @@
   <block id="5762fd9940ada9e811fad37603248af0" category="paragraph">스캔 상태를 확인하여 스캔 진행 상황을 파악하고 주의가 필요한 리소스를 식별하십시오. 시스템 수준의 진행 상황과 리소스 수준의 세부 정보를 검토하여 실행 중인 스캔과 일시 중지되었거나 오류가 발생한 스캔을 구분하십시오.</block>
   <block id="428f60a9964bbb0140241f4cc152f75f" category="paragraph">스캔이 예기치 않게 중지되거나 일시 중지되는 경우 배포 상태를 확인하십시오. <block ref="8e238a6c25e29a0ac0e98eaeccb40e25" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="4e7346a848b926bcee77b0dc04510d8d" category="list-text">검토하고자 하는 시스템을 찾으십시오.</block>
-  <block id="28c62d8c1f2bdf099323d94fd52b032d" category="list-text">시스템 행을 선택하고 상세 보기를 엽니다.</block>
   <block id="eb79bb21ff03a7e088a7494ca66a38bd" category="paragraph">스캔 오류가 발생하면 오류 세부 정보를 확장하여 어떤 데이터 리소스(볼륨, 공유, 버킷 또는 스키마)가 영향을 받았는지, 그리고 오류의 원인이 무엇인지 확인하십시오.</block>
   <block id="ff2e2fb59bc6f40dbe9cf0f3077aa4bb" category="paragraph">AI Data Engine이 시스템을 스캔하지 않도록 하려면 시스템 스캔을 일시적으로 중지하십시오. 시스템은 연결된 상태로 유지되며 나중에 스캔</block>
   <block id="b076bbb022234ad99ad464ee69afb84a" category="list-text">일시 중지하려는 시스템을 찾으십시오.</block>
@@ -998,7 +974,6 @@
   <block id="a7ec4dfc52a653bd8806e4ae42754e6e" category="list-text">시스템을 찾으십시오.</block>
   <block id="accf00990e4f73ef2e7862a523dc6127" category="paragraph">전체 시스템을 재구성하지 않고 분석에 필요한 데이터 리소스에 스캔 범위를 집중하십시오. 초기 설정 시 선택되지 않았거나 사용할 수 없었던 리소스에 대한 스캔을 활성화하고, 분석할 필요가 없는 볼륨, 공유 또는 버킷에 대한 스캔은 비활성화하십시오.</block>
   <block id="c3f855b48d2c29332f433e7d50bba512" category="list-text">업데이트할 시스템을 찾으십시오.</block>
-  <block id="6a02d55e077540f6dc552b29f5c7749c" category="paragraph">AI Data Engine이 더 이상 스캔할 필요가 없는 경우 활성 스캔 범위에서 시스템을 제거하십시오. 시스템을 비활성화하면 모든 스캔이 중지되고 구성이 유지됩니다. 시스템을 다시 포함하려면 시스템 행에서 *스캔 활성화*를 선택하십시오.</block>
   <block id="22f6f9f330dae3bc94d9b15b30b7693d" category="list-text">비활성화하려는 시스템을 찾으십시오.</block>
   <block id="8a600b70b6bf337edbe80c6fdf28012c" category="paragraph">AI Data Engine(AIDE)을 배포하기 전에 환경에 필요한 네트워킹, Kubernetes, 크기 조정 및 운영 체제 요구 사항을 검토하십시오. 단일 노드 배포의 경우 Linux VM을 제공하면 AI Data Engine이 나머지 모든 것을 자동으로 프로비저닝합니다. 다중 노드 배포의 경우 자체 Kubernetes 클러스터를 준비해야 합니다.</block>
   <block id="c931f43cdebeddd30f7c12763c7aa0b1" category="cell">NetApp Console용 콘솔 에이전트</block>
@@ -1674,7 +1649,6 @@
   <block id="b9a73bf85dc0d87393058063d45b73d9" category="inline-link-macro">요구사항을 검토하고 배포 유형을 선택하십시오</block>
   <block id="59884a2308e152bb7e446b5f844dac52" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> <block ref="8ff0e1e726137362940af8330ccf40bd" category="inline-link-macro-rx"></block></block>
   <block id="f53782a727b8852eac1ee40192388e18" category="inline-link-macro">배포 유형에 대해 알아보세요</block>
-  <block id="c07bba7911b73b131a68577901df3b02" category="paragraph">요구 사항을 검토하고 <block ref="d2645d326523ff6119224072397195cb" category="inline-link-macro-rx"></block> AIDE 단일 노드 또는 다중 노드 배포를 설치할지 결정하십시오.</block>
   <block id="eb7017ad2a1bec5a60de5b8c28683c89" category="inline-link-macro">AI Data Engine 배포</block>
   <block id="981d6c3bb5bc21990df132ae31ace089" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> <block ref="77e6d3c30e1d7b8afac60a57fea479ba" category="inline-link-macro-rx"></block></block>
   <block id="387ce2dab9fbd553129046e2ffce646a" category="inline-link-macro">프록시를 사용하여 배포</block>
@@ -1692,20 +1666,16 @@
   <block id="2b9f9a37dc81b6621827cb82e3b4eee5" category="paragraph">이러한 AI Data Engine(AIDE) 워크플로는 대시보드에서 스토리지 문제를 식별하는 것부터 조사 및 조치를 거쳐 지속적인 모니터링 정책에 이르기까지 안내합니다. 각 워크플로는 대시보드 검토, 조사, 조치 및 정책 저장이라는 동일한 경로를 따릅니다.</block>
   <block id="eb625986adc40e7bf93bf0c8a3a38e3d" category="inline-link-macro">데이터 분류 설정</block>
   <block id="48da412031049ca53eaaec612f77cf79" category="paragraph">대시보드에서 스토리지 리소스에 콜드 데이터로 표시된 데이터가 대량으로 있는 것을 확인할 수 있습니다. 콜드 파일은 구성된 콜드 데이터 임계값(기본값 1년) 내에 액세스되지 않은 파일입니다. 이 임계값은 <block ref="c2774d2a48b17b4adc924d847a0a7db5" category="inline-link-macro-rx"></block>에서 변경할 수 있습니다.</block>
-  <block id="8a99058ac57223e374f45d1b1e68bae5" category="list-text"><block ref="52e9ed5e3e773251fd429eeb0045af22" category="inline-link-macro-rx"></block>에서 *마지막 액세스* 필터를 구성된 콜드 데이터 임계값(기본값: *1년 이상*)과 일치하도록 설정하고 리소스를 확인하십시오.</block>
   <block id="6d85869f096b68290af0553f5a505520" category="list-text">이러한 리소스를 지속적으로 모니터링할 가치가 있다면 <block ref="7d8ac40ed60791213197ab6f4e0c9736" category="inline-link-macro-rx"></block> 새 파일이 콜드 상태가 될 때 알림을 받도록 하십시오.</block>
   <block id="2a57572464cb8732e9c4872c604e8e25" category="paragraph">AI Data Engine은 조직에서 설정한 만료 기간 임계값(기본값: 3년)보다 더 오랫동안 수정되지 않은 파일을 만료된 파일로 분류합니다.</block>
   <block id="64a068b83c7a5a3387d7b1725c1b0ca1" category="admonition">이 임계값은 <block ref="c2774d2a48b17b4adc924d847a0a7db5" category="inline-link-macro-rx"></block>에서 변경할 수 있습니다.</block>
   <block id="8e1f1a03bc330dbdabbdb2424634a5b3" category="admonition">이 임계값은 *구성* &gt; *일반 설정*에서 구성할 수 있습니다.</block>
   <block id="5faf434e20b2e3102594e87e4390adfb" category="list-text"><block ref="a6ba65d5603bedd3e970c59f52c864db" category="inline-link-macro-rx"></block> 모니터링 전용 또는 이메일 알림 작업을 사용하여 새 파일이 보존 임계값에 도달하면 알림을 받을 수 있습니다.</block>
-  <block id="a9298e95bfb951079594e80f6d7ce6b6" category="list-text"><block ref="52e9ed5e3e773251fd429eeb0045af22" category="inline-link-macro-rx"></block>에서 *비정형*을 선택하고 최근 데이터 마이그레이션의 파일 등 복사본이 있을 것으로 의심되는 파일의 세부 정보를 엽니다.</block>
   <block id="177f11c6e91774a098690591c1b81a2c" category="list-text">*중복 항목* 옆에서 *세부 정보 보기*를 선택하면 파일의 모든 복사본과 해당 위치가 표시됩니다.</block>
   <block id="537870f89ee6c470f21e6a200502b92b" category="list-text">일치하는 파일과 해당 위치를 검토하여 어떤 사본이 중복되는지 확인하십시오.</block>
   <block id="d4e7221132f7e35c0a92d231db960086" category="list-text">중복 파일을 선택한 다음 *중복 정리*를 선택합니다.</block>
   <block id="cee8245864b4bbfeafb9e2420cd70ac0" category="inline-link-macro">중복 파일을 조사하고 정리합니다</block>
-  <block id="c8678ccf9a37a26d749db660248dd352" category="list-text">*작업*에서 *삭제*를 선택합니다. *마지막 수정일* 옵션을 사용하여 사본을 유지하고, 원래 위치에 탐색 경로를 남겨둔 다음 *제출*을 선택합니다. 그런 다음 대화 상자에서 삭제를 확인합니다. 자세한 내용은 <block ref="2e2b1a03b898482441fa2148227e6a1f" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="8b068a3352b72945735107bd8b61ef8d" category="list-text"><block ref="a6ba65d5603bedd3e970c59f52c864db" category="inline-link-macro-rx"></block> 시간 경과에 따른 중복 누적량을 추적하고, 누적량이 증가할 때 알림을 받습니다.</block>
-  <block id="de9f9d58c10ecabb0228c09cada1b92b" category="list-text"><block ref="8f8592489ae57c27af5c107a0d44dae6" category="inline-link-macro-rx"></block>에서 _재확보 가능한 스토리지 기준 상위 소비자_ 테이블을 찾으십시오.</block>
   <block id="ecd7e7882d4f31aec990544eea80b0f6" category="cell">NFS 및 SMB 볼륨에서 콜드, 비활성 또는 중복된 파일 기반 데이터를 찾습니다.</block>
   <block id="464460fc725b8aee09d91647b9585f9d" category="list-text">하나 이상의 데이터 소스를 연결했으며 스캔 중입니다. <block ref="3540fa5efa78b3ae6e9c7d52a1e7d21a" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="727c4794d1fdc1baab4dd619d5ca00f9" category="paragraph">권한 필터링을 통해 의도된 사용자층 외에서도 접근 가능한 디렉토리를 찾으십시오.</block>
@@ -1732,7 +1702,6 @@
   <block id="fc451af060862285a30d1c7a1133c242" category="paragraph">사본을 검토하고 정리하려면 <block ref="f36a79e86b28ff381812cb818f2f31a6" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="b581c51cb149545db1e5077a246785de" category="summary">콜드, 오래된, 중복된 또는 더 이상 사용되지 않는 것으로 식별한 파일에 대해 아카이빙, 추적을 위한 항목 태그 지정 또는 더 이상 필요하지 않은 항목을 영구적으로 삭제하는 등의 조치를 취하십시오.</block>
   <block id="1b2050264d7f7f828544c890916cd520" category="paragraph">AI Data Engine(AIDE)에서는 필터로 식별한 파일을 아카이빙, 복사, 태깅 또는 삭제하여 조직의 데이터 라이프사이클 정책을 적용할 수 있습니다. 예를 들어, 스토리지 관리자는 1년 이상 액세스되지 않은 수 테라바이트의 VM 스냅샷을 필터링하여 찾아낸 후, 보존 요구 사항 및 비즈니스 정책에 따라 해당 스냅샷을 콜드 스토리지 공유에 일괄적으로 아카이빙하거나 삭제할 수 있습니다.</block>
-  <block id="22d27b7fe9ad5cd65c2e616b7f67e156" category="paragraph">조치를 취하려면 조사 결과 표에서 확인란을 사용하여 하나 이상의 항목을 선택하십시오. 작업 도구 모음은 *삭제*, *보관*, *복사*, *태그*의 네 가지 옵션으로 활성화됩니다. 파일의 중복 복사본을 제거하려면 *중복 정리*를 사용하십시오. <block ref="9f57b317c8898075cb7b23f39b825ff2" category="inline-xref-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="a9e28ffcb19ee92bfcf05d3a69df4b7a" category="cell">중복 항목 정리</block>
   <block id="f616e227cd30a28b7a9dafec3d6e16ae" category="cell">데이터는 백업 또는 마이그레이션 목적으로 두 번째 위치에 존재해야 합니다. 복사하면 원본은 그대로 유지됩니다. NFS 또는 SMB 폴더로 복사하거나, 필터링된 FlexClone 볼륨을 생성하거나, NetApp Copy and Sync를 사용하여 항목을 전송할 수 있습니다.</block>
   <block id="f934c14bf3f03933bdf6c28e2cb30657" category="cell">동일한 파일의 복사본이 여러 위치에 존재하며 하나만 유지하려고 합니다. 하나의 복사본을 유지하면서 중복된 복사본에 태그를 지정하거나, 보관하거나, 삭제할 수 있습니다. 중복 항목 삭제는 영구적입니다. <block ref="9f57b317c8898075cb7b23f39b825ff2" category="inline-xref-macro-rx"></block>을(를) 참조하십시오.</block>
@@ -1808,7 +1777,6 @@
   <block id="8abaa1a69be9c8b68d5074ae23b0d7ac" category="paragraph">작업을 제출하지 않고 종료하려면 *취소*를 선택하세요.</block>
   <block id="349c0a28766b4a6c99def70bf8a182da" category="paragraph">파일 위치를 변경하지 않고도 다시 검토하거나 다른 팀과 협업할 파일을 추적하세요. 예를 들어, 보관 또는 삭제하기 전에 검토가 필요한 파일에 "보관 후보" 태그를 적용할 수 있습니다.</block>
   <block id="49a40b6d145419da4c3ab492367d3dce" category="summary">환경 전반의 스토리지 상태를 평가하고, 잠재적으로 회수 가능한 스토리지가 집중된 위치를 파악하고, 개방형 권한 및 정형 데이터가 있는 디렉토리를 검토하고, 어떤 시스템이나 데이터 소유자를 먼저 조사할지 결정합니다.</block>
-  <block id="8de4baf82e2ca6fe342e985583d13421" category="paragraph">NetApp Console에서 *AI 데이터 허브* &gt; *AI Data Engine*을 선택합니다. 대시보드가 기본적으로 열립니다. 대시보드는 인사이트를 *스토리지 최적화*, *액세스 노출*, *정형 데이터*의 세 가지 탭으로 구성합니다.</block>
   <block id="a5055cb69d246acf6d406dec441df6eb" category="paragraph">스캔한 스토리지 중 얼마나 많은 부분이 사용되지 않거나, 오래되었거나, 노출되었는지 파악하십시오. 요약 패널은 스캔한 환경 전체에서 문제의 규모를 보여줍니다:</block>
   <block id="2eb046bd170506c4f80ef7c5ef7adbee" category="list-text">*스캔된 항목 수*: 스캔된 모든 데이터 리소스에서 색인화된 항목의 총 개수입니다.</block>
   <block id="1b8905a3eb56963f495eff87115da8d1" category="list-text">*오래된 데이터*: 오래된 데이터 임계값(기본값: 3년) 내에 변경되지 않은 스토리지입니다. 오래된 데이터는 아카이브 또는 삭제 등 조치를 결정하기 전에 조직의 데이터 라이프사이클 정책에 따라 검토해야 할 수 있습니다.</block>
@@ -1819,17 +1787,13 @@
   <block id="a57e4c4e4d3c6a96d80ee61fad916431" category="list-text">_활성 대 회수 가능 스토리지_: 스캔된 모든 리소스에서 비활성 및 오래된 데이터 대비 활성 데이터의 비율을 보여줍니다. 비활성, 오래된 또는 중복 데이터의 비율이 높으면 스토리지 최적화 기회가 상당함을 나타낼 수 있습니다.</block>
   <block id="a9fe20e2d983a95a109cada1d5b02823" category="list-text">_회수 가능한 저장 용량 기준 상위 데이터 리소스_: 가장 많은 회수 가능 용량을 가진 데이터 리소스를 보여줍니다.</block>
   <block id="2bc0cf2cb0e3e8cf945df8ce7aa38c3a" category="list-text">_회수 가능한 저장 공간 기준 상위 사용자_: 데이터 소유자, 회수 가능한 저장 공간 및 파일 수를 보여줍니다.</block>
-  <block id="0bd97928cb615ef4e5cd12b93a4ed812" category="list-text">_중복 데이터 크기 분포_: 중복 데이터가 크기 범위별로 어떻게 분포되어 있는지 보여줍니다.</block>
   <block id="60261fcc47749ab7f850d370cb8c8217" category="list-text">_자산 연령_: 항목을 연령별로 표시합니다. 드롭다운을 사용하여 차트의 타임스탬프 기준을 선택하십시오.</block>
   <block id="a82f7c85b31036406ecd2f788bd78157" category="list-text">_가장 많이 사용되는 파일 형식_: 가장 일반적인 파일 형식을 보여줍니다.</block>
   <block id="99e91c30a559cb4734d96650af69c536" category="paragraph">요약 패널과 이 차트를 사용하여 스토리지 최적화 기회를 파악하고 우선순위를 정하십시오:</block>
   <block id="a6fa81f8acfe506be9806a6a048b749f" category="list-text">개별 파일보다는 콜드 또는 오래된 데이터가 대량으로 집중되어 있는 곳을 찾아보십시오. 하나의 리소스에서 수십 테라바이트에 달하는 데이터가 오래된 데이터 임계값을 충족하는 경우 평가가 필요합니다. 개별 파일은 조치가 필요하지 않을 수도 있습니다.</block>
-  <block id="75e176307a2638fe29a6edc8c3686d81" category="section-title">접근 노출 검토</block>
-  <block id="450c1510142d04023a9ec2db96fa8d37" category="paragraph">권한 검토를 우선적으로 수행할 디렉터리를 찾으십시오. *액세스 노출* 탭에는 디렉터리 경로와 파일 수를 나열하는 _열린 권한이 있는 디렉터리_ 차트가 표시됩니다. 이러한 디렉터리를 자세히 보려면 <block ref="243090fac4ef0153c4d49200a899b55c" category="inline-link-macro-rx"></block>을(를) 참조하십시오. AI Data Engine이 권한을 검사할지 여부를 제어하려면 <block ref="5645899a89b5fd67a1a0eb0d5fb3d0b6" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="7fbd61eca85c09ed0a37b994b7fb9be2" category="section-title">정형 데이터 탐색</block>
   <block id="e84907468515a58c0fa09d82f5db5b4c" category="paragraph">스캔한 데이터에 어떤 스키마와 테이블이 포함되어 있는지 확인하고 행 수를 비교해 보십시오. *정형 데이터* 탭에는 스키마, 데이터베이스 테이블 이름, 행 수를 나열하는 _정형 데이터 요약_ 테이블이 표시됩니다. 이 데이터를 검색하고 필터링하려면 <block ref="56e5a25f46de7fd625c2a35f379b85a5" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
   <block id="98ab7187aace76b608624cbe975c95bd" category="paragraph">조사할 가치가 있는 리소스 또는 소유자를 확인했으면 *스토리지 최적화* 탭의 표를 사용하여 세부 정보로 바로 이동하십시오.</block>
-  <block id="fd7e82fbaf44a2aab85850e344b12dac" category="paragraph">_회수 가능한 저장 공간 기준 상위 소비자_ 표는 잠재적으로 회수 가능한 데이터를 보유한 데이터 소유자를 보여줍니다. 행을 선택하면 해당 소유자의 파일로 필터링된 <block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block> 보기가 열립니다. 여기에서 결과를 검토하고, 조치를 취하거나, 정책으로 저장할 수 있습니다.</block>
   <block id="b608251c0424a9afce9ad9233374c7ea" category="paragraph">대시보드를 검토해도 데이터가 보관 또는 삭제되거나 디렉터리 권한이 변경되지 않습니다.</block>
   <block id="cc5ec1aef23cf5c13ec888dbc2b465a6" category="summary">Microsoft Entra ID 관리자로서 Microsoft Entra ID에 각 AI Data Engine 인스턴스에 대한 전용 애플리케이션을 등록하고, 애플리케이션 ID URI와 지원되는 범위를 정의하고, 앱 역할을 생성 및 할당하고, AI 클라이언트에 대한 리디렉션 URI를 추가하십시오.</block>
   <block id="a479dce7a664a138a8935019e7685947" category="doc">AI Data Engine에서 관리하는 AI 액세스를 위해 Microsoft Entra ID를 구성합니다.</block>
@@ -2095,7 +2059,6 @@
   <block id="0b9abfe67cc31fcf1ecd022eb19a5216" category="inline-link-macro">컬렉션</block>
   <block id="7b9f8b3663acef3fd7eb767cf758073f" category="paragraph">관리형 AI 액세스를 통해 AI 클라이언트는 모델 컨텍스트 프로토콜(MCP)을 사용하여 사용자가 선택한 AI Data Engine(AIDE) 컬렉션의 메타데이터를 검색할 수 있습니다. AI 클라이언트가 검색할 수 있는 <block ref="f97e8bbb630134953485d48bb256a669" category="inline-link-macro-rx"></block> 및 이를 사용할 수 있는 사용자를 결정합니다. AI 어시스턴트는 사용자가 설정한 범위 내에서 카탈로그화된 메타데이터를 기반으로 작동합니다.</block>
   <block id="d57e8fd44b37090069e9c0240ae078b9" category="section-title">통제된 AI 액세스가 수행하는 작업</block>
-  <block id="1ed875deff087708101ab75345b1afcc" category="paragraph">모델 컨텍스트 프로토콜(MCP)은 AI 클라이언트가 외부 데이터 소스 및 툴에 연결할 수 있도록 해주는 개방형 표준입니다. AI Data Engine은 AI 클라이언트가 스토리지 시스템에 직접 접근하는 대신 AI Data Engine 메타데이터 카탈로그를 쿼리할 수 있도록 Governed Access Gateway라는 MCP 서버를 제공합니다.</block>
   <block id="4928d0e9a39f4a3e2b06e6b1b1b0e48a" category="paragraph">MCP를 통해 연결된 AI 클라이언트는 다음과 같은 작업을 수행할 수 있습니다:</block>
   <block id="b0731d5c28c321c600fb3c0dae803cd8" category="list-text">AI 액세스를 활성화한 컬렉션 내 파일의 메타데이터를 검색합니다.</block>
   <block id="55ce80fb61d8bc9839b63c98bceb0958" category="list-text">태그를 나열하고, 태그를 생성하며, 해당 파일에 태그를 추가하거나 파일에서 태그를 제거합니다. 태그가 존재하지 않는 경우 파일에 추가하여 생성합니다. 태그 작업은 고급 사용자 세션에서 사용할 수 있으며, 이를 위해서는 Microsoft Entra ID 앱 역할 및 범위가 필요합니다. <block ref="c1d64505bd0a88e74caa79b62b8d6b30" category="inline-link-macro-rx"></block>을(를) 참조하십시오. AI 클라이언트가 사용할 수 있는 툴에 대해서는 <block ref="a7182b4788252933748ddbec34b6d850" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
@@ -2452,4 +2415,44 @@
   <block id="1a193b347680542aaf42ddc6f7cb9d44" category="list-text"><block ref="1a193b347680542aaf42ddc6f7cb9d44" category="inline-link-rx"></block></block>
   <block id="57a074a888c70d7dd5cd6f7cced9283a" category="list-text"><block ref="57a074a888c70d7dd5cd6f7cced9283a" category="inline-link-macro-rx"></block></block>
   <block id="6d047e4cc60ee10d6f14b5f8a12ab25a" category="list-text"><block ref="6d047e4cc60ee10d6f14b5f8a12ab25a" category="inline-link-macro-rx"></block></block>
+  <block id="86365ce90094640c1b346cc24b2f4842" category="image-alt">AI Data Engine 일반 설정</block>
+  <block id="032485b974676dc8310ba0c29c77bc4f" category="list-text"><block ref="032485b974676dc8310ba0c29c77bc4f" category="inline-link-macro-rx"></block></block>
+  <block id="f586fc29bd53036328c18f54b8873ed0" category="list-text">NetApp Console에서 *관리 &gt; ID 및 액세스*를 선택합니다.</block>
+  <block id="e7f4307828791e3aad925f04d2ab015a" category="list-text">*회원*으로 이동합니다.</block>
+  <block id="8e4308c1d564d9b777d03434bab61b0a" category="list-text">*AI Data Engine 관리자* 또는 *AI Data Engine 뷰어* 역할을 할당하십시오.</block>
+  <block id="d9f5b8eb639ac4819c1df777b2561c7d" category="list-text">새 역할을 추가하십시오.</block>
+  <block id="5c5f9ec2b31a7d92fe4d29f241afe7af" category="paragraph">AI Data Engine(AIDE)에서 분석할 데이터 소스를 연결하고 스캔할 데이터 리소스를 선택하십시오. AI Data Engine은 연결된 데이터 소스를 스캔하여 메타데이터를 수집하며, 연결 절차는 소스 유형에 따라 다릅니다. 이러한 작업은 NetApp Console에서 완료합니다.</block>
+  <block id="aba7be55c849049ff01b706044f4d55c" category="list-text">데이터 소스를 연결하고 구성하려면 NetApp Console에서 _AI Data Engine 관리자_ 역할이 있어야 합니다.</block>
+  <block id="75b39dbb09b821b3bec2300968506aca" category="image-alt">AI Data Engine 데이터 소스 및 스캔 상태</block>
+  <block id="c6c58cf8eecb21cf6d7e9ab9983c5c3d" category="list-text">데이터 리소스 옆에 있는 작업 메뉴를 선택합니다.</block>
+  <block id="c8a46e4084084ab8e8b20199768a11b4" category="list-text">*모든 볼륨 스캔*을 선택합니다(공유, 버킷 또는 스키마에 대한 작업 메뉴에도 동일한 옵션이 있습니다).</block>
+  <block id="7ae7276113418d26f9f562f9ae67c723" category="section-title">시스템에서 AI Data Engine 제거</block>
+  <block id="72ab775fdb46c5861e5f1ad93702af3d" category="paragraph">AI Data Engine이 더 이상 스캔할 필요가 없는 경우 활성 스캔 범위에서 시스템을 제거하십시오. 시스템을 비활성화하면 모든 스캔이 중지되고 구성이 유지됩니다. 시스템을 다시 추가하려면 시스템 행에서 *스캔 활성화*를 선택하십시오.</block>
+  <block id="0bdcbbf93e0d527ac3a9e4dde889ad64" category="list-text">*시스템 제거*를 선택합니다.</block>
+  <block id="3d7b263fa9d96ac2667af510cbbc713d" category="paragraph">요구 사항 및 <block ref="d2645d326523ff6119224072397195cb" category="inline-link-macro-rx"></block>을(를) 검토하여 AIDE 단일 노드 또는 다중 노드 배포를 설치할지 결정하십시오.</block>
+  <block id="a242626926ce5302d2a4857da485dc11" category="image-alt">AI Data Engine 조사 보기</block>
+  <block id="4364b5f1d2086a79e0ebc3a8d213f683" category="paragraph">*조사*는 *비정형*, *디렉터리*, *정형*의 세 가지 탭으로 구성되어 있습니다. 조사하려는 데이터 유형에 맞는 탭을 선택하십시오.</block>
+  <block id="268b4a4b62a44dcd14c1fc34c10c76a5" category="paragraph">각 탭 레이블에는 해당 유형의 항목 요약이 표시됩니다(예: "비정형(30.4M)").</block>
+  <block id="c67a4089baca0f6966e31003cc8ac58f" category="list-text"><block ref="efe83ea2112849ca2db091b63b0f3302" category="inline-link-macro-rx"></block>에서 콜드 데이터가 가장 많이 포함된 리소스를 찾아 *조사*를 선택합니다.</block>
+  <block id="58017712b5102409089d6b8f4fdc641e" category="list-text"><block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block>에서 *마지막 액세스* 필터를 구성된 콜드 데이터 임계값(기본값: *1년 이상*)과 일치하도록 설정하고 리소스를 확인하십시오.</block>
+  <block id="d4fc9cd654f636676d153e9dd17d1c7b" category="list-text">결과를 검토하여 <block ref="1b704418885ef10b8fd70953e661e84b" category="inline-link-macro-rx"></block> 일치하는 파일을 결정하십시오.</block>
+  <block id="44aeb64a0e7d0d54e6fbe00dbb9bc960" category="list-text"><block ref="efe83ea2112849ca2db091b63b0f3302" category="inline-link-macro-rx"></block>에서 오래된 데이터가 상당 부분 포함된 리소스를 식별하십시오.</block>
+  <block id="540a1cf0542e16c84ec3e8f6dc3c1a9c" category="list-text"><block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block>에서 *최종 수정일* 필터를 오래된 임계값(기본값 *3년 이상*)으로 설정하여 적용합니다.</block>
+  <block id="1baa33ae29540c42003f82b8ee38c545" category="list-text"><block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block>에서 *최근 생성* 필터를 보존 기간(기본값 *7년 이상*)으로 설정하여 적용합니다.</block>
+  <block id="170bd50add325579e629794c4dd1f56f" category="list-text"><block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block>에서 *비정형*을 선택하고 최근 데이터 마이그레이션의 파일 등 복사본이 있을 것으로 의심되는 파일의 세부 정보를 엽니다.</block>
+  <block id="4ec737a9d511fd84726c95536fe99ba5" category="list-text">*작업*에서 *삭제*를 선택합니다. *마지막 수정일* 옵션을 사용하여 사본을 유지하고, 원래 위치에 탐색 경로를 남겨둔 다음 *제출*을 선택합니다. 그런 다음 대화 상자에서 삭제를 확인합니다. 자세한 내용은 <block ref="f36a79e86b28ff381812cb818f2f31a6" category="inline-link-macro-rx"></block>을(를) 참조하십시오.</block>
+  <block id="776730ba413e058e9dd6ff609bde4067" category="list-text"><block ref="efe83ea2112849ca2db091b63b0f3302" category="inline-link-macro-rx"></block>에서 _재확보 가능한 스토리지 기준 상위 소비자_ 테이블을 찾으십시오.</block>
+  <block id="05316478b0def30dffb70d0783dab207" category="list-text">소유자 행을 선택하면 <block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block> 해당 소유자의 파일로 필터링된 창이 열립니다.</block>
+  <block id="26e4418b173a8229c76d29a14402ec52" category="list-text">결과를 검토하고 <block ref="1b704418885ef10b8fd70953e661e84b" category="inline-link-macro-rx"></block> 파일을 결정하십시오.</block>
+  <block id="635b18870d5e85122fe6a693f7c3b01e" category="paragraph">조치를 취하려면 조사 결과 표에서 확인란을 사용하여 하나 이상의 항목을 선택하십시오. 작업 도구 모음이 *삭제*, *복사*, *보관*, *태그*의 네 가지 옵션으로 활성화됩니다. 파일의 중복 복사본을 제거하려면 *중복 정리*를 사용하십시오. <block ref="9f57b317c8898075cb7b23f39b825ff2" category="inline-xref-macro-rx"></block>을(를) 참조하십시오.</block>
+  <block id="5adb146c61bcb4580fa75e11118eda27" category="paragraph">NetApp Console에서 *AI 데이터 허브* &gt; *AI Data Engine*을 선택합니다. 대시보드가 기본적으로 열립니다. 대시보드는 인사이트를 *스토리지 최적화*, *권한* 및 *구조화된 데이터*의 세 가지 탭으로 구성합니다.</block>
+  <block id="39df624574c82c58d174b9f651908727" category="image-alt">AI Data Engine 대시보드 개요</block>
+  <block id="964bc7eb88e515408b6d759f40d550c1" category="list-text">_중복 데이터 크기 분포_: 중복 데이터가 크기 범위별로 어떻게 분포되어 있는지 보여줍니다.</block>
+  <block id="02a925cda1fe0e55718a3d36d89b4309" category="section-title">권한 검토</block>
+  <block id="331ca906d8e443fa539583700cb3c235" category="paragraph">권한 검토를 우선적으로 수행할 디렉터리를 찾으십시오. *권한* 탭에는 디렉터리 경로와 파일 개수를 나열하는 _열린 권한이 있는 디렉터리_ 차트가 표시됩니다. 이러한 디렉터리를 자세히 보려면 <block ref="243090fac4ef0153c4d49200a899b55c" category="inline-link-macro-rx"></block>를 참조하십시오. AI Data Engine이 권한을 검사할지 여부를 제어하려면 <block ref="5645899a89b5fd67a1a0eb0d5fb3d0b6" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="5603ffb19152006187b0e384e669cd2d" category="paragraph">_복구 가능한 스토리지 기준 상위 데이터 리소스_ 표는 스캔한 스토리지 리소스를 중복 데이터 비율 또는 조직의 콜드 및 오래된 데이터 임계값을 충족하는 데이터 비율에 따라 순위별로 나열합니다. 콜드 또는 오래된 파일을 식별하려면 <block ref="2ffd1417cc35a965547bb2150ad9550e" category="inline-link-macro-rx"></block> 탭을 사용하고, 권한 노출을 감사하려면 <block ref="6d961a2a6fb0e60e8e41943755ff0165" category="inline-link-macro-rx"></block> 탭을 사용하십시오.</block>
+  <block id="a8d5fe7f0c732e56c06a5864f239bc3a" category="paragraph">_회수 가능한 저장 공간 기준 상위 소비자_ 표는 잠재적으로 회수 가능한 데이터를 보유한 데이터 소유자를 보여줍니다. *조사*를 선택하여 해당 소유자의 파일로 필터링된 <block ref="7c7d8a698a0c8312e3f60c4049c831eb" category="inline-link-macro-rx"></block> 보기를 엽니다. 여기에서 결과를 검토하거나, 조치를 취하거나, 정책으로 저장할 수 있습니다.</block>
+  <block id="ce1ff4929e931e0a9e296c5119ebe35f" category="paragraph">모델 컨텍스트 프로토콜(MCP)은 AI 클라이언트가 외부 데이터 소스 및 툴에 연결할 수 있게 해주는 개방형 표준입니다. AI Data Engine은 AI 클라이언트가 스토리지 시스템에 직접 접근하는 대신 AI Data Engine 메타데이터 카탈로그를 쿼리할 수 있도록 Governed Access Gateway라는 MCP 서버를 제공합니다.</block>
+  <block id="b3f8a213ee90b07430fa6544a953258e" category="list-text">*이메일 알림 보내기*: 지정한 수신자에게 이메일 알림을 보내고 알림 간격을 설정할 수 있습니다.</block>
+  <block id="0fc062c582fefae15df8a053a39add04" category="list-text">*이메일 알림 보내기* 작업을 선택하고, 알림 간격을 선택한 다음, 수신자 이메일 주소를 입력합니다.</block>
 </blocks>

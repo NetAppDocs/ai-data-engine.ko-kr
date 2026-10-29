@@ -471,6 +471,4 @@ AI Data Engine의 활성 버전 및 NetApp 지원 담당자 연락처 정보를 
 * link:deployment-overview.html["AIDE 배포 개요"]
 * link:single-node-prerequisites.html["AIDE 단일 노드 배포 필수 조건"]
 * link:multi-node-prerequisites.html["AIDE 다중 노드 배포 필수 조건"]
-* link:deploy-aide-single-node.html["AI Data Engine을 단일 노드 배포로 배포하십시오."]
-* link:deploy-aide-multi-node.html["AI Data Engine을 멀티 노드 배포 방식으로 배포하십시오."]
 
