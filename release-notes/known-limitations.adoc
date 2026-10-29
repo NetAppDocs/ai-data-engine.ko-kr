@@ -67,7 +67,7 @@ MCP 태그 작업에는 제한이 있습니다:: AI 클라이언트는 태그가
 [[related-information]]
 == 관련 정보
 
-* link:whats-new.html["새로운 소식"]
+* link:../whats-new.html["새로운 소식"]
 * link:../deploy/deployment-overview.html["배포 개요"]
 * link:../investigate/take-actions.html["데이터에 대한 조치를 취하십시오"]
 * link:../mcp/learn-about-mcp.html["통제된 AI 액세스에 대해 알아보십시오"]

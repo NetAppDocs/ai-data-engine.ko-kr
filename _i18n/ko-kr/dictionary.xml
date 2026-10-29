@@ -487,26 +487,20 @@
   <block id="22d58514041f9d266de2982f62b704e1" category="list-text">정책에 따라 실행되는 조치는 제한적입니다.</block>
   <block id="5e5599b4ab847835c7ed2699cdee9711" category="list-text">태그는 삭제하거나 이름을 변경할 수 없습니다.</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="inline-link-macro">새로운 소식</block>
-  <block id="d2cf1d75a14c1b649ad24af4f7cc016a" category="list-text"><block ref="d2cf1d75a14c1b649ad24af4f7cc016a" category="inline-link-macro-rx"></block></block>
   <block id="42f8643eb52a942747937327c72c8361" category="inline-link-macro">배포 개요</block>
   <block id="cd987b27c3ccd639db6b361c502cc401" category="list-text"><block ref="cd987b27c3ccd639db6b361c502cc401" category="inline-link-macro-rx"></block></block>
   <block id="f83adadb9550a879c846995e2192c210" category="summary">AI Data Engine의 새로운 기능에 대해 알아보십시오.</block>
   <block id="44b91c30c9b87c702f04abec51577e90" category="doc">AI Data Engine의 새로운 기능</block>
   <block id="5985e93b91139d269803898603d579a6" category="inline-link-macro">스토리지 용량 복구</block>
-  <block id="b86b47941c4c25cee43b3c71138fd185" category="list-text"><block ref="b86b47941c4c25cee43b3c71138fd185" category="inline-link-macro-rx"></block></block>
   <block id="28ee8cd4b89e717d7369cec556fc8ecb" category="list-text">설정된 임계값을 기준으로 연결된 시스템 전체에서 콜드, 오래된, 중복 데이터를 식별하고, 어떤 시스템과 데이터 소유자가 이러한 데이터를 가장 많이 보유하고 있는지 확인하십시오.</block>
   <block id="48f8775f839e036416f7dc0d633d5f90" category="inline-link-macro">비용 및 위험 감소</block>
-  <block id="e52b3bfa6b31678effcc50ac056804c0" category="list-text"><block ref="e52b3bfa6b31678effcc50ac056804c0" category="inline-link-macro-rx"></block></block>
   <block id="847b10ef72a08afa0a7a2bccfc9f722a" category="list-text">연결된 모든 시스템에서 액세스 시간, 수정 날짜, 생성 날짜, 파일 크기, 중복 여부 및 기타 기준에 따라 필터링하여 조직의 데이터 관리 목표에 부합하는 파일을 찾으십시오. 검색 결과를 바로 활용하거나 기준을 정책으로 저장할 수 있습니다.</block>
   <block id="324524f3e5ca24846ad76aa3a39d085c" category="list-text">콜드 파일 또는 크기가 큰 파일 등 반복되는 데이터 조건을 시간이 지남에 따라 추적하기 위해 필터 기준을 명명된 정책으로 저장하고, 영향을 받는 파일 수가 변경될 때 알림을 받으십시오.</block>
   <block id="a82c68dd721dede489a3f3b8e95372d3" category="inline-link-macro">스토리지 비용 절감</block>
-  <block id="3cdd5ec3a4c7cb1197214bf213ebc152" category="list-text"><block ref="3cdd5ec3a4c7cb1197214bf213ebc152" category="inline-link-macro-rx"></block></block>
   <block id="a39bf4bdcac229739d4368182e65aa6a" category="inline-link-macro">관리자 및 뷰어 역할 할당</block>
-  <block id="c0d075a2db1d36d19fe844351b6f646e" category="list-text"><block ref="c0d075a2db1d36d19fe844351b6f646e" category="inline-link-macro-rx"></block></block>
   <block id="05cd97f29840d5823c5d103c71b26a1a" category="list-text">조직 내 사용자에게 AI Data Engine 관리자 또는 뷰어 역할을 할당하여 데이터를 조사하고 조치를 취할 수 있는 사용자를 제어할 수 있습니다.</block>
   <block id="aa06fbb4900808cad7e234eac413020c" category="inline-link-macro">중복 데이터 제거</block>
   <block id="482723983a4f2af954e36ff41e567451" category="inline-link-macro">알려진 제한 사항</block>
-  <block id="34e34c0debc388181c3934f84b977ddd" category="list-text"><block ref="34e34c0debc388181c3934f84b977ddd" category="inline-link-macro-rx"></block></block>
   <block id="ed67b8aec97dcec019f1b2972d70f5af" category="sidebar">AI Data Engine 문서</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하기</block>
   <block id="507a3a88cebc46603ce2be8eaa924eee" category="sidebar">배포</block>
@@ -2399,40 +2393,27 @@
   <block id="5a76487c3e4c863c44db98088c0ac95c" category="list-text">AI 클라이언트는 태그가 지정된 파일 목록을 표시할 수 없으며, 한 번에 하나의 파일에만 태그를 추가하거나 제거할 수 있습니다.</block>
   <block id="bc471c7e22b40565a8ad992f37545406" category="paragraph">AI Data Engine(AIDE)의 새로운 기능에 대해 알아보세요.</block>
   <block id="b0609734250ba6ba4d0839963ce55146" category="section-title">2026년 10월 26일</block>
-  <block id="57f4a409c9972d858bd7c6956b385c33" category="paragraph">*버전 1.3*</block>
-  <block id="d005a010adff2a46762288141702428d" category="paragraph">AI Data Engine은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스로, 연결된 시스템을 스캔하고, 메타데이터 카탈로그를 구축하며, 대규모로 스토리지를 최적화하고 데이터를 관리할 수 있는 가시성과 툴을 제공합니다. AI Data Engine을 <block ref="6fbf585bfc30b5dbe7ec8f6c5c37ae76" category="inline-link-macro-rx"></block>(으)로 배포하거나, 환경에서 대규모로 Kubernetes 기반 고가용성이 필요한 경우 AIDE 다중 노드 배포로 배포할 수 있습니다.</block>
   <block id="b47d2c6bc36912f9c4906cd956ab8801" category="paragraph">AI Data Engine 1.3은 최초의 일반 출시(GA) 버전입니다.</block>
   <block id="b6fbdf8ef74b308af14cc26bb5cf3d57" category="section-title">데이터를 배포하고 연결하세요</block>
   <block id="6efb2debacc503f80d4da744eff0cf0e" category="inline-link-macro">환경에 필요한 규모로 배포하세요</block>
-  <block id="ff28f802c291435ffc4261685aa2b380" category="list-text"><block ref="ff28f802c291435ffc4261685aa2b380" category="inline-link-macro-rx"></block></block>
   <block id="54d59647b1d587275188225d397c3a90" category="inline-link-macro">AIDE용 프록시에 대해 알아보기</block>
-  <block id="38d6dcd25e046c917e205510fb384b40" category="list-text">단일 VM에서 빠른 시작을 위해 AIDE 단일 노드 배포를 선택하거나, 고가용성 및 대규모 확장을 위해 자체 Kubernetes 클러스터에서 AIDE 다중 노드 배포를 선택하십시오. 환경에서 인터넷에 연결하기 위해 프록시가 필요한 경우, <block ref="5e07896df6543d573212a91b9d17ac97" category="inline-link-macro-rx"></block> 프록시를 사용하여 배포하십시오.</block>
   <block id="5d4ef326714efe60337e85390babd329" category="inline-link-macro">데이터를 범위에 포함하십시오</block>
-  <block id="d9e005c68007f2994b6ffc546f13f9a6" category="list-text"><block ref="d9e005c68007f2994b6ffc546f13f9a6" category="inline-link-macro-rx"></block></block>
   <block id="d230737bea58a8428adf7af15944f95e" category="list-text">파일 공유, 데이터베이스 서버 및 StorageGRID 시스템을 연결하고 스캔할 데이터 리소스를 선택하십시오.</block>
   <block id="dc3afd3f5177091595345a8d4549347f" category="inline-link-macro">스캔을 정상 상태로 유지하십시오</block>
-  <block id="d8fb84c91bbe826ae43aff1c1b483f44" category="list-text"><block ref="d8fb84c91bbe826ae43aff1c1b483f44" category="inline-link-macro-rx"></block></block>
   <block id="2ee195a4ed58f4d222297b70a61432fb" category="list-text">배포 상태를 모니터링하여 스캔을 방해할 수 있는 문제를 파악하고, 문제를 해결하는 데 필요한 세부 정보를 수집하십시오.</block>
   <block id="503e5b39e3523e3f785dc860a90339b7" category="section-title">스토리지를 최적화하고 데이터를 조사하십시오</block>
   <block id="768437ba03b276a3ec10fbbe8b81a73b" category="inline-link-macro">조직의 콜드 및 비활성 데이터를 정의하십시오.</block>
-  <block id="aac5ed1f43d24fb2bc038ef8bb7b629a" category="list-text"><block ref="aac5ed1f43d24fb2bc038ef8bb7b629a" category="inline-link-macro-rx"></block></block>
   <block id="c7f53c208d84a3ef5f51bc7df079759c" category="list-text">보존 정책에 맞춰 어떤 데이터를 콜드 또는 비활성 데이터로 분류할지 결정하는 임계값을 설정하십시오.</block>
   <block id="b1a6eb35f4a110688914b03b871eaf51" category="inline-link-macro">데이터 관련 문의 담당자를 확인하세요</block>
-  <block id="725669bbe2bf03266f23befe6473c5f5" category="list-text"><block ref="725669bbe2bf03266f23befe6473c5f5" category="inline-link-macro-rx"></block></block>
   <block id="7a1cad1c9f215254d948360e464d76ff" category="list-text">대시보드에서 어떤 데이터 소유자가 콜드, 비활성 또는 중복 데이터를 가장 많이 보유하고 있는지 확인하십시오. 그런 다음 조사 보기에서 소유자 또는 그룹별로 필터링하여 결과를 검토하고 연락할 담당자를 찾으십시오.</block>
-  <block id="92b6e473ad1c3cbbaed667d7c2a3b987" category="list-text"><block ref="92b6e473ad1c3cbbaed667d7c2a3b987" category="inline-link-macro-rx"></block></block>
   <block id="b88b83fb304e42378e6634bd65125bc0" category="list-text">연결된 시스템 전체에서 중복된 파일을 찾습니다. 중복 속성 또는 파일 해시를 기준으로 필터링하여 중복 그룹을 검토한 다음 중복된 파일을 정리합니다.</block>
   <block id="6a0ea53ac4eb792afc1b4f47bebce855" category="inline-link-macro">액세스 위험 찾기</block>
-  <block id="5e6a1fc8bb732cc04678f2edae2d2d6d" category="list-text"><block ref="5e6a1fc8bb732cc04678f2edae2d2d6d" category="inline-link-macro-rx"></block></block>
   <block id="c29b4022a785fd3edc8eacb408d318ae" category="list-text">권한이 열려 있는 디렉터리를 식별하여 권한 검토의 우선순위를 정하십시오.</block>
-  <block id="551218f37120121fcd6d3be555623704" category="list-text"><block ref="551218f37120121fcd6d3be555623704" category="inline-link-macro-rx"></block></block>
   <block id="ed29587aa611eb50b7cd9e6c7532cd6b" category="list-text">연결된 데이터베이스 서버 전체에서 크기가 너무 크거나 사용되지 않는 데이터베이스 테이블을 찾으십시오.</block>
   <block id="a96561a39a488fd7ab3a0429b8037b51" category="section-title">데이터를 기반으로 조치를 취하고 시간 경과에 따라 모니터링하십시오</block>
   <block id="e21cfecd675bc598f5df1e37e056a8ec" category="list-text">파일을 NFS 또는 SMB 대상으로 복사 및 보관하거나, 추적을 위해 항목에 태그를 지정하거나, 보존 요구 사항에 따라 파일을 영구적으로 삭제하여 조직의 데이터 라이프사이클 정책을 시행하십시오.</block>
   <block id="d0cec28746f2b1c070ddbca66abadb26" category="inline-link-macro">데이터 상태를 지속적으로 모니터링합니다</block>
-  <block id="c3317a4378cb71832595d5809a4cec30" category="list-text"><block ref="c3317a4378cb71832595d5809a4cec30" category="inline-link-macro-rx"></block></block>
   <block id="7ddef8d1014170776e5690b23704bda9" category="inline-link-macro">AI 클라이언트에게 메타데이터에 대한 통제된 액세스 권한을 부여하십시오.</block>
-  <block id="45d51fbf39482cd3f82a723b3fee4855" category="list-text"><block ref="45d51fbf39482cd3f82a723b3fee4855" category="inline-link-macro-rx"></block></block>
   <block id="e92a557f1e1e53dd1526a17543191ac9" category="list-text">모델 컨텍스트 프로토콜(MCP)을 통해 Claude Code, Claude Desktop, Cursor 또는 OpenCode를 AI Data Engine에 연결합니다. AI 클라이언트가 검색할 수 있는 컬렉션을 활성화하고 Microsoft Entra ID 범위를 사용하여 각 컬렉션을 검색할 수 있는 사용자를 제어합니다. AI 클라이언트는 메타데이터와 태그 파일을 검색할 수 있습니다.</block>
   <block id="7258e7251413465e0a3eb58094430bde" category="section-title">관리</block>
   <block id="2d6e048add1f2529435dc2ecc3d32124" category="sidebar">AI Data Engine은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스로, 연결된 시스템을 스캔하고, 메타데이터 카탈로그를 구축하며, 스토리지를 최적화하고 대규모로 데이터를 관리할 수 있는 가시성과 툴을 제공합니다. 관리되는 AI 액세스를 통해 AI 클라이언트는 모델 컨텍스트 프로토콜(MCP)을 통해 해당 메타데이터를 검색할 수 있습니다.</block>
@@ -2453,10 +2434,22 @@
   <block id="156586dd7dceda9f103091b3c0beb1e6" category="sidebar">AIDE MCP 툴</block>
   <block id="7da93123cf77bf1f1d116b04b8d380c2" category="paragraph"><block ref="7da93123cf77bf1f1d116b04b8d380c2" category="inline-link-macro-rx"></block></block>
   <block id="702209553c340514b23674486ae4fd31" category="doc">AI Data Engine 1.3</block>
-  <block id="10c8a7570aaedaffab9ef063fe9b43c3" category="paragraph">AI Data Engine 1.3은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스인 AI Data Engine(AIDE)의 첫 번째 일반 출시(GA) 릴리스입니다. AIDE는 연결된 시스템을 스캔하고, 메타데이터 카탈로그를 구축하며, 스토리지를 최적화하고 대규모로 데이터를 관리할 수 있는 가시성과 툴을 제공합니다. 자세한 내용은 <block ref="c8f75516a94493ffe7fe6bb96c5067bf" category="inline-link-rx"></block>을(를) 참조하십시오.</block>
-  <block id="b678323232cf97a3768c22969e93b6bc" category="inline-link">AI Data Engine의 새로운 기능</block>
-  <block id="e0a0ca8d3c0ba674ddda1dadea6576a3" category="paragraph">연결된 시스템 전체에서 콜드 데이터, 오래된 데이터 및 중복 데이터를 식별하고, 권한이 열려 있는 디렉터리를 찾고, 크기가 너무 크거나 사용되지 않는 데이터베이스 테이블을 조사할 수 있습니다. 결과에 따라 직접 조치를 취하거나 필터 기준을 정책으로 저장하여 시간 경과에 따른 데이터 상태를 모니터링할 수 있습니다. 자세한 내용은 <block ref="c9aabe1555970ff471e651fab11a16f7" category="inline-link-rx"></block>를 참조하십시오.</block>
-  <block id="5bb02905e466f0b51d8900b860f2d83c" category="section-title">메타데이터에 대한 AI 액세스 관리</block>
-  <block id="9499e52a968a6337905b279c7aa8beb4" category="inline-link">AI Data Engine에서 MCP에 대해 알아보기</block>
-  <block id="4edb79b33148e0f3f7c2ed02c6ba39c5" category="paragraph">모델 컨텍스트 프로토콜(MCP)을 통해 AI 클라이언트를 AI Data Engine에 연결하고 Microsoft Entra ID 범위를 사용하여 각 컬렉션을 검색할 수 있는 사용자를 제어할 수 있습니다. 자세한 내용은 <block ref="705649344f29bd334d650738c1e5f0f1" category="inline-link-rx"></block>을(를) 참조하십시오.</block>
+  <block id="bef20353ec71f208058a441ac3075e32" category="paragraph">AI Data Engine은 NetApp Console을 통해 관리되는 메타데이터 인텔리전스 서비스로, 연결된 시스템을 스캔하고 메타데이터 카탈로그를 구축하며, 스토리지를 최적화하고 대규모로 데이터를 관리할 수 있는 가시성과 툴을 제공합니다. AI Data Engine을 <block ref="142c34bc944087f6618b21ea2656150e" category="inline-link-rx"></block>(으)로 배포하거나, 환경에서 대규모의 Kubernetes 기반 고가용성이 필요한 경우 AIDE 다중 노드 배포로 배포할 수 있습니다.</block>
+  <block id="240f9f6dce8959d1579bafbec08d0a07" category="list-text"><block ref="240f9f6dce8959d1579bafbec08d0a07" category="inline-link-rx"></block></block>
+  <block id="dc5d043b5e605fee0d9932e6221d1341" category="list-text">단일 VM에서 빠른 시작을 위해 AIDE 단일 노드 배포를 선택하거나, 고가용성 및 대규모 확장을 위해 자체 Kubernetes 클러스터에서 AIDE 다중 노드 배포를 선택하십시오. 환경에서 인터넷에 연결하기 위해 프록시가 필요한 경우,<block ref="1fba41490412204ba3e209df7e3a5b18" category="inline-link-rx"></block> 프록시를 사용하여 배포하십시오.</block>
+  <block id="cbb5a5204dc3d123ef3e9d16f2e82c40" category="list-text"><block ref="cbb5a5204dc3d123ef3e9d16f2e82c40" category="inline-link-rx"></block></block>
+  <block id="7b788817aa65d1a00c5998f98ef08cfb" category="list-text"><block ref="7b788817aa65d1a00c5998f98ef08cfb" category="inline-link-rx"></block></block>
+  <block id="78d40fa188b264432d9acc14b6e6b1a6" category="list-text"><block ref="78d40fa188b264432d9acc14b6e6b1a6" category="inline-link-rx"></block></block>
+  <block id="cf33f4d67208331a1884a855217b6910" category="list-text"><block ref="cf33f4d67208331a1884a855217b6910" category="inline-link-rx"></block></block>
+  <block id="05ea9642a4f5b9ce56f13fe067b453b2" category="list-text"><block ref="05ea9642a4f5b9ce56f13fe067b453b2" category="inline-link-rx"></block></block>
+  <block id="862a75ec1e9a5a65a297360dc22b2bc2" category="list-text"><block ref="862a75ec1e9a5a65a297360dc22b2bc2" category="inline-link-rx"></block></block>
+  <block id="b61b383822e3f75988a3bc5303d64e36" category="list-text"><block ref="b61b383822e3f75988a3bc5303d64e36" category="inline-link-rx"></block></block>
+  <block id="9ee8d4cfc51103c18fc1a2ae913d5f55" category="list-text"><block ref="9ee8d4cfc51103c18fc1a2ae913d5f55" category="inline-link-rx"></block></block>
+  <block id="13bf9647191c08a44d253d11925f720f" category="list-text"><block ref="13bf9647191c08a44d253d11925f720f" category="inline-link-rx"></block></block>
+  <block id="3364b0befdd009cf3911e421130619e8" category="list-text"><block ref="3364b0befdd009cf3911e421130619e8" category="inline-link-rx"></block></block>
+  <block id="bb9cf8ec15fcf3324f1ac0beae0e6103" category="list-text"><block ref="bb9cf8ec15fcf3324f1ac0beae0e6103" category="inline-link-rx"></block></block>
+  <block id="ce4014ce8d04d1a09fa16018842bd557" category="list-text"><block ref="ce4014ce8d04d1a09fa16018842bd557" category="inline-link-rx"></block></block>
+  <block id="1a193b347680542aaf42ddc6f7cb9d44" category="list-text"><block ref="1a193b347680542aaf42ddc6f7cb9d44" category="inline-link-rx"></block></block>
+  <block id="57a074a888c70d7dd5cd6f7cced9283a" category="list-text"><block ref="57a074a888c70d7dd5cd6f7cced9283a" category="inline-link-macro-rx"></block></block>
+  <block id="6d047e4cc60ee10d6f14b5f8a12ab25a" category="list-text"><block ref="6d047e4cc60ee10d6f14b5f8a12ab25a" category="inline-link-macro-rx"></block></block>
 </blocks>
